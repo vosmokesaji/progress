@@ -151,3 +151,15 @@ npm install grunt-contrib-watch --save-dev
 - 一般来说，Controller是不会互相调用的。控件之间的交互式通过事件进行的。
 
 ### 14日
+
+- npm 换源：
+
+
+```
+npm config set registry https://registry.npm.taobao.org
+
+//配置后可通过下面方式来验证是否成功
+
+npm config get registry
+
+```

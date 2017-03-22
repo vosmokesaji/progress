@@ -107,23 +107,23 @@ aCopy; // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 aCopy === arr; // false
 ```
 
-> 写一个判断数组是否相等的方法
+> 写一个判断数组是否相等的方法:
 
 ```javascript
 var cmpare = function(arr1,arr2){
-	if(arr1.length === arr2.length){
-		for(var i = 0;i<arr1.length;i ++){
-			if(arr1[i] === arr2[i]){
-				if(i === (arr1.length - 1)){
-					return true;
-				}
-			}else{
-				return false;
-			}
-		}
-	}else{
-		return false;
-	}
+    if(arr1.length === arr2.length){
+        for(var i = 0;i<arr1.length;i ++){
+            if(arr1[i] === arr2[i]){
+                if(i === (arr1.length - 1)){
+                    return true;
+                }
+            }else{
+                return false;
+            }
+        }
+    }else{
+        return false;
+    }
 }
 ```
 

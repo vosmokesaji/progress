@@ -4,6 +4,99 @@
 
 ## 3月
 
+### 22日
+
+chrome 离线版下载
+
+- 最新稳定版：https://www.google.com/intl/zh-CN/chrome/browser/**?standalone=1**
+- 最新测试版：https://www.google.com/intl/zh-CN/chrome/browser/**?standalone=1&extra=betachannel**
+- 最新开发版：https://www.google.com/intl/zh-CN/chrome/browser/**?standalone=1&extra=devchannel**
+
+
+
+JavaScript
+
+
+#### 字符串
+
+- 如果字符串内部既包含'又包含"怎么办？可以用转义字符\来标识，比如：
+
+```javascript
+'I\'m \"OK\"!';
+```
+
+- ASCII字符可以以\x##形式的十六进制表示
+
+```javascript
+'\x41'; // 完全等同于 'A'
+```
+
+- 还可以用\u####表示一个Unicode字符
+
+```javascript
+'\u4e2d\u6587'; // 完全等同于 '中文'
+```
+
+- 由于多行字符串用\n写起来比较费事，所以最新的ES6标准新增了一种多行字符串的表示方法，用反引号 ` ... ` 表示
+
+
+```javascript
+`这是一个
+多行
+字符串`;
+```
+
+- 如果有很多变量需要连接，用+号就比较麻烦。ES6新增了一种模板字符串，它会自动替换字符串中的变量
+
+```javascript
+var name = '小明';
+var age = 20;
+var message = `你好, ${name}, 你今年${age}岁了!`;
+alert(message);
+```
+
+- **需要特别注意的是**: 字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果
+
+```javascript
+var s = 'Test';
+s[0] = 'X';
+alert(s); // s仍然为'Test'
+```
+
+#### 数组
+
+- 请注意，直接给Array的length赋一个新的值会导致Array大小的变化
+
+```javascript
+var arr = [1, 2, 3];
+arr.length; // 3
+arr.length = 6;
+arr; // arr变为[1, 2, 3, undefined, undefined, undefined]
+arr.length = 2;
+arr; // arr变为[1, 2]
+```
+
+- 请注意，如果通过索引赋值时，索引超过了范围，同样会引起Array大小的变化
+
+```javascript
+var arr = [1, 2, 3];
+arr[5] = 'x';
+arr; // arr变为[1, 2, 3, undefined, undefined, 'x']
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### 21日
 
 - **AngularJS 四大核心特性**
@@ -14,7 +107,7 @@
 
 - Angular 的“遥控器”是Controller。
 - **路由**
-	- 路由的本质是有地址栏url的不同，为我们展示不同的视图。（这个过程没有和服务器交互）。
+	- 路由的本质是由地址栏url的不同，为我们展示不同的视图。（这个过程没有和服务器交互）。
 	- 只有两个方法： when 和 otherwise
 	- URL 中的 # 号是防止浏览器向服务器提交请求的。
 	- 我们就可以将不同的视图交给不同的控制器去处理，这样视图之间的职能就分的很清晰。
@@ -71,7 +164,6 @@ Math.abs(1 / 3 - (1 - 2 / 3)) < 0.0000001; // true
 - Stero 是立体声
 - Mono 是单声道。
 
-
 MarkDown 插入图片的语法：
 
 ```
@@ -79,8 +171,6 @@ MarkDown 插入图片的语法：
 ```
 
 ![索尼大法好](images/sonydafagood.jpg)
-
-
 
 - AngularJS 中的 MVC 是借助 $scope 实现的。
 - $rootScope 是控制器之间的桥梁。
@@ -104,10 +194,7 @@ MarkDown 插入图片的语法：
 
 - 监察？   extJS?
 
-
-
 ### 18日
-
 
 - grunt 的插件 安装
 
@@ -120,8 +207,6 @@ npm install grunt-contrib-watch --save-dev
 ```
 
 - npm 会把非全局安装的工具 安装到当前目录下的 node_modules 目录下
-
-
 
 - 10款工具：
 
@@ -136,11 +221,7 @@ npm install grunt-contrib-watch --save-dev
 	- Git             版本控制
 	- Chrome          浏览器
 
-
-
 - MVC只是手段，终极目标是模块化和复用
-
-
 
 - Controller:
 
@@ -154,12 +235,8 @@ npm install grunt-contrib-watch --save-dev
 
 - npm 换源：
 
-
 ```
 npm config set registry https://registry.npm.taobao.org
-
 //配置后可通过下面方式来验证是否成功
-
 npm config get registry
-
 ```

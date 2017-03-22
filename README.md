@@ -208,6 +208,31 @@ xiaoming.hasOwnProperty('toString'); // false
 ```
 
 
+#### 判断
+
+- 如果语句块只包含一条语句，那么可以省略{}
+
+```javascript
+var age = 20;
+if (age >= 18)
+    alert('adult');
+else
+    alert('teenager');
+```
+
+- 省略{}的危险之处在于，如果后来想添加一些语句，却忘了写{}，就改变了if...else...的语义，所以我们建议永远都要写上{}
+
+- 如果if的条件判断语句结果不是true或false怎么办？例如 
+
+```javascript
+var s = '123';
+if (s.length) { // 条件计算结果为3
+    //
+}
+```
+> JavaScript把null、undefined、0、NaN和空字符串''视为false，其他值一概视为true，因此上述代码条件判断的结果是true
+
+
 
 
 

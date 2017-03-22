@@ -107,7 +107,8 @@ aCopy; // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 aCopy === arr; // false
 ```
 
-- push() 向 Array 的末尾添加若干元素，pop() 则把 Array 的最后一个元素删除掉。如果要往 Array 的头部添加若干元素，使用 unshift() 方法，shift() 方法则把 Array 的第一个元素删掉。他们的返回值都是数组的新长度。
+- push() 向 Array 的末尾添加若干元素，pop() 则把 Array 的最后一个元素删除掉。如果要往 Array 的头部添加若干元素，使用 unshift() 方法，shift() 方法则把 Array 的第一个元素删掉。
+- 添加时的返回值是数组的新长度，删除时的返回值被删除的元素。
 - 空数组继续 pop/shift 不会报错，而是返回 undefined 。
 - reverse()把整个Array的元素给掉个个，也就是反转
 - sort()可以对当前Array进行排序，它会直接修改当前Array的元素位置，直接调用时，按照默认顺序排序

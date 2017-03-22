@@ -8,9 +8,9 @@
 
 chrome 离线版下载
 
-- 最新稳定版：https://www.google.com/intl/zh-CN/chrome/browser/**?standalone=1**
-- 最新测试版：https://www.google.com/intl/zh-CN/chrome/browser/**?standalone=1&extra=betachannel**
-- 最新开发版：https://www.google.com/intl/zh-CN/chrome/browser/**?standalone=1&extra=devchannel**
+- 最新稳定版：http...网址...**?standalone=1**
+- 最新测试版：http...网址...**?standalone=1&extra=betachannel**
+- 最新开发版：http...网址...**?standalone=1&extra=devchannel**
 
 
 

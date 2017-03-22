@@ -44,25 +44,25 @@ Object
 
 - NaN 和 Infinity（无限大）是 Number 类型
 
-```
+```javascript
 NaN === NaN; // false
 ```
 
 唯一能判断NaN的方法是通过isNaN()函数 ：	
 
-```
+```javascript
 isNaN(NaN); // true
 ```
 
 - 要注意浮点数的相等比较：
 
-```
+```javascript
 1 / 3 === (1 - 2 / 3); // false
 ```
 
 这不是JavaScript的设计缺陷。浮点数在运算过程中会产生误差，因为计算机无法精确表示无限循环小数。要比较两个浮点数是否相等，只能计算它们之差的绝对值，看是否小于某个阈值：
 
-```
+```javascript
 Math.abs(1 / 3 - (1 - 2 / 3)) < 0.0000001; // true
 ```
 

@@ -107,6 +107,28 @@ aCopy; // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 aCopy === arr; // false
 ```
 
+> 写一个判断数组是否相等的方法
+
+```javascript
+var cmpare = function(arr1,arr2){
+	if(arr1.length === arr2.length){
+		for(var i = 0;i<arr1.length;i ++){
+			if(arr1[i] === arr2[i]){
+				if(i === (arr1.length - 1)){
+					return true;
+				}
+			}else{
+				return false;
+			}
+		}
+	}else{
+		return false;
+	}
+}
+```
+
+
+
 - push() 向 Array 的末尾添加若干元素，pop() 则把 Array 的最后一个元素删除掉。如果要往 Array 的头部添加若干元素，使用 unshift() 方法，shift() 方法则把 Array 的第一个元素删掉。
 - 添加时的返回值是数组的新长度，删除时的返回值被删除的元素。
 - 空数组继续 pop/shift 不会报错，而是返回 undefined 。

@@ -4,6 +4,23 @@
 
 ## 3月
 
+### 23日
+
+Gulp
+
+- 全局安装
+
+```
+npm install --global gulp
+```
+
+- 作为项目的开发依赖（devDependencies）安装
+
+```
+npm install --save-dev gulp
+```
+
+
 ### 22日
 
 IPXX防护等级概念

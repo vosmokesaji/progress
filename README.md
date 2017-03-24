@@ -4,6 +4,79 @@
 
 ## 3月
 
+
+### 24日
+
+
+- Windows 下的 cmd 中查看当前位置下的文件 用 dir  命令。
+
+
+- const 声明创建一个只读的常量。这不意味着常量指向的值不可变，而是变量标识符的值只能赋值一次。
+
+```javascript
+// 注意: 常量在声明的时候可以使用大小写，但通常情况下会使用全部大写英文。 
+
+// 定义常量MY_FAV并赋值7
+const MY_FAV = 7;
+
+// 在 Firefox 和 Chrome 这会失败但不会报错(在 Safari这个赋值会成功)
+MY_FAV = 20;
+
+// 输出 7
+console.log("my favorite number is: " + MY_FAV);
+
+// 尝试重新声明会报错 
+const MY_FAV = 20;
+
+//  MY_FAV 保留给上面的常量，这个操作会失败
+var MY_FAV = 20; 
+
+// MY_FAV 依旧为7
+console.log("my favorite number is " + MY_FAV);
+
+// 下面是一个语法错误
+const A = 1; A = 2;
+
+// 常量要求一个初始值
+const FOO; // SyntaxError: missing = in const declaration
+
+// 常量可以定义成对象
+const MY_OBJECT = {"key": "value"};
+
+// 重写对象和上面一样会失败
+MY_OBJECT = {"OTHER_KEY": "value"};
+
+// 对象属性并不在保护的范围内，下面这个声明会成功执行
+MY_OBJECT.key = "otherValue";
+```
+
+- npm就是Node的软件包管理器
+	- 在项目根目录执行 npm init 命令可以帮你创建 package.json 。注意项目名不能包含大写字母
+	- 如果用 npm 安装模块的过程中报域名错误的话，请清空缓存 >npm cache clean 或重启计算机即可
+
+- 特别注意：package.json是一个普通json文件，所以不能添加任何注释
+
+
+- npm安装 gulp 时警告:npm WARN deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to
+	- 解决办法： (update不行)   直接重装 ：
+
+```
+npm install -g npm@3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### 23日
 
 Gulp

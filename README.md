@@ -4,6 +4,71 @@
 
 ## 3月
 
+### 27日
+
+- dotdotdot.js  多行文本溢出解决方案。
+
+```javascript
+dot = require('../plugins/jquery.dotdotdot.min');
+$('.info-item-desc,.image-list-title,.image-list-desc').dotdotdot({wrap: 'letter'});
+```
+
+- 浏览器通知
+	- 原生
+```javascript
+if(window.Notification && Notification.permission !== "denied") {
+    Notification.requestPermission(function(status) {
+        var n = new Notification('通知标题', { body: '这里是通知内容！' }); 
+    });
+}
+```
+	- 插件 [iNotify.js](http://blog.csdn.net/zhanglong_longlong/article/details/52539302)
+
+npm
+
+```
+$ npm install title-notify
+```
+
+bower
+
+```
+$ bower install inotify
+```
+
+**init**
+
+```javascript
+var iNotify = new iNotify().init()
+//推荐下面写法
+var iNotify = new iNotify({
+    message: '有消息了。',//标题
+    effect: 'flash', // flash | scroll 闪烁还是滚动
+    //可选播放声音
+    audio:{
+        //可以使用数组传多种格式的声音文件
+        file: ['msg.mp4','msg.mp3','msg.wav']
+        //下面也是可以的哦
+        //file: 'msg.mp4'
+    },
+    //标题闪烁，或者滚动速度
+    interval: 1000,
+    //可选，默认绿底白字的  Favicon
+    updateFavicon:{
+        // favicon 字体颜色
+        textColor: "#fff",
+        //背景颜色，设置背景颜色透明，将值设置为“transparent”
+        backgroundColor: "#2F9A00" 
+    },
+    //可选chrome浏览器通知，默认不填写就是下面的内容
+    notification:{
+        title:"通知！",//设置标题
+        icon:"",//设置图标 icon 默认为 Favicon
+        body:'您来了一条新消息'//设置消息内容
+    }
+})
+```
+
 
 ### 24日
 

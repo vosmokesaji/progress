@@ -4,6 +4,87 @@
 
 ## 3月
 
+### 28日
+
+- 浏览器通知
+
+
+
+
+
+- 测试玩
+
+```javascript
+Boolean(-1)
+//true
+
+Boolean(0)
+//false
+
+Boolean(null)
+//false
+
+Boolean(undefined)
+//false
+
+Boolean(NaN)
+//false
+
+Boolean("")
+//false
+
+Boolean('')
+//false
+
+typeof(null)
+//"object"
+
+typeof(undefined)
+//"undefined"
+
+typeof("")
+//"string"
+
+typeof(123)
+//"number"
+
+typeof(Date)
+//"function"
+
+typeof(window)
+//"object"
+
+typeof(elememt)
+//"undefined"
+
+typeof(qwe)
+//"undefined"
+
+typeof(typeof(qwe))
+//"string"
+
+typeof(typeof(123))
+//"string"
+
+typeof(typeof(NaN))
+//"string"
+
+typeof(NaN)
+//"number"
+
+0/0
+//NaN
+
+0/9
+//0
+
+123/0
+//Infinity
+
+1/0
+//Infinity
+```
+
 ### 27日
 
 - dotdotdot.js  多行文本溢出解决方案。

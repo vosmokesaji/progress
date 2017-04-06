@@ -6,6 +6,16 @@
 
 ## 4月
 
+### 6日
+
+- 啥是环境变量？
+
+- node-uuid 是啥？
+
+- node n 命令是干嘛用的？
+
+
+
 ### 5日
 
 HTTP是一个**无状态协议**。
@@ -21,7 +31,11 @@ HTTP是一个**无状态协议**。
 
 - 测试玩
 
+
 ```javascript
+
+// JavaScript把null、undefined、0、NaN和空字符串''视为false
+
 Boolean(-1)
 //true
 
@@ -499,7 +513,7 @@ else
 
 - 省略{}的危险之处在于，如果后来想添加一些语句，却忘了写{}，就改变了if...else...的语义，所以我们建议永远都要写上{}
 
-- 如果if的条件判断语句结果不是true或false怎么办？例如 
+- 如果if的条件判断语句结果不是true或 false 怎么办？例如 
 
 ```javascript
 var s = '123';

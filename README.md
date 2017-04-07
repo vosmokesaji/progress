@@ -5,6 +5,40 @@
 
 
 ## 4月
+### 7日
+
+AngularJS 指令（Directive）
+
+指令的配置项
+
+1. restrict (匹配模式)：有 A E M C 四种，推荐使用 A 和 E 这两种模式(以 hello 指令为例)
+	- E 作为元素名使用（element）
+	- A 作为属性使用（attribute）
+	- M 作为注释使用（comment）
+		- 做注释的时候要注意 ： directive:hello 前后要各有一个空格，否则angular可能无法解析（这是一个小坑）。
+	- C 作为类名使用（class）
+
+```html
+<hello></hello>
+<div hello></div>
+<div class="hello"></div>
+<!-- directive:hello -->
+<div></div>
+```
+
+
+2. template
+	- template 可以写模板
+	- templateUrl 可以引入独立的HTML文件,其中可以写大块的模板
+	- templateCache 可以将模板缓存起来，让多个指令去使用它
+![templateCache](images/templateCache.png)
+
+3. replace 与 transclude
+	- transclude 允许 指令内部嵌套（非常重要，使指令与指令嵌套的基础）
+
+
+
+
 
 ### 6日
 
@@ -225,8 +259,8 @@ MY_OBJECT.key = "otherValue";
 ```
 
 - npm就是Node的软件包管理器
-	- 在项目根目录执行 npm init 命令可以帮你创建 package.json 。注意项目名不能包含大写字母
-	- 如果用 npm 安装模块的过程中报域名错误的话，请清空缓存 >npm cache clean 或重启计算机即可
+	- 在项目根目录执行 npm init 命令可以帮你创建 package.json 。注意**项目名不能包含大写字母**
+	- 如果用 npm 安装模块的过程中报域名错误的话，请清空缓存 > npm cache clean 或重启计算机即可
 
 - 特别注意：package.json是一个普通json文件，所以不能添加任何注释
 
@@ -566,11 +600,13 @@ for (;;) { // 将无限循环下去
 	- 只有两个方法： when 和 otherwise
 	- URL 中的 # 号是防止浏览器向服务器提交请求的。
 	- 我们就可以将不同的视图交给不同的控制器去处理，这样视图之间的职能就分的很清晰。
-- [angular-ui](angular-ui.hithub.io),ui-router 提供了可以深度路由的方式。
-- 前端路由的基本原理
+- angular 自己的 router 是不支持深层次的路由的，可以使用[angular-ui](angular-ui.hithub.io),ui-router 提供了可以深度路由的方式。(导入了ui-router之后就不需要angular自己的router)
+- **前端路由**的基本原理
 	- 哈希 # 
 	- HTML5 中新的 history API
-	- 路由的核心是给应用定义状态
+	- 路由的核心是给应用定义“状态”
+	- 使用路由机制会影响到应用的整体编码方式（需要预先定义好状态）
+	- 要考虑兼容性和“优雅降级”
 
 
 ---

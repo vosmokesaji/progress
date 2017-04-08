@@ -5,17 +5,49 @@
 
 
 ## 4月
+
+### 8日
+
+
+- 指令使用中的一个小**坑**
+
+![](images/howtoload_1.png)
+
+![](images/howtoload_2.png)
+
+
+- 指令内部的 scope 叫做创建独立的作用域
+- 指令内部的 controller 是给指令暴露出一组 public 方法，给外部调用的
+
+![](images/superman.png)
+
+- AngularJS 里内置了 Jquerylight 即简化版 Jquery ，是和我们所熟悉的 jquery 语法一模一样的 
+
+- 指令的 controller 和 link 里放什么逻辑？
+	- 如果指令 要暴露一些方法给外部调用，就写在 controller 里
+	-  如果是用来处理指令内部的事物的（比如给元素绑定事件呀，绑定数据呀），这时候就写在 link 里
+
+- 指令中的 require 表示该指令依赖于哪一个指令（下边的例子表示 strength 这个指令依赖于 superman 指令）
+
+![](images/directive_require.png)
+
+- 有 require 之后我们就可以在 link 函数里写第四个参数 即被依赖指令的 controller 写成 “指令名Ctrl” 的形式。 接下来我们就可以通过 指令名Ctrl.fn 来调用被依赖指令暴露出的方法了。
+
+
+
+
+
 ### 7日
 
 AngularJS 指令（Directive）
 
-指令的配置项
+自定义指令的配置项
 
 1. restrict (匹配模式)：有 A E M C 四种，推荐使用 A 和 E 这两种模式(以 hello 指令为例)
 	- E 作为元素名使用（element）
 	- A 作为属性使用（attribute）
 	- M 作为注释使用（comment）
-		- 做注释的时候要注意 ： directive:hello 前后要各有一个空格，否则angular可能无法解析（这是一个小坑）。
+		- 做注释的时候要注意 ： directive:hello 前后要各有一个空格，否则angular可能无法解析（这是一个小**坑**）。
 	- C 作为类名使用（class）
 
 ```html

@@ -6,6 +6,27 @@
 
 ## 4月
 
+### 10日
+
+css中的兼容写法不要省略：
+栗子：
+
+```css
+// 错误的（这种情况在 Ubuntu 的火狐浏览器下不生效，导致样式）
+.box{
+    box-sizing: border-box;
+}
+
+
+// 正确的
+.box{
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+```
+
+
 ### 8日
 
 

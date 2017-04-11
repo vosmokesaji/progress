@@ -6,6 +6,38 @@
 
 ## 4月
 
+
+
+### 11日
+
+- 使用cnpm（不造为啥 直接用 npm 切国内淘宝镜像 有时候安装会报错）
+
+```
+npm install -g cnpm --registry=http://registry.npm.taobao.org
+```
+
+- 管理 node 版本的工具 ，首先安装 n 模块
+
+```
+npm install -g n
+```
+
+升级 node 到最新的稳定版
+
+```
+n stable
+```
+
+so easy 也可以跟版本号
+
+```
+n v0.10.26
+```
+
+
+
+ 
+
 ### 10日
 
 css中的兼容写法不要省略：

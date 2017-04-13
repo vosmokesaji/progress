@@ -6,6 +6,24 @@
 
 ## 4月
 
+### 13日
+
+- 基本JPEG(Baseline JPEG)和渐进JPEG(Progressive JPEG)
+	- photoshop 生成 jpeg 图片时，将连续打钩即可生成Progressive JPEG。
+
+![Baseline_JPEG](images/Baseline_JPEG.gif)
+![Progressive_JPEG](images/Progressive_JPEG.gif)
+
+
+- JDK 是啥？
+	- Java Development Kit (JDK) 是太阳微系统针对Java开发人员发布的免费软件开发工具包(SDK，Software development kit)。JDK 是整个Java的核心，包括了Java运行环境、Java工具和Java基础类库。2006年太阳微系统宣布将发布基于GPL协议的开源JDK，使JDK成为自由软件。
+- 配置JDK：
+	- 如：jdk安装在“D:\Program Files\java\jdk1.6.0_10”
+	- 第一步：新建“java_home”值，输入“D:\Program Files\java\jdk1.6.0_10”；
+	- 第二步：新建“classpath”值，输入“.;%java_home%\lib”；
+	- 第三步：在path中增加“%java_home%\bin”；
+	- 备注：配置环境变量在“计算机”右击“属性”，之后选择“高级环境变量”，在选择“环境变量”即可。
+
 
 ### 11日
 

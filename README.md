@@ -6,6 +6,16 @@
 
 ## 4月
 
+### 15日
+
+- ionic 开发环境安装
+	- Node.js
+	- Ionic2
+	- Cordova
+	- JDK
+	- Andorid SDK
+
+
 ### 13日
 
 - 基本JPEG(Baseline JPEG)和渐进JPEG(Progressive JPEG)

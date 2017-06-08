@@ -15,15 +15,18 @@ X-UA-Compatible是自从IE8新加的一个设置，对于IE8以下的浏览器�
 
 ```
 <meta http-equiv="X-UA-Compatible" content="IE=7">  
-#以上代码告诉IE浏览器，无论是否用DTD声明文档标准，IE8/9都会以IE7引擎来渲染页面。  
+// 以上代码告诉IE浏览器，无论是否用DTD声明文档标准，IE8/9都会以IE7引擎来渲染页面。  
+
 <meta http-equiv="X-UA-Compatible" content="IE=8">  
-#以上代码告诉IE浏览器，IE8/9都会以IE8引擎来渲染页面。  
+// 以上代码告诉IE浏览器，IE8/9都会以IE8引擎来渲染页面。  
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-#以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。  
+// 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。  
+
 <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9">  
 <meta http-equiv="X-UA-Compatible" content="IE=7,9">  
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-#以上代码IE=edge告诉IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame.
+// 以上代码IE=edge告诉IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame.
 ```
 
 

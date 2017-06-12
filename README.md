@@ -4,6 +4,18 @@
 
 ## 6月
 
+
+### 12日
+
+
+单词： doodle （有两种含义，一种是“涂鸦；漫不经心地画画”，另一种是“闲荡，打发时间”。）
+
+当前提到Doodle，更多的是指Google Doodle，即Google的标志Logo的创意
+
+[Google2016万圣节Doodle](https://www.google.com/doodles/halloween-2016)
+
+
+
 ### 9日
 
 echarts.getDataURL 中可以设置图片的背景色

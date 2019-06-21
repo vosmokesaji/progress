@@ -81,7 +81,11 @@
         pod setup
         ```
     - [按照Xcode 签名流程来配置您的项目](https://flutter.dev/docs/get-started/install/macos#deploy-to-ios-devices)
+        - 我用的是公司的开发者账号（要成为开发者可以参考[这篇文章](https://blog.csdn.net/qq_35612929/article/details/78754470)，讲的特别详细）
+
+
+### 安卓配置
 
 
 ### 1.1.3. 可能遇到的问题
-1. 执行 ```brew update``` 更新 Homebrew 的时候，国内的网络可能要等5分钟左右才能更新成功，也可以选择[换中科大的源](http://www.floverow.com/index.php?id=261)，这样快一些。
+1. 执行 ```brew update``` 更新 Homebrew 的时候，国内的网络可能要等5分钟左右才能更新成功，也可以选择[换中科大的源](https://www.jianshu.com/p/b26c7bc14440)，这样快一些。

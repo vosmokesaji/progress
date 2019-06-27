@@ -18,24 +18,24 @@
         - ```.catch()``` ，抛出异常
             > 语法 ```Promise.prototype.catch( onRejected )```
 
-        ```javascript
-        var promise = new Promise(function(resolve, reject)){
-            // some code
-        }
+            ```javascript
+            var promise = new Promise(function(resolve, reject)){
+                // some code
+            }
 
-        promise.then(function(data) {
-            console.log('success');
-        }, function(error) {
-            console.log('error', error);
-        });
+            promise.then(function(data) {
+                console.log('success');
+            }, function(error) {
+                console.log('error', error);
+            });
 
-        /*---等价于---*/
-        promise.then(function(data){
-            console.log('success');
-        }).catch(function(error) {
-            console.log('error', error);
-        });
-        ```
+            /*---等价于---*/
+            promise.then(function(data){
+                console.log('success');
+            }).catch(function(error) {
+                console.log('error', error);
+            });
+            ```
         - ```.all()``` - ```Promise``` 中的“**逻辑与**”，同时开始，并行执行
             > 语法 ```promise.all( iterable )```
 
@@ -172,26 +172,21 @@
 - 马太效应：Matthew Effect ，指强者愈强、弱者愈弱的现象
 
 
-### 23日
-
-
-
 ### 21日
 
-#### 圈外lessons1：一个模型，帮你找到真正热爱的工作
-- 冰山模型：
-    - 冰山模型是美国著名心理学家麦克利兰提出来的，它全面地描述了一个人的个体素质要素，也就是说，**你跟一个岗位是不是匹配、匹配程度如何、市场薪资值多少，都是这个模型可以解释的，几乎所有大公司都会用它来进行人才招聘和培养。**
+1. 圈外lessons1：一个模型，帮你找到真正热爱的工作
+    - 冰山模型：
+        - 冰山模型是美国著名心理学家麦克利兰提出来的，它全面地描述了一个人的个体素质要素，也就是说，**你跟一个岗位是不是匹配、匹配程度如何、市场薪资值多少，都是这个模型可以解释的，几乎所有大公司都会用它来进行人才招聘和培养。**
 
-![冰山模型](./images/iceberg-model.jpg)
+    ![冰山模型](./images/iceberg-model.jpg)
 
-- 知识容易在后天习得，性格特质动机价值观这些隐形要素很难后天改变
-- 搞明白“我应该选择什么样的工作”，比“我应该如何在别人认为的好工作里面成功”，要重要得多
-- 掌握一定数量的思维模型，能够解决这个世界上90%的问题。
+    - 知识容易在后天习得，性格特质动机价值观这些隐形要素很难后天改变
+    - 搞明白“我应该选择什么样的工作”，比“我应该如何在别人认为的好工作里面成功”，要重要得多
+    - 掌握一定数量的思维模型，能够解决这个世界上90%的问题。    
 
-> 思考：
-> 1. 在招聘中，如何通过冰山模型的各个要素考察面试者；对应的：面试者在面试中如何通过冰山模型向面试官示自己的优点？
-> 2. 通过冰山模型分析自己
-
+    > 思考：
+    > 1. 在招聘中，如何通过冰山模型的各个要素考察面试者；对应的：面试者在面试中如何通过冰山模型向面试官示自己的优点？
+    > 2. 通过冰山模型分析自己
 
 
 ## 5月
@@ -228,21 +223,21 @@ X-UA-Compatible是自从IE8新加的一个设置，对于IE8以下的浏览器�
 在网页中指定的模式优先权高于服务器中（ 通过HTTP Header ）所指定的模式。
 
 
-```
+```html
 
 <meta http-equiv="X-UA-Compatible" content="IE=7">  
-// 以上代码告诉IE浏览器，无论是否用DTD声明文档标准，IE8/9都会以IE7引擎来渲染页面。  
+<!-- 以上代码告诉IE浏览器，无论是否用DTD声明文档标准，IE8/9都会以IE7引擎来渲染页面。 -->
 
 <meta http-equiv="X-UA-Compatible" content="IE=8">  
-// 以上代码告诉IE浏览器，IE8/9都会以IE8引擎来渲染页面。  
+<!-- 以上代码告诉IE浏览器，IE8/9都会以IE8引擎来渲染页面。 -->
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-// 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。  
+<!-- 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。 -->
 
 <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9">  
 <meta http-equiv="X-UA-Compatible" content="IE=7,9">  
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-// 以上代码IE=edge告诉IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame.
+<!-- 以上代码IE=edge告诉IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame. -->
 
 ```
 
@@ -297,25 +292,25 @@ X-UA-Compatible是自从IE8新加的一个设置，对于IE8以下的浏览器�
 
 - 使用cnpm（不造为啥 直接用 npm 切国内淘宝镜像 有时候安装会报错）
 
-```
+```shell
 npm install -g cnpm --registry=http://registry.npm.taobao.org
 ```
 
 - 管理 node 版本的工具 ，首先安装 n 模块
 
-```
+```shell
 npm install -g n
 ```
 
 升级 node 到最新的稳定版
 
-```
+```shell
 n stable
 ```
 
 so easy 也可以跟版本号
 
-```
+```shell
 n v0.10.26
 ```
 
@@ -327,13 +322,13 @@ css中的兼容写法不要省略：
 栗子：
 
 ```css
-// 错误的（这种情况在 Ubuntu 的火狐浏览器下不生效，导致样式）
+/* 错误的（这种情况在 Ubuntu 的火狐浏览器下不生效，导致样式） */
 .box{
     box-sizing: border-box;
 }
 
 
-// 正确的
+/* 正确的 */
 .box{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -533,59 +528,58 @@ $('.info-item-desc,.image-list-title,.image-list-desc').dotdotdot({wrap: 'letter
 
 - 浏览器通知
 	- 原生
-```javascript
-if(window.Notification && Notification.permission !== "denied") {
-    Notification.requestPermission(function(status) {
-        var n = new Notification('通知标题', { body: '这里是通知内容！' }); 
-    });
-}
-```
-	- 插件 [iNotify.js](http://blog.csdn.net/zhanglong_longlong/article/details/52539302)
 
-npm
-
-```
-$ npm install title-notify
-```
-
-bower
-
-```
-$ bower install inotify
-```
-
-**init**
-
-```javascript
-var iNotify = new iNotify().init()
-//推荐下面写法
-var iNotify = new iNotify({
-    message: '有消息了。',//标题
-    effect: 'flash', // flash | scroll 闪烁还是滚动
-    //可选播放声音
-    audio:{
-        //可以使用数组传多种格式的声音文件
-        file: ['msg.mp4','msg.mp3','msg.wav']
-        //下面也是可以的哦
-        //file: 'msg.mp4'
-    },
-    //标题闪烁，或者滚动速度
-    interval: 1000,
-    //可选，默认绿底白字的  Favicon
-    updateFavicon:{
-        // favicon 字体颜色
-        textColor: "#fff",
-        //背景颜色，设置背景颜色透明，将值设置为“transparent”
-        backgroundColor: "#2F9A00" 
-    },
-    //可选chrome浏览器通知，默认不填写就是下面的内容
-    notification:{
-        title:"通知！",//设置标题
-        icon:"",//设置图标 icon 默认为 Favicon
-        body:'您来了一条新消息'//设置消息内容
+    ```javascript
+    if(window.Notification && Notification.permission !== "denied") {
+        Notification.requestPermission(function(status) {
+            var n = new Notification('通知标题', { body: '这里是通知内容！' }); 
+        });
     }
-})
-```
+    ```
+	- 插件 [iNotify.js](http://blog.csdn.net/zhanglong_longlong/article/details/52539302)
+        - npm
+
+        ```shell
+        npm install title-notify
+        ```
+        - bower
+
+        ```shell
+        bower install inotify
+        ```
+
+        - **init**
+
+        ```javascript
+        var iNotify = new iNotify().init()
+        //推荐下面写法
+        var iNotify = new iNotify({
+            message: '有消息了。',//标题
+            effect: 'flash', // flash | scroll 闪烁还是滚动
+            //可选播放声音
+            audio:{
+                //可以使用数组传多种格式的声音文件
+                file: ['msg.mp4','msg.mp3','msg.wav']
+                //下面也是可以的哦
+                //file: 'msg.mp4'
+            },
+            //标题闪烁，或者滚动速度
+            interval: 1000,
+            //可选，默认绿底白字的  Favicon
+            updateFavicon:{
+                // favicon 字体颜色
+                textColor: "#fff",
+                //背景颜色，设置背景颜色透明，将值设置为“transparent”
+                backgroundColor: "#2F9A00" 
+            },
+            //可选chrome浏览器通知，默认不填写就是下面的内容
+            notification:{
+                title:"通知！",//设置标题
+                icon:"",//设置图标 icon 默认为 Favicon
+                body:'您来了一条新消息'//设置消息内容
+            }
+        })
+        ```
 
 
 ### 24日
@@ -593,45 +587,44 @@ var iNotify = new iNotify({
 
 - Windows 下的 cmd 中查看当前位置下的文件 用 dir  命令。
 
-
 - const 声明创建一个只读的常量。这不意味着常量指向的值不可变，而是变量标识符的值只能赋值一次。
 
-```javascript
-// 注意: 常量在声明的时候可以使用大小写，但通常情况下会使用全部大写英文。 
+    ```javascript
+    // 注意: 常量在声明的时候可以使用大小写，但通常情况下会使用全部大写英文。 
 
-// 定义常量MY_FAV并赋值7
-const MY_FAV = 7;
+    // 定义常量MY_FAV并赋值7
+    const MY_FAV = 7;
 
-// 在 Firefox 和 Chrome 这会失败但不会报错(在 Safari这个赋值会成功)
-MY_FAV = 20;
+    // 在 Firefox 和 Chrome 这会失败但不会报错(在 Safari这个赋值会成功)
+    MY_FAV = 20;
 
-// 输出 7
-console.log("my favorite number is: " + MY_FAV);
+    // 输出 7
+    console.log("my favorite number is: " + MY_FAV);
 
-// 尝试重新声明会报错 
-const MY_FAV = 20;
+    // 尝试重新声明会报错 
+    const MY_FAV = 20;
 
-//  MY_FAV 保留给上面的常量，这个操作会失败
-var MY_FAV = 20; 
+    //  MY_FAV 保留给上面的常量，这个操作会失败
+    var MY_FAV = 20; 
 
-// MY_FAV 依旧为7
-console.log("my favorite number is " + MY_FAV);
+    // MY_FAV 依旧为7
+    console.log("my favorite number is " + MY_FAV);
 
-// 下面是一个语法错误
-const A = 1; A = 2;
+    // 下面是一个语法错误
+    const A = 1; A = 2;
 
-// 常量要求一个初始值
-const FOO; // SyntaxError: missing = in const declaration
+    // 常量要求一个初始值
+    const FOO; // SyntaxError: missing = in const declaration
 
-// 常量可以定义成对象
-const MY_OBJECT = {"key": "value"};
+    // 常量可以定义成对象
+    const MY_OBJECT = {"key": "value"};
 
-// 重写对象和上面一样会失败
-MY_OBJECT = {"OTHER_KEY": "value"};
+    // 重写对象和上面一样会失败
+    MY_OBJECT = {"OTHER_KEY": "value"};
 
-// 对象属性并不在保护的范围内，下面这个声明会成功执行
-MY_OBJECT.key = "otherValue";
-```
+    // 对象属性并不在保护的范围内，下面这个声明会成功执行
+    MY_OBJECT.key = "otherValue";
+    ```
 
 - npm就是Node的软件包管理器
 	- 在项目根目录执行 npm init 命令可以帮你创建 package.json 。注意**项目名不能包含大写字母**
@@ -649,30 +642,19 @@ npm install -g npm@3
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 ### 23日
 
 Gulp
 
 - 全局安装
 
-```
+```shell
 npm install --global gulp
 ```
 
 - 作为项目的开发依赖（devDependencies）安装
 
-```
+```shell
 npm install --save-dev gulp
 ```
 
@@ -1064,7 +1046,7 @@ MarkDown 插入图片的语法：
 
 - grunt 的插件 安装
 
-```cmd
+```shell
 npm install grunt-contrib-uglify --save-dev
 npm install grunt-contrib-qunit --save-dev
 npm install grunt-contrib-concat --save-dev
@@ -1101,7 +1083,7 @@ npm install grunt-contrib-watch --save-dev
 
 - npm 换源：
 
-```
+```shell
 npm config set registry https://registry.npm.taobao.org
 //配置后可通过下面方式来验证是否成功
 npm config get registry

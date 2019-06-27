@@ -2,6 +2,129 @@
 
 ## 6月
 
+### 26日
+
+1. ```Promise``` 对象
+    - ```Promise``` 有三种状态
+        - ```pending``` - 进行中，或者等待中，表示还没有得到结果
+        - ```fulfilled``` - 已成功，在异步操作成功时调用，并将结果作为参数传递出去。
+        - ```rejected``` - 已失败。在异步操作失败时调用，并将报出的错误作为参数传递出去。
+
+        > 从基本用法的例子中我们看到Promise构造函数的参数是 ```resolve``` 和 ```reject``` ，并不是三种状态中的 ```fulfilled``` 和 ```rejected``` ，原因就是： ```resolved``` 表示的是已结束（已定型），它包含 ```fullfilled``` 和 ```rejected``` 两种状态，但使用中，我们默认的将 ```resolved``` 当做 ```fulfilled``` （成功）使用。
+    - ```Promise``` 对象的状态改变，只有两种可能：从 ```pending``` 变为 ```fulfilled``` 和从 ```pending``` 变为 ```rejected``` 。
+    - 基本 ```API``` 
+        - ```.then()``` 
+            > 语法 ```Promise.prototype.then( onFulfilled, onRejected )```
+        - ```.catch()``` ，抛出异常
+            > 语法 ```Promise.prototype.catch( onRejected )```
+
+        ```javascript
+        var promise = new Promise(function(resolve, reject)){
+            // some code
+        }
+
+        promise.then(function(data) {
+            console.log('success');
+        }, function(error) {
+            console.log('error', error);
+        });
+
+        /*---等价于---*/
+        promise.then(function(data){
+            console.log('success');
+        }).catch(function(error) {
+            console.log('error', error);
+        });
+        ```
+        - ```.all()``` - ```Promise``` 中的“**逻辑与**”，同时开始，并行执行
+            > 语法 ```promise.all( iterable )```
+
+            ```javascript
+            var p = Promise.all([p1, p2, p3]);
+            ```
+            - 接收一个数组（或具有 ```Iterator``` 接口）作参数
+            -  ```p1、p2、p3``` 均为 ```promise``` 实例，如果不是一个 ```promise``` ，该项会被用 ```Promise.resolve``` 转换为一个 ```promise```
+            - 当 ```p1, p2, p3``` 状态都变为 ```fulfilled``` ， ```p``` 的状态才会变为 ```fulfilled``` ，并将三个 ```promise``` 返回的结果，按参数的顺序（而不是 ```resolved``` 的顺序）存入数组，传给 ```p``` 的回调函数
+
+            ```javascript
+            var p1 = new Promise(function(resolve, reject) {
+                setTimeout(resolve, 3000, "first");
+            });
+            var p2 = new Promise(function(resolve, reject) {
+                resolve("second");
+            });
+            var p3 = new Promise(function(resolve, reject) {
+                setTimeout(resolve, 1000, "third");
+            });
+
+            Promise.all([p1, p2, p3]).then(function(values) {
+                console.log(values);
+            });
+            
+            // ----output----
+            // 约3秒后
+            // ["first", "second", "third"]
+            ```
+            - 当 ```p1, p2, p3``` 其中之一状态变为 ```rejected``` ， ```p``` 的状态也会变为 ```rejected``` ，并把第一个被 ```reject``` 的 promise 的返回值，立即触发并传给 ```p``` 的回调函数
+       
+            ```javascript
+            // 将上例中的p2适当修改如下
+            var p2 = new Promise(function(resolve, reject) {
+                resolve(x);
+            });
+            ```
+            
+            - 这时，p2会抛出错误，立即传给Promise.all()，结束执行。
+
+        - ```.race()``` - 竞速执行， ```Promise``` 中“**逻辑或**”，先结束的传值给 ```then```
+            > 语法： ```Promise.race( iterable )```
+            - ```Promise.race``` 方法同样接受一个数组（或具有Iterator接口）作参数
+            - 当 ```p1, p2, p3``` 中有一个实例的状态发生改变（变为 ```fulfilled``` 或 ```rejected``` ）， p 的状态就跟着改变。并把第一个改变状态的 ```promise``` 的返回值，传给p的回调函数。
+
+            ```javascript
+            // 执行resolve
+            var p1 = new Promise(function(resolve, reject) { 
+                setTimeout(reject, 500, "one"); 
+            });
+            var p2 = new Promise(function(resolve, reject) { 
+                setTimeout(resolve, 100, "two"); 
+            });
+
+            Promise.race([p1, p2]).then(function(value) {
+                console.log('resolve', value); 
+            }, function(error) {
+                //not called
+                console.log('reject', error); 
+            });
+            // -------output-------
+            // resolve two
+
+            // 执行reject
+            var p3 = new Promise(function(resolve, reject) { 
+                setTimeout(resolve, 500, "three");
+            });
+            var p4 = new Promise(function(resolve, reject) { 
+                setTimeout(reject, 100, "four"); 
+            });
+
+            Promise.race([p3, p4]).then(function(value) {
+                //not called
+                console.log('resolve', value);              
+            }, function(error) {
+                console.log('reject', error); 
+            });
+            // -------output-------
+            // reject four
+            ```
+
+        ```javascript
+
+        ```
+
+        ```javascript
+
+        ```
+
 ### 25日
 
 #### 圈外lessons2：四大要素决定了你的市场价值

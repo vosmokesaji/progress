@@ -2,6 +2,11 @@
 
 ## 6月
 
+
+### 27日
+
+
+
 ### 26日
 
 1. ```Promise``` 对象
@@ -13,9 +18,9 @@
         > 从基本用法的例子中我们看到Promise构造函数的参数是 ```resolve``` 和 ```reject``` ，并不是三种状态中的 ```fulfilled``` 和 ```rejected``` ，原因就是： ```resolved``` 表示的是已结束（已定型），它包含 ```fullfilled``` 和 ```rejected``` 两种状态，但使用中，我们默认的将 ```resolved``` 当做 ```fulfilled``` （成功）使用。
     - ```Promise``` 对象的状态改变，只有两种可能：从 ```pending``` 变为 ```fulfilled``` 和从 ```pending``` 变为 ```rejected``` 。
     - 基本 ```API``` 
-        - ```.then()``` 
+        1. ```.then()``` 
             > 语法 ```Promise.prototype.then( onFulfilled, onRejected )```
-        - ```.catch()``` ，抛出异常
+        2. ```.catch()``` ，抛出异常
             > 语法 ```Promise.prototype.catch( onRejected )```
 
             ```javascript
@@ -29,14 +34,14 @@
                 console.log('error', error);
             });
 
-            /*---等价于---*/
+            // 等价于
             promise.then(function(data){
                 console.log('success');
             }).catch(function(error) {
                 console.log('error', error);
             });
             ```
-        - ```.all()``` - ```Promise``` 中的“**逻辑与**”，同时开始，并行执行
+        3. ```.all()``` - ```Promise``` 中的“**逻辑与**”，同时开始，并行执行
             > 语法 ```promise.all( iterable )```
 
             ```javascript
@@ -61,8 +66,7 @@
                 console.log(values);
             });
             
-            // ----output----
-            // 约3秒后
+            // 约3秒后 输出
             // ["first", "second", "third"]
             ```
             - 当 ```p1, p2, p3``` 其中之一状态变为 ```rejected``` ， ```p``` 的状态也会变为 ```rejected``` ，并把第一个被 ```reject``` 的 promise 的返回值，立即触发并传给 ```p``` 的回调函数
@@ -76,7 +80,7 @@
             
             - 这时，p2会抛出错误，立即传给Promise.all()，结束执行。
 
-        - ```.race()``` - 竞速执行， ```Promise``` 中“**逻辑或**”，先结束的传值给 ```then```
+        4. ```.race()``` - 竞速执行， ```Promise``` 中“**逻辑或**”，先结束的传值给 ```then```
             > 语法： ```Promise.race( iterable )```
             - ```Promise.race``` 方法同样接受一个数组（或具有Iterator接口）作参数
             - 当 ```p1, p2, p3``` 中有一个实例的状态发生改变（变为 ```fulfilled``` 或 ```rejected``` ）， p 的状态就跟着改变。并把第一个改变状态的 ```promise``` 的返回值，传给p的回调函数。
@@ -96,7 +100,7 @@
                 //not called
                 console.log('reject', error); 
             });
-            // -------output-------
+            // 输出
             // resolve two
 
             // 执行reject
@@ -113,9 +117,30 @@
             }, function(error) {
                 console.log('reject', error); 
             });
-            // -------output-------
+            // 输出
             // reject four
             ```
+        5. ```.resolve()``` - 立即执行 ```Promise-resolve```
+            > 语法： 
+            > 1. ```Promise.resolve(value);``` 
+            > 2. ```Promise.resolve(promise);``` 
+            > 3. ```Promise.resolve(thenable);```
+            - 可以看做 ```new Promise()``` 的快捷方式
+
+            ```javascript
+            new Promise(function (resolve) {
+                resolve('Success');
+            });
+            // 等同于
+            Promise.resolve('Success');
+            ```
+
+
+
+
+        ```javascript
+
+        ```
 
         ```javascript
 

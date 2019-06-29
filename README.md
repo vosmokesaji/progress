@@ -3,7 +3,37 @@
 ## 6月
 
 
-### 27日
+### 29日
+
+1. 遇到一个问题：
+
+    ```javascript
+    function F() {}
+    function O() {}
+
+    O.prototype = new F();
+    var obj = new O();
+
+    console.log(obj instanceof O); // true
+    console.log(obj instanceof F); // true
+    console.log(obj.__proto__ === O.prototype); // true
+    console.log(obj.__proto__.__proto__ === F.prototype); // true
+
+    // 这个我懂，但是稍微调整了一下代码顺序，为啥输出全是 false
+    // prototype 的改写不是会应用到所有的实例吗？，为什么输出结果会变成 false
+
+    function F() {}
+    function O() {}
+
+    var obj = new O();
+    O.prototype = new F();
+
+
+    console.log(obj instanceof O); // false
+    console.log(obj instanceof F); // false
+    console.log(obj.__proto__ === O.prototype); // false
+    console.log(obj.__proto__.__proto__ === F.prototype); // false
+    ```
 
 
 

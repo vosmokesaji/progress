@@ -1,5 +1,12 @@
 # 2019年
 
+## 7月
+
+### 1日
+- 在 mac 的命令行输入 ```say xxx``` ，它会读出来。
+
+
+
 ## 6月
 
 
@@ -27,7 +34,6 @@
 
     var obj = new O();
     O.prototype = new F();
-
 
     console.log(obj instanceof O); // false
     console.log(obj instanceof F); // false

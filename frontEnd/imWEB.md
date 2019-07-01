@@ -275,7 +275,7 @@ Object.prototype.constructor === Object     // true
     console.log(bottle1.sayName === bottle2.sayName);       // false
     console.log(bottle1.sayHello === bottle2.sayHello);     // true
     ```
-- 通过构造函数生成的对象都会共享这个构造函数的原型。
+- 通过构造函数生成的对象都会 **共享** 这个构造函数的原型。利用这个特性，我们就能解决浪费内存的问题。
 
 #### 1.1.4.3. isPrototypeOf
 - 检验实例是否挂了这个构造函数的原型
@@ -284,10 +284,116 @@ Object.prototype.constructor === Object     // true
 console.log(Bottle.prototype.isPrototypeOf(bottle1));   // true
 ```
 
+#### 小结
+- **原型** 是函数的一个属性，是一个对象。
+- 如果函数作为告诉早函数使用，那么这个构造函数的所有实例，都**共享**这个原型对象。
+
+#### 原型的缺陷（共享的缺陷）
+
+- 先看一个例子
+
+    ```javascript
+    var price = 5;
+    var priceCopy = price;
+
+    priceCopy = 10;
+    console.log(price, priceCopy);  // 5 ,10
 
 
+    var color = ["红", "黄"];
+    var coloCopy = color;
+
+    colorCopy.push("蓝");
+    console.log(color, colorCopy);  // ["红", "黄", "蓝"], ["红", "黄", "蓝"]
+    ```
+- 使用原型创建对象的例子
+
+    ```javascript
+    function Bottle(){}
+
+    Bottle.prototype.color = ["红", "黄"];
+
+    var bottle1 = new Bottle();
+    var bottle2 = new Bottle();
+
+    bottle1.color.push("蓝");
+
+    console.log(bottle1.color);  // ["红", "黄", "蓝"]
+    console.log(bottle2.color);  // ["红", "黄", "蓝"]
+    ```
+- 这样的共享会导致，我们不希望共享的属性被共享。
+
+> 思考：多选题：一下哪些情形会有共享问题（变量 b 的值会受影响）
+
+```javascript
+// A
+var a = 1;
+var b = a;
+a = 2;
+console.log(b);
+
+// B
+var a = [1, 2, 3];
+var b = a;
+a.length = 2;
+console.log(b);
+
+// C
+var a = {key : 1};
+var b = a;
+a = {key : 2};
+console.log(b);
+
+// D
+var a = {key : 1};
+var b = a;
+a.key = 2;
+console.log(b);
 
 
+// 1
+// [1, 2]
+// {key: 1}
+// {key: 2}
+// 答案是 B D
+```
+
+
+### 构造函数 + 原型 （完美的创建对象的方式）
+- 通过 **构造函数** 创建独享的 **属性 & 方法**
+- 通过 **原型** 创建共享的 **属性 & 方法**
+
+    ```javascript
+    // 通过 构造函数 创建独享的 属性 & 方法
+    function Bottle(name, price, isKeepWarm){
+        this.name = name;
+        this.price = price;
+        this.isKeepWarm = isKeepWarm;
+    }
+
+    // 通过 原型 创建共享的 属性 & 方法
+    Bottle.prototype.sayName = function(){
+        console.log(this.name);
+    };
+    Bottle.prototype.for = "盛水";
+
+    var bottle = new Bottle("超级保温杯", 299, true);
+    ```
+- 注意几点
+    - 属性的覆盖：如果构造函数和原型上都有这个属性，**构造函数中的属性会覆盖原型上的属性**
+    - 判断对象有没有 某个属性。
+        - ```in``` 操作符，只能判断对象有没有某个属性，不能判断是不是原型上的属性
+
+            ```javascript
+            console.log("name" in bottle);    // true
+            console.log("for" in bottle);    // true
+            ```
+        - ```hasOwnProperty``` 操作符
+
+            ```javascript
+            console.log(bottle.hasOwnProperty("name"));    // true
+            console.log(bottle.hasOwnProperty("for"));    // false
+            ```
 
 
 

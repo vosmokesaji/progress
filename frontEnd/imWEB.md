@@ -284,11 +284,11 @@ Object.prototype.constructor === Object     // true
 console.log(Bottle.prototype.isPrototypeOf(bottle1));   // true
 ```
 
-#### 小结
+#### 1.1.4.4. 小结
 - **原型** 是函数的一个属性，是一个对象。
 - 如果函数作为告诉早函数使用，那么这个构造函数的所有实例，都**共享**这个原型对象。
 
-#### 原型的缺陷（共享的缺陷）
+#### 1.1.4.5. 原型的缺陷（共享的缺陷）
 
 - 先看一个例子
 
@@ -359,7 +359,7 @@ console.log(b);
 ```
 
 
-### 构造函数 + 原型 （完美的创建对象的方式）
+### 1.1.5. 构造函数 + 原型 （完美的创建对象的方式）
 - 通过 **构造函数** 创建独享的 **属性 & 方法**
 - 通过 **原型** 创建共享的 **属性 & 方法**
 
@@ -394,6 +394,44 @@ console.log(b);
             console.log(bottle.hasOwnProperty("name"));    // true
             console.log(bottle.hasOwnProperty("for"));    // false
             ```
+
+## 1.2. 继承
+- 先看一段代码
+
+    ```javascript
+    // 飞机
+    function Airliner(color){
+        this.color = color;
+        this.passengers = [];
+    }
+    Airliner.prototype.fly = function(){
+        console.log("flying");
+    }
+
+    // 如果我们还需要战斗机
+    function Fighter(color){
+        this.color = color;
+        this.bullets = [];
+    }
+    Airliner.prototype.fly = function(){
+        console.log("flying");
+    }
+    Airliner.prototype.shoot = function(){
+        console.log("biu biu biu");
+    }
+
+    // 我们发现 这些部分是一样的，这就造成了代码冗余，浪费内存的问题
+    this.color = color;
+
+    fly = function(){
+        console.log("flying");
+    }
+    ```
+- 有一种很好的模型可以解决这个问题，他就是继承
+
+### 1.2.1. 继承的概念
+- 继承可以使子类具有父类的属性和方法，而不需要重复编写相同的代码。
+- 抽离共性作为父类用来继承，保留个性。
 
 
 

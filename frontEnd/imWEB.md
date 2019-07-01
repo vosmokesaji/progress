@@ -433,6 +433,69 @@ console.log(b);
 - 继承可以使子类具有父类的属性和方法，而不需要重复编写相同的代码。
 - 抽离共性作为父类用来继承，保留个性。
 
+### 实现继承
+
+- 目标：子类具有父类的方法和属性
+- 做法：将 **子类的原型** 指向 **父类的实例**
+
+```javascript
+// 父类 Plane 飞机
+function Plane(color){
+    this.color = color;
+}
+
+// 父类的公有方法
+Plane.prototype.fly = function(){
+    console.log("flying");
+}
+
+// 子类 Fighter 战斗机
+function Fighter(){
+    this.bullets = [];
+}
+
+// 子类的原型指向父类的实例
+Fighter.prototype = new Plane("blue");
+
+// 子类的特有方法
+Fighter.prototype.shoot = function(){
+    console.log("biu biu biu");
+}
+
+// 检验一下继承的效果
+var fighter = new Fighter();
+console.log(fighter.color); // "blue"
+fighter.fly();              // "flying"
+```
+
+### 原型链继承的缺陷
+
+```javascript
+
+```
+
+
+
+
+
+
+
+
+```javascript
+
+```
+
+
+
+
+
+
+```javascript
+
+```
+
+
+
 
 
 

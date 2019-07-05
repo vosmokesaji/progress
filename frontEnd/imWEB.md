@@ -496,9 +496,30 @@ fighter.fly();              // "flying"
 
 ### 原型链继承的缺陷
 
-```javascript
+1. constructor 的指向问题
 
+```javascript
+// constructor 的指向问题 ： 子类的原型指向父类的实例之后，发现子类的构造函数是父类
+Fighter.prototype = new Plane("blue");
+var fighter = new Fighter();
+console.log(fighter.constructor); // Plane
+
+// 要解决这个问题也很简单，只要【手动】将子类的 constructor 指向自己就行了
+Fighter.prototype = new Plane("blue");
+Fighter.prototype.constructor = Fighter;
 ```
+
+2. 属性共享问题
+
+```javascript
+fighter1.pilots.push("kevin");
+console.log(fighter2.pilots);   // ["kevin"]
+```
+
+3. 参数的问题
+如果是父类的参数，子类不好修改，比如上边例子中 Plane 的 color
+
+
 
 
 

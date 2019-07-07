@@ -21,6 +21,12 @@
     - [1.2.1. 继承的概念](#121-%E7%BB%A7%E6%89%BF%E7%9A%84%E6%A6%82%E5%BF%B5)
     - [实现继承](#%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF)
     - [原型链继承的缺陷](#%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF%E7%9A%84%E7%BC%BA%E9%99%B7)
+    - [借用构造函数继承](#%E5%80%9F%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%A7%E6%89%BF)
+    - [组合继承](#%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF)
+    - [组合继承的不足](#%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF%E7%9A%84%E4%B8%8D%E8%B6%B3)
+    - [最佳实践](#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5)
+    - [面向对象实际应用的例子：Node 和 Element](#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E7%9A%84%E4%BE%8B%E5%AD%90Node-%E5%92%8C-Element)
+    - [面向对象](#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1)
         
         
 
@@ -464,60 +470,232 @@ console.log(b);
 - 目标：子类具有父类的方法和属性
 - 做法：将 **子类的原型** 指向 **父类的实例**
 
-```javascript
-// 父类 Plane 飞机
-function Plane(color){
-    this.color = color;
-}
+    ```javascript
+    // 父类 Plane 飞机
+    function Plane(color){
+        this.color = color;
+    }
 
-// 父类的公有方法
-Plane.prototype.fly = function(){
-    console.log("flying");
-}
+    // 父类的公有方法
+    Plane.prototype.fly = function(){
+        console.log("flying");
+    }
 
-// 子类 Fighter 战斗机
-function Fighter(){
-    this.bullets = [];
-}
+    // 子类 Fighter 战斗机
+    function Fighter(){
+        this.bullets = [];
+    }
 
-// 子类的原型指向父类的实例
-Fighter.prototype = new Plane("blue");
+    // 子类的原型指向父类的实例
+    Fighter.prototype = new Plane("blue");
 
-// 子类的特有方法
-Fighter.prototype.shoot = function(){
-    console.log("biu biu biu");
-}
+    // 子类的特有方法
+    Fighter.prototype.shoot = function(){
+        console.log("biu biu biu");
+    }
 
-// 检验一下继承的效果
-var fighter = new Fighter();
-console.log(fighter.color); // "blue"
-fighter.fly();              // "flying"
-```
+    // 检验一下继承的效果
+    var fighter = new Fighter();
+    console.log(fighter.color); // "blue"
+    fighter.fly();              // "flying"
+    ```
 
 ### 原型链继承的缺陷
 
 1. constructor 的指向问题
 
-```javascript
-// constructor 的指向问题 ： 子类的原型指向父类的实例之后，发现子类的构造函数是父类
-Fighter.prototype = new Plane("blue");
-var fighter = new Fighter();
-console.log(fighter.constructor); // Plane
+    ```javascript
+    // constructor 的指向问题 ： 子类的原型指向父类的实例之后，发现子类的构造函指向了父类
+    Fighter.prototype = new Plane("blue");
+    var fighter = new Fighter();
+    console.log(fighter.constructor); // Plane
 
-// 要解决这个问题也很简单，只要【手动】将子类的 constructor 指向自己就行了
-Fighter.prototype = new Plane("blue");
-Fighter.prototype.constructor = Fighter;
-```
+    // 要解决这个问题也很简单，只要【手动】将子类的 constructor 指向子类就行了
+    Fighter.prototype = new Plane("blue");
+    Fighter.prototype.constructor = Fighter;
+    ```
 
 2. 属性共享问题
 
-```javascript
-fighter1.pilots.push("kevin");
-console.log(fighter2.pilots);   // ["kevin"]
-```
+    ```javascript
+    function Plane(color){
+        this.color = color;
+        this.pilots = [];   // 有这种复杂类型就麻烦了
+    }
 
-3. 参数的问题
-如果是父类的参数，子类不好修改，比如上边例子中 Plane 的 color
+    fighter1.pilots.push("kevin");
+    console.log(fighter2.pilots);   // ["kevin"]
+
+    // 关于这一段的疑问：老师说是会受影响，但是我试过之后是没有影响的呀，大雾🤨
+    ```
+
+3. 参数的问题：如果是父类的参数，子类不好修改，比如上边例子中 Plane 的 color 参数
+
+### 借用构造函数继承
+- 借用父类的构造函数
+- 可以传递参数
+
+    ```javascript
+    function Plane(color){
+        this.color = color;
+    }
+
+    // 原型链上的方法是继承不到的
+    Plane.prototype.fly = function(){
+        console.log("flying");
+    }
+
+    function Fighter(color){
+
+        // 这里是关键：把 Plane 这个构造函数的 this 指向到 Fighter 上，call 的 第一个参数 this 指的就是 Fighter 。
+        // 这里的 Plane 被当做了一个普通函数执行
+        Plane.call(this, color);   
+
+        this.bullets = [];
+    }
+
+    var fighter = new Fighter("blue");
+    console.log(fighter.color);     // "blue"
+    console.log(fighter.fly);       // undefined 
+    ```
+- 但是父类原型上的方法都继承不了
+- 所以也不能单独使用
+
+
+### 组合继承
+
+    ```javascript
+    // 父类 Plane 飞机
+    function Plane(color){
+        this.color = color;
+    }
+
+    // 父类原型上的公有方法
+    Plane.prototype.fly = function(){
+        console.log("flying");
+    }
+
+    // 子类 Fighter 战斗机
+    function Fighter(color){
+
+        // 借用借用 父类的构造函数 继承实例属性 【解决共享的问题】（这还是有疑问，回头再理解理解）
+        Plane.call(this, color);  
+        this.bullets = [];
+    }
+
+    // 子类的原型指向父类的实例，实现【继承父类的原型链】
+    Fighter.prototype = new Plane();
+
+    // 然后，手动将子类的 constructor 指向子类，【解决构造函数指向父类的问题】
+    Fighter.prototype.constructor = Fighter;
+
+    // 这是子类的特有方法
+    Fighter.prototype.shoot = function(){
+        console.log("biu biu biu");
+    }
+
+    // 检验一下继承的效果
+    var fighter1 = new Fighter("blue");
+    var fighter2 = new Fighter("red");
+    ```
+- 属性和方法都是从父类继承的（实现了代码复用）
+- 继承的属性是私有的（互不影响）
+- 继承的方法都在原型里（函数复用）
+
+### 组合继承的不足
+- 重复调用父类的构造函数
+
+    ```javascript
+    // 创建一个 Fighter 对象时，会调用 Plane 两次
+    var fighter = new Fighter("blue");
+
+    // 第一次调用
+    Fighter.prototype = new Plane();
+
+    // 第二次调用
+    Plane.call(this, color);  
+    ```
+- 属性冗余
+
+    ```javascript
+    // 创建的 Fighter 对象，有两个 color 属性
+    var fighter = new Fighter("blue");
+    console.log(fighter);
+
+    // 以下是输出的 fighter
+    Fighter {color: "blue", bullets: Array(0)}
+        bullets: []
+        color: "blue"
+        __proto__: Plane
+            color: undefined
+            constructor: ƒ Fighter(color)
+            shoot: ƒ ()
+            __proto__: Object
+    // Plane 这一层上的 color 一直是被 Fighter 上的 color 覆盖掉的，永远调用不到，也就没有必要存在
+    ```
+### 最佳实践
+- 对于  重复调用父类的构造函数，我们可以在 ```Fighter.prototype = new Plane();``` 上下功夫
+- 这段代码的目的是将父类原型上的方法，扩展到子类的原型上来
+- 我们可以不通过调用构造函数来达成这个目的：
+
+    ```javascript
+    /**
+     * @parm function child - 子类
+     * @parm function parent - 父类
+     */
+    function inheritPrototype(child, parent){
+        var protoType = Object.creat(parent.prototype);     // 复制父类的原型
+        protoType.constructor = child;                      // 重置 constructor
+        child.prototype = protoType;                        // 修改子类的原型
+    }
+    ```
+- 最佳实践：
+    - 基于组合继承
+    - 不必调用父类的构造函数，只需要继承原型
+
+    ```javascript
+    // 父类
+    function Plane(color){
+        this.color = color;
+    }
+    Plane.prototype.fly = function(){
+        console.log("flying");
+    }
+
+    // 子类
+    function Fighter(color){
+        Plane.call(this, color);  
+        this.bullets = [];
+    }
+
+    inheritPrototype(Fighter, Plane);
+    function inheritPrototype(child, parent){
+        var protoType = Object.creat(parent.prototype);     // 复制父类的原型
+        protoType.constructor = child;                      // 重置 constructor
+        child.prototype = protoType;                        // 修改子类的原型
+    }
+
+    // 这是子类的特有方法
+    Fighter.prototype.shoot = function(){
+        console.log("biu biu biu");
+    }
+
+
+    // 检验一下继承的效果
+    var fighter1 = new Fighter("blue");
+    var fighter2 = new Fighter("red");
+    ```
+
+### 面向对象实际应用的例子：Node 和 Element
+1. 在 Chrome 的开发者工具中的 Elements 标签下 点选一个 div 元素
+2. 在 Console 标签运行 ```console.dir($0)``` ，就能看到这个 DOM 的继承关系，以及面向对象的思想
+
+![console.dir($0)](../images/frontEnd/consoledir$0.png)
+![DOM 就是面向对象的实践](../images/frontEnd/nodeandelement.png)
+
+### 面向对象
+- 两个重要概念： **封装** 和 **继承**
+- 三个重要的目的（优点）： **减少重复** 、 **易于维护** **、方便扩展**
 
 
 

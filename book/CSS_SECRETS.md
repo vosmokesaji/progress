@@ -1,0 +1,17 @@
+- DRY (don't repeat yourself) 不该重复你已经做过的事儿， 它的反面是 WET (we enjoy typing 或 write everything twice)  【前言 xiii】
+- 浏览器前缀已是一场史诗级的失败
+- 代码可维护性的重大要素是【尽量减少改动时需要编辑的地方】
+- HSLA 产生半透明的背景色？？？【p8】
+- currentColor？？？【p9】
+- inherit  继承有妙用【p10】
+- RWD (responsive web design) 响应式网页设计【p11】
+- column-width  ？？？ 列宽 【p12】
+- 【合理】使用简写 【p13】
+- calc()  原生css 的计算（在使用calc 时不要忘记在 + 和 - 云算符两侧个叫一个空格，）【p15】
+- Myth 实验性质的预处理器（现在还是吗？），CSSpolyfill 又是啥【p16】
+- 【半透明边框的难题】默认情况下，背景会延伸到边框所在区域的下层，CSS3中 可以改变 background-clip (默认为 border-box) 来得到我们想要的结果 【p18】
+- 【多重边框】可以通过 box-shadow 以及逗号分隔语法，创建任意数量的边框【p20】
+- inste ？？？ 【p21】
+- outline  描边【p22】
+- 【灵活的背景定位】使用background-position 的扩展语法方案  or  backgroun-origin 方案
+

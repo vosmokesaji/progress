@@ -1,5 +1,6 @@
 ### 开始之前，先了解一下标签，也算搜索帮助
 - 【想知道】表示我还未知但想要去了解的一些问题
+- 【BOOK】书单
 - 【硬件】通常是一些数码产品相关的知识或者问题
 - 【想法】包括想做的事儿，以及一些突发奇想
 - 【思考】吾日三省吾身 的 “省”
@@ -19,6 +20,12 @@
 
 
 ## 7月
+
+### 15日
+- 【BOOK】原则 —— 瑞·达利欧
+- 【BOOK】投资的常识 —— [美]伯顿•马尔基尔（Burton G. Malkiel） / [美]查尔斯•埃利斯（Charles D. Ellis） 
+- 【BOOK】平凡的世界 —— 路遥
+- 【BOOK】活着 —— 余华
 
 ### 12日
 - [远离你身边这3类“穷人”](https://mp.weixin.qq.com/s/DPKfk1GdHjcXl7oIINrfQg)
@@ -47,7 +54,7 @@
     - 测试：EIEEIEIEIEIEIEIEIEIEIEEIEIEIEIEIEIEIEIEIEEIEIEIEIEIEIEIEIEIEIEIEIEIEEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEEEIEIEIEIEIEEEIEEEIEEIEIIEEEIEEIEEIEIEIEIEEIEEIEIEEEIEIEEIEEIEIEIEEIEIEIEIEIEIEEIEIEIEIEIEEIEIEIEIEIEIEEIEIEIEIEIEEIEUEUEUEUEUEUUEEUEUEEUEUEUUEUEUEUEUEUEUEUEUUEUEUEUEEUEUEUEUEUEUEUEUEUEUEEUEUEUEUEUEUEUEEEUEUEUEEUEUEUEEUEEUEUEEUEEUEEUEUEUEUEUUEUEUEUEUEUEEUEUEUE
 - 【执念】为什么 github 不把 marKdown 的样式做的好看一些，代码高亮鲜艳一些
 - 【知识点】音频视频，流文件是啥
-- 【知识点】ast v8 引擎
+- 【知识点】ast v8 引擎 （ast是前端里边逼格最高的，我踏马竟然不知道）
 - 【经验】懂低层，想怎么玩怎么玩；不懂底层，走哪哪都是坑
 - 原生js才是王道，底层才是王道
 

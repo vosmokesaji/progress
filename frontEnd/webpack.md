@@ -272,16 +272,130 @@
     ```
     - 再编译就不会报警告了，这个 production 是编译压缩，如果你不想压缩，可以改为 development
 
-  
 
 # webpack 核心概念
+
+## loader 
+- 如果要打包图片，该怎么办
+    ```javascript
+    // 假如我们想要在 index.js 引入图片，常尝试这么做
+    var avatar = require("./avatar.jpg");
+    ```
+    - 执行打包命令
+        ```shell
+        npm run bundle
+        ```
+    - 报错了，webpack 说他不认识 ./avatar.jpg ，这是因为 webpack 是默认可以打包js文件的，但是 webpack 不知道怎么打包图片文件 
+
+- 此时需要告诉 webpack 我们要打包图片，怎么告诉 webpack 呢？ 没错，还是配置文件
+    1. 修改配置文件
+        ```javascript
+        // 在 webpack.config.js 里 exports 的对象中写入 module ， 也就是模块配置，其中的 rules 是规则，可以写多条
+        module: {
+            rules: [{
+                test: /\.jpg$/,
+                use: {
+                    loader: "file-loader"
+                }
+            }]
+        }
+        ```
+    2. 需要安装一下这个 loader :
+        ```shell
+        npm install file-loader -D
+
+        # 然后运行 打包
+        npm run bundle
+        ```
+- 打包完之后，在看 dist 文件夹，里边多了一个 乱码名字的图片，打开这张图发现就是被打包的 avatar.jpg
+- 那我们在 index.js 里 require 的结果是什么呢？打印一下
+    ```javascript
+    var avatar = require("./avatar.jpg");
+    console.log(avatar);
+    // bd81a2c0f7e09dc83ae8c36fd7c3a00a.jpg
+    // 也就是打包完的这个文件名
+    ```
+### 分析一下打包的流程
+1. 有一个 index.js 文件，要对 index.js 进行打包，所以运行了 npm run bundle
+2. 运行 npm run bundle 的时候，实际上你执行的是 package.json 里的 ```npm scripts``` 中配置的 ```webpack``` 这个命令
+3. 此时 webpack 会去找他的配置，根据这个配置帮你打包
+4. 当 webpack 遇到 index.js 中 引入 js 的语句时，它是知道怎么打包
+5. 但当遇到 ```var avatar = require("./avatar.jpg");``` 这一句时， webpack 就傻了，不知道怎么打包
+6. 此时他就去配置的 module 里看有没有能帮他的，谢天谢地，他遇到了 ```test: /\.jpg$/,``` 正好符合这个条件
+7. 它就知道了对应的 ```file-loader``` 可以帮它打包这个文件，那我们是怎么知道 ```file-loader``` 可以打包这样的文件呢
+8. 实际上我们是在完整的阅读了 webpack 的官方文档之后知道的，官网的 [loaders 下的 file-loader](https://webpack.js.org/loaders/file-loader/) 告诉了我们可以这么做
+9. 回到我们的配置文件，再想一下， file-loader 的底层帮我们做了几件事儿？
+    1. 当他发现你在项目里引入了一张图片时，他会把这张图片 copy 到 dist 目录下
+    2. 会给这个图片改一个名字（这个名字我们也可以自定义）
+    3. 把 dist 下的这个文件名返回给我们
+10. file-loader 不仅可以打包 jpg ，还可以打包 png 、 svg 、 txt 、甚至是 excel
+11. 换句话说，**如果你想在打包的过程中把某个文件 copy 到 dist 目录，并获得他的文件名，你就可以用 file-loader 来处理**
+
+### loader 是什么
+- 上边的例子并不是想讲 file-loader 的用法，而是想告诉你 loader 是什么
+- loader 是打包的方案，他知道对于一些文件该怎么打包， webpack 是不知道的，但是 loader 知道
+
+### 语法
+- 上边的例子 引入图片时用的是 CommonJS 的语法(require)，也完全可以用 ES Module 的语法(import)来写
+    ```javascript
+    import avatar from "./avatar.jpg";
+
+    var img = new Image();
+    img.src = avatar;
+
+    var root = document.getElementById("root");
+    root.append(img);
+    ```
+- 打包
+
+
+
+### 小结 
+- loader 是什么？因为 webpack 不能识别除 js 之外的文件，就需要 loader 帮助 webpack 打包他不认识的文件
+- 怎么配置 loader ？在 webpack.config.js 中写入 module 配置项，通过 rules 配置 loader 
+- 写过 Vue 的话，一定见过 这样的代码
+    ```javascript
+    import Header from "./Header.vue";
+    ```
+    - webpack 能打包吗？ 不能打包，因为他不认识 .vue 的文件，可以在 webpack.config.js 的 module 下的 rules 里添加一个对象
+        ```javascript
+        {
+            test: /\.vue$/,
+            use: {
+                loader: "vue-loader"
+            }
+        }
+        ```
+    - 我怎么知道是 vue-loader 呢？ [Vue 官网](https://vue-loader.vuejs.org/zh/) 有对 vue-loader 的说明
+    - 别忘了安装 vue-loader
+        ```shell
+        npm install vue-loader -D
+        ```
+- 最后：当你看到引入的文件不是以 .js 结尾的，就要想到，这时候就要使用 loader 了
+
+## 使用 loader 打包静态资源
+- 上一个例子中被打包的图片，文件名变成了一个常常的字符串。如果想让被打包的文件名字不变，需要对 loader 做一些别的配置
+    ```javascript
+    {
+        test: /\.jpg$/,
+        use: {
+            loader: "file-loader",
+            options: {
+                // 这种配置的语法，我们称之为 placeholder 也就是 占位符
+                name: "[name].[ext]"         // 希望打包的 文件名 和 后缀 都和老的文件一样
+            }
+        }
+    }
+    ```
+- 重新运行 打包命令 ```npm run bundle```
+
+
 
 # webpack 进阶
 
 # webpack 实战配置案例
 
 # webpack 低层原理及脚手架工具分析
-
 
 # 知识点
 

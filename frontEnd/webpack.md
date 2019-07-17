@@ -381,13 +381,46 @@
         use: {
             loader: "file-loader",
             options: {
-                // 这种配置的语法，我们称之为 placeholder 也就是 占位符
+                // 这种配置的语法，我们称之为 placeholders 也就是 占位符
                 name: "[name].[ext]"         // 希望打包的 文件名 和 后缀 都和老的文件一样
             }
         }
     }
     ```
-- 重新运行 打包命令 ```npm run bundle```
+- 将 bundle 文件夹下的打包生成的文件删除，重新运行 打包命令 ```npm run bundle``` 可以在 bundle 下看到 avatar.jpg 
+- 关于 [placeholders](https://webpack.js.org/loaders/file-loader/#placeholders) 的说明
+- 我们再来改改配置：给文件名加上哈希值、使其支持 png 、 gif 并且不打包到 dist 目录，打包到 images 目录
+    ```javascript
+    {
+        test: /\.(jpg|png|gif)$/,                   // 添加 png gif 后缀的文件
+        use: {
+            loader: "file-loader",
+            options: {
+                name: "[name]_[hash].[ext]"         // 加上 哈希值
+                outputPath: 'imagse/'               // 会打包到 dist/images 目录下
+            }
+        }
+    }
+    ```
+
+### url-loader
+- 把上边 file-loader 的配置直接改名为 url-loader （ file-loader 能做的事儿 url-loader 也能做）
+- 安装 url-loader 后，运行打包，也是可以打包的
+    ```shell
+    npm install url-loader -D
+
+    # 打包
+    npm run bundle 
+    ```
+- 但是，发现一个问题： 图片并没有被打包
+
+
+
+
+
+
+
+
 
 
 

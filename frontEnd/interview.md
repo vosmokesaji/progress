@@ -37,3 +37,15 @@ FrontEnd Interview
 
 
 
+
+## ljq
+
+1. JS ES6语法: 1. var let const区别（https://baijiahao.baidu.com/s?id=1621787284851612777）。 
+2. 箭头函数相关（包括里面的this等）（https://www.cnblogs.com/fundebug/p/6904753.html、https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001438565969057627e5435793645b7acaee3b6869d1374000、https://blog.csdn.net/hqh642134542/article/details/78809951）3. Promise原理（https://baijiahao.baidu.com/s?id=1596005633332556077）
+2. 网络方面：1. 网络7层协议（https://www.cnblogs.com/qishui/p/5428938.html、https://blog.csdn.net/cmyh100/article/details/82768804） 2. xhr(http://www.cnblogs.com/xiaohuochai/p/6036475.html)以及fetch(https://www.jianshu.com/p/35123b048e5e) 3. 跨域(https://segmentfault.com/a/1190000015597029) 4. HTTP code(https://blog.csdn.net/qq_35779969/article/details/80753197)
+3. 浏览器相关：1. 缓存原理（https://www.cnblogs.com/shixiaomiao1122/p/7591556.html） 2. 从访问一个URL到用户看见页面之间所有的过程（https://www.jianshu.com/p/01d25c206fab） 3. 浏览器渲染原理（JS引擎，CSS引擎等）(https://blog.csdn.net/riddle1981/article/details/78681191)
+4. 性能方面：https://www.jianshu.com/p/a29aadf28a9e
+5. 组件方面：http://web.jobbole.com/92879/、https://www.cnblogs.com/kuailingmin/p/4205724.html
+6. 工程化：https://www.cnblogs.com/fsyz/p/8274727.html、https://www.imooc.com/article/48008
+7. 面向对象方面：https://blog.csdn.net/jsnancy/article/details/80357188、https://www.cnblogs.com/chenhuichao/p/8202588.html
+8. 观察者模式：https://www.cnblogs.com/gradolabs/p/4786782.html

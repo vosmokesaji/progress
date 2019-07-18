@@ -446,10 +446,154 @@
 
 ## 使用 loader 打包静态资源（样式篇）
 
+- 现在希望图片大小为 150 * 150 ，需要写样式来修饰这张图片，在 src 目录下新建 index.css ，写入以下内容：
+    ```css
+    .avatar {
+        height: 150px;
+        width: 150px;
+    }
+    ```
+- 修改 index.js ：
+    ```javascript
+    import avatar from "./avatar.jpg";
+    import "./index.css";                   // 引入 css 文件
 
+    var img = new Image();
+    img.src = avatar;
+    img.classList.add("avatar");            // 给 img 标签添加类名
 
+    var root = document.getElementById("root");
+    root.append(img);
+    ```
+- 这样是不是就能缩小图片了呢？根据以往的经验肯定是不能的，在执行打包命令试试看：
+    ```shell
+    npm run bundle 
+    ```
+- 报错了，一定会这样，因为 webpack 不知道这么打包 css 文件，那怎么做呢？聪明的你一定想到了，没错，就是 webpack.config.js 
+- 我们在 module 下的 rules 中添加一个对象：
+    ```javascript
+    {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+    }
 
+    // 打包 css 的时候一般会用到两个 loader ，所以 use 就不能用对象了，而是要用数组来表示。
+    ```
+- 安装需要用到的 style-loader 和 css-loader 并打包：
+    ```shell
+    npm install style-loader css-loader -D
 
+    # 打包
+    npm run bundle 
+    ```
+- 来看一下打包流程
+    - 首先在 index.js 中引入一个 index.css 
+    - 打包的时候 webpack 不知道怎么处理 css 文件，我们在配置文件中告诉了 css 怎么打包
+    - webpack 看到了 ```test: /\.css$/,``` 就会用 style-loader 和 css-loader 打包 css
+    - 打包好了之后生成的 js 里就有了 css 相关的内容
+
+### style-loader 和 css-loader 做了什么？
+- 现在的 css 内容非常简单，我们在 src 目录下新建一个 avatar.css 把 index.css 的内容拷贝到 avatar.css 中， index.css 改成这样
+    ```css
+    @import "./avatar.css"; 
+    ```
+- 现在的逻辑是： index.html 引用了 index.js ， index.js 引用了 index.css ， index.css 引用了 avatar.css 。再重新打包，发现还是一样的效果。
+- **css-loader** 帮我们分析出 css 之间的关系，解析成一整段的 css 代码
+- **style-loader** 帮我们把这段 css 挂载到页面的 head 中，可以通过检查元素查看 页面的 head 标签中有个 style 标签，他就是 style-loader 帮我们挂载上来的
+
+### Sass / Less / Stylus
+- 先做一些修改：
+    - 把 index.css 改名为 index.scss ，清空内容
+    - 把 avatar.css 的内容粘贴回 index.scss ， 删除 avatar.css
+    - 把 index.js 引入的 index.css 改为 index.scss 
+    - 因为 sass 支持嵌套，我们修改一下 index.scss 的内容：
+        ```scss
+        body{
+            .avatar {
+                height: 150px;
+                width: 150px;
+            }
+        }
+        ```
+- 此时打包能成功吗？ 肯定还是不行的，为什么？ 因为 index.js 引入的是 index.scss ， webpack 不知道怎么处理 .scss 后缀的文件
+- 尝试修改 webpack.config.js
+    ```javascript
+    {
+        test: /\.scss$/,                        // 这里把 css 改成了 sass 
+        use: ["style-loader", "css-loader"]
+    }
+    ```
+- 再打包，没有报错，好像打包成功了，看一下页面，发现样式并不是我们要的 150 * 150 ，为什么？
+- 打开浏览器的开发者工具，我们发现 head 中的 style 标签是这样的：
+    ```html
+    <style>
+        body{
+            .avatar {
+                height: 150px;
+                width: 150px;
+            }
+        }
+    </style>
+    ```
+- 浏览器根本不认识这样的 css ，此时我们还需要一个 scss 的编译器，修改 webpack.config.js ：
+    ```javascript
+    {
+        test: /\.scss$/,                        // 这里把 css 改成了 sass 
+        use: ["style-loader", "css-loader", "sass-loader"]
+    }
+    ```
+- sass-loader 的使用可以参考 [webpack 官网](https://webpack.js.org/loaders/sass-loader/)
+- 官方文档告诉我们，要使用 sass-loader 需要安装 sass-loader 和 node-sass （ webpack 就不用安装了，因为之前安装过）
+    ```shell
+    # 大概会花费 3 到 5 分钟
+    npm install sass-loader node-sass --save-dev
+
+    # 再次打包
+    npm run bundle
+    ```
+- 注意： webpack 的 loader 是有执行顺序的，执行顺序是： **从右到左** 、 **从下到上** ，首先执行 sass-loader 把 scss 翻译成 css ， 再交给 css-loader ，它处理完后，再交给 style-loader 挂载到页面中
+
+- 接着来看，如果写这样一个样式
+    ```scss
+    body{
+        .avatar {
+            height: 150px;
+            width: 150px;
+            transform: translate(100px, 100px);         // 添加一个 translate 
+        }
+    }
+    ```
+- 打包，看效果正常，但是呢，我们写这样的 css3 属性的时候通常会写一些兼容的 厂商前缀，比如 ```-webkiit-  -ms-  -moz-``` 等
+- 正好有这样的 loader 可以帮我们做这件事儿 [postcss-loader](https://webpack.js.org/loaders/postcss-loader/)
+    ```javascript
+    {
+        test: /\.scss$/,
+        use: [
+            "style-loader", 
+            "css-loader", 
+            "sass-loader",
+            "postcss-loader"
+        ]
+    }
+    ```
+- 根据文档的安装方法安装 postcss-loader ：
+    ```shell
+    npm i -D postcss-loader
+    ```
+- 文档上的 [使用方法](https://webpack.js.org/loaders/postcss-loader/#usage) 中要求我们创建一个 **postcss.config.js** 文件
+- 把官方提供的内容 copy 过来，删掉 parser ，删掉 plugins 中的内容，我们只需要一个插件： autoprefixer
+    ```javascript
+    module.exports = {
+        // plugins 可以写对象，也可以写数组 
+        plugins: [
+            require("autoprefixer")
+        ]
+    }
+    ```
+    ```shell
+    npm install autoprefixer -D
+    ```
+- 至此，我们就配置好了 postcss 的插件，重新进行一次打包，再看效果就能在样式里 看到有 ```-webkit-transform``` 这条 postcss 中的 autoprefixer 插件帮我们添加的属性了
 
 
 

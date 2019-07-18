@@ -1,8 +1,10 @@
-# Webpack
+# 1. Webpack
 
-# 初识 Webpack
 
-## Webapck 是什么
+
+# 2. 初识 Webpack
+
+## 2.1. Webapck 是什么
 - 为了解决项目越来越大，文件越来越多的开发痛点
 - **ES Module** 模块 **引入** 方式
     ```javascript
@@ -30,7 +32,7 @@
     }
     module.exports = Header;
     ```
-## webapck 的正确安装方式
+## 2.2. webapck 的正确安装方式
 1. 创建 webpack-demo 文件夹并进入
     ```shell
     mkdir webpack-demo && cd webpack-demo
@@ -107,7 +109,7 @@
         ```
         - 这个命令会根据 ```package.json``` 文件的内容下载安装你的依赖包，这样 node_modules 就回来了。
 
-## webpack 的配置文件
+## 2.3. webpack 的配置文件
 - webpack 需要你通过这个配置文件告诉他这么打包，打包到哪里
 - 之前的打包操实际上用的是 webpack 的默认配置
     ```shell
@@ -223,7 +225,7 @@
     - 这时候就和 Vue / React 的项目很像了
     - 把 index.html 移入 dist 目录下，并修改 index.html 中对 bundle.js 的引用，打开 index.html ， 此时页面时可以正常运行的。
 
-### 小结
+### 2.3.1. 小结
 - 之前我们用 webpack 打包用了三种方式
     1. 全局安装 webpack 
         ```shell
@@ -244,7 +246,7 @@
 - 这三种方式归根结底都是在命令行使用 ```webpack``` 这个命令
 - 还记得安装的 **webpack-cli** 吗？ 它的 **作用** 就是让我们可以在命令行中使用 ```webpack``` 的命令，
 
-## 浅析 webpack 打包输出内容
+## 2.4. 浅析 webpack 打包输出内容
 1. 执行打包命令后，打印的内容分析
     ![webpack 打印](../images/frontEnd/webpack/webpack-print.png)
     - Hash: 哈希值，本次打包唯一的一个哈希值
@@ -273,9 +275,9 @@
     - 再编译就不会报警告了，这个 production 是编译压缩，如果你不想压缩，可以改为 development
 
 
-# webpack 核心概念
+# 3. webpack 核心概念
 
-## loader 
+## 3.1. loader 
 - 如果要打包图片，该怎么办
     ```javascript
     // 假如我们想要在 index.js 引入图片，常尝试这么做
@@ -315,7 +317,7 @@
     // bd81a2c0f7e09dc83ae8c36fd7c3a00a.jpg
     // 也就是打包完的这个文件名
     ```
-### 分析一下打包的流程
+### 3.1.1. 分析一下打包的流程
 1. 有一个 index.js 文件，要对 index.js 进行打包，所以运行了 npm run bundle
 2. 运行 npm run bundle 的时候，实际上你执行的是 package.json 里的 ```npm scripts``` 中配置的 ```webpack``` 这个命令
 3. 此时 webpack 会去找他的配置，根据这个配置帮你打包
@@ -331,11 +333,11 @@
 10. file-loader 不仅可以打包 jpg ，还可以打包 png 、 svg 、 txt 、甚至是 excel
 11. 换句话说，**如果你想在打包的过程中把某个文件 copy 到 dist 目录，并获得他的文件名，你就可以用 file-loader 来处理**
 
-### loader 是什么
+### 3.1.2. loader 是什么
 - 上边的例子并不是想讲 file-loader 的用法，而是想告诉你 loader 是什么
 - loader 是打包的方案，他知道对于一些文件该怎么打包， webpack 是不知道的，但是 loader 知道
 
-### 语法
+### 3.1.3. 语法
 - 上边的例子 引入图片时用的是 CommonJS 的语法(require)，也完全可以用 ES Module 的语法(import)来写
     ```javascript
     import avatar from "./avatar.jpg";
@@ -350,7 +352,7 @@
 
 
 
-### 小结 
+### 3.1.4. 小结 
 - loader 是什么？因为 webpack 不能识别除 js 之外的文件，就需要 loader 帮助 webpack 打包他不认识的文件
 - 怎么配置 loader ？在 webpack.config.js 中写入 module 配置项，通过 rules 配置 loader 
 - 写过 Vue 的话，一定见过 这样的代码
@@ -373,14 +375,18 @@
         ```
 - 最后：当你看到引入的文件不是以 .js 结尾的，就要想到，这时候就要使用 loader 了
 
-## 使用 loader 打包静态资源
+## 3.2. 使用 loader 打包静态资源（图片篇）
+
+### 3.2.1. file-loader
 - 上一个例子中被打包的图片，文件名变成了一个常常的字符串。如果想让被打包的文件名字不变，需要对 loader 做一些别的配置
     ```javascript
     {
         test: /\.jpg$/,
         use: {
             loader: "file-loader",
-            options: {
+
+            // 额外的配置，放在 options 中
+            options: {                       
                 // 这种配置的语法，我们称之为 placeholders 也就是 占位符
                 name: "[name].[ext]"         // 希望打包的 文件名 和 后缀 都和老的文件一样
             }
@@ -396,14 +402,15 @@
         use: {
             loader: "file-loader",
             options: {
-                name: "[name]_[hash].[ext]"         // 加上 哈希值
+                name: "[name]_[hash].[ext]",        // 加上 哈希值
                 outputPath: 'imagse/'               // 会打包到 dist/images 目录下
             }
         }
     }
     ```
+- flie-loader 的配置项特别多，当你在使用过程中遇到问题时，可以查阅 [file-loader 的文档](https://webpack.js.org/loaders/file-loader/)
 
-### url-loader
+### 3.2.2. url-loader
 - 把上边 file-loader 的配置直接改名为 url-loader （ file-loader 能做的事儿 url-loader 也能做）
 - 安装 url-loader 后，运行打包，也是可以打包的
     ```shell
@@ -412,7 +419,32 @@
     # 打包
     npm run bundle 
     ```
-- 但是，发现一个问题： 图片并没有被打包
+- 但是，发现一个问题： 图片并没有被打包到 dist 目录下，浏览器打开 index.html ，发现图片可以正确显示，这是为什么呢？
+    - 当你用 url-loader 打包 jpg 文件时，它会把图片转为 base64 的字符串，放在 js 里，而不是单独生成一个文件
+    - 优点：图片直接打包在 js 中，不用额外请求图片文件，节省了 Http 请求的次数
+    - 缺点：如果图片源文件很大，打包生成的 js 也会很大，加载这个 js 耗费的时间也会越长，这样就导致页面加载时，在很长的时间内，页面什么都加载不出来
+- 所以： url-loader 最佳的使用方式： 图片只有 1、2kb 时，把图片打包到 js 中是个明智的选择，没必要让一个 1、2k 的资源占一个请求。如果图片很大，就像 file-loader 一样打包到 dist 目录下，这样更合适。那如何做到这样的最佳实践呢？
+    ```javascript
+    {
+        test: /\.(jpg|png|gif)$/,
+        use: {
+            loader: "url-loader",
+            options: {
+                name: "[name]_[hash].[ext]",
+                outputPath: 'imagse/',
+                limit: 2048                         // 添加一个 limit 配置项
+            }
+        }
+    }
+
+    // 这个配置项的意思是，如果超过 2048 个字节，就会像 file-loader 一样打包到 dist 目录下。
+    // url-loader 和 file-loader 非常的类似，只是 url-loader 多了一个 limit 参数
+     
+    ```
+> 作业： 阅读 url-loader 和 file-loader 的官方文档，读完之后对这两个 loader 的理解就没啥问题了
+
+
+## 使用 loader 打包静态资源（样式篇）
 
 
 
@@ -422,15 +454,13 @@
 
 
 
+# 4. webpack 进阶
 
+# 5. webpack 实战配置案例
 
-# webpack 进阶
+# 6. webpack 低层原理及脚手架工具分析
 
-# webpack 实战配置案例
-
-# webpack 低层原理及脚手架工具分析
-
-# 知识点
+# 7. 知识点
 
 - Loader
 - HMR

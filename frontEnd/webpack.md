@@ -596,6 +596,75 @@
 - 至此，我们就配置好了 postcss 的插件，重新进行一次打包，再看效果就能在样式里 看到有 ```-webkit-transform``` 这条 postcss 中的 autoprefixer 插件帮我们添加的属性了
 
 
+### css-loader 常用的配置项
+- 因为要给 css-loader 添加配置项，所以就不能写成字符串了，先改写一下 css-loader 的配置
+    ```javascript
+    {
+        test: /\.scss$/,
+        use: [
+            "style-loader", 
+            {
+                loader: "css-loader",
+                options: {
+                    importLoaders: 2
+                }
+            }, 
+            "sass-loader",
+            "postcss-loader"
+        ]
+    }
+    ```
+- 在很多的脚手架工具里大家都能看到 ```importLoaders``` 这样的配置参数
+- 假设在 index.scss 文件里我们又引入了一个 scss 文件：在 src 下新建 avatar.scss 并在 index.scss 中引入
+    ```scss
+    // avatar.scss
+    body {
+        .abc {
+            background: red;
+        }
+    }
+
+    // index.scss
+    @import "./avatar.scss";
+
+    body{
+        ...
+    }
+    ```
+- 原因解释：
+    1. 在 index.js 中引入了 index.scss 这个文件，webpack 对于 js 中引入的这个文件，他会依次调用：postcss-loader 、 sass-loader 、 css-loader 和 style-loader
+    2. 但是他打包 index.scss 文件的时候，遇到 ```@import "./avatar.scss";``` 的时候，也就是在 ```@import``` 语法中再次引入其他的 scss 文件的时候（ **有可能** ？老师说的是有可能？ why？）就不会走 postcss-loader 和 sass-loader 了 ，而是直接走 css-loader 了
+    3. 那如果我希望：在 index.scss 中引入的 avatar.scss 也走 postcss-loader 、 sass-loader 、 css-loader 和 style-loader 该怎么办？
+    4. 在 css-loader 中配置 ```importLoaders: 2``` 意思是你通过 ```@imoprt``` 引入的这样的 scss 文件 ，也要走前边的而两个 loader 也就是 postcss-loader 、 sass-loader 。这样无论是在 js 中引入的 scss 还是在 scss 中引入的 scss 都会会执行所有的 loader 
+
+### css 打包的模块化
+- 先把 index.scss 中的 avatar.scss 的引用删除掉， avatar.scss 也删掉
+- 复习一下现在的代码：
+    ```javascript
+    import avatar from "./avatar.jpg";
+    import "./index.scss";                   // 引入 css 文件
+
+    var img = new Image();
+    img.src = avatar;
+    img.classList.add("avatar");            // 给 img 标签添加类名
+
+    var root = document.getElementById("root");
+    root.append(img);
+    ```
+- 我在 src 下创建一个 createAvatar.js 写入以下代码：
+    ```javascript
+    import avatar from "./avatar.jpg";
+    import "./index.scss";                   // 引入 css 文件
+
+    var img = new Image();
+    img.src = avatar;
+    img.classList.add("avatar");            // 给 img 标签添加类名
+
+    var root = document.getElementById("root");
+    root.append(img);
+    ```
+
+
 
 
 # 4. webpack 进阶

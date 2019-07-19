@@ -56,7 +56,7 @@
         # 测试 webpack 是否安装成功 ，如果打印出版本号说明全局已经安装好 Webpack 了
         webpack -v
         ```
-        - 非常不推荐全局安装，因为有这样的问题：
+        - **非常不推荐全局安装**，因为有这样的问题：
             - 假如我有两个项目，两个项目是不同的版本号的 一个是用 Webpack3 打包的，另一个是用 Webpack4 打包的
             - 如果你全局只安装了 Webpack4 就只能跑 Webpack4 的项目
             - 如果你想跑 Webpack3 的项目，就只能卸载 Webpack4 重装 Webpack3 这已经很麻烦了
@@ -519,7 +519,7 @@
 - 尝试修改 webpack.config.js
     ```javascript
     {
-        test: /\.scss$/,                        // 这里把 css 改成了 sass 
+        test: /\.scss$/,                        // 这里把 /\.css$/ 改成了 /\.scss$/ 
         use: ["style-loader", "css-loader"]
     }
     ```
@@ -538,8 +538,8 @@
 - 浏览器根本不认识这样的 css ，此时我们还需要一个 scss 的编译器，修改 webpack.config.js ：
     ```javascript
     {
-        test: /\.scss$/,                        // 这里把 css 改成了 sass 
-        use: ["style-loader", "css-loader", "sass-loader"]
+        test: /\.scss$/, 
+        use: ["style-loader", "css-loader", "sass-loader"]      // 添加了  , "sass-loader"
     }
     ```
 - sass-loader 的使用可以参考 [webpack 官网](https://webpack.js.org/loaders/sass-loader/)

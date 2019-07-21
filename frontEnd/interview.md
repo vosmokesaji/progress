@@ -38,7 +38,7 @@ FrontEnd Interview
 
 
 
-## ljq
+## andorcba
 
 1. JS ES6语法: 1. var let const区别（https://baijiahao.baidu.com/s?id=1621787284851612777）。 
 2. 箭头函数相关（包括里面的this等）（https://www.cnblogs.com/fundebug/p/6904753.html、https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001438565969057627e5435793645b7acaee3b6869d1374000、https://blog.csdn.net/hqh642134542/article/details/78809951）3. Promise原理（https://baijiahao.baidu.com/s?id=1596005633332556077）
@@ -49,3 +49,6 @@ FrontEnd Interview
 6. 工程化：https://www.cnblogs.com/fsyz/p/8274727.html、https://www.imooc.com/article/48008
 7. 面向对象方面：https://blog.csdn.net/jsnancy/article/details/80357188、https://www.cnblogs.com/chenhuichao/p/8202588.html
 8. 观察者模式：https://www.cnblogs.com/gradolabs/p/4786782.html
+
+
+# 慕课前端面试课

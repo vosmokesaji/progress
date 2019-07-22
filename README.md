@@ -22,6 +22,12 @@
 
 
 ## 7月
+### 22日
+- 【TODO】 Notion 到底好用在哪里？ 如何快速记笔记？
+- 【想知道】如何构建个人知识体系？
+
+
+
 ### 21日
 - 【知识点】下面的语法就是 markdown 的删除线啦
     ```markdown
@@ -954,265 +960,265 @@ chrome 离线版下载
 
 
 
-JavaScript
+- JavaScript
 
 
-#### 字符串
+    1. 字符串
 
-- 如果字符串内部既包含'又包含"怎么办？可以用转义字符\来标识，比如：
+        - 如果字符串内部既包含'又包含"怎么办？可以用转义字符\来标识，比如：
 
-```javascript
-'I\'m \"OK\"!';
-```
+        ```javascript
+        'I\'m \"OK\"!';
+        ```
 
-- ASCII字符可以以\x##形式的十六进制表示
+        - ASCII字符可以以\x##形式的十六进制表示
 
-```javascript
-'\x41'; // 完全等同于 'A'
-```
+        ```javascript
+        '\x41'; // 完全等同于 'A'
+        ```
 
-- 还可以用\u####表示一个Unicode字符
+        - 还可以用\u####表示一个Unicode字符
 
-```javascript
-'\u4e2d\u6587'; // 完全等同于 '中文'
-```
+        ```javascript
+        '\u4e2d\u6587'; // 完全等同于 '中文'
+        ```
 
-- 由于多行字符串用\n写起来比较费事，所以最新的ES6标准新增了一种多行字符串的表示方法，用反引号 ` ... ` 表示
+        - 由于多行字符串用\n写起来比较费事，所以最新的ES6标准新增了一种多行字符串的表示方法，用反引号 ` ... ` 表示
 
 
-```javascript
-`这是一个
-多行
-字符串`;
-```
+        ```javascript
+        `这是一个
+        多行
+        字符串`;
+        ```
 
-- 如果有很多变量需要连接，用+号就比较麻烦。ES6新增了一种模板字符串，它会自动替换字符串中的变量
+        - 如果有很多变量需要连接，用+号就比较麻烦。ES6新增了一种模板字符串，它会自动替换字符串中的变量
 
-```javascript
-var name = '小明';
-var age = 20;
-var message = `你好, ${name}, 你今年${age}岁了!`;
-alert(message);
-```
+        ```javascript
+        var name = '小明';
+        var age = 20;
+        var message = `你好, ${name}, 你今年${age}岁了!`;
+        alert(message);
+        ```
 
-- **需要特别注意的是**: 字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果
+        - **需要特别注意的是**: 字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果
 
-```javascript
-var s = 'Test';
-s[0] = 'X';
-alert(s); // s仍然为'Test'
-```
+        ```javascript
+        var s = 'Test';
+        s[0] = 'X';
+        alert(s); // s仍然为'Test'
+        ```
 
-#### 数组
+    2. 数组
 
-- 请注意，直接给Array的length赋一个新的值会导致Array大小的变化
+        - 请注意，直接给Array的length赋一个新的值会导致Array大小的变化
 
-```javascript
-var arr = [1, 2, 3];
-arr.length; // 3
-arr.length = 6;
-arr; // arr变为[1, 2, 3, undefined, undefined, undefined]
-arr.length = 2;
-arr; // arr变为[1, 2]
-```
+        ```javascript
+        var arr = [1, 2, 3];
+        arr.length; // 3
+        arr.length = 6;
+        arr; // arr变为[1, 2, 3, undefined, undefined, undefined]
+        arr.length = 2;
+        arr; // arr变为[1, 2]
+        ```
 
-- 请注意，如果通过索引赋值时，索引超过了范围，同样会引起Array大小的变化
+        - 请注意，如果通过索引赋值时，索引超过了范围，同样会引起Array大小的变化
 
-```javascript
-var arr = [1, 2, 3];
-arr[5] = 'x';
-arr; // arr变为[1, 2, 3, undefined, undefined, 'x']
-```
+        ```javascript
+        var arr = [1, 2, 3];
+        arr[5] = 'x';
+        arr; // arr变为[1, 2, 3, undefined, undefined, 'x']
+        ```
 
-- indexOf()来搜索一个指定的元素的位置：
+        - indexOf()来搜索一个指定的元素的位置：
 
-```javascript
-var arr = [10, 20, '30', 'xyz'];
-arr.indexOf(10); // 元素10的索引为0
-arr.indexOf(20); // 元素20的索引为1
-arr.indexOf(30); // 元素30没有找到，返回-1
-arr.indexOf('30'); // 元素'30'的索引为2
-```
+        ```javascript
+        var arr = [10, 20, '30', 'xyz'];
+        arr.indexOf(10); // 元素10的索引为0
+        arr.indexOf(20); // 元素20的索引为1
+        arr.indexOf(30); // 元素30没有找到，返回-1
+        arr.indexOf('30'); // 元素'30'的索引为2
+        ```
 
-- slice()就是对应String的substring()版本，它截取Array的部分元素，然后返回一个新的Array
-	- slice()的起止参数包括开始索引，不包括结束索引
-	- 如果不给slice()传递任何参数，它就会从头到尾截取所有元素。利用这一点，我们可以很容易地复制一个Array
+        - slice()就是对应String的substring()版本，它截取Array的部分元素，然后返回一个新的Array
+            - slice()的起止参数包括开始索引，不包括结束索引
+            - 如果不给slice()传递任何参数，它就会从头到尾截取所有元素。利用这一点，我们可以很容易地复制一个Array
 
-```javascript
-var arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-arr.slice(0, 3); // 从索引0开始，到索引3结束，但不包括索引3: ['A', 'B', 'C']
-arr.slice(3); // 从索引3开始到结束: ['D', 'E', 'F', 'G']
-var aCopy = arr.slice();
-aCopy; // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-aCopy === arr; // false
-```
+        ```javascript
+        var arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+        arr.slice(0, 3); // 从索引0开始，到索引3结束，但不包括索引3: ['A', 'B', 'C']
+        arr.slice(3); // 从索引3开始到结束: ['D', 'E', 'F', 'G']
+        var aCopy = arr.slice();
+        aCopy; // ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+        aCopy === arr; // false
+        ```
 
-> 写一个判断数组是否相等的方法:
+        > 写一个判断数组是否相等的方法:
 
-```javascript
-var cmpare = function(arr1,arr2){
-    if(arr1.length === arr2.length){
-        for(var i = 0;i<arr1.length;i ++){
-            if(arr1[i] === arr2[i]){
-                if(i === (arr1.length - 1)){
-                    return true;
+        ```javascript
+        var cmpare = function(arr1,arr2){
+            if(arr1.length === arr2.length){
+                for(var i = 0;i<arr1.length;i ++){
+                    if(arr1[i] === arr2[i]){
+                        if(i === (arr1.length - 1)){
+                            return true;
+                        }
+                    }else{
+                        return false;
+                    }
                 }
             }else{
                 return false;
             }
         }
-    }else{
-        return false;
-    }
-}
-```
+        ```
 
 
 
-- push() 向 Array 的末尾添加若干元素，pop() 则把 Array 的最后一个元素删除掉。如果要往 Array 的头部添加若干元素，使用 unshift() 方法，shift() 方法则把 Array 的第一个元素删掉。
-- 添加时的返回值是数组的新长度，删除时的返回值被删除的元素。
-- 空数组继续 pop/shift 不会报错，而是返回 undefined 。
-- reverse()把整个Array的元素给掉个个，也就是反转
-- sort()可以对当前Array进行排序，它会直接修改当前Array的元素位置，直接调用时，按照默认顺序排序
-- splice()方法是修改Array的“万能方法”，它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素,返回删除的元素
+        - push() 向 Array 的末尾添加若干元素，pop() 则把 Array 的最后一个元素删除掉。如果要往 Array 的头部添加若干元素，使用 unshift() 方法，shift() 方法则把 Array 的第一个元素删掉。
+        - 添加时的返回值是数组的新长度，删除时的返回值被删除的元素。
+        - 空数组继续 pop/shift 不会报错，而是返回 undefined 。
+        - reverse()把整个Array的元素给掉个个，也就是反转
+        - sort()可以对当前Array进行排序，它会直接修改当前Array的元素位置，直接调用时，按照默认顺序排序
+        - splice()方法是修改Array的“万能方法”，它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素,返回删除的元素
 
-```javascript
-var arr = ['Microsoft', 'Apple', 'Yahoo', 'AOL', 'Excite', 'Oracle'];
-// 从索引2开始删除3个元素,然后再添加两个元素:
-arr.splice(2, 3, 'Google', 'Facebook'); // 返回删除的元素 ['Yahoo', 'AOL', 'Excite']
-arr; // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
-// 只删除,不添加:
-arr.splice(2, 2); // ['Google', 'Facebook']
-arr; // ['Microsoft', 'Apple', 'Oracle']
-// 只添加,不删除:
-arr.splice(2, 0, 'Google', 'Facebook'); // 返回[],因为没有删除任何元素
-arr; // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
-```
+        ```javascript
+        var arr = ['Microsoft', 'Apple', 'Yahoo', 'AOL', 'Excite', 'Oracle'];
+        // 从索引2开始删除3个元素,然后再添加两个元素:
+        arr.splice(2, 3, 'Google', 'Facebook'); // 返回删除的元素 ['Yahoo', 'AOL', 'Excite']
+        arr; // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+        // 只删除,不添加:
+        arr.splice(2, 2); // ['Google', 'Facebook']
+        arr; // ['Microsoft', 'Apple', 'Oracle']
+        // 只添加,不删除:
+        arr.splice(2, 0, 'Google', 'Facebook'); // 返回[],因为没有删除任何元素
+        arr; // ['Microsoft', 'Apple', 'Google', 'Facebook', 'Oracle']
+        ```
 
-- concat()方法把当前的Array和另一个Array连接起来，并返回一个新的Array
+        - concat()方法把当前的Array和另一个Array连接起来，并返回一个新的Array
 
-```javascript
-var arr = ['A', 'B', 'C'];
-var added = arr.concat([1, 2, 3]);
-added; // ['A', 'B', 'C', 1, 2, 3]
-arr; // ['A', 'B', 'C']
-```
+        ```javascript
+        var arr = ['A', 'B', 'C'];
+        var added = arr.concat([1, 2, 3]);
+        added; // ['A', 'B', 'C', 1, 2, 3]
+        arr; // ['A', 'B', 'C']
+        ```
 
-- join()方法是一个非常实用的方法，它把当前Array的每个元素都用指定的字符串连接起来，然后返回连接后的字符串
+        - join()方法是一个非常实用的方法，它把当前Array的每个元素都用指定的字符串连接起来，然后返回连接后的字符串
 
-#### 对象
+    3. 对象
 
-- 最后一个键值对不需要在末尾加,，如果加了，有的浏览器（如低版本的IE）将报错
+        - 最后一个键值对不需要在末尾加,，如果加了，有的浏览器（如低版本的IE）将报错
 
-- 访问属性是通过.操作符完成的，但这要求属性名必须是一个有效的变量名。如果属性名包含特殊字符，就必须用''括起来
+        - 访问属性是通过.操作符完成的，但这要求属性名必须是一个有效的变量名。如果属性名包含特殊字符，就必须用''括起来
 
-```javascript
-var xiaohong = {
-    name: '小红',
-    'middle-school': 'No.1 Middle School'
-};
-xiaohong['middle-school']; // 'No.1 Middle School'
-xiaohong['name']; // '小红'
-xiaohong.name; // '小红'
-```
+        ```javascript
+        var xiaohong = {
+            name: '小红',
+            'middle-school': 'No.1 Middle School'
+        };
+        xiaohong['middle-school']; // 'No.1 Middle School'
+        xiaohong['name']; // '小红'
+        xiaohong.name; // '小红'
+        ```
 
-> 这个例子中，xiaohong 的属性名 middle-school 不是一个有效的变量，就需要用''括起来。访问这个属性也无法使用.操作符，必须用['xxx']来访问（我们在编写JavaScript代码的时候，属性名尽量使用标准的变量名，这样就可以直接通过object.prop的形式访问一个属性了）
+        > 这个例子中，xiaohong 的属性名 middle-school 不是一个有效的变量，就需要用''括起来。访问这个属性也无法使用.操作符，必须用['xxx']来访问（我们在编写JavaScript代码的时候，属性名尽量使用标准的变量名，这样就可以直接通过object.prop的形式访问一个属性了）
 
-- JavaScript规定，访问不存在的属性不报错，而是返回undefined
+        - JavaScript规定，访问不存在的属性不报错，而是返回undefined
 
-- JavaScript的对象是动态类型，你可以自由地给一个对象添加或删除属性
+        - JavaScript的对象是动态类型，你可以自由地给一个对象添加或删除属性
 
-```javascript
-var xiaoming = {
-    name: '小明'
-};
-xiaoming.age; // undefined
-xiaoming.age = 18; // 新增一个age属性
-xiaoming.age; // 18
-delete xiaoming.age; // 删除age属性
-xiaoming.age; // undefined
-delete xiaoming['name']; // 删除name属性
-xiaoming.name; // undefined
-delete xiaoming.school; // 删除一个不存在的school属性也不会报错
-```
+        ```javascript
+        var xiaoming = {
+            name: '小明'
+        };
+        xiaoming.age; // undefined
+        xiaoming.age = 18; // 新增一个age属性
+        xiaoming.age; // 18
+        delete xiaoming.age; // 删除age属性
+        xiaoming.age; // undefined
+        delete xiaoming['name']; // 删除name属性
+        xiaoming.name; // undefined
+        delete xiaoming.school; // 删除一个不存在的school属性也不会报错
+        ```
 
-- 如果我们要检测xiaoming是否拥有某一属性，可以用in操作符：
+        - 如果我们要检测xiaoming是否拥有某一属性，可以用in操作符：
 
-```javascript
-var xiaoming = {
-    name: '小明',
-    birth: 1990,
-    school: 'No.1 Middle School',
-    height: 1.70,
-    weight: 65,
-    score: null
-};
-'name' in xiaoming; // true
-'grade' in xiaoming; // false
-```
+        ```javascript
+        var xiaoming = {
+            name: '小明',
+            birth: 1990,
+            school: 'No.1 Middle School',
+            height: 1.70,
+            weight: 65,
+            score: null
+        };
+        'name' in xiaoming; // true
+        'grade' in xiaoming; // false
+        ```
 
-> 不过要小心，如果in判断一个属性存在，这个属性不一定是xiaoming的，它可能是xiaoming继承得到的：
+        > 不过要小心，如果in判断一个属性存在，这个属性不一定是xiaoming的，它可能是xiaoming继承得到的：
 
-```javascript
-'toString' in xiaoming; // true
-```
+        ```javascript
+        'toString' in xiaoming; // true
+        ```
 
-- 因为toString定义在object对象中，而所有对象最终都会在原型链上指向object，所以xiaoming也拥有toString属性。
+        - 因为toString定义在object对象中，而所有对象最终都会在原型链上指向object，所以xiaoming也拥有toString属性。
 
-要判断一个属性是否是xiaoming自身拥有的，而不是继承得到的，可以用 **hasOwnProperty()** 方法：
+        要判断一个属性是否是xiaoming自身拥有的，而不是继承得到的，可以用 **hasOwnProperty()** 方法：
 
-```javascript
-var xiaoming = {
-    name: '小明'
-};
-xiaoming.hasOwnProperty('name'); // true
-xiaoming.hasOwnProperty('toString'); // false
-```
-
-
-#### 判断
-
-- 如果语句块只包含一条语句，那么可以省略{}
-
-```javascript
-var age = 20;
-if (age >= 18)
-    alert('adult');
-else
-    alert('teenager');
-```
-
-- 省略{}的危险之处在于，如果后来想添加一些语句，却忘了写{}，就改变了if...else...的语义，所以我们建议永远都要写上{}
-
-- 如果if的条件判断语句结果不是true或 false 怎么办？例如 
-
-```javascript
-var s = '123';
-if (s.length) { // 条件计算结果为3
-    //
-}
-```
-> JavaScript把null、undefined、0、NaN和空字符串''视为false，其他值一概视为true，因此上述代码条件判断的结果是true
+        ```javascript
+        var xiaoming = {
+            name: '小明'
+        };
+        xiaoming.hasOwnProperty('name'); // true
+        xiaoming.hasOwnProperty('toString'); // false
+        ```
 
 
+    4. 判断
 
-#### 循环
+        - 如果语句块只包含一条语句，那么可以省略{}
 
-- for循环的3个条件都是可以省略的，如果没有退出循环的判断条件，就必须使用break语句退出循环，否则就是死循环
+        ```javascript
+        var age = 20;
+        if (age >= 18)
+            alert('adult');
+        else
+            alert('teenager');
+        ```
 
-```javascript
-var x = 0;
-for (;;) { // 将无限循环下去
-    if (x > 100) {
-        break; // 通过if判断来退出循环
-    }
-    x ++;
-}
-```
-- for循环的一个变体是for ... in循环，它可以把一个**对象**的所有**属性**依次循环出来
-> 请注意，for ... in对Array的循环得到的是String而不是Number
+        - 省略{}的危险之处在于，如果后来想添加一些语句，却忘了写{}，就改变了if...else...的语义，所以我们建议永远都要写上{}
 
-- while循环只有一个判断条件，条件满足，就不断循环，条件不满足时则退出循环。
+        - 如果if的条件判断语句结果不是true或 false 怎么办？例如 
+
+        ```javascript
+        var s = '123';
+        if (s.length) { // 条件计算结果为3
+            //
+        }
+        ```
+        > JavaScript把null、undefined、0、NaN和空字符串''视为false，其他值一概视为true，因此上述代码条件判断的结果是true
+
+
+
+    5. 循环
+        
+        - for循环的3个条件都是可以省略的，如果没有退出循环的判断条件，就必须使用break语句退出循环，否则就是死循环
+
+        ```javascript
+        var x = 0;
+        for (;;) { // 将无限循环下去
+            if (x > 100) {
+                break; // 通过if判断来退出循环
+            }
+            x ++;
+        }
+        ```
+        - for循环的一个变体是for ... in循环，它可以把一个**对象**的所有**属性**依次循环出来
+        > 请注意，for ... in对Array的循环得到的是String而不是Number
+
+        - while循环只有一个判断条件，条件满足，就不断循环，条件不满足时则退出循环。
 
 
 

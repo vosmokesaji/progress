@@ -492,6 +492,28 @@ fn2();
 - **本质**还是语法糖，使用 prototype 
 - 所有的语法糖都需要了解本质
 
+### Promise 
+- Callback Hell (回调地狱)
+- Promise 语法
+    ```javascript
+    function loadImg(src, callback, fail){
+        var img = document.creatElement("img");
+        img.onload = function(){
+            callback(img);
+        }
+        img.onerror = function(){
+            fail();
+        }
+        img.src = src;
+    }
+
+    var src = "https://www.imooc.com/static/img/index/logo.png";
+    loadImg(src, function(img){
+        console.log(img.width);
+    }, function(){
+        console.log("failed")
+    });
+    ```
 
 
 

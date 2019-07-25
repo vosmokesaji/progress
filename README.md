@@ -23,6 +23,15 @@
 
 
 ## 7月
+### 25日
+- 【TODO】[100本书](http://www.shejipi.com/161206.html) ， [这也是100本书](http://www.sohu.com/a/155546296_661888)
+- 【知识点】markdown 怎么写 todolist ， 注意：未完成的标记 ```[``` 和 ```]``` 中间有**一个空格**，不能多不能少
+    ```markdown
+    [ ] 这是未完成的事项
+    [x] 这是已经完成的事项
+    ```
+- 【知识点】[99%的人都理解错了HTTP中GET与POST的区别](http://www.techweb.com.cn/network/system/2016-10-11/2407736.shtml)
+- 【TODO】学习[技术胖的 Flutter 的实战课](https://jspang.com/posts/2019/03/01/flutter-shop.html#post-comments)
 ### 24日
 - 【惊喜的发现】VSCode 在编辑 markdown 的时候，拷贝一个链接，选中你想添加链接的文本，直接按 ```command + V``` 即可快速创建超链
 

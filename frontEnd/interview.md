@@ -183,7 +183,7 @@ https://www.jianshu.com/p/df198914331b  vue首屏加载优化
 
 ### 模块化
 
-#### 模块化 - 语法
+1. 模块化 - 语法
 ```javascript
 /* util1.js */
 export default {
@@ -209,7 +209,7 @@ fn2();
 // 如果是 export 好几个，引入的时候要用大括号括起来，像这样  { fn1, fn2 } ，哪怕只有一个也要放在大括号里  { fn1 } 
 ```
 
-#### ES6 语法解析： babel
+2. ES6 语法解析： babel
 - 电脑中要有 node 环境， 运行 
     ```shell
     npm init
@@ -248,7 +248,7 @@ fn2();
     ```
 - .babelrc 不用太详细的了解，是 #$%^&*()*&^% (记助攻对 的一部分？ 没听清)
 
-#### 打包工具： webpack 
+3. 打包工具： webpack 
 - 安装
     ```shell
     # 建议在项目内安装 webpack 
@@ -285,7 +285,7 @@ fn2();
     3. 浏览器访问 [localhost:8881/index.html](http://localhost:8881/index.html)
     4. 会看到 页面 alert 了 fn1 fn2 ，控制台输出了 ```{a: 100}``` ， 说明 util1 和 util2 都被 webpack 打包到了 bundle.js 中了
 
-#### rollup
+4. rollup
 - vue 和 React 框架都是通过 [rollup](https://rollupjs.org/guide/zh/) 打包的 （这里是[英文网站](https://rollupjs.org/guide/en/)）
 - 重新搞一个文件夹，来学习 rollup 
     ```shell
@@ -347,27 +347,150 @@ fn2();
     2. rollup 打包的文件体积比 webpack 的要小
 
 
-##### 对比 webpack
+5. rollup 对比 webpack
 - rollup 功能单一 （专注打包）， webpack 功能强大（学习成本很高）
 - 参考设计原则和《Linux/Unix设计思想》，这两本书都提到了 “单一值原则” ，一个东西做好一件事儿就好了
 - 工具要劲量功能单一，可集成，可扩展
 - wangEditor 用的 gulp + rollup （ [wangEditor](https://github.com/wangfupeng1988/wangEditor) 是作者的一个开源项目）
 
 
-#### 总结 关于 JS 众多模块化标准
+6. 总结 关于 JS 众多模块化标准
 - 没有模块化的时候，代码冗余严重
 - AMD 成为**标准**， require.js （也有 CMD ，用的不是特别多）
 - 前端打包工具，grunt -> gulp -> webpack  ， nodejs 模块也可以被使用
-- 
+- ES6 出现，想统一现在所有模块化的标准
+- nodejs 积极支持，浏览器尚未统一
+- 你可以自造 lib ， 但是不要自造标准！！！
+
+7. 总结 & 问题解答
+- 语法： import export （ 注意有无 default ）
+- 环境：babel 是用来编译 ES6 语法的， 模块化可以用 webpack 和 rollup 
+- 扩展：说一下自己对模块化标准统一的期待
 
 
+### Class
+
+> 2-9 开始于 3点20  开会浪费了半个小时
+
+#### Class 和 普通构造函数有何区别
+- JS 构造函数 
+- Class 基本语法
+- 语法糖
+- 继承 
 
 
+1. JS 构造函数
+    ```javascript
+    function MathHandle(x, y){
+        this.x = x;
+        this.y = y;
+    }
 
+    MathHandle.prototype.add = function(){
+        return this.x + this.y;
+    };
 
+    var m = new MathHandle(1, 2);
+    console.log(m.add());
+    ```
 
+2. Class基本语法
+    ```javascript
+    class MathHandle {
+        // constructor 是一个构造器，相当于构造函数
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
 
+        // 相当于在原型中定义的方法
+        add(){
+            return this.x + this.y;
+        }
+    }
 
+    const m = new MathHandle(1, 2);
+    console.log(m.add());
+
+    typeof MathHandle;   // "function"
+    MathHandle === MathHandle.prototype.constructor;    // true
+
+    // 实例的 隐式原型 等于 构造函数的 显式原型
+    m.__proto__ === MathHandle.prototype;       // true
+    ```
+
+3. 语法糖 （这两种写法，本质是一样的， calss 相当于语法糖，书写更加简单，更方便从后端转前端的开发）
+    ```javascript
+    class MathHandle {}
+
+    typeof MathHandle;   // "function"
+    MathHandle === MathHandle.prototype.constructor;    // true
+    m.__proto__ === MathHandle.prototype;       // true
+
+    // 这种语法糖形式，看起来和实际原理不一样的东西，视频老师个人不太赞同
+    // 形式上强行模仿 java C# ， 却失去了它的本性和个性
+    ```
+4. class 继承
+- 回顾一下 JS 的继承
+    ```javascript
+    // 动物
+    function Animal(){
+        this.eat = function(){
+            console.log("animal eat");
+        }
+    }
+
+    // 狗
+    function Dog(){
+        this.bark = function(){
+            console.log("dog bark");
+        }
+    }
+
+    // 绑定原型，实现继承 （这里视频的老师没有将 构造函数 重新指向 Dog ，应该是要有这么一步的）
+    Dog.prototype = new Animal();
+
+    // 实例化 哈士奇
+    var hashiqi = new Dog();
+    ```
+
+- class 继承
+    ```javascript
+    class Animal {
+        constructor(name){
+            this.name = name;
+        }
+
+        eat(){
+            console.log(this.name + "eat");
+        }
+    }
+
+    class Dog extends Animal {
+        constructor (name){
+            // 注意 ！！！ 只要这个 class 有 extends 就得败 super 写上
+            // super(name) 相当于执行了被继承的 class 的 constructor ，并且把 name 传了进去
+            super(name);
+            this.name = name;
+        }
+
+        say(){
+            console.log(`${this.name} say`);
+        }
+    }
+
+    const dog = new Dog("哈士奇");
+    dog.say();
+    dog.eat();
+    ```
+- class 写继承 相较于 构造函数的继承，可读性更强，更方便初学者   
+
+5. 总结
+- Class 在语法上更加贴合面向对象的写法
+- Class 实现继承更加易读、易理解
+- 更易于写 java 等后端语言的使用
+- **本质**还是语法糖，使用 prototype 
+- 所有的语法糖都需要了解本质
 
 
 

@@ -24,6 +24,9 @@
 
 ## 7月
 ### 25日
+
+kandee  1qun 
+
 - 【TODO】[100本书](http://www.shejipi.com/161206.html) ， [这也是100本书](http://www.sohu.com/a/155546296_661888)
 - 【知识点】markdown 怎么写 todolist ， 注意：未完成的标记 ```[``` 和 ```]``` 中间有**一个空格**，不能多不能少
     ```markdown
@@ -32,7 +35,7 @@
     ```
 - 【知识点】[99%的人都理解错了HTTP中GET与POST的区别](http://www.techweb.com.cn/network/system/2016-10-11/2407736.shtml)
 - 【TODO】学习[技术胖的 Flutter 的实战课](https://jspang.com/posts/2019/03/01/flutter-shop.html#post-comments)
-- 【发现】github 的统计图颜色策略：
+- 【发现】github 的提交热力图颜色策略：
     ```json
     {
         "没有提交": "白色",
@@ -42,6 +45,7 @@
         "5次及以上次数提交": "最深绿色" 
     }
     ```
+    ![热力图](images/readme/thermogram.png){:width="100"}
 - 【经验】做点击反馈，不要太快，起码不要瞬间完成，如果相同位置会变成另一个可点的，容易出问题。学学苹果，苹果任何反馈都有一点点延时，用户感觉不到，但又确实存在，防止用户操作太快。
 
 ### 24日

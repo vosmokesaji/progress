@@ -23,6 +23,13 @@
 
 
 ## 7月
+- [mac技巧，不少我不会的](https://www.zhihu.com/question/33911186/answer/126286115)
+- [网络上有哪些免费的教育资源？ - 木子淇的回答 - 知乎](https://www.zhihu.com/question/19942068/answer/730647908)
+- [有哪些越早知道越好的人生经验？ - Even的回答 - 知乎](https://www.zhihu.com/question/266090769/answer/695965746)
+- [什么样的员工容易被提拔为管理者，他们有哪些共同特质？ - 韩大叔的回答 - 知乎](https://www.zhihu.com/question/283897068/answer/595124309)
+
+
+
 ### 25日
 
 kandee  1qun 
@@ -45,7 +52,7 @@ kandee  1qun
         "5次及以上次数提交": "最深绿色" 
     }
     ```
-    ![热力图](images/readme/thermogram.png){:width="100"}
+    ![热力图](images/readme/thermogram.png)
 - 【经验】做点击反馈，不要太快，起码不要瞬间完成，如果相同位置会变成另一个可点的，容易出问题。学学苹果，苹果任何反馈都有一点点延时，用户感觉不到，但又确实存在，防止用户操作太快。
 
 ### 24日

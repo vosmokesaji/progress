@@ -23,10 +23,16 @@
 
 
 ## 7月
+
+# 26日
 - [mac技巧，不少我不会的](https://www.zhihu.com/question/33911186/answer/126286115)
 - [网络上有哪些免费的教育资源？ - 木子淇的回答 - 知乎](https://www.zhihu.com/question/19942068/answer/730647908)
 - [有哪些越早知道越好的人生经验？ - Even的回答 - 知乎](https://www.zhihu.com/question/266090769/answer/695965746)
 - [什么样的员工容易被提拔为管理者，他们有哪些共同特质？ - 韩大叔的回答 - 知乎](https://www.zhihu.com/question/283897068/answer/595124309)
+    - 执行力强
+    - 以身作则
+    - 向上管理
+    - 激发他人
 
 
 

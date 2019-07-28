@@ -24,7 +24,8 @@
 
 ## 7月
 
-# 26日
+
+### 26日
 - [mac技巧，不少我不会的](https://www.zhihu.com/question/33911186/answer/126286115)
 - [网络上有哪些免费的教育资源？ - 木子淇的回答 - 知乎](https://www.zhihu.com/question/19942068/answer/730647908)
 - [有哪些越早知道越好的人生经验？ - Even的回答 - 知乎](https://www.zhihu.com/question/266090769/answer/695965746)
@@ -37,9 +38,6 @@
 
 
 ### 25日
-
-kandee  1qun 
-
 - 【TODO】[100本书](http://www.shejipi.com/161206.html) ， [这也是100本书](http://www.sohu.com/a/155546296_661888)
 - 【知识点】markdown 怎么写 todolist ， 注意：未完成的标记 ```[``` 和 ```]``` 中间有**一个空格**，不能多不能少
     ```markdown

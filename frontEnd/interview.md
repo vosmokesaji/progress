@@ -494,7 +494,6 @@ fn2();
 
 ### Promise 
 - Callback Hell (回调地狱)
-- Promise 语法
     ```javascript
     function loadImg(src, callback, fail){
         var img = document.creatElement("img");
@@ -513,6 +512,26 @@ fn2();
     }, function(){
         console.log("failed")
     });
+    ```
+- Promise 语法
+    ```javascript
+    function loadImg(src){
+        // 定义 Promise 实例
+        // resolve （解决） 和 reject  （拒绝） 都是函数，分别是成功和失败的回调
+        const promise = new Promise(function(resolve, reject){
+            var img = document.creatElement("img");
+            img.onload = function(){
+                resolve(img);
+            }
+            img.onerror = function(){
+                reject();
+            }
+            img.src = src;
+        });
+
+        // return Promise 实例
+        return promise;
+    }
     ```
 
 

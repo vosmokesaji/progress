@@ -496,7 +496,7 @@ fn2();
 - Callback Hell (回调地狱)
     ```javascript
     function loadImg(src, callback, fail){
-        var img = document.creatElement("img");
+        var img = document.createElement("img");
         img.onload = function(){
             callback(img);
         }
@@ -516,10 +516,10 @@ fn2();
 - Promise 语法
     ```javascript
     function loadImg(src){
-        // 定义 Promise 实例
+        // 创建 Promise 实例
         // resolve （解决） 和 reject  （拒绝） 都是函数，分别是成功和失败的回调
         const promise = new Promise(function(resolve, reject){
-            var img = document.creatElement("img");
+            var img = document.createElement("img");
             img.onload = function(){
                 resolve(img);
             }
@@ -532,29 +532,48 @@ fn2();
         // return Promise 实例
         return promise;
     }
+
+    // 使用
+    var src = "https://www.imooc.com/static/img/index/logo.png"
+    var result = loadImg(src);
+
+    // 第一个 function : 成功的回调， 第二个 function ： 失败的回调
+    result.then(function(img){
+        console.log(img.width);
+    }, function(){
+        console.log("failed");
+    })
+
+    // 一个 Promise 对象可以分开处理不同的事件
+    result.then(function(img){
+        console.log(img.height);
+    });
+
+    // 多个 then 可以处理不同的回调，一次干多件事儿 
     ```
+- 小结一下 Promise 的用法：
+    - 创建 Promis 实例，传入一个回调函数，函数要有 resolve 和 reject 这两个参数
+    - 在这个回调函数里你可以定义什么情况执行 resolve （一般是成功）， 什么情况执行 reject （一般是失败）
+    - 使用 Promise 实例的 .then() 监听结果，处理相应的 成功回调 或者 失败回调
 
 
 
 
+### ES6 其他常用功能
 
+- let/const
+    - let 定义变量
+    - const 定义常量（只能赋值一次，再次赋值会报错）
+- 多行字符 / 模板字符串
+    ```javacript
 
+    ```
+- 解构赋值
+- 块级作用域
+- 函数默认参数
+- 箭头函数 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+> 这些功能要么是解决了 JS 的问题，要么是让写法更简洁，容易阅读容易理解
 
 
 

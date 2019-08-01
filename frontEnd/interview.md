@@ -561,7 +561,7 @@ fn2();
 
 ### ES6 其他常用功能
 
-- let/const
+#### let/const
     - let 定义变量
     - const 定义常量（只能赋值一次，再次赋值会报错）
     ```javascript
@@ -577,7 +577,7 @@ fn2();
     const j = 10;
     j = 100;        // 报错
     ```
-- 多行字符 / 模板字符串 （都得用反引号）
+#### 多行字符 / 模板字符串 （都得用反引号）
     ```javascript
     // JS
     var name = "Tom", age = 10, html = "";
@@ -593,7 +593,7 @@ fn2();
                     <p>${age}</p>
                   </div>`;
     ```
-- 解构赋值
+#### 解构赋值
     ```javascript
     // JS
     var obj = {a: 100, b: 200, c: 300};
@@ -617,7 +617,7 @@ fn2();
     console.log(y);         // "yyy"
     console.log(z);         // "zzz"
     ```
-- 块级作用域（ 在代码块 ```{}``` 中声明的变量，在块外访问不到 ）
+#### 块级作用域（ 在代码块 ```{}``` 中声明的变量，在块外访问不到 ）
     ```javascript
     // JS
     var obj = {a: 100, b: 200, c: 300};
@@ -633,7 +633,7 @@ fn2();
     }
     console.log(item);      // undefined
     ```
-- 函数默认参数
+#### 函数默认参数
     ```javascript
     // JS
     // 如果没有传 b ，那 b 的值为 0
@@ -648,7 +648,7 @@ fn2();
 
     }
     ```
-- 箭头函数
+#### 箭头函数
     ```javascript
     // JS
     var arr = [1, 2, 3];
@@ -668,7 +668,7 @@ fn2();
         return item + 1;
     })
     ``` 
-- 箭头函数 特别重要的特点：
+#### 箭头函数 特别重要的特点：
     ```javascript
     function fn(){
         console.log("real", this);
@@ -691,11 +691,86 @@ fn2();
 > 这些功能要么是解决了 JS 的问题，要么是让写法更简洁，容易阅读容易理解
 
 
-
-
 ## 原型
+> Tips: 使用 zepto 和 jquery 讲原型，也算顺便解读了这二者的源码
+- 问题 
+    1. 说一个原型的实际应用
+    2. 原型如何实现它的扩展性
 
+- jquery 和 zepto 的简单应用
+    - zepto 如何使用原型
+    - jquery 如何使用原型
 
+    ```html
+    <p>jquery test 1</p>
+    <p>jquery test 2</p>
+    <p>jquery test 3</p>
+
+    <div id="div1">
+        <p>jquery test in div</p>
+    </div>
+
+    <script src="./jquery.3.2.1.js"></script>
+    <script>
+        var $p = $("p");
+        $p.css("font-size", "40px");
+
+        // 对这 4 个元素输出 html() 的时候，只会输出第一个，这是 jquery api 的规定
+        console.log($p.html());             // jquery test 1
+
+        var $div1 = $("#div1");
+        $div1.css("color", "blue");
+        console.log($div1.html());          // <p style="font-size: 40px;">jquery test in div</p>
+    </script>
+    ```
+- 当多个实例可以使用一套方法时（ 像 ```css()``` 和 ```html()``` 这样的方法 ），说明，方法是来自于一个函数的原型当中
+
+### 实际应用 - zepto 如何使用原型
+    ```javascript
+    // 空对象
+    var zepto = {};
+
+    zepto.init = function(selector){
+        // 源码中，这里的处理情况比较复杂，但因为这次只针对原型，所以这里就做了一点儿简化
+        var slice = Array.prototype.slice;
+        var dom = slice.call(document.querySelectorAll(selector));
+        return zepto.Z(dom, selector);
+    }
+
+    // 即使用 zepto 时候的 $
+    var $ = function(selector){
+        return zepto.init(selector);
+    }
+
+    // 这是 构造函数
+    function Z(dom, selector){
+        var i, len = dom ? dom.length : 0
+        for(i = 0; i < len; i++){
+            this[i] = dom[i];
+            this.length = len;
+            this.selector = selector || "";
+        }
+    }
+    
+    zepto.Z = function(dom, selector){
+        // 注意， 出现了 new 关键字
+        return new Z(dom, selector);
+    }
+
+    // 原型
+    $.fn = {
+        constructor: zepto.Z,
+
+        css: function(key, value){
+
+        },
+        html: function(value){
+
+        }
+    }
+
+    zepto.Z.prototype = Z.prototype = $.fn;
+    ```
 
 ## 异步
 

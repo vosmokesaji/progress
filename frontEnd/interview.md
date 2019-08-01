@@ -564,14 +564,129 @@ fn2();
 - let/const
     - let 定义变量
     - const 定义常量（只能赋值一次，再次赋值会报错）
-- 多行字符 / 模板字符串
-    ```javacript
+    ```javascript
+    // JS
+    var i = 10;
+    i = 100;
+    var j = 10;
+    j = 100;
 
+    // ES6
+    let i = 10;
+    i = 100;        // 正常
+    const j = 10;
+    j = 100;        // 报错
+    ```
+- 多行字符 / 模板字符串 （都得用反引号）
+    ```javascript
+    // JS
+    var name = "Tom", age = 10, html = "";
+    html += "<div>";
+    html += "<p>" + name + "</p>";
+    html += "<p>" + age + "</p>";
+    html += "</div>";
+
+    // ES6
+    const name = "Tom", age = 10;
+    const html = `<div>
+                    <p>${name}</p>
+                    <p>${age}</p>
+                  </div>`;
     ```
 - 解构赋值
-- 块级作用域
+    ```javascript
+    // JS
+    var obj = {a: 100, b: 200, c: 300};
+    var a = obj.a;
+    var c = obj.c;
+
+    var arr = ["xxx", "yyy", "zzz"];
+    var x = arr[0];
+
+    // ES6
+    const obj = {a: 100, b: 200, c: 300};
+    // 解构赋值的时候变量名必须和对象的 Key 一致才能赋值
+    const {a, c} = obj;
+    console.log(a);         // 100
+    console.log(c);         // 300
+
+    const arr = ["xxx", "yyy", "zzz"];
+    // 数组的解构赋值是按顺序来的， 如果被赋值的变量多于数组的长度， 多出来的变量为 undefined
+    const [x, y, z] = arr;
+    console.log(x);         // "xxx"
+    console.log(y);         // "yyy"
+    console.log(z);         // "zzz"
+    ```
+- 块级作用域（ 在代码块 ```{}``` 中声明的变量，在块外访问不到 ）
+    ```javascript
+    // JS
+    var obj = {a: 100, b: 200, c: 300};
+    for(var item in obj){
+        console.log(obj[item]);
+    }
+    console.log(item);      // "c"
+
+    // ES6
+    var obj = {a: 100, b: 200, c: 300};
+    for(let item in obj){
+        console.log(obj[item]);
+    }
+    console.log(item);      // undefined
+    ```
 - 函数默认参数
-- 箭头函数 
+    ```javascript
+    // JS
+    // 如果没有传 b ，那 b 的值为 0
+    function (a, b) {
+        if(b == null){
+            b = 0;
+        }
+    }
+
+    // ES6
+    function (a, b = 0){
+
+    }
+    ```
+- 箭头函数
+    ```javascript
+    // JS
+    var arr = [1, 2, 3];
+    arr.map(function(item){
+        return item + 1;
+    })
+
+    // ES6
+    var arr = [1, 2, 3];
+
+    // 如果函数只有一个参数，并且函数体制有一行的话 可以这么写
+    arr.map(item => return item + 1);
+
+    // 如果函数不止一个参数，要把参数用括号包起来
+    arr.map((item, index) => {
+        console.log(index);
+        return item + 1;
+    })
+    ``` 
+- 箭头函数 特别重要的特点：
+    ```javascript
+    function fn(){
+        console.log("real", this);
+        var arr = [1, 2, 3];
+
+        // JS
+        arr.map(function(item){
+            console.log("JS", this);
+            return item + 1;
+        })
+
+        // ES6
+        arr.map(item => {
+            console.log("ES6", this);
+        })
+    }
+    fn.call({a: 100});
+    ``` 
 
 > 这些功能要么是解决了 JS 的问题，要么是让写法更简洁，容易阅读容易理解
 

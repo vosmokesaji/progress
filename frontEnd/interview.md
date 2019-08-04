@@ -762,10 +762,10 @@ fn2();
         constructor: zepto.Z,
 
         css: function(key, value){
-
+            alert("css");
         },
         html: function(value){
-
+            return "this is html function";
         }
     }
 
@@ -774,8 +774,94 @@ fn2();
     window.$ = $
     ```
 
+### 实际应用 - jQuery 如何使用原型
+    ```javascript
+    // 定义构造函数
+    var init = jQuery.fn.init = function(selector){
+        var slice = Array.prototype.slice;
+        var dom = slice.call(document.querySelectorAll(selector));
+
+        var i, len = dom ? dom.length : 0;
+        for(i = 0; i < len; i++){
+            this[i] = dom[i];
+        }
+        this.length = len;
+        this.selector = selector || "";
+    }
+
+    // 初始化 jQuery.fn
+    jQuery.fn = jQuery.prototype = {
+        constructor: jQuery,
+
+        // 其他函数...
+        css: function(key, value){
+            alert("css");
+        },
+        html: function(value){
+            return "this is html function";
+        }
+    }
+
+    // 定义原型
+    init.prototype = jQuery.fn;
+
+    var jQuery = function(selector){
+        return new jQuery.fn.init(selector);
+    }
+
+    ```
+### 问题解答
+- 描述一下 jQuery 如何使用原型
+- 描述一下 zepto 如何使用原型
+- 自己的项目经验中哪些用到了原型
+
+### 如何体现原型的扩展性
+- 总结 jQuery 和 zepto 原型的使用
+- 插件机制 
+
+1. 在 zepto 实现中：
+    ```javascript
+    $.fn = {
+        constructor: zepto.Z,
+
+        css: function(key, value){
+            alert("css");
+        },
+        html: function(value){
+            return "this is html function";
+        }
+    }
+
+    zepto.Z.prototype = Z.prototype = $.fn;
+    ```
+    - 这段代码，为啥不把 这个对象直接赋值给 ```Z.prototype``` 而要通过 ```$.fn``` ？
+2. jQuery 的实现中：
+    ```javascript
+    jQuery.fn = jQuery.prototype = {
+        constructor: jQuery,
+
+        // 其他函数...
+        css: function(key, value){
+            alert("css");
+        },
+        html: function(value){
+            return "this is html function";
+        }
+    }
+
+    init.prototype = jQuery.fn;
+    ```
+    - 与 zepto 同样的疑问，为啥会有 ```jQuery.fn``` 这个东西？
+3. 答案就是 **因为要扩展插件**， 做一个简单的插件的例子
+    ```javascript
+    $.fn.getNodeName = function(){
+        return this[0].nodeName;
+    }
+    ```
+
+
 ## 异步
-17_Xtreme
+
 
 
 ## 虚拟 DOM
@@ -795,6 +881,13 @@ fn2();
 
 
 ## 总结
+
+
+
+
+
+
+
 
 
 

@@ -25,8 +25,12 @@
 
 ## 8月
 
+### 5日
+- 【想知道】ES Module 规范 、到底啥是类数组？
+- 【见闻】[任正非：人感知到自己的渺小，行为才开始伟大。](https://www.thepaper.cn/newsDetail_forward_3901763)
+
 ### 4日
-- 【知识点】[B站视频制作教程推荐](https://www.bilibili.com/read/cv960192?from=search)
+- 【TODO】学习[B站视频制作教程推荐](https://www.bilibili.com/read/cv960192?from=search)
 
 
 ### 3日

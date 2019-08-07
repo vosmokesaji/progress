@@ -24,9 +24,19 @@
 # 2019年
 
 ## 8月
+### 7日
+- 【知识点】安装 http-server ，快速启动一个 http服务 ：
+    ```shell
+    # 安装 （mac）
+    sudo npm install http-server -g
+
+    # 以当前文件夹为根目录，在 8881 端口启动一个 http 服务
+    http-server -p 8881
+    ```
+
 ### 6日
 - [有哪些比较好用的洗面奶？ - 老爸评测的回答 - 知乎](https://www.zhihu.com/question/21661845/answer/352741570)
-- 
+
 
 
 

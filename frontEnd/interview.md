@@ -883,9 +883,59 @@ fn2();
 
 
 ### 单线程、异步
-- 单线程 - 只有一个线程，同时只能只做一件事儿
+- 单线程 - 只有一个线程，**同时只能只做一件事儿**
 - 原因 - 为了避免 DOM 渲染的冲突
 - 解决方案 - 异步
+
+1. 单线程
+    ```javascript
+    // 循环运行期间，后边 JS 执行和 DOM 渲染会暂时卡顿
+    var i, sum = 0;
+    for(i = 0; i < 100000000; i++){
+        sum += 1;
+    }
+    console.log(sum);
+
+    // 如果放着 alert 不处理， 那么 JS 的执行和 DOM 渲染会暂时卡顿
+    console.log(1);
+    alert("hello");
+    console.log(2);
+    ```
+2. 原因 - 为了避免 DOM 渲染的冲突
+- 浏览器需要渲染 DOM 
+- JS 可以修改 DOM 结构
+- JS 执行的时候，浏览器渲染 DOM 会暂停
+- 两段 JS 也不能同时执行
+- H5 中有个 webworker 支持多线程，但是不能访问 DOM
+
+3. 解决方案 - 异步
+    ```javascript
+    console.log(100);
+     setTimeout(function(){         // setTimeout 是异步的
+         console.log(200);          // 反正 1000ms 之后执行
+     }, 1000);                      // 先不管它，先让其他 JS 代码运行
+     console.log(300);
+     console.log(400);
+
+
+    // ajax
+    console.log(100);
+    $.ajax({
+        url: "xxx",
+        success: function(){
+            console.log(result);
+        }
+    })
+    console.log(300);
+    console.log(400);
+    ```
+
+4. 异步 - 小结
+    - 问题一： 没有按照代码书写顺序执行
+    - 问题二： callback 中不容易模块化
+
+5. 问题解答： **什么是单线程？和异步有什么关系？**
+    - 单线程就是同一时间只能做
 
 ## 虚拟 DOM
 

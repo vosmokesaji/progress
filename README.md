@@ -24,9 +24,14 @@
 # 2019年
 
 ## 8月
+### 14日
+- 【前端】[css 技巧](https://qishaoxuan.github.io/css_tricks/)
+- 【前端】[js 技巧](https://qishaoxuan.github.io/js_tricks/)
+- 【前端】[TypeScript 教程](https://www.cnblogs.com/tansm/p/TypeScript_Handbook.html)
+- 【前端】[TypeScript 入门教程](https://ts.xcatliu.com/)
+
 ### 13日
 - 【前端】[Bootstrap：弹出框和提示框效果以及代码展示](https://www.cnblogs.com/cpcpc/p/7233898.html)
-
 
 
 ### 7日
@@ -41,9 +46,6 @@
 
 ### 6日
 - [有哪些比较好用的洗面奶？ - 老爸评测的回答 - 知乎](https://www.zhihu.com/question/21661845/answer/352741570)
-
-
-
 
 
 ### 5日

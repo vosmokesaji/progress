@@ -24,11 +24,25 @@
 # 2019年
 
 ## 8月
+
+### 15日
+- 【知识点】[动画片头的Aniplex是什么？解开误区，这些都不是动画制作公司！](https://baijiahao.baidu.com/s?id=1623513655498975227&wfr=spider&for=pc)
+- 【想知道】财报怎么看？
+- 【相机】[A7M3出了，出的好，我选A7R3（20180514）](http://www.360doc.com/content/18/0916/17/37057107_787157624.shtml)
+
+
+
 ### 14日
 - 【前端】[css 技巧](https://qishaoxuan.github.io/css_tricks/)
 - 【前端】[js 技巧](https://qishaoxuan.github.io/js_tricks/)
 - 【前端】[TypeScript 教程](https://www.cnblogs.com/tansm/p/TypeScript_Handbook.html)
 - 【前端】[TypeScript 入门教程](https://ts.xcatliu.com/)
+- 【TODO】至少阅读一遍[《JavaScript 高级程序设计》](https://book.douban.com/subject/10546125/)
+- 【知识点】品牌背书
+    - 品牌为了增强其在市场上的承诺强度，通常还会借用第三方的信誉，然后第三方以一种明示或者暗示的方式来对原先品牌的消费承诺作出再一次的确认和肯定。这种品牌营销策略，我们称其为“品牌背书”（Brand Endorsement）。通过品牌背书，被背书品牌从而达到对于消费者先前承诺的再度强化，并与消费者建立一种可持续的、可信任的品牌关联。
+- 【知识点】[linux ln 用法，知识（软链接和硬链接）](https://blog.csdn.net/mengzuchao/article/details/80426316)
+- 【知识点】[Notion 帮助](https://www.notion.so/Help-Support-e040febf70a94950b8620e6f00005004)
+
 
 ### 13日
 - 【前端】[Bootstrap：弹出框和提示框效果以及代码展示](https://www.cnblogs.com/cpcpc/p/7233898.html)

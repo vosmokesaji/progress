@@ -902,8 +902,7 @@ fn2();
     console.log(2);
     ```
 2. 原因 - 为了避免 DOM 渲染的冲突
-- 浏览器需要渲染 DOM 
-- JS 可以修改 DOM 结构
+- 浏览器需要渲染 DOM 、 JS 可以修改 DOM 结构
 - JS 执行的时候，浏览器渲染 DOM 会暂停
 - 两段 JS 也不能同时执行
 - H5 中有个 webworker 支持多线程，但是不能访问 DOM
@@ -931,11 +930,316 @@ fn2();
     ```
 
 4. 异步 - 小结
-    - 问题一： 没有按照代码书写顺序执行
-    - 问题二： callback 中不容易模块化
+    - 异步会导致的问题一： 没有按照代码书写顺序执行，可读性差
+    - 异步会导致的问题二： callback 中不容易模块化
 
 5. 问题解答： **什么是单线程？和异步有什么关系？**
-    - 单线程就是同一时间只能做
+    - 单线程就是同一时间只能做一件事儿，两段js不能同时执行
+    - 原因就是为了避免 DOM 渲染的冲突
+    - 异步是一种 “无奈” 的选择，虽然有很多问题
+
+### 什么是 event-loop
+- 单线程 - 同一时间只能做一件事儿
+- 原因 - 避免 DOM 渲染的冲突
+- 解决方案 - 异步
+- **异步的实现方式 - event loop**
+- 什么是 **event loop**
+    1. 也叫事件轮询，是 JS 实现异步的**具体解决方案**
+    2. 同步的代码，直接在主进程（or 线程？）中执行
+    3. 异步函数先放在 **异步队列** 中（如果有延时就延时放在异步队列中）
+    4. 待同步代码执行完毕， **轮询执行** 异步队列代码
+
+    ```javascript
+    // 实例分析 1
+    setTimeout(function(){
+        console.log(100);
+    }, 100);
+    console.log(200);
+
+    // 以下是对这段代码的分析
+    // 主进程
+    console.log(200);
+
+    // 异步队列
+    function(){
+        console.log(100);
+    }
+    ```
+
+    ```javascript
+    // 实例分析 2
+    setTimeout(function(){
+        console.log(11);
+    }, 100);
+    setTimeout(function(){
+        console.log(2);
+    });
+    console.log(3);
+
+    // 以下是对这段代码的分析
+    // 主进程
+    console.log(3);
+
+    // 异步队列
+    // 立刻被放入
+    function(){
+        console.log(2);
+    }
+
+    // 100ms 后被放入
+    function(){
+        console.log(1)
+    }
+    ```
+
+    ```javascript
+    // 实例分析 3
+    $.ajax({
+        url: "xxx",
+        success: function(){
+            console.log('a');
+        }
+    });
+    setTimeout(function(){
+        console.log('b');
+    }, 100);
+    setTimeout(function(){
+        console.log('c');
+    });
+    console.log('d');
+
+    // 以下是对这段代码的分析
+    // 下边的三个执行顺序和 实例2 一样
+
+    // ajax 请求成功的时间不定，
+    // 如果 ajax 请求成功的时间小于100ms ，
+    function(){
+        console.log('a');
+    }
+    // 会先于
+    function(){
+        console.log('b');
+    }
+    // 被放到异步队列中
+    // 结果是 d c a b
+
+    // 如果 ajax 请求成功的时间大于100ms ，结果是 d c b a
+    ```
+
+### jQuery 的 Deferred
+- jQuery 1.5 的变化
+- 使用 jQuery Deferred
+- 初步引入 Promise 概念
+
+
+- jQuery 1.5 之前
+    ```javascript
+    var ajax = $.ajax({
+        url: "data.json",
+        success: function(){
+            console.log("success1");
+            console.log("success2");
+            console.log("success3");
+        },
+        error: function(){
+            console.log("error");
+        }
+    })
+    console.log(ajax);  // 返回一个 XHR 对象
+    ```
+- jQuery 1.5 之后
+    ```javascript
+    var ajax = $.ajax("data.json");
+    ajax.done(function(){
+            console.log("success1");
+        })
+        .fail(function(){
+            console.log("error");
+        })
+        .done(function(){
+            console.log("success2");
+        })
+    })
+    console.log(ajax);  // 返回一个 deferred 对象
+
+    // 还可以这么写 ， 很像 Promise 的写法
+    var ajax = $.ajax("data.json");
+    ajax
+    .then(function(){
+        console.log("success1");
+    }, function(){
+        console.log("error1");
+    })
+    .then(function(){
+        console.log("success2");
+    }, function(){
+        console.log("error2");
+    })
+    ```
+- Promise 是在 2015 年被加入 ES6 标准的， jquery 的 Deferred 早在1.5 的时候就有这种写法了
+- jQuery 1.5 的变化
+    1. 无法改变 JS 异步和单线程的本质
+    2. 只能从写法上杜绝 callback 这种形式
+    3. 它是一种语法糖形式，但是**解耦**了代码
+    4. 很好的提现了： 开放封闭原则（对扩展开放，对修改封闭）
+    
+> 23种设计模式，5个设计原则
+- 开放封闭原则：
+    - 对多人维护有好处，你不改我的代码，我也不改你的代码，要修改的话扩展就可以了；
+    - 对测试回归也有好处，如果你要修改原来的代码，测试就要通通回归一遍，如果是扩展的代码，只要测试扩展的部分就行。大大减少了回归测试的成本
+
+#### Deferred 应用
+    ```javascript
+    // 给出一段非常简单的异步代码，使用 setTimeout 函数
+    var wait = function(){
+        var task = function(){
+            console.log("执行完成！");
+        }
+        setTimeout(tast, 2000);
+    }
+    wait();
+
+    // 新增需求： 要在执行完成之后 进行某些特别复杂的操作，代码可能会很多。而且分好多步骤
+    // 使用 jQuery Deferred
+    function waitHandle(){
+        var dtd = $.Deferred();
+
+        var wait = function(_dtd){       // 要求传入一个 deferred 对象
+            var task = function(){
+                console.log("执行完成")；
+                _dtd.resolve();      // 表示异步任务已经完成
+                // dtd.reject();       // 表示异步任务失败或出错
+            }
+            setTimeout(task, 2000);
+            return _dtd;            // 要求返回 deferred 对象
+        }
+
+        // 注意：这里一定要有 返回值
+        return wait(dtd);
+    }
+
+    var w = waitHandle()
+    w.then(function(){
+        console.log("OK 1");
+    }, function(){
+        console.log("error 1");
+    })
+    .then(function(){
+        console.log("OK 2");
+    }, function(){
+        console.log("error 2");
+    })
+
+    // 开放封闭原则
+    // 如果有很多的处理逻辑，可以分好几个 then 来写
+    // 这就是 对扩展开放 ， 对修改封闭
+    // 如果你要新增别的逻辑，可以新增 .then (修改bug 和 完善现有逻辑除外)
+    ```
+- dtd 的 API 可以分为两类，用意不同
+- 第一类： ```dtd.resolve()   dtd.reject()``` ，用来决定成功 or 失败
+- 第二类： ```dtd.then()  dtd.done()  dtd.fail()``` ， 用来执行成功 or 失败的处理逻辑
+- 这两类应该分开，否则后果很严重！
+- 【测试】可以在上边的代码最后执行 dtd.reject() 试一下后果
+- 怎么解决这个问题呢？
+    ```javascript
+    function waitHandle(){
+        var dtd = $.Deferred();
+        var wait = function(_dtd){
+            var task = function(){
+                console.log("执行完成")；
+                _dtd.resolve();
+            }
+            setTimeout(task, 2000);
+
+            // 注意：这里不返回 deferred 对象 ，而是返回 promise 
+            return _dtd.promise();
+        }
+
+        return wait(dtd);
+    }
+
+
+    // 经过上边的改动， w 接收的就是一个 promise 对象
+    var w = waitHandle()
+    $.when(w)
+    .then(function(){
+        console.log("OK 1");
+    }, function(){
+        console.log("error 1");
+    })
+    .then(function(){
+        console.log("OK 2");
+    }, function(){
+        console.log("error 2");
+    })
+
+    // w.reject();    // 执行这句话会报错
+    // 返回的 promise 对象通过 $.when() 封装后只有 .then()  .done()  .fail() 这些方法
+    ```
+#### 问题解答
+- jQuery 1.5 前后的 ajax 改变举例
+- 说明如何简单封装，使用 Deferred （最好提及 开放封闭原则）
+- 说明 promise 和 Deferred 的区别
+    - Deferred 对象有 reslove reject 这种主动触发的函数，也有 then done fail 这种被动监听的函数，这些函数都能被访问是不行的，容易被滥用
+    - 通过生成一个 promise 对象类隔离， promise对象只能被动监听
+> 想深入理解它，就需要知道它的前世今生。
+> 老师很反感新概念直接填鸭式的告诉你怎么用。
+> 比如你想了解计算机，你要先了解计算机的历史：从图灵机开始，什么是图灵完备。。。
+
+
+### Promise 的基本使用和原理
+#### 基本语法回顾
+    ```javascript
+    function loadImg(src){
+        // 创建 Promise 实例
+        // resolve （解决） 和 reject  （拒绝） 都是函数，分别是成功和失败的回调
+        const promise = new Promise(function(resolve, reject){
+            var img = document.createElement("img");
+            img.onload = function(){
+                resolve(img);
+            }
+            img.onerror = function(){
+                reject();
+            }
+            img.src = src;
+        });
+
+        // return Promise 实例
+        return promise;
+    }
+
+    // 使用
+    var src = "https://www.imooc.com/static/img/index/logo.png"
+    var result = loadImg(src);
+
+    // 第一个 function : 成功的回调， 第二个 function ： 失败的回调
+    result.then(function(img){
+        console.log(img.width);
+    }, function(){
+        console.log("failed");
+    })
+
+    // 一个 Promise 对象可以分开处理不同的事件（可以链式调用）
+    result.then(function(img){
+        console.log(img.height);
+    });
+
+    // 多个 then 可以处理不同的回调，一次干多件事儿 
+    ```
+
+#### 异常捕获
+> 任何程序开发都需要异常捕获，因为一般没法保证程序一定不出问题。不能让程序一出现错误就崩溃吧。程序要有一定的健壮性。
+
+
+#### 多个串联
+
+
+#### Promise.all 和 Promise.race
+- ```Promise.all``` 所有请求都完成
+- ```Promise.race``` 第一个请求完成
+
+
+#### Promise 标准
 
 ## 虚拟 DOM
 

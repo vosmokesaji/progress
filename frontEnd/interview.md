@@ -524,7 +524,7 @@ fn2();
                 resolve(img);
             }
             img.onerror = function(){
-                reject();
+                reject("图片加载失败");
             }
             img.src = src;
         });
@@ -1199,7 +1199,7 @@ fn2();
                 resolve(img);
             }
             img.onerror = function(){
-                reject();
+                reject("图片加载失败");
             }
             img.src = src;
         });
@@ -1215,6 +1215,11 @@ fn2();
     // 第一个 function : 成功的回调， 第二个 function ： 失败的回调
     result.then(function(img){
         console.log(img.width);
+
+        // 如果没有这个 return img ，那第二个 .then 中使用 img 的话会报错 undefined 
+        // 这里还有点疑问，有点儿乱。老师讲的上下不一样吗？ 可以看 【Promise 标准】 那一小节，待确定
+        // 思考了一下 ，这里用到的返回值是指 img 并不影响下一个 .then 服务的 promise 对象，嗯，应该是这样，还是待确认，待试验。 
+        return img;
     }, function(){
         console.log("failed");
     })
@@ -1227,19 +1232,123 @@ fn2();
     // 多个 then 可以处理不同的回调，一次干多件事儿 
     ```
 
+> 如果有的老版本浏览器没有支持 ```Promise``` 可以下载 ```bluebird``` 
+
+
 #### 异常捕获
 > 任何程序开发都需要异常捕获，因为一般没法保证程序一定不出问题。不能让程序一出现错误就崩溃吧。程序要有一定的健壮性。
-
+- ```.then()``` 可以接受两个参数，第一个是成功的回调，第二个是失败的回调。
+- 但我们如果要进行异常捕获，我们规定：**只给 ```.then()``` 传一个 ```function``` ，最后统一用 ```cache``` 捕获异常**
+- 用法：在多个 ```.then()``` 的最后，使用 ```.catch()``` 捕获异常
+    ```javascript
+    result.then(function(img){
+        console.log(img.width);
+        return img;
+    }).then(function(img){
+        console.log(img.height);
+    }).catch(function(err){
+        // 失败或者 报异常的，我们统一让 catch 去管
+        console.log(err);
+    })
+    ```
 
 #### 多个串联
+    ```javascript
+    // 需求： 先加载第一个，第一个加载完成再加载第二个。
+    var src1 = "https://www.baidu.com/favicon.ico";
+    var result1 = loadImg(src1);
+    var src2 = "https://www.bilibili.com/favicon.ico";
+    var result2 = loadImg(src2);
+
+    // 链式操作
+    result1.then(function(img){
+        console.log("第一张图片加载完成");
+
+        // 这里是关键
+        return result2;
+    }).then(function(img){
+        // 这个 then 的第一个参数就是 result2 的成功回调
+        console.log("第二张图片加载完成")
+    }).catch(function(err){
+        console.log(err);
+    })
+    ```
+
 
 
 #### Promise.all 和 Promise.race
-- ```Promise.all``` 所有请求都完成
-- ```Promise.race``` 第一个请求完成
+- ```Promise.all``` 所有请求都完成（all: 全部）
+- ```Promise.race``` 第一个请求完成（race: 竞赛，赛跑）
+    ```javascript
+    // Promise.all 接收一个包含多个 promise 对象的数组
+    // 待全部完成之后，统一执行 success
+    Promise.all([result1, result2]).then(datas => {
+        // 接收到的 datas 是一个数组，依次包含了多个 peomise 返回的内容
+        console.log(datas[0]);
+        console.log(datas[1]);
+    });
 
+    // Promise.race 接收一个包含多个 promise 对象的数组
+    // 只要有一个完成，就执行 success
+    Promise.all([result1, result2]).then(data => {
+        // data 即最先执行完成的 promise 的返回值
+        console.log(data);
+    });
+    ```
 
 #### Promise 标准
+- 关于 “标准” 的闲谈
+    - 任何技术的 **推广 & 使用** 都需要一套 **标准** 来支撑
+    - 如 ```HTML``` ```JavaScript``` ```CSS``` ```HTTP``` 等，无规矩不成方圆
+    - **任何不符合标准的东西，终将会被用户抛弃**
+    - **不要挑战标准，不要自造标准**
+- 状态变化
+    - 三种状态： ```pending``` 、 ```fulfilled``` 、 ```rejected```
+    - 初始状态是 ```pending```
+    - ```pending``` 可以变为 ```fulfilled``` ，或者 ```pending``` 变为 ```rejected```
+    - 状态变化不可逆
+- then
+    - Promise 实例必须实现（这类应该是 **调用** 吧） then 这个方法
+    - .then() 可以接收两个函数作为参数，第一个成功回调，第二个失败回调
+    - .then() 返回的是一个 Promise 实例 
+        - 如果 .then 的回调函数中没有明文返回 promise 实例，那么这个 .then 返回的就是本身的这个 promise 实例，所以我们可以对这个 promise 实例继续 .then
+        - 如果 .then 的回调函数返回了另外一个 promise 实例，那后边再执行 .then 的时候，其实执行的是刚刚返回的那个 promise 实例的 .then ）
+        ```javascript
+        // 两个 then 都是 result 的 then
+        var result = loadImg(src);
+        result.then(function(img){
+            console.log(img.width);
+        }, function(){
+            console.log("filed")
+        }).then(function(img){
+            console.log(img.height);
+        })
+
+        // 第一个 then 是 result1 的， 因为第一个的回调函数 return 了 result2
+        // 所以第二个 then 成为了 result2 的
+        result1.then(function(img){
+            console.log("第一张图片加载完成");
+
+            // 这里是关键
+            return result2;
+        }).then(function(img){
+            // 这个 then 的第一个参数就是 result2 的成功回调
+            console.log("第二张图片加载完成")
+        }).catch(function(err){
+            console.log(err);
+        })
+        ```
+
+#### 问题解答
+- 基本语法（创建实例，创建的时候定义啥时候成功、啥时候失败；实例 .then .catch）
+- 如何捕获异常（ Error 和 reject 都考虑，都可以通过 catch 捕获）
+- 多个串联 - 链式执行 
+- Promise.all 和 Promise.race
+- Promise 标准，状态变化的方向 ， then 函数
+
+### async / await
+- Promise 的 then 只是将
+
 
 ## 虚拟 DOM
 

@@ -24,6 +24,12 @@
 # 2019年
 
 ## 8月
+### 20日
+- 【知识点】[文档 - Markdown 语法](https://zh.mweb.im/markdown.html)
+- 【知识点】[Markdown 語法官方說明繁體中文版](https://zh.mweb.im/markdown-syntax-guide-full-version-zh.html)
+
+
+
 ### 18日
 - 【想知道】计算机的前世今生
 - 【想知道】 ```Promise``` 的 ```catch``` 异常捕获必须只能让 ```.then()``` 接受一个函数吗？，如果 ```.then()``` 既接受了两个函数，又写了 ```.catch()``` ，在有错误的时候会发生什么？

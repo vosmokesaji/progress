@@ -24,6 +24,17 @@
 # 2019年
 
 ## 8月
+### 27日
+- 【见闻】 为什么 Mac 可以不粘贴 Intel 标志？
+    - Jobs的回答：We like our own sticker. (群笑)We’re very proud to ship Intel products in Macs. I mean, they are screamers. And combined with our operating system, we’ve really tuned them well together, so we’re really proud of that. It’s just that everyone knows we’re using Intel processors, and so I think putting a lot of stickers on the box is just redundant. We’d rather tell them about the product inside the box, and they know it’s got an Intel processor.
+    - 回答很有艺术性。大概意思就是希望产品是个整体给客户，客户就已经知道在用Intel CPU，没必要单独标记。
+    - Intel inside的提出人得到了Intel里面的创新最高奖IAA，该案例也被哈弗列入最佳商业案例。在几十年的宣传中，Intel的品牌价值得到了大幅增长。这个小小的logo让沉默在机箱里的CPU凸显出来了，成了整机品质的代表。它和微软的logo搭档，变成当时每个笔记本电脑的必备部分。
+    - 微软的logo需要通过微软的WHQL认知，实际上是要花钱的（尽管很少），而Intel的logo是会补贴钱给OEM。尽管补贴具体数目和各自厂商的品牌和出货量相关，但因为笔记本市场的激烈竞争和产品的同质化，这个logo和它背后的补贴变得不可或缺。
+    - Apple却不一样，它有自己的品牌和独特的客户群，它自己的品牌形象比Intel的更高，产品的毛利率更高，当然看不上Intel的logo和后面的那点补贴了。Apple带了头之后，和他有类似定位的微软Surface系列当然萧规曹随，并不贴logo，甚至面向学生的廉价笔记本chrombook都不贴Intel的logo了。
+- 【网页】[MikuTools - 工具集合](https://tools.imiku.me)
+- 【知识点】树莓派 是单片机
+- 【网页】[有哪些软件堪称神器，却不为大众所知？ - 彭宏豪的回答 - 知乎](https://www.zhihu.com/question/300735799/answer/767428571)
+
 ### 24日
 - 【知识点】【计算机】【CPU】 [从多线程到Event Loop全面梳理](https://juejin.im/post/5d5b4c2df265da03dd3d73e5?utm_source=gold_browser_extension)
     - 进程就好比工厂的车间，它代表CPU所能处理的单个任务。 进程之间相互独立，任一时刻，CPU总是运行一个进程，其他进程处于非运行状态。CPU使用 **时间片轮转进度算法** 来实现同时运行多个进程。

@@ -936,7 +936,7 @@ fn2();
 5. 问题解答： **什么是单线程？和异步有什么关系？**
     - 单线程就是同一时间只能做一件事儿，两段js不能同时执行
     - 原因就是为了避免 DOM 渲染的冲突
-    - 异步是一种 “无奈” 的选择，虽然有很多问题
+    - 异步是一种 “无奈” 的选择，虽然有很多问题（回调地狱、书写顺序和执行顺序不一样）
 
 ### 什么是 event-loop
 - 单线程 - 同一时间只能做一件事儿
@@ -1274,8 +1274,6 @@ fn2();
     })
     ```
 
-
-
 #### Promise.all 和 Promise.race
 - ```Promise.all``` 所有请求都完成（all: 全部）
 - ```Promise.race``` 第一个请求完成（race: 竞赛，赛跑）
@@ -1323,6 +1321,7 @@ fn2();
     - .then() 返回的是一个 Promise 实例 
         - 如果 .then 的回调函数中没有明文返回 promise 实例，那么这个 .then 返回的就是本身的这个 promise 实例，所以我们可以对这个 promise 实例继续 .then
         - 如果 .then 的回调函数返回了另外一个 promise 实例，那后边再执行 .then 的时候，其实执行的是刚刚返回的那个 promise 实例的 .then ）
+        - 
         ```javascript
         // 两个 then 都是 result 的 then
         var result = loadImg(src);
@@ -1350,6 +1349,7 @@ fn2();
         ```
 
 #### 问题解答
+
 - 基本语法（创建实例，创建的时候定义啥时候成功、啥时候失败；实例 .then .catch）
 - 如何捕获异常（ Error 和 reject 都考虑，都可以通过 catch 捕获）
 - 多个串联 - 链式执行 
@@ -1357,7 +1357,11 @@ fn2();
 - Promise 标准，状态变化的方向 ， then 函数
 
 ### async / await
+
+- async / await 是 es7 中的， babel 也支持
+- node 中有一个 KOA 是用 async / await 实现的
 - Promise 的 then 只是将 callback 拆分了，他的邪法还是一个异步的写法
+
     ```javascript
     var w = waitHandle()
     w.then(function(){
@@ -1371,11 +1375,73 @@ fn2();
         console.log("error 2");
     })
     ```
+
     - 相对于 ```JQuery 1.5``` 之前的 ```ajax``` 的 ```callback``` 的写法来说， ```then``` 是将 ```callback``` 拆分了，一个 ```callback``` 可以拆分成好多个 ```then``` 
     - 它的本质还是 callback
-- async / await 是最直接的同步写法
-- 
+- async / await 是最直接的同步写法（解决了什么问题？）
+  
+    ```javascript
+    import "babel-polyfill";
 
+    function loadImg(src){
+        // 创建 Promise 实例
+        // resolve （解决） 和 reject  （拒绝） 都是函数，分别是成功和失败的回调
+        const promise = new Promise(function(resolve, reject){
+            var img = document.createElement("img");
+            img.onload = function(){
+                resolve(img);
+            }
+            img.onerror = function(){
+                reject("图片加载失败");
+            }
+            img.src = src;
+        });
+
+        // return Promise 实例
+        return promise;
+    }
+
+    var src1 = "https://www.baidu.com/favicon.ico";
+    var src2 = "https://www.bilibili.com/favicon.ico";
+
+    // async / await 用法
+    const load = async function(){
+        const result1 = await loadImg(src1);
+        console.log(result1);
+        const result2 = await loadImg(src2);
+        console.log(result2);
+    }
+    load();
+
+    // 注意 ： 如果要用 webpack 打包这段代码，需要安装 babel-polill 并引入
+    // npm install -D babel-polyfill
+    ```
+
+- 使用 await ，函数必须使用 async 标识
+- await 后边跟的是一个 promise 实例
+- 需要 babel-polyfill (兼容)
+
+#### 问题解答思路
+- 基本语法
+- async / await 使用了  Promise ，并没有和 Promise 冲突
+- 完全是同步的写法，再也没有回调函数
+- 但是：改变不了JS单线程、异步的本质
+
+### 异步的总结
+- 什么是单线程， 和异步有什么关系？
+- 什么是 event-loop
+- 是否用过 jquery 的 deferred
+- Promise 的基本使用和原理
+- 介绍一下 async /  await
+- 当前异步的解决方案
+    - jQuery Deferred
+    - Promise （blue bird）
+    - async / await
+    - Generator （解释不讲的原因）
+        - 原理比较复杂，学习成本高，差不多要讲两个小时
+        - 不是异步的直接代替方案
+        - 有更好的更简洁的解决方案 async / await
+        - koa 也早已 “弃暗投明” 
 
 ## 虚拟 DOM
 

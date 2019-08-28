@@ -24,6 +24,10 @@
 # 2019年
 
 ## 8月
+### 28日 
+- 【要学】设计模式、设计原则
+
+
 ### 27日
 - 【见闻】 为什么 Mac 可以不粘贴 Intel 标志？
     - Jobs的回答：We like our own sticker. (群笑)We’re very proud to ship Intel products in Macs. I mean, they are screamers. And combined with our operating system, we’ve really tuned them well together, so we’re really proud of that. It’s just that everyone knows we’re using Intel processors, and so I think putting a lot of stickers on the box is just redundant. We’d rather tell them about the product inside the box, and they know it’s got an Intel processor.

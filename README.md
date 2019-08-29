@@ -24,6 +24,16 @@
 # 2019年
 
 ## 8月
+### 29日
+- 【解决】[Mac安装powerline 权限问题](https://blog.csdn.net/Mona_233/article/details/54563416)
+    - 基于用户的权限来安装模块包显得更加合理。   ```pip install powerline-status --user -U```
+- 【同感】安装 Powerline 的方法有很多种，我们可以通过 pip 或者 git 等工具，我推荐使用 pip 并且将其安装在根目录下 （也就是 /usr/ 目录中）需要注意的是在安装之前我们要检查是否自己已经安装过了 Powerline **（我就是那种有时候自己都不知道在电脑里装了什么的人）** 我们可以使用命令： ```pip show powerline-status```
+- 【折腾】[iTerm2 主题](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes)
+    - [关于 iTerm2 你不知道的一些事](https://jianshu.com/p/3436bcb17a03)
+    - [iTerm 2(for mac) && Oh My Zsh &&自动补全](https://www.jianshu.com/p/892bd2a7936a)
+    - [最漂亮（ iTerm2+oh-my-zsh配色）](https://www.jianshu.com/p/246b844f4449)
+- 【发现】[GTD最全面教程，从入门到精通](https://www.jianshu.com/p/cbf62bbe39c1)
+
 ### 28日 
 - 【要学】设计模式、设计原则
 

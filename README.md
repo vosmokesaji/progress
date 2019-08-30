@@ -7,7 +7,7 @@
 - 【硬件】通常是一些数码产品相关的知识或者问题
 - 【想法】包括想做的事儿，以及一些突发奇想
 - 【思考】吾日三省吾身 的 “省”
-- 【知识点】字面意思，往往会会跟着一些知识点所属的范畴标签，目前已经出现过的标签
+- 【知识】字面意思，往往会会跟着一些知识所属的范畴标签，目前已经出现过的标签
     - 【Markdown】
     - 【JavaScript】
     - 【iOS】
@@ -21,9 +21,31 @@
 - 【TODO & DOWN】如果 TODO 解决了，会改成这个，并在末尾标注解决的日期。像这样  2019-07-12
 - > 这种是引用
 
+# 长时间的计划
+- [ ] 知识：计算机起源 & 历史
+- [ ] 技能：前端课程，耗时预估已统计
+- [ ] 能力：PMP 项目管理课程
+- [ ] 技能：许岑的 KeyNote 课程学习
+- [ ] 兴趣：学吉他，不能吃灰了
+- [ ] 读书：《图解HTTP》
+- [ ] 技能：驾照考试
+- [ ] 知识：算法学习
+
+
 # 2019年
 
 ## 8月
+### 30日
+- 【知识】[计算机的本质 ---- 起源](https://www.cnblogs.com/mq0036/p/8566161.html)
+    - 特别喜欢这种带有心路历程的文章，并且以容易理解的方式还原了知识的由来和发展的历程，很接地气。不像单纯的技术文章那样只讨论技术。
+    - 其中也不乏对读者的鼓励，消除读者对未知的敬畏感（见： 2、继电器——信号的传递，最后一段）
+    - 每当知识要上一个台阶时，作者就会跳出来提示读者，在继续之前，你必须理解xxx，帮助读者更好的继续阅读（见： 3、门电路——信号的关联，最后一段： **你必须开始习惯这种抽象**）
+    - 作者与读者站在同一个角度，提出读者同样会产生的疑问，并和读者一起解决，很有带入感（见： 5、触发器——信号的保存，第一段）
+    - 这篇文章也算是 《编码·隐匿在计算机软硬件背后的语言》 的读书分享
+
+
+
+
 ### 29日
 - 【解决】[Mac安装powerline 权限问题](https://blog.csdn.net/Mona_233/article/details/54563416)
     - 基于用户的权限来安装模块包显得更加合理。   ```pip install powerline-status --user -U```
@@ -46,11 +68,11 @@
     - 微软的logo需要通过微软的WHQL认知，实际上是要花钱的（尽管很少），而Intel的logo是会补贴钱给OEM。尽管补贴具体数目和各自厂商的品牌和出货量相关，但因为笔记本市场的激烈竞争和产品的同质化，这个logo和它背后的补贴变得不可或缺。
     - Apple却不一样，它有自己的品牌和独特的客户群，它自己的品牌形象比Intel的更高，产品的毛利率更高，当然看不上Intel的logo和后面的那点补贴了。Apple带了头之后，和他有类似定位的微软Surface系列当然萧规曹随，并不贴logo，甚至面向学生的廉价笔记本chrombook都不贴Intel的logo了。
 - 【网页】[MikuTools - 工具集合](https://tools.imiku.me)
-- 【知识点】树莓派 是单片机
+- 【知识】树莓派 是单片机
 - 【网页】[有哪些软件堪称神器，却不为大众所知？ - 彭宏豪的回答 - 知乎](https://www.zhihu.com/question/300735799/answer/767428571)
 
 ### 24日
-- 【知识点】【计算机】【CPU】 [从多线程到Event Loop全面梳理](https://juejin.im/post/5d5b4c2df265da03dd3d73e5?utm_source=gold_browser_extension)
+- 【知识】【计算机】【CPU】 [从多线程到Event Loop全面梳理](https://juejin.im/post/5d5b4c2df265da03dd3d73e5?utm_source=gold_browser_extension)
     - 进程就好比工厂的车间，它代表CPU所能处理的单个任务。 进程之间相互独立，任一时刻，CPU总是运行一个进程，其他进程处于非运行状态。CPU使用 **时间片轮转进度算法** 来实现同时运行多个进程。
     - 线程就好比车间里的工人，一个进程可以包括多个线程，多个线程共享进程资源
     - 进程是cpu资源分配的最小单位（是能拥有资源和独立运行的最小单位）
@@ -59,7 +81,7 @@
     - 单线程与多线程，都是指在一个进程内的单和多
     - 浏览器是多进程的。
     - 每一个Tab页，就是一个独立的进程。
--【知识点】**可预期** 做项目，写代码，最起码要保证可预期！！！这是很多初级程序员会犯的错，当然也有很多优秀的初级不会犯这样的错！
+-【知识】**可预期** 做项目，写代码，最起码要保证可预期！！！这是很多初级程序员会犯的错，当然也有很多优秀的初级不会犯这样的错！
 
 
 ### 23日
@@ -68,8 +90,8 @@
 
 
 ### 22日
-- 【知识点】[前端该如何准备数据结构和算法？](https://juejin.im/post/5d5b307b5188253da24d3cd1?utm_source=gold_browser_extension)
-- 【知识点】[30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）](https://juejin.im/post/5d59f2a451882549be53b170?utm_source=gold_browser_extension)
+- 【知识】[前端该如何准备数据结构和算法？](https://juejin.im/post/5d5b307b5188253da24d3cd1?utm_source=gold_browser_extension)
+- 【知识】[30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）](https://juejin.im/post/5d59f2a451882549be53b170?utm_source=gold_browser_extension)
 
 
 ### 21日
@@ -77,8 +99,8 @@
 
 
 ### 20日
-- 【知识点】[文档 - Markdown 语法](https://zh.mweb.im/markdown.html)
-- 【知识点】[Markdown 語法官方說明繁體中文版](https://zh.mweb.im/markdown-syntax-guide-full-version-zh.html)
+- 【知识】[文档 - Markdown 语法](https://zh.mweb.im/markdown.html)
+- 【知识】[Markdown 語法官方說明繁體中文版](https://zh.mweb.im/markdown-syntax-guide-full-version-zh.html)
 
 ### 18日
 - 【想知道】计算机的前世今生
@@ -87,11 +109,11 @@
 
 ### 17日
 - 【想知道】 Promise/A+ 标准的前世今生
-- 【知识点】23种设计模式，5个设计原则
+- 【知识】23种设计模式，5个设计原则
 
 
 ### 15日
-- 【知识点】[动画片头的Aniplex是什么？解开误区，这些都不是动画制作公司！](https://baijiahao.baidu.com/s?id=1623513655498975227&wfr=spider&for=pc)
+- 【知识】[动画片头的Aniplex是什么？解开误区，这些都不是动画制作公司！](https://baijiahao.baidu.com/s?id=1623513655498975227&wfr=spider&for=pc)
 - 【想知道】财报怎么看？
 - 【相机】[A7M3出了，出的好，我选A7R3（20180514）](http://www.360doc.com/content/18/0916/17/37057107_787157624.shtml)
 
@@ -103,10 +125,10 @@
 - 【前端】[TypeScript 教程](https://www.cnblogs.com/tansm/p/TypeScript_Handbook.html)
 - 【前端】[TypeScript 入门教程](https://ts.xcatliu.com/)
 - 【TODO】至少阅读一遍[《JavaScript 高级程序设计》](https://book.douban.com/subject/10546125/)
-- 【知识点】品牌背书
+- 【知识】品牌背书
     - 品牌为了增强其在市场上的承诺强度，通常还会借用第三方的信誉，然后第三方以一种明示或者暗示的方式来对原先品牌的消费承诺作出再一次的确认和肯定。这种品牌营销策略，我们称其为“品牌背书”（Brand Endorsement）。通过品牌背书，被背书品牌从而达到对于消费者先前承诺的再度强化，并与消费者建立一种可持续的、可信任的品牌关联。
-- 【知识点】[linux ln 用法，知识（软链接和硬链接）](https://blog.csdn.net/mengzuchao/article/details/80426316)
-- 【知识点】[Notion 帮助](https://www.notion.so/Help-Support-e040febf70a94950b8620e6f00005004)
+- 【知识】[linux ln 用法，知识（软链接和硬链接）](https://blog.csdn.net/mengzuchao/article/details/80426316)
+- 【知识】[Notion 帮助](https://www.notion.so/Help-Support-e040febf70a94950b8620e6f00005004)
 
 
 ### 13日
@@ -114,7 +136,7 @@
 
 
 ### 7日
-- 【知识点】安装 http-server ，快速启动一个 http服务 ：
+- 【知识】安装 http-server ，快速启动一个 http服务 ：
     ```shell
     # 安装 （mac）
     sudo npm install http-server -g
@@ -136,7 +158,7 @@
 
 
 ### 3日
-- 【知识点】【摄影】曝光基础
+- 【知识】【摄影】曝光基础
     - 光圈：f/1.4 、 f/2 ... 数字越大光圈越小，光圈越小景深越深，越没有背景模糊的效果
     - 快门：快门一般不能小于视频帧率， 否则就会变成 王家卫 （《重庆森林》那种一卡一卡的效果）
         - 大部分情况下，你开 1/50 或者 1/100 去拍摄一些没有快速运动的物体的时候，不会有太大区别
@@ -152,12 +174,12 @@
         - ISO也不是越低越好的 ，这里就要引出一个概念了 ： 原生 ISO  即 相机不需要变动传感器典雅的  ISO 值
         - 你的相机在这个 ISO 值得时候，画面最纯净，噪点最少
         - 在拍摄夜景的时候，通常会把调整 ISO 放在光圈和快门之后，以保证画面的纯净度
-- 【知识点】```npm audit fix``` 看[这里](https://blog.csdn.net/weixin_40817115/article/details/81007774)
+- 【知识】```npm audit fix``` 看[这里](https://blog.csdn.net/weixin_40817115/article/details/81007774)
 
 
 
 ### 2日
-- 【知识点】抖音运营必备
+- 【知识】抖音运营必备
     - [e抖音.康姆](https://e.douyin.com/site/)
     - 关注 电商小助手
     - 关注 巨量课堂（抖音官方的教学账号）
@@ -175,8 +197,8 @@
     2. 释放氮气过程中漂移——重刹断氮（方向键不松）
     3. 释放氮气
     4. 段位拉车头形成cww
-- 【知识点】使用 console.dir() 方法可以 dump 对象的详细信息，包括对象里的属性和方法。（dump 是啥意思）
-- 【知识点】console.trace(); 追踪函数的调用轨迹
+- 【知识】使用 console.dir() 方法可以 dump 对象的详细信息，包括对象里的属性和方法。（dump 是啥意思）
+- 【知识】console.trace(); 追踪函数的调用轨迹
 - 【游戏】QQ飞车手游技巧——双刹弹射
     1. 
     2. 
@@ -184,8 +206,8 @@
 
 
 ### 30日
-- [你未必知道的49个CSS知识点](https://juejin.im/post/5d3eca78e51d4561cb5dde12)
-- 【知识点】UNIX 与 Linux 之间的关系是一个很有意思的话题。在目前主流的服务器端操作系统中，UNIX 诞生于 20 世纪 60 年代末，Windows 诞生于 20 世纪 80 年代中期，Linux 诞生于 20 世纪 90 年代初，可以说 UNIX 是操作系统中的"老大哥"，后来的 Windows 和 Linux 都参考了 UNIX。（来源：[Linux和UNIX的关系及区别（详解版）](http://c.biancheng.net/view/707.html)）
+- [你未必知道的49个CSS知识](https://juejin.im/post/5d3eca78e51d4561cb5dde12)
+- 【知识】UNIX 与 Linux 之间的关系是一个很有意思的话题。在目前主流的服务器端操作系统中，UNIX 诞生于 20 世纪 60 年代末，Windows 诞生于 20 世纪 80 年代中期，Linux 诞生于 20 世纪 90 年代初，可以说 UNIX 是操作系统中的"老大哥"，后来的 Windows 和 Linux 都参考了 UNIX。（来源：[Linux和UNIX的关系及区别（详解版）](http://c.biancheng.net/view/707.html)）
 
 
 ### 29日
@@ -221,12 +243,12 @@
 
 ### 25日
 - 【TODO】[100本书](http://www.shejipi.com/161206.html) ， [这也是100本书](http://www.sohu.com/a/155546296_661888)
-- 【知识点】markdown 怎么写 todolist ， 注意：未完成的标记 ```[``` 和 ```]``` 中间有**一个空格**，不能多不能少
+- 【知识】markdown 怎么写 todolist ， 注意：未完成的标记 ```[``` 和 ```]``` 中间有**一个空格**，不能多不能少
     ```markdown
     [ ] 这是未完成的事项
     [x] 这是已经完成的事项
     ```
-- 【知识点】[99%的人都理解错了HTTP中GET与POST的区别](http://www.techweb.com.cn/network/system/2016-10-11/2407736.shtml)
+- 【知识】[99%的人都理解错了HTTP中GET与POST的区别](http://www.techweb.com.cn/network/system/2016-10-11/2407736.shtml)
 - 【TODO】学习[技术胖的 Flutter 的实战课](https://jspang.com/posts/2019/03/01/flutter-shop.html#post-comments)
 - 【发现】github 的提交热力图颜色策略：
     ```json
@@ -248,7 +270,7 @@
 
 ### 23日
 - 【想知道】带宽是什么？
-- 【知识点】庞氏骗局：简言之就是利用新投资人的钱来向老投资者支付利息和短期回报，以制造赚钱的假象进而骗取更多的投资。
+- 【知识】庞氏骗局：简言之就是利用新投资人的钱来向老投资者支付利息和短期回报，以制造赚钱的假象进而骗取更多的投资。
 
 
 ### 22日
@@ -258,7 +280,7 @@
 
 
 ### 21日
-- 【知识点】下面的语法就是 markdown 的删除线啦
+- 【知识】下面的语法就是 markdown 的删除线啦
     ```markdown
     ~~这是删除线~~
     ```
@@ -271,7 +293,7 @@
 ### 18日
 - 【想法】现在很多前端都不会**正则**，我学会了是不是可以作为一点儿优势
 - 【想法】打 “简单” 的时候误打成了 “煎蛋” ，难道 “煎蛋学堂” 是 “简单学堂” 的意思？
-- 【知识点】[JS魔法堂：彻底理解0.1 + 0.2 === 0.30000000000000004的背后](https://www.cnblogs.com/fsjohnhuang/p/5115672.html)
+- 【知识】[JS魔法堂：彻底理解0.1 + 0.2 === 0.30000000000000004的背后](https://www.cnblogs.com/fsjohnhuang/p/5115672.html)
     - [IEEE 754 Floating-point](https://en.wikipedia.org/wiki/IEEE_754)
     - [0.30000000000000004.com](http://0.30000000000000004.com/)
 
@@ -320,8 +342,8 @@
     - ```O``` - 按一下触发多次
     - 测试：EIEEIEIEIEIEIEIEIEIEIEEIEIEIEIEIEIEIEIEIEEIEIEIEIEIEIEIEIEIEIEIEIEIEEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEIEEEIEIEIEIEIEEEIEEEIEEIEIIEEEIEEIEEIEIEIEIEEIEEIEIEEEIEIEEIEEIEIEIEEIEIEIEIEIEIEEIEIEIEIEIEEIEIEIEIEIEIEEIEIEIEIEIEEIEUEUEUEUEUEUUEEUEUEEUEUEUUEUEUEUEUEUEUEUEUUEUEUEUEEUEUEUEUEUEUEUEUEUEUEEUEUEUEUEUEUEUEEEUEUEUEEUEUEUEEUEEUEUEEUEEUEEUEUEUEUEUUEUEUEUEUEUEEUEUEUE2.2.2.2.2..2.2.2.2.22.2.2.2.2.2.2.22.2..2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2...2.2..2.2.2.2.2.2.2.2..2.2..2.2..2.2..2.2.2.2..2.2.2..2.2.
 - 【执念】为什么 github 不把 marKdown 的样式做的好看一些，代码高亮鲜艳一些
-- 【知识点】音频视频，流文件是啥
-- 【知识点】ast v8 引擎 （ast是前端里边逼格最高的，我踏马竟然不知道）
+- 【知识】音频视频，流文件是啥
+- 【知识】ast v8 引擎 （ast是前端里边逼格最高的，我踏马竟然不知道）
 - 【经验】懂低层，想怎么玩怎么玩；不懂底层，走哪哪都是坑
 - 原生js才是王道，底层才是王道
 
@@ -340,7 +362,7 @@
 
 
 ### 8日
-- 【知识点】SSR : 服务端渲染(Server Side Render，简称“SSR”)
+- 【知识】SSR : 服务端渲染(Server Side Render，简称“SSR”)
 - 【想法】孩子出生那年买生肖纪念邮票
     - 孩子成长路上给他拍好玩视频（开心的，难过的，出糗的），等他18岁成年那天剪辑成一个送给他当生日礼物
     - 视频内容的组合方式可以参考一些电影神剪
@@ -368,7 +390,7 @@
 
 
 ### 3日
-- 【知识点】前后端同构 是啥意思？（[源](https://zhuanlan.zhihu.com/p/32487533)）
+- 【知识】前后端同构 是啥意思？（[源](https://zhuanlan.zhihu.com/p/32487533)）
 - 【闪现想法】有问题不一定非要在网上找解决办法，自己开辟一条路出来说不定效果更好（就比如我总想找前端开发需要的知识体系，网上没有，那我就自己通过各种方法，整理这么一套前端学习的框架，当然这只是在知识与技能层面的，那在社会角色、自我形象、特质和动机，也可以去扩展，并且更重要）
 - 【执念】几个一直存在的问题
     1. 如何做好个人知识管理
@@ -414,7 +436,7 @@
 
 
 ### 2日
-- 【知识点】句柄是啥意思？（[源](https://blog.csdn.net/tcy83/article/details/80427195)）
+- 【知识】句柄是啥意思？（[源](https://blog.csdn.net/tcy83/article/details/80427195)）
 - [哪些技术会决定前端开发者的未来发展？](https://juejin.im/post/5d1589c8e51d45776031b02e)
     - ```TypeScript``` 解决了前端的两大问题，**规避错误** 和 **提升效率**
     - 图形技术不会在短时间内席卷前端，也永远不可能成为前端的热门技术，但是却是前端开发者进阶必学的技术。
@@ -425,7 +447,7 @@
         - GraphQL (这个让前端开发爽到天的技术，付出的代价就是大量的改造工作需要后端来做，后端团队累死累活搞了GraphQL，得利最大的却是前端，出了错锅得后端背，这种技术推动的阻力可想而知)
         - 
 - **【思考】** 5G 会带来哪些风口？
-- 【知识点】稀疏数组，密集数组 
+- 【知识】稀疏数组，密集数组 
 
 ### 1日
 - 在 mac 的命令行输入 ```say xxx``` ，它会读出来。

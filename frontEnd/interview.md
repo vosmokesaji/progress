@@ -1510,16 +1510,452 @@ start at 61h05min
 
 - 设计需求场景
     ```javascript
-
+    // 1. 将该数据展示成一个表格。 2. 随便修改一个信息，表格也跟着修改
+    [
+        {
+            name: "张三",
+            age: "20",
+            adress: "北京"
+        },
+        {
+            name: "李四",
+            age: "21",
+            adress: "上海"
+        },
+        {
+            name: "王五",
+            age: "22",
+            adress: "广州"
+        }
+    ]
     ```
-- 用jq实现
-- 遇到的问题
+- 用jq实现的 demo（以下是用jquery实现的性能最好的方式，每次点击只渲染一次，即只append一次）
+    ```html
+    <div id="container"></div>
+    <button id="btn-change">change</button>
 
+    <script src="./jquery.js"></script>
+    <script>
+        var data = [
+            {
+                name: "张三",
+                age: "20",
+                adress: "北京"
+            },
+            {
+                name: "李四",
+                age: "21",
+                adress: "上海"
+            },
+            {
+                name: "王五",
+                age: "22",
+                adress: "广州"
+            }
+        ];
+
+        // 渲染函数
+        function rander(data){
+            var $container = $("#container");
+
+            // 清空现有内容
+            $container.html("");
+
+            // 拼接 table
+            var $table = $("table");
+            $table.append($("<tr><td>name</td><td>age</td><td>address</td></tr>"));
+            data.forEach(function(item){
+                $table.append($("<tr><td>" + item.name + "</td><td>" + item.age + "</td><td>" + item.adress + "</td></tr>"))
+            });
+
+            // 渲染到页面
+            $container.append($table);
+        }
+
+        // 修改信息
+        $("#btn-change").click(function(){
+            data[1].age = 30;
+            data[2].adress = "深圳";
+            // re-render 再次渲染
+            render(data);
+        })
+
+        // 初始化的时候渲染
+        render(data);
+    </script>
+    ```
+- 遇到的问题
+    - 为什么说 dom 操作很昂贵呢？因为dom的结构很复杂，js 运行效率高
+    - 尽量减少 dom 操作，而不是推到重来
+    - 项目越复杂，影响就越严重
+    - vdom 即可解决这个问题
+
+    ```html
+    <!-- 真实的 DOM -->
+    <ul id="list">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+    </ul>
+    ```
+    ```javascript
+    // 用 js 来描述 DOM 
+    {
+        tag: ul,
+        attrs: {
+            id: list
+        },
+        children: [
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 1"]
+            },
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 2"]
+            }
+        ]
+    }
+    // 为啥是 className 而不是 class ？ 因为 class 是 js 的一个保留字
+    ```
+
+#### 问题解答
+- virtual dom ，虚拟 dom
+- 用 js 模拟 DOM 结构
+- dom 操作非常 “昂贵”
+- 将dom对比放在js层，提高重绘性能
 
 ### 使用 vdom 
+1. vdom 如何应用，核心 API 是什么
+2. 介绍 [snabbdom](https://github.com/snabbdom/snabbdom)
+3. 重做之前的 demo
+4. 总结核心 API
+  
+- 我们举个简单的例子：
+
+    ```html
+    <div id="container"></div>
+    <button id="btn-change">change</button>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-class.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-props.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-style.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-eventlisteners.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/h.js"></script>
+    ```
+    ```javascript
+    var snabbdom = window.snabbdom;
+
+    // 定义 patch
+    var patch = snabbdom.init([
+        snabbdom_class,
+        snabbdom_props,
+        snabbdom_style,
+        snabbdom_eventlisteners
+    ]);
+
+    // 定义 h
+    var h = snabbdom.h
+
+    // 生成 vnode
+    var vnode = h("ul#list", {}, [
+        h("li.item", {}, "Item 1"),
+        h("li.item", {}, "Item 2")
+    ])
+
+    var container = document.getElementById("container");
+    patch(contatiter, vnode);
+
+    // 模拟改变
+    var btnChange = document.getElementById("btn-change");
+    btnChange.addEventListener("click", function(){
+        // 生成 newVnode
+        var newVnode = h("ul#list", {}, [
+            h("li.item", {}, "Item 111"),
+            h("li.item", {}, "Item 222"),
+            h("li.item", {}, "Item 333")
+        ]);
+        patch(vnode, newVnode);
+    })
+
+    // 解释一下：
+
+    // h 函数接收 三个参数： 
+    // 第一个：节点的选择器（字符串），
+    // 第二个：节点的属性（对象）
+    // 第三个：节点的子元素，如果是一个，那就传一个 vnode 对象，如果是多个那就传一个数组，在数组中包含多个 vnode 对象
+
+    // patch 函数接收 两个参数，分两种情况
+    // 情况 A ：第一个参数是空的dom节点，第二个是vnode，结果是把 vnode 生成的元素塞到 空节点中
+    // 情况 B ：两个都是 vnode ，结果是对比两个 vnode 的产差别，用最小的改动将第一个替换为第二个
+    ```
+- 使用 vdom 重做 demo
+    ```html
+    <div id="container"></div>
+    <button id="btn-change">change</button>
+
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-class.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-props.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-style.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-eventlisteners.js"></script>
+    <script src="https://cdn.bootcss.com/snabbdom/0.7.3/h.js"></script>
+
+    <script>
+
+        var snabbdom = window.snabbdom;
+
+        // 定义 patch
+        var patch = snabbdom.init([
+            snabbdom_class,
+            snabbdom_props,
+            snabbdom_style,
+            snabbdom_eventlisteners
+        ]);
+
+        // 定义 h
+        var h = snabbdom.h
+
+        var data = [
+            {
+                name: "张三",
+                age: "20",
+                adress: "北京"
+            },
+            {
+                name: "李四",
+                age: "21",
+                adress: "上海"
+            },
+            {
+                name: "王五",
+                age: "22",
+                adress: "广州"
+            }
+        ];
+
+        // 把表头也放在 data 中
+        data.unshift({
+            name: "姓名",
+            age: "年龄",
+            address: "地址"
+        });
+
+        // 获取 container 和 button 
+        var container = document.getElementById("container");
+        var btnChange = document.getElementById("btn-change");
+
+        var vnode
+        // 渲染函数
+        function rander(data){
+            var newVnode = h("table", {}, data.map(function(item){
+                var tds = [];
+                var i;
+                for(i in item){
+                    if(item.hasOwnProperty(i)){
+                        tds.push(h("td", {},  item[i] + ""))
+                    }
+                }
+                return h("tr", {}, tds);
+            }));
+            
+            if(vnode){
+                // re-render
+                patch(vnode, newVnode);
+            }else{
+                // 初次渲染
+                patch(container, newVnode);
+            }
+
+            // 存储当前 vndoe
+            vnode = newVnode;
+        }
+
+        // 初次渲染
+        render(data);
+
+        btnChange.addEventListener("click", function(){
+            data[1].age = 30;
+            data[2].adress = "深圳";
+            // re-render 再次渲染
+            render(data);
+        })
+    </script>
+    ```
+- 问题解答
+- 如何使用？ 可以用 snabbdom 用法来举例
+- 核心 API : h 函数、 petch 函数
 
 
-### Diff 算法
+### 介绍一下 Diff 算法
+- 什么是 diff 算法
+- 去繁就简
+- vdom 为何用 diff 算法
+- diff 算法的实现流程
+
+#### 什么是 diff 算法
+- Linux diff 命令
+    ```shell
+    diff log1.txt log2.txt
+    ```
+- git diff
+- 在线的对比器
+
+#### 去繁就简
+- diff 算法非常复杂，实现难度很大，源码量很大
+- 去繁就简，讲明白核心流程，不关心细节（二八原则）并不是偷懒，而是高效的学习
+- 面试官也大部分不清楚细节，但是很关心核心流程
+- 去繁就简之后，依然具有很大的挑战性，并不简单
+
+#### vdom 为何用 diff 算法
+- DOM 操作是昂贵的，因此要尽量减少 DOM 操作
+- 产出本次 DOM 必须更新的节点来更新，其他的不更新
+- 这个 “找出” 的过程就需要 diff 算法
+
+#### diff 算法的实现
+- ```patch(container, vnode)```
+    - 这个操作的核心问题，是如何把 vnode 转变为一个 真实的 dom 结构（把dom塞到容器里还是很简单的，不是重点）
+
+    ```javascript
+    // vdom
+    {
+        tag: ul,
+        attrs: {
+            id: list
+        },
+        children: [
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 1"]
+            }
+        ]
+    }
+    ```
+    ```html
+    <!-- 真实的 DOM -->
+    <ul id="list">
+        <li class="item">Item 1</li>
+    </ul>
+    ```
+    - 大体的实现方式（假定都是 tag 没有text、没有注释、等等）
+    ```javascript
+    function createElement(vnode){
+        var tag = vnode.tag,
+            attrs = vnode.attrs || {},
+            childdren = vnode.children || [];
+        
+        if(!tag){
+            return null;
+        }
+
+        // 创建真实的 DOM 元素
+        var elem = document.ceeatElement(tag);
+        // 属性
+        var attrName;
+        for(attrName in attrs){
+            if(attrs.hasOwnProperty(attrName)){
+                // 给 elem 添加属性
+                elem.setAttribute(attrName, attrs[attrName])
+            }
+        }
+
+        // 子元素
+        children.forEach(function(childVnode){
+            // 给 elem 添加子元素
+            elem.appendChild(createElement(childVnode));    // 递归
+        })
+
+        // 返回真实的 DOM 元素
+        return elem;
+
+    }
+    ```
+
+- ```patch(vnode, newVnode)```
+    - 前提：vnode 节点能和真实的 dom 节点对应上（对应并不复杂）
+    - 
+
+    ```javascript
+    // vnode
+    {
+        tag: ul,
+        attrs: {
+            id: list
+        },
+        children: [
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 1"]
+            },
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 2"]
+            }
+        ]
+    }
+    // newVnode
+    {
+        tag: ul,
+        attrs: {
+            id: list
+        },
+        children: [
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 1"]
+            },
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 2222"]
+            },
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 3"]
+            }
+        ]
+    }
+
+    function updateChildren(vnode, newVnode){
+        var children = vnode.children || [];
+        var newChildren = newVnode.children || [];
+
+        // 遍历现有的 children
+        children.forEach(function(child, index){
+            var newChild = newCildren[index]
+            if(newChild == null){
+                return
+            }
+            if(child.tag === newChild.tag){
+                // 两者 tag 一样
+                up
+            }
+        })
+    }
+    ```
+
 
 
 ### 总结

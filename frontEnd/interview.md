@@ -38,107 +38,107 @@ FrontEnd Interview
 
 
 
-## andorcba
-重要的放上面：
-	https://coding.imooc.com/class/190.html
-	我在慕课上买的课要看就用我的微信登录
+# andorcba
+- 重要的放上面：
+    -  https://coding.imooc.com/class/190.html
+    -  我在慕课上买的课要看就用我的微信登录
 
-项目
-	技术栈
-	业务深度
-	成长
+- 项目
+    -  技术栈
+    -  业务深度
+    -  成长
 
-webpack 分包优化 性能优化
-es6
-	箭头函数的作用
-	扩展符的应用(...)
-	promise
-		实现原理    https://www.jianshu.com/p/b4f0425b22a1
-		解决了什么问题  https://blog.csdn.net/weixin_34114823/article/details/88741050
-	什么是事件循环   https://www.jianshu.com/p/8df1d01b33dc
-	什么是宏任务和微任务  https://www.jianshu.com/p/8df1d01b33dc
-	Async wait / promise区别    http://caibaojian.com/asyncawait.html
-	Class的实现原理   https://segmentfault.com/a/1190000008390268?utm_source=tag-newest
+- webpack 分包优化 性能优化
+- es6
+    -  箭头函数的作用
+    -  扩展符的应用(...)
+    -  promise
+        - 实现原理    https://www.jianshu.com/p/b4f0425b22a1
+        - 解决了什么问题  https://blog.csdn.net/weixin_34114823/article/details/88741050
+    -  什么是事件循环   https://www.jianshu.com/p/8df1d01b33dc
+    -  什么是宏任务和微任务  https://www.jianshu.com/p/8df1d01b33dc
+    -  Async wait / promise区别    http://caibaojian.com/asyncawait.html
+    -  Class的实现原理   https://segmentfault.com/a/1190000008390268?utm_source=tag-newest
 
-vue
-	组件间通信(子-父，父-子，兄弟间)
-	computed watch差别
-	keep-alive生命周期activated和deactivated的理解
-	vuex 的api及使用场景
-	vuex中actoin和mutation的差别
-	vue-router钩子函数
-	如何封装组件
-	snabodom的核心方法
-	MVVM的理解  https://coding.imooc.com/class/190.html
-	什么是虚拟DOM  https://coding.imooc.com/class/190.html
-	vue如何双向绑定 ：definePropoty + 订阅式  https://coding.imooc.com/class/190.html
-	vue性能为何高于jQuery?
-原生JS
-	如何实现原型继承
-	内存泄漏 
-	回收机制 
-	闭包 
-	call apply使用场景
-	判断数组方法
-	数组的常用方法
-	jQuery实现原理   https://www.jianshu.com/p/ca9825766db3
-	弱类型间的转换
-	设计模式  https://www.jianshu.com/p/4b110e4c3bcd
-		工厂模式
-		构造函数模式
-		原型模式
-		单例模式
-		发布者模式 + 订阅者模式
-		观察者模式
-	requestAnimationFrame  与 setTimeout 差别
-	ajax实现原理
-	0.1+0.2>0.3  成立吗？为什么
+- vue
+    -  组件间通信(子-父，父-子，兄弟间)
+    -  computed watch差别
+    -  keep-alive生命周期activated和deactivated的理解
+    -  vuex 的api及使用场景
+    -  vuex中actoin和mutation的差别
+    -  vue-router钩子函数
+    -  如何封装组件
+    -  snabodom的核心方法
+    -  MVVM的理解  https://coding.imooc.com/class/190.html
+    -  什么是虚拟DOM  https://coding.imooc.com/class/190.html
+    -  vue如何双向绑定 ：definePropoty + 订阅式  https://coding.imooc.com/class/190.html
+    -  vue性能为何高于jQuery?
+- 原生JS
+    -  如何实现原型继承
+    -  内存泄漏 
+    -  回收机制 
+    -  闭包 
+    -  call apply使用场景
+    -  判断数组方法
+    -  数组的常用方法
+    -  jQuery实现原理   https://www.jianshu.com/p/ca9825766db3
+    -  弱类型间的转换
+    -  设计模式  https://www.jianshu.com/p/4b110e4c3bcd
+        - 工厂模式
+        - 构造函数模式
+        - 原型模式
+        - 单例模式
+        - 发布者模式 + 订阅者模式
+        - 观察者模式
+    -  requestAnimationFrame  与 setTimeout 差别
+    -  ajax实现原理
+    -  0.1+0.2>0.3  成立吗？为什么
 
 
-浏览器知识
-	浏览器解析原理  https://blog.csdn.net/riddle1981/article/details/78681191
-	跨域解决办法 https://segmentfault.com/a/1190000015597029
-	什么是同源策略
-	v8是什么
-	浏览器内核种类
-	回流和重绘  https://segmentfault.com/a/1190000014474575
-	性能优化相关
-	存储   https://www.jianshu.com/p/03a38b56bdd7
-		localstorage
-		sessionstorage
-		cookie
-		user data
-		以上的区别
-	缓存    https://www.jianshu.com/p/54cc04190252
-		物理缓存
-		内存缓存
-		强缓存缓存
-		以上的区别
-相关知识
-	7层网络协议   https://blog.csdn.net/taotongning/article/details/81352985
-	http协议 及 https相关知识理解   https://www.jianshu.com/p/6db0c6dc97a9
-	http code码   https://blog.csdn.net/qq_35779969/article/details/80753197
-算法、数据结构
-	快排 
-	冒泡
-	生成一个任意区间的随机数
-	url字典对象    https://blog.csdn.net/redtopic/article/details/69396908
-	实现抽奖 ： 尽可能实现一个均匀的正态分布：每一百次中 一等奖1个 二等奖10个三等奖20 剩余未中奖
-	什么是堆和栈    https://blog.csdn.net/flyingpig2016/article/details/52895620
-	直接类型和引用数据类型的区别  https://www.cnblogs.com/chunyi/p/10281750.html
+- 浏览器知识
+    -  浏览器解析原理  https://blog.csdn.net/riddle1981/article/details/78681191
+    -  跨域解决办法 https://segmentfault.com/a/1190000015597029
+    -  什么是同源策略
+    -  v8是什么
+    -  浏览器内核种类
+    -  回流和重绘  https://segmentfault.com/a/1190000014474575
+    -  性能优化相关
+    -  存储   https://www.jianshu.com/p/03a38b56bdd7
+        - localstorage
+        - sessionstorage
+        - cookie
+        - user data
+        - 以上的区别
+    -  缓存    https://www.jianshu.com/p/54cc04190252
+        - 物理缓存
+        - 内存缓存
+        - 强缓存缓存
+        - 以上的区别
+- 相关知识
+    -  7层网络协议   https://blog.csdn.net/taotongning/article/details/81352985
+    -  http协议 及 https相关知识理解   https://www.jianshu.com/p/6db0c6dc97a9
+    -  http code码   https://blog.csdn.net/qq_35779969/article/details/80753197
+- 算法、数据结构
+    -  快排 
+    -  冒泡
+    -  生成一个任意区间的随机数
+    -  url字典对象    https://blog.csdn.net/redtopic/article/details/69396908
+    -  实现抽奖 ： 尽可能实现一个均匀的正态分布：每一百次中 一等奖1个 二等奖10个三等奖20 剩余未中奖
+    -  什么是堆和栈    https://blog.csdn.net/flyingpig2016/article/details/52895620
+    -  直接类型和引用数据类型的区别  https://www.cnblogs.com/chunyi/p/10281750.html
 
-页面类
-	rem布局h5中设置基础的font-size是如何换算的  https://www.jianshu.com/p/04efb4a1d2f8
-	webp是什么
-动画/css
-	transtion 和 transform的应用场景和差别  https://segmentfault.com/a/1190000016666601
-	如何开启GPU加速  https://blog.csdn.net/hsany330/article/details/50925260
+- 页面类
+    -  rem布局h5中设置基础的font-size是如何换算的  https://www.jianshu.com/p/04efb4a1d2f8
+    -  webp是什么
+- 动画/css
+    -  transtion 和 transform的应用场景和差别  https://segmentfault.com/a/1190000016666601
+    -  如何开启GPU加速  https://blog.csdn.net/hsany330/article/details/50925260
 
-概念性
-	什么是工程化 模块化 组件化   https://www.jianshu.com/p/8cad6f0b94b3
-	amd、cmd、commonjs规范 区别及应用   https://www.cnblogs.com/jiuyi/p/9181259.html
-	前端语义化   https://www.jianshu.com/p/81b264b179bf
-	行为结构表现分离
+- 概念性
+    -  什么是工程化 模块化 组件化   https://www.jianshu.com/p/8cad6f0b94b3
+    -  amd、cmd、commonjs规范 区别及应用   https://www.cnblogs.com/jiuyi/p/9181259.html
+    -  前端语义化   https://www.jianshu.com/p/81b264b179bf
+    -  行为结构表现分离
 
 
 
@@ -153,16 +153,16 @@ vue
 7. 面向对象方面：https://blog.csdn.net/jsnancy/article/details/80357188、https://www.cnblogs.com/chenhuichao/p/8202588.html
 8. 观察者模式：https://www.cnblogs.com/gradolabs/p/4786782.html
 
-https://www.cnblogs.com/c2016c/articles/9328725.html
-https://www.cnblogs.com/le220/p/8624905.html
-https://www.jianshu.com/p/deceb72e13b3
-https://www.jianshu.com/p/deceb72e13b3
-https://www.cnblogs.com/minigrasshopper/p/9134196.html
-https://blog.csdn.net/wulex/article/details/81774494  https://www.jianshu.com/p/eef79060d486  https://www.cnblogs.com/hahazexia/p/8691052.html  理解call apply bind
-https://blog.csdn.net/MingL520/article/details/88549999    面试题汇总
-https://www.jianshu.com/p/0d50ea1cef93?utm_source=oschina-app   vue声明周期
-https://www.cnblogs.com/jiasm/p/9482443.html    微任务、宏任务
-https://www.jianshu.com/p/df198914331b  vue首屏加载优化
+- https://www.cnblogs.com/c2016c/articles/9328725.html
+- https://www.cnblogs.com/le220/p/8624905.html
+- https://www.jianshu.com/p/deceb72e13b3
+- https://www.jianshu.com/p/deceb72e13b3
+- https://www.cnblogs.com/minigrasshopper/p/9134196.html
+- https://blog.csdn.net/wulex/article/details/81774494  https://www.jianshu.com/p/eef79060d486  https://www.cnblogs.com/hahazexia/p/8691052.html  理解call apply bind
+- https://blog.csdn.net/MingL520/article/details/88549999    面试题汇总
+- https://www.jianshu.com/p/0d50ea1cef93?utm_source=oschina-app   vue声明周期
+- https://www.cnblogs.com/jiasm/p/9482443.html    微任务、宏任务
+- https://www.jianshu.com/p/df198914331b  vue首屏加载优化
 
 
 # 慕课前端面试课
@@ -936,7 +936,7 @@ fn2();
 5. 问题解答： **什么是单线程？和异步有什么关系？**
     - 单线程就是同一时间只能做一件事儿，两段js不能同时执行
     - 原因就是为了避免 DOM 渲染的冲突
-    - 异步是一种 “无奈” 的选择，虽然有很多问题
+    - 异步是一种 “无奈” 的选择，虽然有很多问题（回调地狱、书写顺序和执行顺序不一样）
 
 ### 什么是 event-loop
 - 单线程 - 同一时间只能做一件事儿
@@ -1274,8 +1274,6 @@ fn2();
     })
     ```
 
-
-
 #### Promise.all 和 Promise.race
 - ```Promise.all``` 所有请求都完成（all: 全部）
 - ```Promise.race``` 第一个请求完成（race: 竞赛，赛跑）
@@ -1323,6 +1321,7 @@ fn2();
     - .then() 返回的是一个 Promise 实例 
         - 如果 .then 的回调函数中没有明文返回 promise 实例，那么这个 .then 返回的就是本身的这个 promise 实例，所以我们可以对这个 promise 实例继续 .then
         - 如果 .then 的回调函数返回了另外一个 promise 实例，那后边再执行 .then 的时候，其实执行的是刚刚返回的那个 promise 实例的 .then ）
+        - 
         ```javascript
         // 两个 then 都是 result 的 then
         var result = loadImg(src);
@@ -1350,6 +1349,7 @@ fn2();
         ```
 
 #### 问题解答
+
 - 基本语法（创建实例，创建的时候定义啥时候成功、啥时候失败；实例 .then .catch）
 - 如何捕获异常（ Error 和 reject 都考虑，都可以通过 catch 捕获）
 - 多个串联 - 链式执行 
@@ -1357,7 +1357,11 @@ fn2();
 - Promise 标准，状态变化的方向 ， then 函数
 
 ### async / await
+
+- async / await 是 es7 中的， babel 也支持
+- node 中有一个 KOA 是用 async / await 实现的
 - Promise 的 then 只是将 callback 拆分了，他的邪法还是一个异步的写法
+
     ```javascript
     var w = waitHandle()
     w.then(function(){
@@ -1371,30 +1375,311 @@ fn2();
         console.log("error 2");
     })
     ```
+
     - 相对于 ```JQuery 1.5``` 之前的 ```ajax``` 的 ```callback``` 的写法来说， ```then``` 是将 ```callback``` 拆分了，一个 ```callback``` 可以拆分成好多个 ```then``` 
     - 它的本质还是 callback
-- async / await 是最直接的同步写法
-- 
+- async / await 是最直接的同步写法（解决了什么问题？）
+  
+    ```javascript
+    import "babel-polyfill";
 
+    function loadImg(src){
+        // 创建 Promise 实例
+        // resolve （解决） 和 reject  （拒绝） 都是函数，分别是成功和失败的回调
+        const promise = new Promise(function(resolve, reject){
+            var img = document.createElement("img");
+            img.onload = function(){
+                resolve(img);
+            }
+            img.onerror = function(){
+                reject("图片加载失败");
+            }
+            img.src = src;
+        });
+
+        // return Promise 实例
+        return promise;
+    }
+
+    var src1 = "https://www.baidu.com/favicon.ico";
+    var src2 = "https://www.bilibili.com/favicon.ico";
+
+    // async / await 用法
+    const load = async function(){
+        const result1 = await loadImg(src1);
+        console.log(result1);
+        const result2 = await loadImg(src2);
+        console.log(result2);
+    }
+    load();
+
+    // 注意 ： 如果要用 webpack 打包这段代码，需要安装 babel-polill 并引入
+    // npm install -D babel-polyfill
+    ```
+
+- 使用 await ，函数必须使用 async 标识
+- await 后边跟的是一个 promise 实例
+- 需要 babel-polyfill (兼容)
+
+#### 问题解答思路
+- 基本语法
+- async / await 使用了  Promise ，并没有和 Promise 冲突
+- 完全是同步的写法，再也没有回调函数
+- 但是：改变不了JS单线程、异步的本质
+
+### 异步的总结
+- 什么是单线程， 和异步有什么关系？
+- 什么是 event-loop
+- 是否用过 jquery 的 deferred
+- Promise 的基本使用和原理
+- 介绍一下 async /  await
+- 当前异步的解决方案
+    - jQuery Deferred
+    - Promise （blue bird）
+    - async / await
+    - Generator （解释不讲的原因）
+        - 原理比较复杂，学习成本高，差不多要讲两个小时
+        - 不是异步的直接代替方案
+        - 有更好的更简洁的解决方案 async / await
+        - koa 也早已 “弃暗投明” 
 
 ## 虚拟 DOM
+<!-- 
+
+6+8+5+9+6+3+8+11+9+4+2+2+7+5+7+7+8+8+9+3+4+1
+
+132min
+
+start at 61h05min 
+
+132 * 1.44 = 190 min 也就是 3 小时
+
+-->
+
+- 是vue和react的核心
+- vdom比较独立，使用也比较简单
+- 如果面试问到vue和react和实现，免不了vdom
+    - 因为你了解实现，考查的是自己学能力，基础能力，使用起来的效率也会非常高
+- 问题：
+    1. vdom 是什么？为何会存在vdom？（讲透）
+    2. vdom 的应用，核心 API 是什么？（讲透）
+    3. **介绍**一下 diff 算法（非常复杂，介绍即可）
+
+
+### 什么是 vdom ，如何使用 vdom
+- 什么是 vdom 
+    - virtual dom ，虚拟 dom
+    - 用 js 模拟 DOM 结构
+    - dom 变化的对比， 放在js层来做（因为在html、css、js 中只有 js 是图灵完备语言，即能实现各种逻辑的语言）
+    - 目的是： 提高重绘性能
+
+    ```html
+    <!-- 真实的 DOM -->
+    <ul id="list">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+    </ul>
+    ```
+    ```javascript
+    // 用 js 来描述 DOM 
+    {
+        tag: ul,
+        attrs: {
+            id: list
+        },
+        children: [
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 1"]
+            },
+            {
+                tag: "li",
+                attrs: {
+                    className: "item"
+                },
+                children: ["Item 2"]
+            }
+        ]
+    }
+    // 为啥是 className 而不是 class ？ 因为 class 是 js 的一个保留字
+    ```
+    - 补一句：**vdom 存在的价值**，因为现代浏览器执行 js 是非常快的，但是操作dom 是非常耗费性能的，这就是 vdom 存在的意义
+
+- 设计需求场景
+    ```javascript
+
+    ```
+- 用jq实现
+- 遇到的问题
+
+
+### 使用 vdom 
+
+
+### Diff 算法
+
+
+### 总结
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+end at ??? 预估 64h15min
+-->
 
 
 
 ## MVVM 和 vue
+<!-- 
+6+8+9+10+3+5+6+3+6+9+11+11+2+3+7+7+5+9+8+12+21+7+7+3+11+11+4+9
+213 min
 
+start at 
+
+213 * 1.44 = 307 min 也就是 5 小时
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+end at ??? 预估 
+-->
 
 
 ## 组件化和 React
+<!-- 
+6+10+13+6+6+3+7+14+13+12+3+10+10+12+10+4+8+4+3+7+4+8+17 
+190 min
 
+start at 
+
+190 * 1.44 = 273 min 也就是 7 小时
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+end at ??? 预估 
+-->
 
 
 ## hybrid
+<!-- 
+7+11+7+11+6+11+6+11+6+6+7+10+3+5
+107 min
+
+start at 
+
+107 * 1.44 = 154 min 也就是 2.5 小时
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+end at ??? 预估 
+-->
 
 
 
 ## 总结
 
+<!-- 
+5+12+8
+25 min
+
+start at 
+
+25 * 1.44 = 36 min 也就是 0.5 小时
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+end at ??? 预估 
+-->
 
 
 

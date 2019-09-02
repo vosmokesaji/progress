@@ -25,7 +25,7 @@
 - [ ] 知识：计算机起源 & 历史
 - [ ] 技能：前端课程，耗时预估已统计
 - [ ] 能力：PMP 项目管理课程
-- [ ] 技能：许岑的 KeyNote 课程学习
+- [x] [技能：许岑的 KeyNote 课程学习](./skill/keynote.md)
 - [ ] 兴趣：学吉他，不能吃灰了
 - [ ] 读书：《图解HTTP》
 - [ ] 技能：驾照考试
@@ -33,6 +33,17 @@
 
 
 # 2019年
+
+## 9月
+### 2日
+- 【解决问题】[Parallels Desktop 14.1.2-45479正确安装方法（ PD 安装 ）](https://bbs.feng.com/read-htm-tid-12151376.html)
+    1. 打开终端执行显示隐藏文件命令 ```defaults write com.apple.finder AppleShowAllFiles Yes && killall Finder```，这时候你可以看到在Parallels Desktop文件夹中 “Parallels Desktop”显示出来了
+    2. 把它拖到 “Applications”(应用程序)里去,若之前安装过则会提示是否覆盖,覆盖即可
+    3. 执行 ```chflags nohidden "/Applications/Parallels Desktop.app"```
+    4. 再执行 ```xattr -cr "/Applications/Parallels Desktop.app"```
+    5. 再执行 ```codesign --sign - --force --deep "/Applications/Parallels Desktop.app"```
+    6. 从“应用程序”中点击PD运行，跳过更新，安装完成即可；
+    7. 执行关闭隐藏文件命令 ```defaults write com.apple.finder AppleShowAllFiles No && killall Finder```
 
 ## 8月
 ### 30日
@@ -42,9 +53,6 @@
     - 每当知识要上一个台阶时，作者就会跳出来提示读者，在继续之前，你必须理解xxx，帮助读者更好的继续阅读（见： 3、门电路——信号的关联，最后一段： **你必须开始习惯这种抽象**）
     - 作者与读者站在同一个角度，提出读者同样会产生的疑问，并和读者一起解决，很有带入感（见： 5、触发器——信号的保存，第一段）
     - 这篇文章也算是 《编码·隐匿在计算机软硬件背后的语言》 的读书分享
-
-
-
 
 ### 29日
 - 【解决】[Mac安装powerline 权限问题](https://blog.csdn.net/Mona_233/article/details/54563416)
@@ -249,7 +257,7 @@
     [x] 这是已经完成的事项
     ```
 - 【知识】[99%的人都理解错了HTTP中GET与POST的区别](http://www.techweb.com.cn/network/system/2016-10-11/2407736.shtml)
-- 【TODO】学习[技术胖的 Flutter 的实战课](https://jspang.com/posts/2019/03/01/flutter-shop.html#post-comments)
+- 【TODO】学习[技术胖的 Flutter 的实战课](https://jspang.com/posts/2019/03/01/flutter-shop.html#post-comments)
 - 【发现】github 的提交热力图颜色策略：
     ```json
     {

@@ -35,6 +35,17 @@
 # 2019年
 
 ## 9月
+### 3日
+- 【知识】一些前端的 库工具
+    - 了解 UnderScore 库，有很多实用的函数，看看源码。
+    - Moment：日期和实践操作库
+- 【思考】为何要学习浏览器工作原理？
+    - 准确评估 Web 开发项目的可行性
+    - 从更高维度审视页面
+    - 解决面试中遇到的绝大部分浏览器问题
+- 【思考】对于计算机基础我们需要做到大体了解，这样的话我们对整体的流程会有一个大概的把握。在实际开发过程中不会过于被动。
+
+
 ### 2日
 - 【解决问题】[Parallels Desktop 14.1.2-45479正确安装方法（ PD 安装 ）](https://bbs.feng.com/read-htm-tid-12151376.html)
     1. 打开终端执行显示隐藏文件命令 ```defaults write com.apple.finder AppleShowAllFiles Yes && killall Finder```，这时候你可以看到在Parallels Desktop文件夹中 “Parallels Desktop”显示出来了
@@ -44,6 +55,14 @@
     5. 再执行 ```codesign --sign - --force --deep "/Applications/Parallels Desktop.app"```
     6. 从“应用程序”中点击PD运行，跳过更新，安装完成即可；
     7. 执行关闭隐藏文件命令 ```defaults write com.apple.finder AppleShowAllFiles No && killall Finder```
+- 【知识】家庭内部的成员相互联结、相互依靠，在家庭这个系统里面，没有谁可以单独拿出来理解。有一个著名的模式，称为 **“卡普曼三角（KarpmanTriangle）”** ，该名称来自于其创立者、医学博士史蒂芬·卡普曼（StephenCarpman）。所有家庭都存在卡普曼三角，哪怕是较为健康的家庭也不可避免。三角中的角色包括：
+    - 受害者
+    - 加害者，也就是欺负受害者的人
+    - 拯救者，也就是拯救受害者的人
+    - 卡普曼三角会阻碍真正问题的解决，只会创造痛苦和困惑，而不是解决方案。无论谁在三角中获胜，都没有人会好过。这就产生了两层不愉快：一层是永无止境的争辩；一层是争辩的内容永远也无法达成和解。
+
+兰迪克雷格. 边缘型人格障碍:深入解读边缘型人格的权威著作 (Chinese Edition) (Kindle 位置 1022-1024). Kindle 版本. 
+
 
 ## 8月
 ### 30日

@@ -1450,7 +1450,7 @@ fn2();
 
 132min
 
-start at 61h05min 
+start at 63h05min 
 
 132 * 1.44 = 190 min 也就是 3 小时
 
@@ -1634,7 +1634,7 @@ start at 61h05min
 1. vdom 如何应用，核心 API 是什么
 2. 介绍 [snabbdom](https://github.com/snabbdom/snabbdom)
 3. 重做之前的 demo
-4. 总结核心 API
+4. 总结核心 API : h 、 patch
   
 - 我们举个简单的例子：
 
@@ -1938,25 +1938,51 @@ start at 61h05min
         ]
     }
 
+    // 只考虑最简单的情况
     function updateChildren(vnode, newVnode){
         var children = vnode.children || [];
         var newChildren = newVnode.children || [];
+        // 解释一下为啥获取 children ：我们默认这个最外层的盒子是一样的，只有内层会发生变化  
 
         // 遍历现有的 children
         children.forEach(function(child, index){
-            var newChild = newCildren[index]
+            var newChild = newCildren[index];
             if(newChild == null){
-                return
+                return;
             }
             if(child.tag === newChild.tag){
-                // 两者 tag 一样
-                up
+                // 两者 tag 一样 ， 继续向下对比 （递归）
+                updateChildren(child, newChild);
+            }else{
+                // 两者 tag 不一样
+                replaceNode(child, newChild);
             }
         })
     }
+
+    function replaceNode(vnode, newVnode){
+        var elem = vnode.elem;       // 真实的 DOM 节点
+        var newElem = createElement(newVnode);  
+
+        // 替换
+    }
     ```
-
-
+> 所有的 **递归** 都是因为 **可能有无限循环** 的特点
+- diff 算法的实现不仅仅是以上的内容
+    - 节点新增和删除
+    - 节点重新排序
+    - 节点属性、样式、事件绑定
+    - 如何极致压榨性能
+    - .....
+- diff 实现过程
+    - ```patch(containter, vnode)``` 和 ```patch(vnode, newVnode)```
+    - createElement
+    - updateChildren
+- 问题解答（介绍一下 diff 算法）
+    - 知道什么是 diff 算法， 是 linux 的基础命令
+    - vdom 中应用 diff 算法是为了找出需要更新的节点
+    - diff 实现： ```patch(containter, vnode)``` 和 ```patch(vnode, newVnode)```
+    - 核心逻辑： ```createElement``` 和 ```updateChildren```
 
 ### 总结
 
@@ -1985,13 +2011,306 @@ end at ??? 预估 64h15min
 6+8+9+10+3+5+6+3+6+9+11+11+2+3+7+7+5+9+8+12+21+7+7+3+11+11+4+9
 213 min
 
-start at 
+start at 66:35
 
 213 * 1.44 = 307 min 也就是 5 小时
 -->
 
+- 说明一下使用 jquery 和使用 框架的区别
+- 说一下对 MVVM 的理解
+- vue 如何实现响应式
+- vue 如何解析模板
+- vue 的整个实现流程
+
+### 从 jquery 到 框架
+- jquery 实现 todo-list
+    ```html
+    <div>
+        <input type="text" name="" id="txt-title">
+        <button id="btn-submit">submit</button>
+    </div>
+    <div>
+        <ul id="ul-list"></ul>
+    </div>
+
+    <script src="./jquery.js"></script>
+    <script>
+        var $txtTitle = $("#txt-title");
+        var $ulList = $("#ul-list");
+        var $btnSubmit = $("#btn-submit");
+
+        $btnSubmit.click(function(){
+            var title = $txtTitle.val();
+            var $li = $("<li>" + title + "</li>");
+
+            $ulList.append($li);
+            $txtTitle.val("");
+        })
+    </script>
+    ```
+- vue 实现 todo-list
+    ```html
+    <div id="app">
+        <div>
+            <input type="text" v-model="title">
+            <button v-on:click="add">submit</button>
+        </div>
+        <ul>
+            <li v-for="itme in list">{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: "",
+                list: []
+            },
+            methods: {
+                add: function(){
+                    this.list.push(this.title);
+                    this.title = "";
+                }
+            }
+        });
+    </script>
+    ```
+- jquery 和 框架 的区别
+    1. 框架的数据和视图的分离
+        - jquery 的 视图和数据是混在一起的
+        - jquery 不符合开放封闭原则
+        - jquery 直接操作dom
+        - vue 的数据都在 data 中
+    2. 框架以数据驱动视图
+        - jquery 除了修改数据 还需要修改视图
+        - vue 修改数据，识图自动更新
+- 小结：
+    - 数据视图分离，解耦（开放封闭原则：对扩展开饭，对修改封闭）
+    - 以数据驱动视图，只关心数据变化，DOM操作被封装
+    
+### 如何理解MVVM 
+- MVC
+    - M : Model 数据模型
+    - V : View 视图、界面
+    - C : Controller 控制器、逻辑处理
+    - 用户操作 view ，view 触发事件（controller），controller 修改数据（model）， model 修改 view 
+    - 还有一种，永辉直接操作 controller ，controller 修改数据（model）， model 修改 view 
+- MVVM
+    - M : Model 数据模型
+        ```javascript
+        var data = {
+            title: "",
+            list: []
+        };
+        ```
+    - V : View 视图、模板（视图和数据模型的是分离的）
+        ```html
+        <div id="app">
+            <div>
+                <input type="text" v-model="title">
+                <button v-on:click="add">submit</button>
+            </div>
+            <ul>
+                <li v-for="itme in list">{{item}}</li>
+            </ul>
+        </div>
+        ```
+    - VM : viewModel - 链接 Model 和 View
+        ```javascript
+        var vm = new Vue({
+            el: "#app",
+            data: data,
+            methods: {
+                add: function(){
+                    this.list.push(this.title);
+                    this.title = "";
+                }
+            }
+        });
+        ```
+        - 数据通过 viewModel 中的 ```Data Bindings``` 完成了数据的绑定
+        - 视图通过 viewModel 中的 ```DOM Listeners``` 完成了事件的处理
+        - viewModel 是 视图 和 数据连接的一个桥
+- viewModel
+    - MVVM 不算是一种创新
+    - 其中的 ViewModel 确实是一种创新
+    - 真正结合前端场景应用的创新
+
+- 问题解答：
+    - MVVM : Model View viewModel
+    - 三者之间的联系，以及如何对应到各段代码
+    - 对 viewModel 的理解， 联系 view 和 model 的桥梁
+
+### vue 三要素（实现的三要素）
+- 再次分析 demo
+- 三要素： 
+    - 响应式： vue 如何监听到 data 的每个属性变化？
+    - 模板引擎： vue 的模板引擎如何被解析？ 指令如何处理？
+    - 渲染： vue 的模板如备选染成 html ？ 以及渲染过程
+
+#### vue 中如何实现响应式？
+- 什么是响应式
+    - 修改 data 属性之后， vue 立刻监听到
+    - data 属性被代理到 vm 上，也就是内部用的 this 的指向
+- Objec.defineProperty
+    ```javascript
+    var obj = {
+        name: "zhangsan",
+        age: 25
+    }
+    console.log(obj.name);
+    obj.age = 20;
+
+    // 怎么监听呢？
+    var obj = {};
+    var _name = "zhangsan";
+
+    // 第一个参数，监听的对象； 第二个参数， 对象的属性名； 第三个参数： 一个对象，包含 get 和 set 方法
+    Object.defineProperty(obj, "name", {
+        get: function(){
+            console.log("get", _name);
+            return _name;
+        },
+        set: function(newVal){
+            console.log("set", newVal);
+            _name = newVal;
+        }
+    })
+    obj.name = "lisi";
+    console.log(obj.name);
+    ```
+- 模拟实现
+    ```javascript
+    var vm = {};    // 模拟 vue 实例
+    var data = {
+        name: "zhangsan",
+        age: 20
+    };
+
+    
+    var key, value;
+    for(key in data){
+        // 因为命中了闭包。所以新建了一个函数，保证 key 的独立作用域
+        (function(key){
+            Object.defineProperty(vm, key, {
+                get: function(){
+                    // 监听
+                    console.log("get", data[key]);
+
+                    // 把 data 代理到 vm 上
+                    return data[key];
+                },
+                set: function(newVal){
+                    // 监听
+                    console.log("set", newVal);
+
+                    // 把 data 代理到 vm 上
+                    data[key] = newVal;
+                }
+            })
+        })(key)
+    }
+    ```
+- 问题解答：
+    - 关键是理解 Objec.defineProperty
+    - 将 data 的属性代理到 vm 上
+
+#### vue 中如何解析模板？
+- 模板是什么
+    ```html
+    <div id="app">
+        <div>
+            <input type="text" v-model="title">
+            <button v-on:click="add">submit</button>
+        </div>
+        <ul>
+            <li v-for="itme in list">{{item}}</li>
+        </ul>
+    </div>
+    ```
+    - 本质：字符串
+    - 有逻辑， 如 v-if v-for 等
+    - 与 HTML 很像（标签格式很像），但有很大差别
+    - 最终还是会转换为 html 
+- 模板最终必须转换成 JS 代码，因为：
+    - 有逻辑，必须 JS 才能实现（图灵完备）
+    - 转换成 HTML 渲染页面，必须用js 才能实现
+    - 因此，模板最终要转换成一个 js 函数（render 函数，这个 render 是个泛指，指渲染函数）
+
+- render 函数
+- render 函数 与 vdom
 
 
+#### render 函数
+1. with 的用法（平时开发，千万不要用，他有很多问题）
+    ```javascript
+    var obj = {
+        name: "zhangsan",
+        age: 20,
+        getAddress: function(){
+            alert("beijing");
+        }
+    }
+
+    // 不使用 with
+    function fn(){
+        alert(obj.name);
+        alert(obj.age);
+        obj.getAddress();
+    }
+    fn();
+
+    // 使用 with
+    function fn1(){
+        with(obj){
+            alert(name);
+            alert(age);
+            getAddress();
+        }
+    }
+    fn1();
+    ```
+2. render 函数
+    ```html
+    <div id="app">
+        <p>{{price}}</p>
+    </div>
+
+    <script src="./vue"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                price: 100
+            }
+        });
+        
+        // 以下是手写的 render 函数
+        // this 就是 vue 的实例
+        with(this){
+            return _c(                          // this._c
+                "div",
+                {
+                    attrs: {"id": "app"}
+                },
+                [
+                    _c("p", [_v(_s(price))])    // this._c  this._v  this._s
+                ]
+            )
+        }
+    </script>
+    ```
+- 从哪里可以看到 render 函数
+    - 打开 vue.2.5.13 源码 ，搜索 ```code.render``` 大概在 10679 行
+    - 在这个代码块的return之前输入 alert(code.reder) 保存，刷新页面（demo 的例子）
+    - 得到输出的 render 就是 当前页面模板的 render 函数
+- 复杂一点儿的例子，render 函数是什么样子的？
+- v-if v-for v-on 都是怎么处理的？
+
+
+### 整体流程
 
 
 

@@ -2056,7 +2056,7 @@ start at 66:35
             <button v-on:click="add">submit</button>
         </div>
         <ul>
-            <li v-for="itme in list">{{item}}</li>
+            <li v-for="item in list">{{item}}</li>
         </ul>
     </div>
 
@@ -2113,7 +2113,7 @@ start at 66:35
                 <button v-on:click="add">submit</button>
             </div>
             <ul>
-                <li v-for="itme in list">{{item}}</li>
+                <li v-for="item in list">{{item}}</li>
             </ul>
         </div>
         ```
@@ -2214,8 +2214,8 @@ start at 66:35
     }
     ```
 - 问题解答：
-    - 关键是理解 Objec.defineProperty
-    - 将 data 的属性代理到 vm 上
+    - **关键是理解 Objec.defineProperty**
+    - **将 data 的属性代理到 vm 上** （补充：methods 中的方法也会被代理到 vm ，即 vue 的实例上，so ： data 中的属性最好不要和 methods 中的方法名相同？？？ ）
 
 #### vue 中如何解析模板？
 - 模板是什么
@@ -2226,7 +2226,7 @@ start at 66:35
             <button v-on:click="add">submit</button>
         </div>
         <ul>
-            <li v-for="itme in list">{{item}}</li>
+            <li v-for="item in list">{{item}}</li>
         </ul>
     </div>
     ```
@@ -2244,7 +2244,7 @@ start at 66:35
 
 
 #### render 函数
-1. with 的用法（平时开发，千万不要用，他有很多问题）
+1. 先了解一下 with 的用法（平时开发，千万不要用，他有很多问题）
     ```javascript
     var obj = {
         name: "zhangsan",
@@ -2272,7 +2272,7 @@ start at 66:35
     }
     fn1();
     ```
-2. render 函数
+2. render 函数（分析模板中的逻辑：v-if 、 v-for 、 v-on 等问题）
     ```html
     <div id="app">
         <p>{{price}}</p>
@@ -2302,12 +2302,112 @@ start at 66:35
         }
     </script>
     ```
-- 从哪里可以看到 render 函数
-    - 打开 vue.2.5.13 源码 ，搜索 ```code.render``` 大概在 10679 行
-    - 在这个代码块的return之前输入 alert(code.reder) 保存，刷新页面（demo 的例子）
-    - 得到输出的 render 就是 当前页面模板的 render 函数
-- 复杂一点儿的例子，render 函数是什么样子的？
-- v-if v-for v-on 都是怎么处理的？
+   - 从哪里可以看到 render 函数？
+       - 打开 vue.2.5.13 源码 ，搜索 ```code.render``` 大概在 10679 行
+       - 在这个代码块的return之前输入 alert(code.reder) 保存，刷新页面（demo 的例子）
+       - 得到输出的 render 就是 当前页面模板的 render 函数
+   - 以之前的 todo-list 来举例， 它的 render 函数是什么样子的？
+    ```html
+    <div id="app">
+        <div>
+            <input type="text" v-model="title">
+            <button v-on:click="add">submit</button>
+        </div>
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+    ```
+    ```javascript
+    // 在 vue 源码中打断点得到的 render 函数
+    with(this) {
+        return _c(
+            'div', 
+            {
+                attrs: {
+                    "id": "app"
+                }
+            },
+            [
+                _c(
+                    'div',
+                    [
+                        _c(
+                            'input', 
+                            {
+                                directives: [{
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: (title),
+                                    expression: "title"
+                                }],
+                                attrs: {
+                                    "type": "text"
+                                },
+                                domProps: {
+                                    "value": (title)
+                                },
+                                on: {
+                                    "input": function($event) {
+                                        if ($event.target.composing) return;
+                                        title = $event.target.value
+                                    }
+                                }
+                            }
+                        ),
+                        _v(" "),
+                        _c(
+                            'button', 
+                            {
+                                on: {
+                                    "click": add
+                                }
+                            },
+                            [_v("submit")]
+                        )
+                    ]
+                ),
+                _v(" "),
+                _c(
+                    'ul', 
+
+                    // _l 返回一个数组
+                    _l(
+                        (list),
+                        function(item) {
+                            return _c('li', 
+                                [_v(_s(item))]
+                            )
+                        }
+                    )
+                )
+            ]
+        )
+    }
+    ```
+   - v-if v-for v-on 都是怎么实现的？
+       - v-if : if - else 判断
+       - v-for : js 中的遍历 （ vm._l 中是用 for 循环实现的 ）
+       - v-on : js 给 DOM 节点绑定事件
+3. 模板 生成 HTML 的问题
+    - 复习一下 vdom 的知识： snabbdom （ h 函数、 patch 函数 ）
+    - vm._c 其实就相当于 snabbdom 中的 h 函数
+    - render 函数执行之后 返回的是 vnode ，也就是说 _c 返回的是 vnode
+
+    ```javascript
+    vm._update(vnode){
+        // 旧的 vnode
+        const prevVnode = vm._vnode
+
+        // 新的 vnode
+        vm._vnode = vnode
+    }
+    ```
+
+
+4. vm._c 是什么？ render 函数返回了什么？
+
+
 
 
 ### 整体流程

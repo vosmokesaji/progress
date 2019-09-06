@@ -1253,26 +1253,27 @@ fn2();
     ```
 
 #### 多个串联
-    ```javascript
-    // 需求： 先加载第一个，第一个加载完成再加载第二个。
-    var src1 = "https://www.baidu.com/favicon.ico";
-    var result1 = loadImg(src1);
-    var src2 = "https://www.bilibili.com/favicon.ico";
-    var result2 = loadImg(src2);
 
-    // 链式操作
-    result1.then(function(img){
-        console.log("第一张图片加载完成");
+```javascript
+// 需求： 先加载第一个，第一个加载完成再加载第二个。
+var src1 = "https://www.baidu.com/favicon.ico";
+var result1 = loadImg(src1);
+var src2 = "https://www.bilibili.com/favicon.ico";
+var result2 = loadImg(src2);
 
-        // 这里是关键
-        return result2;
-    }).then(function(img){
-        // 这个 then 的第一个参数就是 result2 的成功回调
-        console.log("第二张图片加载完成")
-    }).catch(function(err){
-        console.log(err);
-    })
-    ```
+// 链式操作
+result1.then(function(img){
+    console.log("第一张图片加载完成");
+
+    // 这里是关键
+    return result2;
+}).then(function(img){
+    // 这个 then 的第一个参数就是 result2 的成功回调
+    console.log("第二张图片加载完成")
+}).catch(function(err){
+    console.log(err);
+})
+```
 
 #### Promise.all 和 Promise.race
 - ```Promise.all``` 所有请求都完成（all: 全部）
@@ -1986,22 +1987,8 @@ start at 63h05min
 
 ### 总结
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- 
-end at ??? 预估 64h15min
+end at 66h 35min 预计用时 3h 实际用时 3h 30min
 -->
 
 
@@ -2146,15 +2133,15 @@ start at 66:35
 ### vue 三要素（实现的三要素）
 - 再次分析 demo
 - 三要素： 
-    - 响应式： vue 如何监听到 data 的每个属性变化？
-    - 模板引擎： vue 的模板引擎如何被解析？ 指令如何处理？
-    - 渲染： vue 的模板如备选染成 html ？ 以及渲染过程
+    - **响应式**： vue 如何监听到 data 的每个属性变化？
+    - **模板引擎**： vue 的模板引擎如何被解析？ 指令如何处理？
+    - **渲染**： vue 的模板如备选染成 html ？ 以及渲染过程
 
 #### vue 中如何实现响应式？
 - 什么是响应式
     - 修改 data 属性之后， vue 立刻监听到
     - data 属性被代理到 vm 上，也就是内部用的 this 的指向
-- Objec.defineProperty
+- Object.defineProperty
     ```javascript
     var obj = {
         name: "zhangsan",
@@ -2214,7 +2201,7 @@ start at 66:35
     }
     ```
 - 问题解答：
-    - **关键是理解 Objec.defineProperty**
+    - **关键是理解 Object.defineProperty**
     - **将 data 的属性代理到 vm 上** （补充：methods 中的方法也会被代理到 vm ，即 vue 的实例上，so ： data 中的属性最好不要和 methods 中的方法名相同？？？ ）
 
 #### vue 中如何解析模板？
@@ -2321,96 +2308,115 @@ start at 66:35
     ```javascript
     // 在 vue 源码中打断点得到的 render 函数
     with(this) {
-        return _c(
-            'div', 
-            {
-                attrs: {
-                    "id": "app"
-                }
+        return _c('div', {
+            attrs: {
+                "id": "app"
+            }
+        },
+        [_c('div',[_c('input', {
+            directives: [{
+                name: "model",
+                rawName: "v-model",
+                value: (title),
+                expression: "title"
+            }],
+            attrs: {
+                "type": "text"
             },
-            [
-                _c(
-                    'div',
-                    [
-                        _c(
-                            'input', 
-                            {
-                                directives: [{
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: (title),
-                                    expression: "title"
-                                }],
-                                attrs: {
-                                    "type": "text"
-                                },
-                                domProps: {
-                                    "value": (title)
-                                },
-                                on: {
-                                    "input": function($event) {
-                                        if ($event.target.composing) return;
-                                        title = $event.target.value
-                                    }
-                                }
-                            }
-                        ),
-                        _v(" "),
-                        _c(
-                            'button', 
-                            {
-                                on: {
-                                    "click": add
-                                }
-                            },
-                            [_v("submit")]
-                        )
-                    ]
-                ),
-                _v(" "),
-                _c(
-                    'ul', 
-
-                    // _l 返回一个数组
-                    _l(
-                        (list),
-                        function(item) {
-                            return _c('li', 
-                                [_v(_s(item))]
-                            )
-                        }
-                    )
+            domProps: {
+                "value": (title)
+            },
+            on: {
+                "input": function($event) {
+                    if ($event.target.composing) return;
+                    title = $event.target.value
+                }
+            }
+        }), _v(" "), _c('button', {
+            on: {
+                "click": add
+            }
+        },
+        [_v("submit")])]), _v(" "), _c('ul', _l((list),
+            function(item) {
+                return _c('li', 
+                    [_v(_s(item))]
                 )
-            ]
-        )
+            }
+        ))])
     }
     ```
    - v-if v-for v-on 都是怎么实现的？
        - v-if : if - else 判断
-       - v-for : js 中的遍历 （ vm._l 中是用 for 循环实现的 ）
+       - v-for : js 中的遍历 （ **vm._l 中是用 for 循环实现的** ）
        - v-on : js 给 DOM 节点绑定事件
 3. 模板 生成 HTML 的问题
     - 复习一下 vdom 的知识： snabbdom （ h 函数、 patch 函数 ）
-    - vm._c 其实就相当于 snabbdom 中的 h 函数
-    - render 函数执行之后 返回的是 vnode ，也就是说 _c 返回的是 vnode
+    - vm._c 其实就相当于 snabbdom 中的 h 函数（ 返回 vnode ）
+    - render 函数执行之后 **返回的是 vnode** ，也就是说 _c 返回的是 vnode
 
     ```javascript
     vm._update(vnode){
         // 旧的 vnode
-        const prevVnode = vm._vnode
-
+        const prevVnode = vm._vnode;
+        
         // 新的 vnode
-        vm._vnode = vnode
+        vm._vnode = vnode;
+
+        // vm.__patch__ 新旧对比
+        if(!prevVnode){
+            // 把 vnode 放到空的容器 vm.$el 中
+            vm.$el = vm.__patch__(vm.$el, vnode)l
+        }else{
+            // 把 新的 vnode 和 旧的 vnode 对比
+            vm.$el = vm.__patch__(prevVnode, vnode)l
+        }
+    }
+
+    function updateComponent(){
+        // vm._render 即上边的 render 函数， 返回 vnode
+        vm._update(vm._render());
     }
     ```
+    - updateComponent 中实现了 vdom 的 patch 
+    - 页面首次渲染执行 updateComponent （走的是 patch 的第一种用法）
+    - data 每次修改的时候，执行 updateComponent （走的是 patch 的第二种用法）
+
+#### 问题解答
+- 模板： 本质是字符串、有逻辑、可以嵌入js变量
+- 模板必须转换为 JS 代码 （ 有逻辑 、 渲染 HTML 、 JS 变量 ）
+- render 函数是什么样子的 ？（ 有 with ，类似 vdom 的 h 函数 ）
+- render 函数执行返回的是 vnode
+- updateComponent 中执行 patch （ 首次渲染啥样？非首次渲染啥样？ ）
 
 
-4. vm._c 是什么？ render 函数返回了什么？
-
-
-
-
-### 整体流程
+### vue 的整个实现流程
+- 第一步：解析模板成 render 函数
+    - with 的用法
+    - 模板中所有信息都被 render 函数包含
+    - 模板中用到的 data 中的属性， 都变成了 JS 变量
+    - 模板中的 v-model v-for v-on 都变成了 JS 变量
+    - render 函数返回 vnode
+- 第二步：响应式开始监听
+    - 实现响应式的核心是 Object.defineProperty
+    - 将 data 的属性代理到 vm 上 ( 这里和 render 函数中的 with 的使用有很大的关系，只有把 data 和 methods 代理到 vm 上，才能直接访问 )
+- 第三步：首次渲染，显示页面，**且绑定依赖** （ 绑定依赖这里保留疑问，后边会讲 ）
+    - 初次渲染，执行 updateComponent ， 执行 vm._render()
+    - 执行 render 函数，会访问到 vm.list 和 vm.title （ 这是 data 中的两个变量 ）
+    - 访问这两个变量的时候，会被响应式的 get 方法监听到
+        - 疑问： 为啥要监听 get ？ 直接监听 set 不行吗？
+        - 答案：data 中有很多属性，有些会被用到，有些不会被用到
+        - 被用到的会走 get ，不会被用到的不会走 get
+        - **未走到 get 中的属性， set 的时候我们也无需关心**
+        - 目的：避免不必要的的重复渲染
+    - 执行 updateComponent ，会走到， vdom 的 patch 方法
+    - patch 将 vdom 渲染成 DOM ， 初次渲染完成
+- 第四步：data 属性变化，触发 rerender （ render 函数的再次执行， vnode 的重新 patch ）
+    - 数据变化，被响应式的 set 监听到
+    - set 中会执行 updateComponent 
+    - updateComponent 会重新执行 vm._render()
+    - 生成的 vnode 和 prevVnode，通过 patch 进行对比
+    - 渲染到 html 中
 
 
 
@@ -2429,7 +2435,7 @@ start at 66:35
 
 
 <!-- 
-end at ??? 预估 
+end at 72h 45min 预计用时 5h 实际用时 6h 10min
 -->
 
 

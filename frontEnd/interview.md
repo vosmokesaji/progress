@@ -692,7 +692,7 @@ fn2();
 
 
 ## 原型
-> Tips: 使用 zepto 和 jquery 讲原型，也算顺便解读了这二者的源码
+> TIPS: 使用 zepto 和 jquery 讲原型，也算顺便解读了这二者的源码
 - 问题 
     1. 说一个原型的实际应用
     2. 原型如何实现它的扩展性
@@ -865,7 +865,7 @@ fn2();
     - 先说一下 jQuery 和 zepto 的插件机制
     - 结合自己的开发经验，做过的基于原型的插件
 
-5. Tips: 为啥讲 jQuery 和 zepto 这些老掉牙的东西？
+5. TIPS: 为啥讲 jQuery 和 zepto 这些老掉牙的东西？
     - 不要以为 react 、 vue 已经一统天下了，这种观念是非常错误的
     - 你可以看看 npm 上 jQuery（周下载量259w） 和 [vue](https://www.npmjs.com/package/vue)（周下载量 100w） 下载量的对比，最起码jquery 还没有那么过时。
     - 而且很多 jquery 的引用是直接通过 cdn 引入的，拿来就能用
@@ -2420,43 +2420,366 @@ start at 66:35
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- 
 end at 72h 45min 预计用时 5h 实际用时 6h 10min
 -->
 
 
-## 组件化和 React
+## 组件化 和 React
 <!-- 
 6+10+13+6+6+3+7+14+13+12+3+10+10+12+10+4+8+4+3+7+4+8+17 
 190 min
 
-start at 
+start at 72h 51min
 
 190 * 1.44 = 273 min 也就是 7 小时
 -->
+- 是否做过 React 开发？
+- react 以及组件化的一些概念
+- 实现流程
+- 题目：
+    1. 说一下对组件化的理解
+    2. JSX 的本质是什么？
+    3. JSX 和 vdom 的关系
+    4. 说一下 setState 的过程
+    5. 阐述一下自己对 react 和 vue 的认识
+
+### todo-list demo
+1. 安装 React 脚手架
+    ```shell
+    sudo npm i create-react-app -g
+    ```
+2. 创建并初始化 react 项目
+    ```shell
+    # 初始化 react 项目 后边跟项目的名字 会帮你创建一个名为 react-test 的文件夹
+    create-react-app react-test
+    ```
+3. 在 /src 目录下创建一个 components 文件夹 写入：
+    ```javascript
+    // 创建 src/components/todo/index.js
+    import React, { Component } from "react";
+    import List from "./list/index.js"
+    import Input from "./input/index.js"
+
+    class Todo extends Component {
+        constructor(props){
+            super(props);
+
+            // state 保存了 当前这个组件的所有变量
+            this.state = {
+                list: []
+            }
+        }
+
+        render(){
+            return (
+                <div>
+                    <Input addTitle={this.addTitle.bind(this)}/>
+                    <List data={this.state.list}/>
+                </div>
+            )
+        }
+
+        addTitle(title){
+            const currentList = this.state.list;
+            this.setState({
+                list: currentList.concat(title)
+            })
+        }
+    }
+    export default Todo;
+
+    // 创建 src/components/todo/list/index.js
+    import React, { Component } from "react";
+
+    class List extends Component {
+        constructor(props){
+            super(props);
+        }
+
+        render(){
+            const list = this.props.data;
+            return (
+                <ul>
+                    {
+                        list.map((item, index) => {
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>
+            )
+        }
+    }
+
+    export default List;
+
+    // 创建 src/components/todo/input/index.js
+    import React, { Component } from "react";
+
+    class Input extends Component {
+        constructor(props){
+            super(props);
+
+            this.state = {
+                title: ""
+            }
+        }
+
+        render(){
+            return (
+                <div>
+                    <input value={this.state.title} onChange={this.changeHandler.bind(this)}/>
+                    <button onClick={this.clickHandler.bind(this)}>submit</button>
+                </div>
+            )
+        }
+
+        changeHandler(event){
+            this.setState({
+                title: event.target.value
+            })
+        }
+
+        clickHandler(){
+            const title = this.state.title;
+
+            // 把 title 添加进列表
+            const addTitle = this.props.addTitle;
+            addTitle(title);    // 重点
+
+            this.setState({
+                title: ""
+            })
+        }
+    }
+
+    export default Input;
+
+
+    // 修改 src/App.js 
+    import React from 'react';
+    import logo from './logo.svg';
+    import './App.css';
+
+    import Todo from "./components/todo/index.js"
+
+
+    function App() {
+        return (
+            <div className="App">
+                <Todo/>
+            </div>
+        );
+    }
+
+    export default App;
+    ```
+> TIPS: 看起来是比 vue 的写法复杂了不少，但这次是以做项目的情况来写的，看似复杂，实则是为了之后使用的简单
+- 这种组件化的方式（ vue 也是可以的 ）来做大型的项目的开发，才是最好的方式
+- 数据和视图分离
+- 修改数据驱动视图变化，不直接操作 DOM
+
+
+
+### 什么是组件（说一下对组件化的理解）
+1. 组件的封装
+    - **识图** 可以封装
+    - **数据** 可以封装
+    - **变化逻辑**（ 数据驱动视图变化 ）可以封装
+2. 组件的复用
+    - props 传递参数 ， 以实现复用
+
+> TIPS: 面向对象三大特性， 五大原则：
+<br> 三大特性是：封装,继承,多态  
+<br> **封装** ，也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。封装是面向对象的特征之一，是对象和类概念的主要特性。 简单的说，一个类就是一个封装了数据以及操作这些数据的代码的逻辑实体。在一个对象内部，某些代码或某些数据可以是私有的，不能被外界访问。通过这种方式，对象对内部数据提供了不同级别的保护，以防止程序中无关的部分意外的改变或错误的使用了对象的私有部分。
+<br>
+<br> **继承** ，是指可以让某个类型的对象获得另一个类型的对象的属性的方法。它支持按级分类的概念。继承是指这样一种能力：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展。 通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。继承的过程，就是从一般到特殊的过程。要实现继承，可以通过“继承”（Inheritance）和“组合”（Composition）来实现。继承概念的实现方式有二类：实现继承与接口继承。实现继承是指直接使用基类的属性和方法而无需额外编码的能力；接口继承是指仅使用属性和方法的名称、但是子类必须提供实现的能力；
+<br>
+<br> **多态** ，就是指一个类实例的相同方法在不同情形有不同表现形式。多态机制使具有不同内部结构的对象可以共享相同的外部接口。这意味着，虽然针对不同对象的具体操作不同，但通过一个公共的类，它们（那些操作）可以通过相同的方式予以调用。 
+<br>
+<br> 五大基本原则 
+<br> **单一职责原则SRP(Single Responsibility Principle)** ： 是指一个类的功能要单一，不能包罗万象。如同一个人一样，分配的工作不能太多，否则一天到晚虽然忙忙碌碌的，但效率却高不起来。
+<br>
+<br> **开放封闭原则OCP(Open－Close Principle)** ： 一个模块在扩展性方面应该是开放的而在更改性方面应该是封闭的。比如：一个网络模块，原来只服务端功能，而现在要加入客户端功能，那么应当在不用修改服务端功能代码的前提下，就能够增加客户端功能的实现代码，这要求在设计之初，就应当将服务端和客户端分开，公共部分抽象出来。
+<br>
+<br> **替换原则(the Liskov Substitution Principle LSP)**  ： 子类应当可以替换父类并出现在父类能够出现的任何地方。比如：公司搞年度晚会，所有员工可以参加抽奖，那么不管是老员工还是新员工，也不管是总部员工还是外派员工，都应当可以参加抽奖，否则这公司就不和谐了。
+<br>
+<br> **依赖原则(the Dependency Inversion Principle DIP)** ： 具体依赖抽象，上层依赖下层。假设B是较A低的模块，但B需要使用到A的功能，这个时候，B不应当直接使用A中的具体类： 而应当由B定义一抽象接口，并由A来实现这个抽象接口，B只使用这个抽象接口：这样就达到了依赖倒置的目的，B也解除了对A的依赖，反过来是A依赖于B定义的抽象接口。通过上层模块难以避免依赖下层模块，假如B也直接依赖A的实现，那么就可能造成循环依赖。一个常见的问题就是编译A模块时需要直接包含到B模块的cpp文件，而编译B时同样要直接包含到A的cpp文件。
+<br>
+<br> **接口分离原则(the Interface Segregation Principle ISP)**  ： 模块间要通过抽象接口隔离开，而不是通过具体的类强耦合起来
+
+### JSX 本质
+
+
+#### 语法演示
+1. HTML 形式
+2. 引入 JS 变量和表达式
+    ```javascript
+    function App() {
+        const name = "zhangsan";
+        const show = true;
+        const age = "";
+        return (
+            <div>
+                <p>姓名： {name}</p>
+                <p>年龄： {age || 20}</p>
+            </div>
+        );
+    }
+    ```
+3. if...else...
+    ```javascript
+    function App() {
+        const age = "";
+        return (
+            <div>
+                {show ? <img src="https://www.bilibili.com/favicon.ico"/> : ""}
+            </div>
+        );
+    }
+    ```
+4. 循环
+    ```javascript
+    function App() {
+        const list = ["1", "2", "3", "4"];
+        return (
+            <div>
+                <ul>
+                    {list.map((item, index) => {
+                        return <li key={index}>{item}</li>
+                    })}
+                </ul>
+            </div>
+        );
+    }
+    ```
+5. style 和 className
+    ```javascript
+    function App() {
+        const styleConfig = {
+            fontSize: "40px",
+            color: "blue"
+        };
+        return (
+            <div className="container">
+                <p style={styleConfig}>this is a p</p>
+                <p style={{fontSize: "40px",color: "blue"}}>this is a p</p>
+            </div>
+        );
+    }
+    // 两种写法都行
+    ```
+6. 事件
+
+
+```javascript
+
+```
+
+#### 解析成 JS
+- JSX 无法被浏览器解析
+- 那么它在如何在浏览器运行的？
+    ```javascript
+    /* JSX 代码 */
+    var profile = <div>
+                    <img src="avatar.png" className="profile" />
+                    <h3>{[user.firstName, user.lastName].join(" ")}</h3>
+                  </div>;
+    // 解析结果
+    var React.createElememt(
+        "div", 
+        null, 
+        React.createElememt("img", { src: "avatar.png", className: "profile" }),
+        React.createElememt("h3", null, [user.firstName, user.lastName].join(" "))
+    );
+
+    // React.createElememt 参数说明（两种用法）
+    React.createElememt("div", {attrKey: "attrValue"}, child1, child2, child3, ...)
+    React.createElememt("div", {attrKey: "attrValue"}, [...])
+
+    // 下边是第二种用法 map 方法返回的是一个数组
+    render(){
+        const list = this.props.data;
+        return (
+            <ul>
+                {
+                    list.map((item, index) => {
+                        return <li key={index}>{item}</li>
+                    })
+                }
+            </ul>
+        )
+    }
+    // 解析结果
+    render(){
+        const list = this.props.data;
+        return React.createElememt(
+            "ul",
+            null,
+            list.map((item, index) => {
+                return return React.createElememt(
+                    "li",
+                    { key: index},
+                    item
+                )
+            })
+        )
+    }
+    ```
+- JSX 其实是语法糖
+- 开发环境将 JSX 编译成 JS 代码
+- JSX 的写法大大降低了学习成本和编码工作量
+- 同时， JSX 也会增加 debug 的工作量
+
+#### 独立的标准
+- JSX 是 React 引入的，单不是 React 独有的
+- React 已经将他作为一个独立标准开放，其他项目也可以用
+- React.createElememt 是可以自定义修改的
+> 说明： JSX 本身的功能已经完备； 和其他标准兼容和扩展性没有问题
+> 另： 有机会会录制《1000行代码实现 React》，就用 JSX 标准
+
+
+#### 总结
+
+
+
+### JSX 和 vdom 
+
+#### vdom 回顾
+
+#### 何时 patch
+
+#### 自定义组件的处理
+
+#### 实例演示
+
+#### 总结
 
 
 
 
 
 
+### setState
+
+
+#### 异步
+
+#### 回顾 vue 修改属性
+
+#### 过程
+
+#### 总结
 
 
 
+
+
+### 总结
+
+
+
+### react 和 vue 对比
 
 
 

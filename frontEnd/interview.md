@@ -1790,7 +1790,7 @@ start at 63h05min
     ```
 - 问题解答
 - 如何使用？ 可以用 snabbdom 用法来举例
-- 核心 API : h 函数、 petch 函数
+- 核心 API : h 函数、 patch 函数
 
 
 ### 介绍一下 Diff 算法
@@ -2580,7 +2580,6 @@ start at 72h 51min
 - 修改数据驱动视图变化，不直接操作 DOM
 
 
-
 ### 什么是组件（说一下对组件化的理解）
 1. 组件的封装
     - **识图** 可以封装
@@ -2672,10 +2671,6 @@ start at 72h 51min
 6. 事件
 
 
-```javascript
-
-```
-
 #### 解析成 JS
 - JSX 无法被浏览器解析
 - 那么它在如何在浏览器运行的？
@@ -2735,82 +2730,390 @@ start at 72h 51min
 - JSX 是 React 引入的，单不是 React 独有的
 - React 已经将他作为一个独立标准开放，其他项目也可以用
 - React.createElememt 是可以自定义修改的
-> 说明： JSX 本身的功能已经完备； 和其他标准兼容和扩展性没有问题
+> 说明： JSX 本身的功能已经完备； 和其他标准兼容和扩展性没有问题 <br>
 > 另： 有机会会录制《1000行代码实现 React》，就用 JSX 标准
+- 代码演示：
+    ```shell
+    # 创建测试项目的文件夹
+    mkdir jsx-test && cd jsx-test 
+
+    # 初始化项目，名称就叫 jsx-test 
+    npm init
+ 
+    # 全局安装 bable （ 我安装的时候 babel 已经更名为 babel-cli ）
+    sudo npm i babel-cli -g
+
+    # 在项目内安装 jsx 插件
+    npm install --save-dev babel-plugin-transform-react-jsx
+
+    ```
+    - 在 jsx-test 目录下创建 demo1.jsx  并写入：
+    ```javascript
+    class Input extends Component {
+        render(){
+            return (
+                <div>
+                    <input value={this.state.title} onChange={this.changeHandler.bind(this)}/>
+                    <button onClick={this.clickHandler.bind(this)}>submit</button>
+                </div>
+            )
+        }
+    }
+    ```
+    - 在 jsx-test 目录下创建 demo2.jsx  并写入：
+    ```javascript
+    var profile = <div>
+        <img src="avatar.png" className="profile" />
+        <h3>{[user.firstName, user.lastName].join(" ")}</h3>
+    </div>;
+    ```
+    - 在 jsx-test 目录下创建 .babelrc 文件，并写入
+    ```
+    {"plugins": ["transform-react-jsx"]}
+    ```
+    - 在 jsx-test 目录下执行以下命令，编译
+    ```shell
+    babel --plugins transform-react-jsx demo1.jsx 
+    babel --plugins transform-react-jsx demo2.jsx 
+    ```
+    ```javascript
+    // demo1.jsx 编译结果
+    class Input extends Component {
+        render() {
+            return React.createElement(
+                "div",
+                null,
+                React.createElement("input", { value: this.state.title, onChange: this.changeHandler.bind(this) }),
+                React.createElement(
+                    "button",
+                    { onClick: this.clickHandler.bind(this) },
+                    "submit"
+                )
+            );
+        }
+    }
+
+    // demo2.jsx 编译结果
+    var profile = React.createElement(
+        "div",
+        null,
+        React.createElement("img", { src: "avatar.png", className: "profile" }),
+        React.createElement(
+            "h3",
+            null,
+            [user.firstName, user.lastName].join(" ")
+        )
+    );
+    ```
+    - 在 demo1.jsx or demo2.jsx 顶部添加以下代码，再进行编译，可以更改 React.createElement 方法名为 h （叫任何其他名字都可以）
+    ```javascript
+    // 顶部加入这行代码
+    /* @jsx h */
+
+    // demo1.jsx 加入 /* @jsx h */ 的编译结果
+    /* @jsx h */
+    class Input extends Component {
+        render() {
+            return h(
+                "div",
+                null,
+                h("input", { value: this.state.title, onChange: this.changeHandler.bind(this) }),
+                h(
+                    "button",
+                    { onClick: this.clickHandler.bind(this) },
+                    "submit"
+                )
+            );
+        }
+    }
+    // demo2.jsx 加入 /* @jsx _c */ 的编译结果
+    /* @jsx _c */
+    var profile = _c(
+        "div",
+        null,
+        _c("img", { src: "avatar.png", className: "profile" }),
+        _c(
+            "h3",
+            null,
+            [user.firstName, user.lastName].join(" ")
+        )
+    );
+    ```
+    - 所以我们是可以 **自定义 React.createElement** 的
+
+#### 总结（问题解答）
+- JSX 语法 （ 标签 、 JS 表达式 、 判断 、 循环 、 事件绑定 ）
+- JSX 是语法糖，最重要被解析成 JS 才能运行
+    - 要联想到两点：第一，vue 中的模板是被怎样解析成模板的？
+    - 第二，JSX 最终被解析成的 JS 的格式是啥样的？
+        - React.createElement 类似于 vdom 中的 h 函数
+- JSX 是独立的标准，可以被其他项目使用
 
 
-#### 总结
-
-
-
-### JSX 和 vdom 
+### JSX 和 vdom 的关系
+- 分析： 为何需要 vdom
+- React.createElement 和 h
+- 何时 patch ？ 
+- 自定义组件的解析 
 
 #### vdom 回顾
+- vdom 是 React 推广开来的， 他和 JSX 是分不开的
+- JSX 就是模板，最终要渲染成 HTML
+- 初次渲染 + 修改 state 之后的 re-render
+- 正好符合 vdom 的应用场景
+- vdom 如何应用， 核心 API 是什么？
+    - 如何使用？ 可以用 snabbdom 用法来举例
+    - 核心 API : h 函数、 patch 函数
 
 #### 何时 patch
+- 初次渲染 - ```ReactDOM.render(<App />, container);```
+- 会触发 ```patch(container, vnode);```
+- re-render - ```setState()```
+- 会触发 ```patch(vnode, newVnode);```
+- 代码演示：
+    ```javascript
+    // 之前的 react-test 项目中 src/index.js 中有如下代码：
+    ReactDOM.render(<App />, document.getElementById('root'));
+    // 会触发 patch(container, vnode);
+
+    // 之前的 react-test 项目中 src/component/todo/index.js 中有如下代码：
+    this.setState({
+        list: currentList.concat(title)
+    });
+    // 会触发 patch(vnode, newVnode);
+    ```
 
 #### 自定义组件的处理
 
-#### 实例演示
+- 在 jsx-test 目录下创建 demo3.jsx  并写入：
+    ```javascript
+    import List from "./list/index.js"
+    import Input from "./input/index.js"
 
-#### 总结
+    function render(){
+        return (
+            <div>
+                <p>this is demo</p>
+                <Input addTitle={this.addTitle.bind(this)}/>
+                <List data={this.state.list}/>
+            </div>
+        )
+    }
+    ```
+- 在 jsx-test 目录下执行以下命令，编译
+    ```shell
+    babel --plugins transform-react-jsx demo3.jsx 
+    ```
+    ```javascript
+    // demo3.jsx 编译结果
+    import List from "./list/index.js";
+    import Input from "./input/index.js";
+
+    function render() {
+        return React.createElement(
+            "div",
+            null,
+            React.createElement(
+                "p",
+                null,
+                "this is demo"
+            ),
+            React.createElement(Input, { addTitle: this.addTitle.bind(this) }),
+            React.createElement(List, { data: this.state.list })
+        );
+    }
+    ```
+- ```'div'``` 直接渲染为 ```<div></div>``` 即可， vdom 可以做到
+- Input 和 List 是自定义组件（ class ） ， vdom 默认是不认识的
+- 因此 Input 和 List 自定义的时候必须声明 render 函数
+- 根据 props 初始化实例， 然后执行实例对象的 render 函数
+    ```javascript
+    // List 的使用
+    <List data={this.state.list}/>
+
+    // 上边的 JSX 转换成了下边的 JS 代码
+    React.createElement(List, { data: this.state.list })
+
+    // 可以理解为这样：
+    var list = new List({ data: this.state.list });
+    return list.render();
+
+    // 最后执行的是 List 组件的 render 函数
+    render(){
+        const list = this.props.data;
+        return (
+            <ul>
+                {
+                    list.map((item, index) => {
+                        return <li key={index}>{item}</li>
+                    })
+                }
+            </ul>
+        )
+    }
+    // 最终还是由原生的 HTML 标签承载
+    ```
+- render 函数返回的还是 vnode 对象
 
 
-
-
-
+#### 问题解答：jsx 和 vdom 有什么关系？
+- 为何需要 vdom ： JSX 需要渲染成 HTML ， 数据驱动识图
+- React.createElement 和 h 函数 ， 都生成 vnode 
+    - 他俩的区别在于 h 函数的第一个参数名称就是 HTML 原生标签
+    - React.createElement 第一个参数除了原生标签还有 **自定义组件的名称**
+- 何时 patch ： ReactDOM.render() 和 setState 的时候
+- 自定义组件的解析： 初始化实例，然后执行 render
 
 ### setState
-
+- 问题：说一下 React setState 的过程
+- setState 是异步的
+- vue 修改属性也是异步的
+- setState 的过程
 
 #### 异步
+- 用之前的 addTitle 测试一下：
+    ```javascript
+    addTitle(title){
+        const currentList = this.state.list;
+        console.log(this.state.list);           // ["a", "b"]
+        this.setState({
+            list: currentList.concat(title)     // "c"
+        })
+        console.log(this.state.list);           // ["a", "b"]
+    }
+    ```
+- setState 为何需要异步？
+    - 可能会一次执行多次 setState 
+    - 无法规定、限制用户（开发者）如何使用 setState 
+    - 没必要每次 setState 都重新渲染，考虑性能
+    - 即使是每次重新渲染，用户也看不到中间的效果
+    - 只看到最后的结果即可
 
-#### 回顾 vue 修改属性
+#### 回顾 vue 修改属性也是异步的
+- 效果、原因和 setState 一样
+- set 中执行 updateComponent 是异步的
 
-#### 过程
+#### setState 的过程
+- 每个组件实例，都有 renderComponent 方法（ 继承自 Component ）
+- 执行 renderComponent 的时候，会重新执行实例的 render
+- render 函数返回 newVnode ， 然后拿到 prevVnode
+- 执行 ```patch(prevVnode, newVnode);```
 
-#### 总结
+#### 问题解答：说一下 React setState 的过程
+- setState 是异步的： 效果、原因
+- vue 修改属性也是异步的： 效果、原因
+- setState 过程： 最终走向了 ```patch(prevVnode, newVnode);```
+
+
+### 总结
+- 说一下多组件化的理解
+    - 组件的封装：封装试图、数据、变化逻辑
+    - 组建的复用：props 传递（实现差异化）、复用
+- JSX 的本质是什么？
+    - JSX 语法 （ 标签 、 JS 表达式 、 判断 、 循环 、 事件绑定 ）
+    - JSX 是语法糖，最重要被解析成 JS 才能运行
+        - 要联想到两点：第一，vue 中的模板是被怎样解析成模板的？
+        - 第二，JSX 最终被解析成的 JS 的格式是啥样的？
+            - React.createElement 类似于 vdom 中的 h 函数
+    - JSX 是独立的标准，可以被其他项目使用
+- JSX 和 vdom 的关系
+    - 为何需要 vdom ： JSX 需要渲染成 HTML ， 数据驱动识图
+    - React.createElement 和 h 函数 ， 都生成 vnode 
+        - 他俩的区别在于 h 函数的第一个参数名称就是 HTML 原生标签
+        - React.createElement 第一个参数除了原生标签还有 **自定义组件的名称**
+    - 何时 patch ： ReactDOM.render() 和 setState 的时候
+    - 自定义组件的解析： 初始化实例，然后执行 render
+- 说一下 setState 的过程
+    - setState 是异步的： 效果、原因
+    - vue 修改属性也是异步的： 效果、原因
+    - setState 过程： 最终走向了 ```patch(prevVnode, newVnode);```
+
+- 阐述一下自己对 React 和 Vue 的认识 （内容比较多，看下一节）
+
+### react 和 vue 对比
+> 前言 <br>
+> 文无第一，武无第二，技术选型没有绝对的对错 <br>
+> 技术选型考虑的因素非常多 <br>
+> 作为面试者，你要有自己的主见 <br>
+> 和面试官的观点不一致没关系，只要你能说出理由 <br>
+
+#### 两者本质的区别
+- vue 本质是 **MVVM 框架** ，由 MVC 发展而来
+- React 本质是 **前端组件化框架** ，由后端组件化框架发展而来
+- 这并不妨碍两者都能实现相同的功能
+- 模板的区别
+    - vue - 使用模板（最初由 angular 提出）
+    - React - 使用 JSX
+    - 模板语法上，我更加倾向于 JSX
+        - JSX 只需要知道一个规则，便是大括号中的都是可以执行的 js 表达式
+        - 而 vue 模板中 在 ```v-if="isShow"``` 和 ```{{userName}}``` 中都使用的 js 的变量，没有一个统一的规则
+    - 模板分离上，我更加倾向于 vue
+        - JSX 模板和 JS 混在一起，未分离
+        ```javascript
+        return (
+            <div>
+                <Input addTitle={this.addTitle.bind(this)}/>
+                <List data={this.state.list}/>
+            </div>
+        )
+        ```
+
+#### 看模板和组件化的区别
+- React 本身就是组件化，没有组件化就不是 React
+- vue 也支持组件化，不过是在 MVVM 上的扩展
+- 查阅 vue 组件化的文档，洋洋洒洒很多（侧面反映）
+- 所以对于组件化，我更倾向于 React ， 做得更彻底更清晰
+
+#### 两者的共同点
+- 都支持组件化
+- 都是数据驱动识图
+
+#### 总结问题的答案
+- 国内使用，首推 vue 文档更易读、易学、社区够强大（ 文档写的非常好， 滴滴又一个前端专门研究 vue 还出了书 叫啥？？？ ）
+- 团队水平较高的，还是推荐使用 React ，因为组件做的更彻底 而且 JSX 也成为了标准
 
 
 
+<!-- 
+end at 77h 57min 预计用时 7h 实际用时 5h 06min
+-->
+
+
+## hybrid
+<!-- 
+6.5+11+7+11.4+5.5+10.5+5.5+10.7+6+6+7+9.5+3.3+4.8
+105 min
+
+start at 
+
+106 * 1.44 = 150 min 也就是 2.5 小时
+-->
+- 移动端占大部分流量，已经远超 PC 
+- 一线互联网公司都有自己的 APP
+- 这些 APP 中有很大比例的前端代码（页面）
+- 拿微信举例，你每天浏览的微信内容，有多少是前端？
+
+### hybrid 是什么，为什么用？
+
+
+
+
+### 介绍一下 hybrid 更新上线流程？
+
+
+
+
+### hybrid 和 h5 的比较
+
+
+
+### JS 和客户端通讯
 
 
 ### 总结
 
 
 
-### react 和 vue 对比
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-end at ??? 预估 
--->
-
-
-## hybrid
-<!-- 
-7+11+7+11+6+11+6+11+6+6+7+10+3+5
-107 min
-
-start at 
-
-107 * 1.44 = 154 min 也就是 2.5 小时
--->
-
-
-
-
-
-
 
 
 
@@ -2831,7 +3134,7 @@ end at ??? 预估
 
 
 
-## 总结
+## 课程总结
 
 <!-- 
 5+12+8
@@ -2842,16 +3145,15 @@ start at
 25 * 1.44 = 36 min 也就是 0.5 小时
 -->
 
+### 不讲 nodejs
 
 
 
+### 如何热爱编程
 
 
 
-
-
-
-
+### 总结
 
 
 
@@ -2864,9 +3166,6 @@ start at
 <!-- 
 end at ??? 预估 
 -->
-
-
-
 
 
 
@@ -2899,26 +3198,3 @@ end at ??? 预估
         })
     }
     ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

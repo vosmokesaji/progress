@@ -35,6 +35,18 @@
 # 2019年
 
 ## 9月
+### 9日
+- 【发现】： 一些不错的网站
+    - [OfficePLUS，微软Office官方在线模板网站！](http://www.officeplus.cn/Template/Home.shtml)
+    - [重现化学——可能会让你疯狂地爱上化学](http://www.envisioningchemistry.cn/)
+    - [全历史——没想过历史还能这么玩](https://www.allhistory.com/)
+    - [求字体网——轻松识别不认识的字体](http://new.qiuziti.com/)
+    - [AlteredQualia —— 各种好玩的神器~](https://alteredqualia.com/)
+    - [OpenStax CNX —— 免费分享教科书的网站](https://cnx.org)
+    - [tunefind —— 快速找到热门影视剧的BGM！](https://www.tunefind.com/movie/zootopia-2016)
+    - [好看的效果](https://wangyasai.github.io/Stars-Emmision/)
+    - [正版中国——正版软件限时免费](https://getitfree.cn/)
+
 ### 6日
 - 【技术】js-xss库可以帮助你转义
 

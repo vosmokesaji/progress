@@ -2917,7 +2917,7 @@ end at 77h 57min 预计用时 7h 实际用时 5h 06min
 6.5+11+7+11.4+5.5+10.5+5.5+10.7+6+6+7+9.5+3.3+4.8
 105 min
 
-start at 
+start at 78h 00min
 
 106 * 1.44 = 150 min 也就是 2.5 小时
 -->
@@ -3005,7 +3005,7 @@ start at
 - JS 和客户端通讯的基本形式
 - schema 协议简介和使用（ 前端和客户端通信的一个协议 ）
 - schema 使用的封装
-- 内之上线
+- 内置上线
 
 #### 1.7.4.1. 之前遗留的问题： 新闻详情页使用 hybrid ，前端页面如何获取新闻内容？
 - 不能使用 ajax 获取，因为两个问题：第一 跨域 ，第二 速度慢 
@@ -3041,39 +3041,165 @@ start at
     ```javascript
     /* 以下代码只是演示，无法正常运行，微星有着严格的权限验证，外部页面不能随意使用 schema  */
 
-    var iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = "weixin://dl/scan";        // iframe 访问 schema
-    var body = doucment.body || document.getElementByTagName("body")[0];
-    body.appendChild(iframe);
+    function invokeScan(){
+        var iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = "weixin://dl/scan";        // iframe 访问 schema
+        var body = doucment.body || document.getElementByTagName("body")[0];
+        body.appendChild(iframe);
 
-    // 用完之后删掉，防止多次使用，造成内存泄漏
-    setTimeout(function(){
-        body.removeChild(iframe);       // 销毁 iframe
-        iframe = null;
-    });
+        // 用完之后删掉，防止多次使用的情况下创建多个 iframe ，造成内存泄漏
+        // 使用异步的方式将 iframe 移除，因为异步不会影响当前的执行 
+        setTimeout(function(){
+            body.removeChild(iframe);       // 销毁 iframe
+            iframe = null;
+        });
+    }
+
+    document.getElementById("btn").addEventListener("click", function(){
+        invokeScan();
+    })
+
+
+    /* 如果要加上参数 和 callback ， 那就这么写 */
+    // 用于客户端调用前端的代码
+    window['_weixin_sacn_callback'] = function(resault){
+        alert(resault);
+    }
+
+    // 省略...
+    iframe.src = "wexin://dl/sacn?k1=v1&k2=v2&k3=v3&callback=_weixin_sacn_callback"
+    // 省略...
     ```
+- schema 使用的封装
+    ```javascript
+    // 封装的结果：傻瓜式调用， 而且不用自己在定义全局函数
+    window.invoke.share({title: "xxx", content: "yyyyy"}, function(result){
+        if(result.erron === 0){
+            alert("分享成功");
+        }else{
+            // 分享失败
+            alert(result.message);
+        }
+    })
+    ```
+    - 具体实现
+    ```javascript
+    // 分享
+    function invokeShare(data, callback){
+        _invoke("share", data, callback);
+    }
+
+    // 登录
+    function invokeLogin(data, callback){
+        _invoke("login", data, callback);
+    }
+
+    // 打开扫一扫
+    function invokeScan(data, callback){
+        _invoke("scan", data, callback);
+    }
+
+    // 暴露给全局
+    window.invoke = {
+        share: invokeShare,
+        login: invokeLogin,
+        scan: invokeScan
+    }
+
+
+    function invoke(action, data, callback){
+        // 拼接 schema 协议
+        var schema = "myapp://utils";
+        schema += "/" + action;
+
+        schema += "?a=a"
+        var key;
+        for(key in data){
+            if(data.haOwnProperty(key)){
+                schema += "&" + key + "=" data[key];
+            }
+        }
+
+        // 处理 callback
+        var callbackName = "";
+        if(typeof callback === "string"){
+            callbackName = callback;
+        }else{
+            callbackName = action + Date.now()
+            window[callbackName] = callback;                // ？？？？
+        }
+
+        schema += "callback=" + callbackName;
+
+        // iframe 中调用 schema
+        var iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = schema;        // iframe 访问 schema
+        var body = doucment.body || document.getElementByTagName("body")[0];
+        body.appendChild(iframe);
+
+        setTimeout(function(){
+            body.removeChild(iframe);
+            iframe = null;
+        });
+    }
+
+    // 调用 扫一扫
+    document.getElementById("btn1").addEventListener("click", function(){
+        window.invoke.scan({}, function(){});
+    });
+    // 调用 分享
+    document.getElementById("btn2").addEventListener("click", function(){
+        window.invoke.share({
+            title: "分享标题",
+            content: "分享分内容",
+            function(result){
+                if(result.erron === 0){
+                    alert("分享成功");
+                }else{
+                    // 分享失败
+                    alert(result.message);
+                }
+            }
+        });
+    })
+    ```
+- 内置上线
+    - 将以上代码打包，叫做 invoke.js ，内置到客户端
+    - 客户端每次启动 webview ， 都默认执行 invoke.js 
+    - 本地加载，免去网络加载的时间， 更快
+    - 本地加载，没有网络请求，黑客看不到 schema 协议，更安全
+
+- 问题解答：前端 JS 如何和 客户端通讯？
+    - 通讯的基本形式： 调用能力、传递参数、监听回调
+    - 对 schema 协议的理解和使用
+    - 调用 schema 代码的封装
+    - 内置上线的好处： 更快、更安全
+
 
 ### 1.7.5. 总结
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- hybrid 是什么？ 为什么用 hybrid ？
+    - hybrid 是客户端和前端的混合开发
+    - hybrid 存在的核心意义在于快速迭代，无需审核
+    - hybrid 实现流程，以及 webview 和 file 协议
+- 介绍一下 hybrid 更新上线流程？
+    - 掌握流程图
+    - 要点1： 服务端的版本和 zip 包维护
+    - 要点2： 更新zip 包之前，先对比版本号
+    - 要点3： zip 下载解压和覆盖
+- hybrid 和 h5 的主要区别
+    - 优点： 体验好，可快速迭代
+    - 缺点： 开发成本高，运营成本高
+    - 使用场景： hybrid 适合产品型 ， h5 适用于运营型
+- 前端 JS 和客户端如何通讯？
+    - 通讯的基本形式： 调用能力、传递参数、监听回调
+    - 对 schema 协议的理解和使用
+    - 调用 schema 代码的封装
+    - 内置上线的好处： 更快、更安全
 
 <!-- 
-end at ??? 预估 
+end at 81h 10min 预计用时 2.5h 实际用时 5个番茄钟 即 2h 5min
 -->
 
 
@@ -3084,29 +3210,54 @@ end at ??? 预估
 5+12+8
 25 min
 
-start at 
+start at 81h 10min
 
 25 * 1.44 = 36 min 也就是 0.5 小时
 -->
 
-### 1.8.1. 不讲 nodejs
+### 1.8.1. nodejs
+- 为何不讲 nodejs
+    - 小白程序员到 nodejs 的距离： 10公里
+    - java 程序员到 nodejs 的距离： 3公里
+    - 纯前端程序员到 nodejs 的距离： 7公里
+- nodejs 到底是什么？
+    - nodejs —— 为了做后端开发，选用了 JS 这门语言 
+    - 你了解后端开发吗？光会一门语言的语法可远远不够！
+    - 后端开发和前端开发完全是不一样的思路和设计
+    - stream - server 端的概念
+    - fs 或存储 - server 端的概念
+    - 以及，服务器的运维（ 均衡、监控、报警等 ）
+    - nodejs 并不是像原型、异步一样，隶属于 JS 的一个模块
+    - nodejs 是一个独立的技术栈，只不过用了 JS 的语法而已
 
-
+<!-- 会规划一门课程 专门讲 nodejs 面试技巧 -->
 
 ### 1.8.2. 如何热爱编程
-
-
-
-### 1.8.3. 总结
-
-
-
-
-
-
-
+- 热爱！
+- 怎么证明？
+    1. 看书
+        - 手不离书
+        - 看书是构建知识体系的最好方式
+        - 自己买书，不要借书，不要买电子书
+        - 看书有技巧，做标记，做折页
+        - 想要 2w 的月薪？那你先看完 2k 的书！
+        - 看书要有产出：读书笔记（ 哪些看懂的？那些没看懂 ）
+    2. 写博客
+        - 合格程序员的必备
+        - 写博客的经历和感悟
+        - 是一个自我总结的过程
+        - 也是一个与别人交流的过程
+        - 如何让更多的人看？（ 选择合适的平台 ， 公众号 ，博客平台 github 等 ）
+        - 面对质疑和打击怎么看待？
+    3. 做开源
+       - github 的 star 是硬通货
+       - 开源的经理和感悟
+       - 做什么？ 另外，立刻开始写，不要思考太多！（前怕狼后怕虎）
+       - 要做好官网和文档，以及 QQ 群、 微信群等社区
+       - 及时回复 issue ， 及时迭代发版
+       - 如何推广？写博客等，以及推广过程中的质疑 
 
 
 <!-- 
-end at ??? 预估 
+end at 81h 41min 预计用时 0.5h 实际用时 0.5h 
 -->

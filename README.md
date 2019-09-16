@@ -35,12 +35,14 @@
 # 2019年
 
 ## 9月
+### 15日
+- 【发现】[不要肆无忌惮地在你的项目中使用 ES78910 了～](https://juejin.im/post/5d7efbbb6fb9a06b2650c74a) （主要是作者的求知过程值得参考）
 
 ### 14日
-- 【发现】[如何写出一个惊艳面试官的深拷贝?](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1?utm_source=gold_browser_extension)
+- 【发现】[如何写出一个惊艳面试官的深拷贝?](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1)
 
 ### 13日
-- 【发现】[「前端进阶」高性能渲染十万条数据(时间分片)](https://juejin.im/post/5d76f469f265da039a28aff7?utm_source=gold_browser_extension)
+- 【发现】[「前端进阶」高性能渲染十万条数据(时间分片)](https://juejin.im/post/5d76f469f265da039a28aff7)
 
 
 ### 10日
@@ -128,7 +130,7 @@
 - 【网页】[有哪些软件堪称神器，却不为大众所知？ - 彭宏豪的回答 - 知乎](https://www.zhihu.com/question/300735799/answer/767428571)
 
 ### 24日
-- 【知识】【计算机】【CPU】 [从多线程到Event Loop全面梳理](https://juejin.im/post/5d5b4c2df265da03dd3d73e5?utm_source=gold_browser_extension)
+- 【知识】【计算机】【CPU】 [从多线程到Event Loop全面梳理](https://juejin.im/post/5d5b4c2df265da03dd3d73e5)
     - 进程就好比工厂的车间，它代表CPU所能处理的单个任务。 进程之间相互独立，任一时刻，CPU总是运行一个进程，其他进程处于非运行状态。CPU使用 **时间片轮转进度算法** 来实现同时运行多个进程。
     - 线程就好比车间里的工人，一个进程可以包括多个线程，多个线程共享进程资源
     - 进程是cpu资源分配的最小单位（是能拥有资源和独立运行的最小单位）
@@ -146,8 +148,8 @@
 
 
 ### 22日
-- 【知识】[前端该如何准备数据结构和算法？](https://juejin.im/post/5d5b307b5188253da24d3cd1?utm_source=gold_browser_extension)
-- 【知识】[30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）](https://juejin.im/post/5d59f2a451882549be53b170?utm_source=gold_browser_extension)
+- 【知识】[前端该如何准备数据结构和算法？](https://juejin.im/post/5d5b307b5188253da24d3cd1)
+- 【知识】[30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）](https://juejin.im/post/5d59f2a451882549be53b170)
 
 
 ### 21日

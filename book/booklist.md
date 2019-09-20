@@ -31,3 +31,4 @@
 [语文素养高级读本](https://book.douban.com/subject/1928294/) | 9.0
 [社会心理学](https://book.douban.com/subject/1476651/) | 9.0
 [经济学的思维方式](https://book.douban.com/subject/10510736/) | 8.9
+[癌症·真相](https://book.douban.com/subject/26592648/) | 8.9

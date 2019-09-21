@@ -139,7 +139,7 @@
 
 ## 基础算法之 “数组类” 
 
-1. 电话号码的组合
+1. [电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
     - 知识点：
         - 
 2. 卡牌分组

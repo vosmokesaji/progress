@@ -1,5 +1,10 @@
 FrontEnd Interview
-  慕课前端面试课
+<!-- 慕课前端面试课笔记 -->
+
+[TOC]
+
+<!-- TOC -->autoauto- [1. ES6 语法](#1-es6-语法)auto    - [1.1. 问题](#11-问题)auto    - [1.2. 模块化](#12-模块化)auto    - [1.3. Class](#13-class)auto        - [1.3.1. Class 和 普通构造函数有何区别](#131-class-和-普通构造函数有何区别)auto    - [1.4. Promise](#14-promise)auto    - [1.5. ES6 其他常用功能](#15-es6-其他常用功能)auto        - [1.5.1. let/const](#151-letconst)auto        - [1.5.2. 多行字符 / 模板字符串 （都得用反引号）](#152-多行字符--模板字符串-都得用反引号)auto        - [1.5.3. 解构赋值](#153-解构赋值)auto        - [1.5.4. 块级作用域（ 在代码块 ```{}``` 中声明的变量，在块外访问不到 ）](#154-块级作用域-在代码块--中声明的变量在块外访问不到-)auto        - [1.5.5. 函数默认参数](#155-函数默认参数)auto        - [1.5.6. 箭头函数](#156-箭头函数)auto        - [1.5.7. 箭头函数 特别重要的特点：](#157-箭头函数-特别重要的特点)auto- [2. 原型](#2-原型)auto    - [2.1. 实际应用 - zepto 如何使用原型](#21-实际应用---zepto-如何使用原型)auto    - [2.2. 实际应用 - jQuery 如何使用原型](#22-实际应用---jquery-如何使用原型)auto    - [2.3. 问题解答](#23-问题解答)auto    - [2.4. 如何体现原型的扩展性](#24-如何体现原型的扩展性)auto- [3. 异步](#3-异步)auto    - [3.1. 单线程、异步](#31-单线程异步)auto    - [3.2. 什么是 event-loop](#32-什么是-event-loop)auto    - [3.3. jQuery 的 Deferred](#33-jquery-的-deferred)auto        - [3.3.1. Deferred 应用](#331-deferred-应用)auto        - [3.3.2. 问题解答](#332-问题解答)auto    - [3.4. Promise 的基本使用和原理](#34-promise-的基本使用和原理)auto        - [3.4.1. 基本语法回顾](#341-基本语法回顾)auto        - [3.4.2. 异常捕获](#342-异常捕获)auto        - [3.4.3. 多个串联](#343-多个串联)auto        - [3.4.4. Promise.all 和 Promise.race](#344-promiseall-和-promiserace)auto        - [3.4.5. Promise 标准](#345-promise-标准)auto        - [3.4.6. 问题解答](#346-问题解答)auto    - [3.5. async / await](#35-async--await)auto        - [3.5.1. 问题解答思路](#351-问题解答思路)auto    - [3.6. 异步的总结](#36-异步的总结)auto- [4. 虚拟 DOM](#4-虚拟-dom)auto    - [4.1. 什么是 vdom ，如何使用 vdom](#41-什么是-vdom-如何使用-vdom)auto        - [4.1.1. 问题解答](#411-问题解答)auto    - [4.2. 使用 vdom](#42-使用-vdom)auto    - [4.3. 介绍一下 Diff 算法](#43-介绍一下-diff-算法)auto        - [4.3.1. 什么是 diff 算法](#431-什么是-diff-算法)auto        - [4.3.2. 去繁就简](#432-去繁就简)auto        - [4.3.3. vdom 为何用 diff 算法](#433-vdom-为何用-diff-算法)auto        - [4.3.4. diff 算法的实现](#434-diff-算法的实现)auto    - [4.4. 总结](#44-总结)auto- [5. MVVM 和 vue](#5-mvvm-和-vue)auto    - [5.1. 从 jquery 到 框架](#51-从-jquery-到-框架)auto    - [5.2. 如何理解MVVM](#52-如何理解mvvm)auto    - [5.3. vue 三要素（实现的三要素）](#53-vue-三要素实现的三要素)auto        - [5.3.1. vue 中如何实现响应式？](#531-vue-中如何实现响应式)auto        - [5.3.2. vue 中如何解析模板？](#532-vue-中如何解析模板)auto        - [5.3.3. render 函数](#533-render-函数)auto        - [5.3.4. 问题解答](#534-问题解答)auto    - [5.4. vue 的整个实现流程](#54-vue-的整个实现流程)auto- [6. 组件化 和 React](#6-组件化-和-react)auto    - [6.1. todo-list demo](#61-todo-list-demo)auto    - [6.2. 什么是组件（说一下对组件化的理解）](#62-什么是组件说一下对组件化的理解)auto    - [6.3. JSX 本质](#63-jsx-本质)auto        - [6.3.1. 语法演示](#631-语法演示)auto        - [6.3.2. 解析成 JS](#632-解析成-js)auto        - [6.3.3. 独立的标准](#633-独立的标准)auto        - [6.3.4. 总结（问题解答）](#634-总结问题解答)auto    - [6.4. JSX 和 vdom 的关系](#64-jsx-和-vdom-的关系)auto        - [6.4.1. vdom 回顾](#641-vdom-回顾)auto        - [6.4.2. 何时 patch](#642-何时-patch)auto        - [6.4.3. 自定义组件的处理](#643-自定义组件的处理)auto        - [6.4.4. 问题解答：jsx 和 vdom 有什么关系？](#644-问题解答jsx-和-vdom-有什么关系)auto    - [6.5. setState](#65-setstate)auto        - [6.5.1. 异步](#651-异步)auto        - [6.5.2. 回顾 vue 修改属性也是异步的](#652-回顾-vue-修改属性也是异步的)auto        - [6.5.3. setState 的过程](#653-setstate-的过程)auto        - [6.5.4. 问题解答：说一下 React setState 的过程](#654-问题解答说一下-react-setstate-的过程)auto    - [6.6. 总结](#66-总结)auto    - [6.7. react 和 vue 对比](#67-react-和-vue-对比)auto        - [6.7.1. 两者本质的区别](#671-两者本质的区别)auto        - [6.7.2. 看模板和组件化的区别](#672-看模板和组件化的区别)auto        - [6.7.3. 两者的共同点](#673-两者的共同点)auto        - [6.7.4. 总结问题的答案](#674-总结问题的答案)auto- [7. hybrid](#7-hybrid)auto    - [7.1. hybrid 是什么，为什么用？](#71-hybrid-是什么为什么用)auto        - [7.1.1. 问题解答：hybrid 是什么，为什么用？](#711-问题解答hybrid-是什么为什么用)auto    - [7.2. 介绍一下 hybrid 更新上线流程？](#72-介绍一下-hybrid-更新上线流程)auto        - [7.2.1. 问题解答： 介绍一下 hybrid 更新上线流程？](#721-问题解答-介绍一下-hybrid-更新上线流程)auto    - [7.3. hybrid 和 h5 的比较](#73-hybrid-和-h5-的比较)auto        - [7.3.1. 问题解答 ： hybrid 和 h5 的比较](#731-问题解答--hybrid-和-h5-的比较)auto    - [7.4. JS 和客户端通讯](#74-js-和客户端通讯)auto        - [7.4.1. 之前遗留的问题： 新闻详情页使用 hybrid ，前端页面如何获取新闻内容？](#741-之前遗留的问题-新闻详情页使用-hybrid-前端页面如何获取新闻内容)auto        - [7.4.2. 基本形式：](#742-基本形式)auto        - [7.4.3. schema 协议](#743-schema-协议)auto    - [7.5. 总结](#75-总结)auto- [8. 课程总结](#8-课程总结)auto    - [8.1. nodejs](#81-nodejs)auto    - [8.2. 如何热爱编程](#82-如何热爱编程)autoauto<!-- /TOC -->
+
 
 # 1. ES6 语法
 
@@ -183,7 +188,7 @@ fn2();
 5. rollup 对比 webpack
 - rollup 功能单一 （专注打包）， webpack 功能强大（学习成本很高）
 - 参考设计原则和《Linux/Unix设计思想》，这两本书都提到了 “单一值原则” ，一个东西做好一件事儿就好了
-- 工具要劲量功能单一，可集成，可扩展
+- 工具要尽量功能单一，可集成，可扩展
 - wangEditor 用的 gulp + rollup （ [wangEditor](https://github.com/wangfupeng1988/wangEditor) 是作者的一个开源项目）
 
 
@@ -196,20 +201,18 @@ fn2();
 - 你可以自造 lib ， 但是不要自造标准！！！
 
 7. 总结 & 问题解答
-- 语法： import export （ 注意有无 default ）
+- 语法： ```import``` 和 ```export``` （ 注意有无 ```default``` ）
 - 环境：babel 是用来编译 ES6 语法的， 模块化可以用 webpack 和 rollup 
 - 扩展：说一下自己对模块化标准统一的期待
 
 
 ## 1.3. Class
 
-> 2-9 开始于 3点20  开会浪费了半个小时
-
 ### 1.3.1. Class 和 普通构造函数有何区别
-- JS 构造函数 
+- JS 构造函数
 - Class 基本语法
 - 语法糖
-- 继承 
+- 继承
 
 
 1. JS 构造函数

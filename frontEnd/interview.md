@@ -102,7 +102,7 @@ FrontEnd Interview
 # 1. ES6 语法
 
 - 开发环境已经普及使用
-- 浏览器确支持不好（需要开发环境编译）
+- 浏览器却支持不好（需要开发环境编译）
 - es6 内容很多，重点了解常用语法
 - 面试： 开发环境的使用 + 重点语法的掌握
 
@@ -397,7 +397,7 @@ fn2();
 
     class Dog extends Animal {
         constructor (name){
-            // 注意 ！！！ 只要这个 class 有 extends 就得败 super 写上
+            // 注意 ！！！ 只要这个 class 有 extends 就得把 super 写上
             // super(name) 相当于执行了被继承的 class 的 constructor ，并且把 name 传了进去
             super(name);
             this.name = name;
@@ -510,7 +510,7 @@ fn2();
     let i = 10;
     i = 100;        // 正常
     const j = 10;
-    j = 100;        // 报错
+    j = 100;        // 报错 Uncaught TypeError: Assignment to constant variable.
     ```
 ### 1.5.2. 多行字符 / 模板字符串 （都得用反引号）
     ```javascript
@@ -1252,12 +1252,12 @@ result1.then(function(img){
     - ```pending``` 可以变为 ```fulfilled``` ，或者 ```pending``` 变为 ```rejected```
     - 状态变化不可逆
 - then
-    - Promise 实例必须实现（这类应该是 **调用** 吧） then 这个方法
+    - Promise 实例必须实现（这里应该是 **调用** 吧） then 这个方法
     - .then() 可以接收两个函数作为参数，第一个成功回调，第二个失败回调
     - .then() 返回的是一个 Promise 实例 
         - 如果 .then 的回调函数中没有明文返回 promise 实例，那么这个 .then 返回的就是本身的这个 promise 实例，所以我们可以对这个 promise 实例继续 .then
-        - 如果 .then 的回调函数返回了另外一个 promise 实例，那后边再执行 .then 的时候，其实执行的是刚刚返回的那个 promise 实例的 .then ）
-        - 
+        - 如果 .hen 的回调函数返回了另外一个 promise 实例，那后边再执行 .then 的时候，其实执行的是刚刚返回的那个 promise 实例的 .then 
+
         ```javascript
         // 两个 then 都是 result 的 then
         var result = loadImg(src);
@@ -1349,7 +1349,7 @@ result1.then(function(img){
     }
     load();
 
-    // 注意 ： 如果要用 webpack 打包这段代码，需要安装 babel-polill 并引入
+    // 注意 ： 如果要用 webpack 打包这段代码，需要安装 babel-polyfill 并引入
     // npm install -D babel-polyfill
     ```
 
@@ -1392,9 +1392,9 @@ start at 63h05min
 
 -->
 
-- 是vue和react的核心
-- vdom比较独立，使用也比较简单
-- 如果面试问到vue和react和实现，免不了vdom
+- 是 vue 和 react 的核心
+- vdom 比较独立，使用也比较简单
+- 如果面试问到 vue 和 react 和实现，免不了 vdom
     - 因为你了解实现，考查的是自己学能力，基础能力，使用起来的效率也会非常高
 - 问题：
     1. vdom 是什么？为何会存在vdom？（讲透）
@@ -1404,7 +1404,7 @@ start at 63h05min
 
 ## 4.1. 什么是 vdom ，如何使用 vdom
 - 什么是 vdom 
-    - virtual dom ，虚拟 dom
+    - ```virtual dom``` ，虚拟 dom
     - 用 js 模拟 DOM 结构
     - dom 变化的对比， 放在js层来做（因为在html、css、js 中只有 js 是图灵完备语言，即能实现各种逻辑的语言）
     - 目的是： 提高重绘性能
@@ -1521,8 +1521,8 @@ start at 63h05min
     </script>
     ```
 - 遇到的问题
-    - 为什么说 dom 操作很昂贵呢？因为dom的结构很复杂，js 运行效率高
-    - 尽量减少 dom 操作，而不是推到重来
+    - 为什么说 dom 操作很昂贵呢？因为 dom 的结构很复杂，js 运行效率高
+    - 尽量减少 dom 操作，而不是推倒重来
     - 项目越复杂，影响就越严重
     - vdom 即可解决这个问题
 
@@ -1564,7 +1564,7 @@ start at 63h05min
 - virtual dom ，虚拟 dom
 - 用 js 模拟 DOM 结构
 - dom 操作非常 “昂贵”
-- 将dom对比放在js层，提高重绘性能
+- 将 dom 对比放在 js 层，提高重绘性能
 
 ## 4.2. 使用 vdom 
 1. vdom 如何应用，核心 API 是什么
@@ -2153,12 +2153,12 @@ start at 66:35
     </div>
     ```
     - 本质：字符串
-    - 有逻辑， 如 v-if v-for 等
+    - 有逻辑， 如 ```v-if``` ```v-for``` 等
     - 与 HTML 很像（标签格式很像），但有很大差别
     - 最终还是会转换为 html 
 - 模板最终必须转换成 JS 代码，因为：
     - 有逻辑，必须 JS 才能实现（图灵完备）
-    - 转换成 HTML 渲染页面，必须用js 才能实现
+    - 转换成 HTML 渲染页面，必须用 js 才能实现
     - 因此，模板最终要转换成一个 js 函数（render 函数，这个 render 是个泛指，指渲染函数）
 
 - render 函数
@@ -2226,7 +2226,7 @@ start at 66:35
     ```
    - 从哪里可以看到 render 函数？
        - 打开 vue.2.5.13 源码 ，搜索 ```code.render``` 大概在 10679 行
-       - 在这个代码块的return之前输入 alert(code.reder) 保存，刷新页面（demo 的例子）
+       - 在这个代码块的 ```return``` 之前输入 ```alert(code.reder)``` 保存，刷新页面（demo 的例子）
        - 得到输出的 render 就是 当前页面模板的 render 函数
    - 以之前的 todo-list 来举例， 它的 render 函数是什么样子的？
     ```html

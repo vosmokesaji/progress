@@ -891,7 +891,7 @@
     - 冰山模型：
         - 冰山模型是美国著名心理学家麦克利兰提出来的，它全面地描述了一个人的个体素质要素，也就是说，**你跟一个岗位是不是匹配、匹配程度如何、市场薪资值多少，都是这个模型可以解释的，几乎所有大公司都会用它来进行人才招聘和培养。**
 
-    ![冰山模型](./images/iceberg-model.jpg)
+    ![冰山模型](./images/readme/iceberg-model.jpg)
 
     - 知识容易在后天习得，性格特质动机价值观这些隐形要素很难后天改变
     - 搞明白“我应该选择什么样的工作”，比“我应该如何在别人认为的好工作里面成功”，要重要得多
@@ -979,8 +979,8 @@ X-UA-Compatible是自从IE8新加的一个设置，对于IE8以下的浏览器�
 - 基本JPEG(Baseline JPEG)和渐进JPEG(Progressive JPEG)
 	- photoshop 生成 jpeg 图片时，将连续打钩即可生成Progressive JPEG。
 
-![Baseline_JPEG](images/Baseline_JPEG.gif)
-![Progressive_JPEG](images/Progressive_JPEG.gif)
+![Baseline_JPEG](images/readme/Baseline_JPEG.gif)
+![Progressive_JPEG](images/readme/Progressive_JPEG.gif)
 
 
 - JDK 是啥？
@@ -1062,15 +1062,15 @@ css中的兼容写法不要省略：
 
 - 指令使用中的一个小**坑**
 
-![](images/howtoload_1.png)
+![](images/readme/howtoload_1.png)
 
-![](images/howtoload_2.png)
+![](images/readme/howtoload_2.png)
 
 
 - 指令内部的 scope 叫做创建独立的作用域
 - 指令内部的 controller 是给指令暴露出一组 public 方法，给外部调用的
 
-![](images/superman.png)
+![](images/readme/superman.png)
 
 - AngularJS 里内置了 Jquerylight 即简化版 Jquery ，是和我们所熟悉的 jquery 语法一模一样的 
 
@@ -1080,7 +1080,7 @@ css中的兼容写法不要省略：
 
 - 指令中的 require 表示该指令依赖于哪一个指令（下边的例子表示 strength 这个指令依赖于 superman 指令）
 
-![](images/directive_require.png)
+![](images/readme/directive_require.png)
 
 - 有 require 之后我们就可以在 link 函数里写第四个参数 即被依赖指令的 controller 写成 “指令名Ctrl” 的形式。 接下来我们就可以通过 指令名Ctrl.fn 来调用被依赖指令暴露出的方法了。
 
@@ -1114,7 +1114,7 @@ AngularJS 指令（Directive）
 	- template 可以写模板
 	- templateUrl 可以引入独立的HTML文件,其中可以写大块的模板
 	- templateCache 可以将模板缓存起来，让多个指令去使用它
-![templateCache](images/templateCache.png)
+![templateCache](images/readme/templateCache.png)
 
 3. replace 与 transclude
 	- transclude 允许 指令内部嵌套（非常重要，使指令与指令嵌套的基础）
@@ -1728,10 +1728,10 @@ Math.abs(1 / 3 - (1 - 2 / 3)) < 0.0000001; // true
 MarkDown 插入图片的语法：
 
 ```
-![索尼大法好](images/sonydafagood.jpg)
+![索尼大法好](./images/readme/sonydafagood.jpg)
 ```
 
-![索尼大法好](images/sonydafagood.jpg)
+![索尼大法好](./images/readme/sonydafagood.jpg)
 
 - AngularJS 中的 MVC 是借助 $scope 实现的。
 - $rootScope 是控制器之间的桥梁。

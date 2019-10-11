@@ -5,7 +5,7 @@
 
 - 在非首次进入界面的时候，页面不需要等待网络数据返回，就可以进行界面渲染，渲染的初始数据和资源来自于本地的缓存，页面可以“秒开”。而当服务端的数据返回之后，本地的渲染会再次更新，缓存也被更新。
 
-![资源离线](../images/performanceOptimization/ziyuanlixian.jpg)
+![资源离线](../images/frontEnd/performanceOptimization/ziyuanlixian.jpg)
 
 - 优点：
     - 非首次进入的时候，秒开

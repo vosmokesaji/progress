@@ -41,6 +41,14 @@
 
 ## 10月
 
+### 18日 
+- 【工具】[移动端js调试工具：eruda](https://www.jianshu.com/p/d8e232b23f7a)
+    ```html
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    ```
+
+
 ### 15日 
 - 【知识点】打水漂：[来源](https://www.youtube.com/watch?v=fOzR-PO-lQ8)
     - 石头片和水面的夹角 α ，速度和水面的夹角 β ，自旋角速度 ω 

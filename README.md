@@ -41,6 +41,9 @@
 
 ## 10月
 
+### 19日
+- 【知识点】“西方” ： 美国、欧盟、日本 + 四个小跟班（加拿大、澳大利亚、新西兰、以色列）[来源 36:40](https://www.bilibili.com/video/av69601521?t=1755)
+
 ### 18日 
 - 【工具】[移动端js调试工具：eruda](https://www.jianshu.com/p/d8e232b23f7a)
     ```html

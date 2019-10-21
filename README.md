@@ -41,6 +41,12 @@
 
 ## 10月
 
+### 21日
+- 【知识点】[获取不到scrollTop的问题](https://blog.csdn.net/weixin_34006468/article/details/88744865)，DOCTYPE的锅
+    ```javascript
+    var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+    ```
+
 ### 20日
 - 【知识点】[190926金灿荣:中国未来20年的机遇不在5G互联网，在这5个领域！](https://www.bilibili.com/video/av71482310)
     - 五个领域

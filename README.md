@@ -43,6 +43,8 @@
 
 ### 23日
 - 【知识点】【前端】【CSS】[CSS遮罩CSS3 mask/masks详细介绍](https://www.zhangxinxu.com/wordpress/2017/11/css-css3-mask-masks/)
+- 【发现】【前端】[很棒的前端翻页时钟 —— FlipClock](https://github.com/objectivehtml/FlipClock)
+
 
 ### 22日
 - 【知识点】二十四节气

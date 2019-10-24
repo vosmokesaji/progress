@@ -41,6 +41,15 @@
 
 ## 10月
 
+### 24日
+- 【发现】【前端】[你所不知道的 CSS 阴影技巧与细节](https://juejin.im/post/5be1023951882516fd36a38e)
+- 【发现】【前端】[7天撸完KTV点歌系统,含后台管理系统(完整版)](https://juejin.im/post/5dac3b4351882576534d33d7)
+- 【发现】【前端】[原生JS灵魂之问, 请问你能接得住几个？(上)](https://juejin.im/post/5dac5d82e51d45249850cd20)
+- 【发现】【前端】[前端框架用vue还是react？清晰对比两者差异](https://juejin.im/post/5dad09be518825393e52d1bd)
+- 【发现】【前端】[写给新手前端的各种文件上传攻略，从小图片到大文件断点续传](https://juejin.im/post/5da14778f265da5bb628e590)
+- 【发现】【前端】[1.5万字概括ES6全部特性(看图就能记下，值得收藏)](https://juejin.im/post/5d9bf530518825427b27639d)
+
+
 ### 23日
 - 【知识点】【前端】【CSS】[CSS遮罩CSS3 mask/masks详细介绍](https://www.zhangxinxu.com/wordpress/2017/11/css-css3-mask-masks/)
 - 【发现】【前端】[很棒的前端翻页时钟 —— FlipClock](https://github.com/objectivehtml/FlipClock)

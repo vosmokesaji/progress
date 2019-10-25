@@ -41,6 +41,10 @@
 
 ## 10月
 
+### 25日
+- 【设计】[一篇文章读懂交互设计7大定律](https://mp.weixin.qq.com/s/RdjJ6Yq5lglkxewALnQIWw)
+    - 除非有更好的选择，否则就遵从标准 —— 交互设计之父 阿兰·库珀
+
 ### 24日
 - 【发现】【前端】[你所不知道的 CSS 阴影技巧与细节](https://juejin.im/post/5be1023951882516fd36a38e)
 - 【发现】【前端】[7天撸完KTV点歌系统,含后台管理系统(完整版)](https://juejin.im/post/5dac3b4351882576534d33d7)

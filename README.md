@@ -41,6 +41,12 @@
 
 ## 10月
 
+### 28日
+- 【收藏】hexo 主题
+    - [Chic](https://siricee.github.io/hexo-theme-Chic/)
+    - [Cactus](https://probberechts.github.io/hexo-theme-cactus/)
+    - [A-Obsidian - 超赞](https://tridiamond.me/) / [github](https://github.com/TriDiamond/hexo-theme-obsidian)
+
 ### 25日
 - 【设计】[一篇文章读懂交互设计7大定律](https://mp.weixin.qq.com/s/RdjJ6Yq5lglkxewALnQIWw)
     - 除非有更好的选择，否则就遵从标准 —— 交互设计之父 阿兰·库珀

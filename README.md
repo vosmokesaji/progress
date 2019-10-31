@@ -41,6 +41,17 @@
 
 ## 10月
 
+### 31日
+- 【软件】【iTerm2】
+    - 【偏好设置】
+        - ```Preferences``` -> ```Profiles``` -> ```Terminal``` -> ```Scrollback lines``` -> ```Unlimited scrollback``` 无限制的滚动
+    - 【菜单选项】
+        - ```View > Size Changes Update Profile``` 启用后，在此会话中对文本大小所做的更改（通过选择“使文本更大/更小”）将反映在其配置文件中。
+    - 【快捷键】
+        - ```command + D``` 纵向分隔当前窗格
+        - ```command + 左``` 、 ```command + 右``` 左右切换 Tab
+        - ```command + shift + D``` 横向分隔当前窗格
+        - ```command + [``` 、```command + ]``` 在分割的窗格间切换
 
 ### 30日
 - 【收藏】[Apple 的设计哲学·交互篇](https://mp.weixin.qq.com/s/ikPyu5QGkESAJv0HehCDPw)

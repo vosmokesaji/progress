@@ -40,7 +40,8 @@
 # 2019年
 ## 11月
 
-### 3日 
+### 4日
+- 【收藏】[7道简单的 JavaScript 面试题，三个月没招到一个人](https://juejin.im/post/5dbe818a6fb9a0203c34e4bb)
 
 
 
@@ -239,7 +240,7 @@
 
 
 ### 21日
-- 【发现】[iOS验证通道查询](https://ipsw.me/)
+- 【发现】[iOS验证通道查询](https://ipsw.me/)，可以查能不能降级
 - 【知识点】【手机刷机】OAT 和 线刷 有啥区别？[来源](http://bbs.zol.com.cn/sjbbs/d98_233427_0.)
     - OTA英文全称是Over-the-Air Technology，即空间下载技术的意思。OTA升级是Android系统提供的标准软件升级方式。它功能强大，可以无损失升级系统，主要通过网络[比如WIFI、3G]自动下载OTA升级包、自动升级，但是也能用通过下载OTA升级包到SD卡升级。OTA升级包，一般几十M到几百M，跨大版本升级会出现1G左右的更新。
         - OTA升级的优点与弊端

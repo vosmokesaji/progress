@@ -38,3 +38,30 @@ hexo new page "页面标题"
 - 页面文件都会放在 ```scaffolds``` 目录下
 - 模板是使用 ```Nunjucks``` 语言，来访问系统变量和函数的
 - Nunjucks脚本语言: https://mozilla.github.io/nunjucks/
+
+
+## Front Matter
+- 文章顶部的两个 ```---``` 包裹的就是 Front Matter ，使用的是 yaml 的语法 
+- 可以理解为文章的配置信息
+- 以 Hexo 生成的默认文章的标题为例
+    ```
+    ---
+    title: Hello World
+    ---
+    ```
+
+## 配置文件
+- 使用 yaml 语法，JSON 也可以用，但是因为 json 配置较 yml 繁琐，并且很多网站对 yml 的支持也很好，建议使用 yml
+- 网站配置文件 存放在根目录 ```/_config.yml``` ， 以下是几个需要注意的配置项
+    - ```author``` 作者，可以在文章的 ```Front Matter``` 中设置个性的作者
+    - ```tmiezone``` 时区，默认是你电脑的时区
+    - 永久链接中的 ```id``` 慎用
+        - 因为使用 ```hexo clean``` 后，执行 ```hexo g``` 打包的 id 是和之前不一样的
+        - 这样就可能会影响到评论等依赖文章 id 的功能
+        - 如果想要使用id ，推荐使用 ```hexo-addrlink``` 插件，他会给文章生成一个唯一的 id 放在 ```Front Matter``` 中，不会被 ```hexo clean``` 清除
+    - ```auto_spacing``` 在中文和英文之间加入空格
+    - ```include``` 在 github 上部署的，要把 .nojekll 加入到其中，否则会有一些展示的错误
+
+- 主题配置文件 存放在相应的主题目录下 ```/themes/landspace/_config.yml```
+
+

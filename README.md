@@ -40,6 +40,12 @@
 # 2019年
 ## 11月
 
+### 5日
+- 【收藏】[flutter好用的轮子推荐八-flutter一个超酷动画的底部tab栏](https://juejin.im/post/5dc0c52df265da4d5609129e)
+- 【深刻】幸福的人用童年治愈一生，不幸的人用一生治愈童年。
+    - [相关微博](https://weibo.com/1748067122/HD7WlAdfJ?type=comment)
+
+
 ### 4日
 - 【收藏】[7道简单的 JavaScript 面试题，三个月没招到一个人](https://juejin.im/post/5dbe818a6fb9a0203c34e4bb)
 

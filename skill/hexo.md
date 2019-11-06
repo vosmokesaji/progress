@@ -65,3 +65,74 @@ hexo new page "页面标题"
 - 主题配置文件 存放在相应的主题目录下 ```/themes/landspace/_config.yml```
 
 
+## 命令
+
+### 常用的命令
+
+```shell
+# 新建文章
+hexo new [layout] <title>
+
+# 生成静态文件
+hexo generate
+hexo g
+
+# 生成文件后立即部署网站
+hexo g --deploy
+hexo g -d
+
+# 监视文件变动
+hexo g --watch
+hexo g -w
+# 此时可以新开一个窗口 运行 hexo server ，非常适合实时测试
+
+# 草稿转正
+hexo publish [leyout] <filename>
+
+# 启动本地服务器（实际是执行了一遍 generate 然后启动的服务 ）
+hexo server
+hexo s
+
+# 重设端口
+hexo s --port 8888
+hexo s -p 8888
+
+# 只使用静态文件， 直接使用 publish 中的静态文件，而不重新生成
+hexo s --static
+hexo s -s
+
+# 启动日记记录，使用覆盖记录格式
+hexo s --log
+hexo s -l
+
+# 部署网站（如果使用的是 git 的网站部署的，可以直接使用该命令进行部署）
+hexo deploy
+
+# 渲染单个文件
+hexo render <file1> [file2] ...
+
+# 清除缓存文件
+hexo clean
+
+# 列出网站资料
+hexo list <type>
+# 例如 列出所有的文章
+hexo list post
+
+# 查看 hexo 版本
+```
+
+### 选项
+- 选项是所有命令都可以使用的
+
+```shell
+# 安全模式：在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。
+hexo --safe
+
+# 调试模式：在终端中显示调试信息并记录到 debug.log。当您碰到问题时，可以尝试用调试模式重新执行一次，并 提交调试信息到 GitHub。
+hexo --debug
+
+# 简洁模式： 隐藏终端信息。
+hexo --silent
+
+```

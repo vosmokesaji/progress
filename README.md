@@ -40,6 +40,14 @@
 # 2019年
 ## 11月
 
+
+
+### 6日
+- 【思考】[B站敬汉卿事件](https://www.bilibili.com/video/av62026826)：商标权的重要性
+- 【技术】[可能是最全的 “文本溢出截断省略” 方案合集](https://juejin.im/post/5dc15b35f265da4d432a3d10)
+
+
+
 ### 5日
 - 【收藏】[flutter好用的轮子推荐八-flutter一个超酷动画的底部tab栏](https://juejin.im/post/5dc0c52df265da4d5609129e)
 - 【深刻】幸福的人用童年治愈一生，不幸的人用一生治愈童年。

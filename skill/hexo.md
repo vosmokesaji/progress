@@ -136,3 +136,30 @@ hexo --debug
 hexo --silent
 
 ```
+
+## 部署
+
+### Git
+
+- 安装插件
+    ```shell
+    npm install hexo-deployer-git --save
+    ```
+- 如果不确定是否安装了这个插件，可以这样做
+    ```shell
+    npm list hexo-deployer-git
+
+    #能输出相应的版本，说明安装成功
+    ```
+- 在 _config.yml 中，添加 deploy 的配置信息 
+    ```yml
+    deploy:
+        type: git
+        repo: https://github.com/username/reponame.git
+        branch: test
+    ```
+- 执行部署命令
+    ```shell
+    hexo deploy
+    ```
+

@@ -42,6 +42,12 @@
 
 
 
+### 7日
+- 【知识】**价格歧视**的目的就是利益最大化。—— [双十一资本套路：阶级排位，价格歧视，大数据杀熟，特价学区房【巫师经济学01】](https://www.bilibili.com/video/av74254215)
+- 【收藏】[散装八碗 - 站酷](https://www.zcool.com.cn/u/2136662/)
+- 【技术】[Valine - 一款快速、简洁且高效的无后端评论系统。](https://valine.js.org/)
+
+
 ### 6日
 - 【思考】[B站敬汉卿事件](https://www.bilibili.com/video/av62026826)：商标权的重要性
 - 【技术】[可能是最全的 “文本溢出截断省略” 方案合集](https://juejin.im/post/5dc15b35f265da4d432a3d10)

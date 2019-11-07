@@ -163,3 +163,18 @@ hexo --silent
     hexo deploy
     ```
 
+
+## 实操遇到的问题
+- ```hexo deploy``` 的时候报错 ```Deployer not found: git```
+    - 解决办法：执行 ```npm list hexo-deployer-git```
+
+
+
+
+## 推荐网站
+- Hexo 网站 https://hexo.io
+- Hexo Github: https://github.com/hexojs/hexo
+- Hexo Awesome: https://github.com/hexojs/awesome-hexo
+- Hexo-abbrlink: http://bit.ly/2SROt6y
+- Yaml官方: http://bit.ly/2QhJTNa
+- Yaml教程: http://bit.ly/2zxeDCC

@@ -38,7 +38,14 @@
 
 
 # 2019年
+
 ## 11月
+
+### 13日
+- 【知识】区块链相关知识
+    - [Solidity语言](https://www.tryblockchain.org/index.html)
+    - [区块链——共识算法之争（PBFT，Raft，PoW，PoS，DPoS，Ripple）](https://www.cnblogs.com/X-knight/p/9157814.html)
+    - 拜占庭将军问题
 
 
 ### 12日

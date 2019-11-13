@@ -46,7 +46,7 @@
     - [Solidity语言](https://www.tryblockchain.org/index.html)
     - [区块链——共识算法之争（PBFT，Raft，PoW，PoS，DPoS，Ripple）](https://www.cnblogs.com/X-knight/p/9157814.html)
     - 拜占庭将军问题
-
+- 【知识点】购车 **金融渗透率** 40%
 
 ### 12日
 - 【笔记】[如何才能摆脱贫穷？穷人和富人有什么差别？【2019诺贝尔经济学奖解读】](https://www.youtube.com/watch?v=aBTDvlteZcs)

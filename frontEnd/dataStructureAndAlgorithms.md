@@ -99,16 +99,38 @@
     - Git
         - [fe-material](https://github.com/cucygh/fe-material)
 2. 环境搭建
+    - 下载源码，然后 ```npm install```
+    - 重点关注核心的三个文件： 
+        - ```.bablelrc``` 配置ES6的解析
+        - ```.eslintrc.js``` 代码格式规范化的提示
+        - ```package.json``` 依赖包的信息
     ```shell
     git clone https://git.imooc.com/coding-315/leetcode.git leetcode
-    git checkout dev
+
+    # dev 分支是环境搭建的原始内容
+    # master 分支是所有的源码
+
+    cd leetcode
+    npm install
+
+    # 执行 下边的命令 成功即证明环境安装成功
+    npm test
     ```
+3. 关于设备
+    1. Windows Node / Git / Atom(或者其他编辑器) / Git bush
+    2. Mac Node / Git / Atom(或者其他编辑器) / Iterm2
+    3. Atom 插件 (自动提示、命令行、代码格式化)
+        - es6-javascript
+        - javascript-snippets
+        - paltform-ide-terminal
+        - linter-eslint
 
 
 
 
 
-#### 反转单词原理详解
+
+### 反转单词原理详解
 1. [反转字符串当中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
     - 知识点：
         - String.prototype.split

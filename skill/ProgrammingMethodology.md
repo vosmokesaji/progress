@@ -1,4 +1,12 @@
 # 斯坦福大学开放课程： 编程方法
+<!-- 
+http://www.class.cn/course/course_detail?course_id=100104 
+-->
+
+> 课程名称： Programming Methodology <br>
+> 课程编号： CS 106A <br>
+> 主讲： Mehran Sahami （麦兰·萨哈米）
+
 
 ## 第一课
 

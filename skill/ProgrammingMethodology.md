@@ -87,3 +87,55 @@ http://www.class.cn/course/course_detail?course_id=100104
 
 
 
+## 第二课 欢迎来到 Karel 的世界
+- 指令
+- move 
+- turnLeft  ( 一个词，没有空格 )
+- pickBeeper
+- putBeeper
+- 以上这些我们称之为，方法（ methods ），就是可以调用或使用的指令，我们只需要调用方法，卡雷尔就能完成指定的动作
+- 编程的艺术：解决问题的方法不止一个
+- karel 移动的过程
+    - move
+    - pickBeeper
+    - move
+    - turnLeft
+    - move
+    - turnLeft
+    - turnLeft
+    - turnLeft
+    - move
+    - putBeeper
+    - move
+- 以上的过程并不是有效的的程序，而是**算法**，是做事情的步骤 
+- 算法和程序的区别，算法是做事的步骤，程序则必须按照语言的规则，合法的组织语句
+- 想要成功调用 karel 的方法，需要在方法名后加一对括号和一个分号
+- 我们还要告诉 karel 从哪里开始运行，封装成名为 run 的方法
+    ```java
+    // 把事先定义好的跟卡雷尔有关的东西度拿出来
+    import Satndford.karel.*;
+
+    public class OutKarelProgram extends Karel {
+        public void run(){      // 这个花括号表示，中间的内容都是 这个 run 方法的
+            move();
+            pickBeeper();
+            move();
+            turnLeft();
+            move();
+            turnLeft();
+            turnLeft();
+            turnLeft();
+            move();
+            putBeeper();
+            move();
+        }
+        // 花括号中间的部分就是函数体
+        // 通常添加 缩进提高可读性 
+
+        private void turnRight() {
+            turnLeft();
+            turnLeft();
+            turnLeft();
+        }
+    }
+    ```

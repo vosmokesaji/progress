@@ -181,3 +181,27 @@ http://www.class.cn/course/course_detail?course_id=100104
 
     }
     ```
+
+- karel 还有一个超级版本， karel 有的他都有，还多了一个右转和转身的方法 
+
+    ```java
+    import Satndford.karel.*;
+
+    // superKarel 包含了 turnRight 和 turnAround ， 可以直接使用
+    public class OutKarelProgram extends superKarel {
+
+        public void run(){
+            move();
+            pickBeeper();
+            move();
+            turnLeft();
+            move();
+            turnRight();
+            move();
+            putBeeper();
+            move();
+        }
+
+    }
+    ```
+

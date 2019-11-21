@@ -139,3 +139,45 @@ http://www.class.cn/course/course_detail?course_id=100104
         }
     }
     ```
+
+- 给 karel 创建一些我们想要的方法，比如 右转 （ turnRight ）
+
+    ```java
+    import Satndford.karel.*;
+
+    public class OutKarelProgram extends Karel {
+
+        // public 是公开的
+        public void run(){
+
+            move();
+            pickBeeper();
+            move();
+            turnLeft();
+            move();
+
+            // 将三个 turnLeft(); 换成 turnRight(); 
+            turnRight();
+
+            move();
+            putBeeper();
+            move();
+        }
+
+        // 在这里添加 turnRight
+        // private 是藏着掖着的，只有自己能调用
+        // 除了 run 之外 ，可以随便起名字
+        private void turnRight() {
+            turnLeft();
+            turnLeft();
+            turnLeft();
+        }
+
+        // 你也可以用两个 turnRight();  相当于六次左转， 这并不是一个好方法 
+        private void turnAround() {
+            turnLeft();
+            turnLeft();
+        }
+
+    }
+    ```

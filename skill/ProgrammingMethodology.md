@@ -205,3 +205,43 @@ http://www.class.cn/course/course_detail?course_id=100104
     }
     ```
 
+
+- 老师提出了一个哲学问题： 当代大学生堕落的原因是什么？
+    - 散漫拖延
+    - 睡觉
+    - 闹钟重响
+    - 如何重复？ ```for``` 循环
+
+    ```java
+    for ( int i = 0; i < 3; i++ ){
+        // 循环体
+        turnLeft();
+    }
+
+    // 循环次数
+    ```
+
+- ```while``` 循环
+
+    ```java
+    // 前方畅通 ， 就前进
+    private void moveToWall(){
+        while( frontIsClear ) {
+            move();
+        }
+    }
+    
+    ```
+- 只想验证一次 ```if else``` 语句
+
+    ```java
+    // 有方块 ， 就捡起一个
+    private void moveToWall(){
+        if( beepersPresent() ) {
+            pickBeeper();
+        }else{
+            putBeeper();
+        }
+    }
+    
+    ```

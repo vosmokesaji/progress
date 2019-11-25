@@ -97,8 +97,6 @@ FrontEnd Interview
     
     
 
-
-
 # 1. ES6 语法
 
 - 开发环境已经普及使用

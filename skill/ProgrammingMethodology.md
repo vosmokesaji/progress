@@ -385,4 +385,3 @@ http://www.class.cn/course/course_detail?course_id=100104
     // 意思是给我一个 GLabel 对象
     new GLabel();
     ```
-- 

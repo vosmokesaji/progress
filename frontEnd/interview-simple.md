@@ -77,7 +77,7 @@
 - 什么是 event-loop
 - 是否用过 jquery 的 deferred
 - Promise 的基本使用和原理
-- 介绍一下 async /  await
+- 介绍一下 async / await
 - 当前异步的解决方案
     - jQuery Deferred
     - Promise （blue bird）
@@ -159,7 +159,7 @@
     - 数据变化，被响应式的 set 监听到
     - set 中会执行 updateComponent 
     - updateComponent 会重新执行 vm._render()
-    - 生成的 vnode 和 prevVnode，通过 patch 进行对比
+    - 生成的 vnode 和 prevVnode ，通过 patch 进行对比
     - 渲染到 html 中
 
 ## 1.6. 组件化 和 React

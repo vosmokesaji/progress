@@ -1,10 +1,37 @@
 # 第一章 js 简介
 
+- 要想全面理解和掌握 js ， 关键在于弄清楚它的**本质**、**历史**和**局限性** 
 
+## js 简史
+1. 1995.2 Netscape - JavaScript
+2. 1996.8 微软 - JScript
+3. 因为两个版本的差异问题，标准化被提上日程
+4. 1997年 ECMA 完成了 ECMAScript 的标准制定
 
+## js 实现
+- 核心（ECMAScript）
+- 文档对象模型（DOM）
+- 浏览器对象模型（BOM）
 
+### ECMAScript
+- 版本：1 -> 2 -> 3(标志着 ECMAScript 成为了一门真正的编程语言) -> 4（因改动太过激进，被放弃） -> 5（实际是叫 ECMAScript3.1 投票胜过了 4） -> 6
+- ECMAScript 兼容
+- Web 浏览器对 ECMAScript 的支持
 
+### 文档对象模型（DOM）
+- 借助 DOM API ，开发者可以轻松的删除、添加、替换或修改人和节点
+- DOM 的操作带来了进步，也带来了 Netscape 和 微软 的两强割据，浏览器互不兼容的局面
+- DOM 级别：
+    - DOM1 ：DOM 核心、 DOM HTML
+    - DOM2 ：DOM 事件、 DOM 样式、 DOM 遍历和范围
+    - DOM3 ：统一的加载和保存文档的方法；验证文档的方法；扩展了 DOM 核心
+- 其他 DOM 标准： 
+    - SVG 可伸缩矢量图
+    - MathML 数学标记语言
+    - SMIL 同步多媒体集成语言
 
+### 浏览器对象模型（BOM）
+- 直到 HTML5 才标准化
 
 
 # 第二章 在 HTML 中使用 JS

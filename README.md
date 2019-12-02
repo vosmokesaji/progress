@@ -48,7 +48,7 @@
     - [婚礼策划](https://prior.co.jp/discover/en)
     - [APP推广页](http://gleec.imm-g-prod.com/instant-messages)
     - [好看的轮播](https://www.refletcommunication.com/fr)
-- 【知识点】解释边缘型人格障碍的总和方法： 思考 => 感受 => 行为
+- 【知识点】解释**边缘型人格障**碍的综合方法： 思考 => 感受 => 行为
     1. 思考（破坏感知与理性）：
         - **分裂**（**极端理想化** 或 **极端贬低**）
         - 压力所致的偏执或严重的分离（心不在焉），较为短暂

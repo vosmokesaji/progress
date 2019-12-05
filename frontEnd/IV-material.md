@@ -155,17 +155,18 @@
     1. [缓存原理](https://www.cnblogs.com/shixiaomiao1122/p/7591556.html) 
     2. [从访问一个URL到用户看见页面之间所有的过程](https://www.jianshu.com/p/01d25c206fab)
     3. [浏览器渲染原理（JS引擎，CSS引擎等）](https://blog.csdn.net/riddle1981/article/details/78681191)
-4. 性能方面：[浏览器性能优化-渲染性能](https://www.jianshu.com/p/a29aadf28a9e)
+4. 性能方面：
+    1. [浏览器性能优化-渲染性能](https://www.jianshu.com/p/a29aadf28a9e)
 5. 组件方面：
-    1. [](http://web.jobbole.com/92879/)
-    2. [前端组件化之路](https://www.cnblogs.com/kuailingmin/p/4205724.html)
+    1. [前端组件化之路](https://www.cnblogs.com/kuailingmin/p/4205724.html)
 6. 工程化：
-    1. [](https://www.cnblogs.com/fsyz/p/8274727.html)
-    2. [](https://www.imooc.com/article/48008)
+    1. [浅谈什么是前端工程化](https://www.cnblogs.com/fsyz/p/8274727.html)
+    2. [浅谈前端架构的工程化、模块化、组件化、规范化](https://www.imooc.com/article/48008)
 7.  面向对象方面：
-    1.  [](https://blog.csdn.net/jsnancy/article/details/80357188)
-    2.  [](https://www.cnblogs.com/chenhuichao/p/8202588.html)
-8.  观察者模式：[](https://www.cnblogs.com/gradolabs/p/4786782.html)
+    1. [前端中的面向对象（通俗向）](https://blog.csdn.net/jsnancy/article/details/80357188)
+    2. [关于前端js面向对象编程以及封装组件的思想](https://www.cnblogs.com/chenhuichao/p/8202588.html)
+8.  观察者模式：
+    1. [JavaScript设计模式之观察者模式（学习笔记）](https://www.cnblogs.com/gradolabs/p/4786782.html)
 
 - [JS基本数据类型和引用数据类型的区别及深浅拷贝](https://www.cnblogs.com/c2016c/articles/9328725.html)
 - [第206天：http协议终极详解---看这一篇就够了](https://www.cnblogs.com/le220/p/8624905.html)

@@ -97,6 +97,7 @@
         mistakes to be <br> 犯错|expected <br> 预期的事情|minimized <br> 最小化
         benefit <br> 成效|growth and future performance <br> 进步和未来业绩|immediate performance <br> 即时业绩
 
+- 【知识】【成语】**固步自封**：固步：走老步子；封：限制。比喻守着老一套，不求进步，又做故步自封。
 
 
 ### 9日

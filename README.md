@@ -89,6 +89,15 @@
         3. 最终，我们可以通过和他人分享希冀在何处取得进步，通过询问未知的问题，通过征求反馈，通过分享我们曾经犯过的错，和从中汲取的教训，为彼此营造一个低风险的状态，这样他人也会安心地做同样的事。
 
 
+        ||learning zone <br> 学习区|performance zone <br> 展示区
+        |-:|:-|:-|
+        goal <br> 目标|improve <br> 进步|do as best as we can <br> 做到最好
+        activities for <br> 为了|improvement <br> 进步|execution <br> 执行
+        concentrate on <br> 集中精力在|haven't mastered yet <br> 还没有掌握的东西上|have mastered <br> 已经掌握的事
+        mistakes to be <br> 犯错|expected <br> 预期的事情|minimized <br> 最小化
+        benefit <br> 成效|growth and future performance <br> 进步和未来业绩|immediate performance <br> 即时业绩
+
+
 
 ### 9日
 - 【思考】【抑郁症】到底怎样才能做到真正的倾听？简单说有三点：

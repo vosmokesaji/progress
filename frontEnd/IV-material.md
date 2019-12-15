@@ -54,6 +54,7 @@
     - promise
         - [实现原理](https://www.jianshu.com/p/b4f0425b22a1)
         - [解决了什么问题](https://blog.csdn.net/weixin_34114823/article/details/88741050)
+            - 可读性的问题 和 信任问题
     - [什么是事件循环](https://www.jianshu.com/p/8df1d01b33dc)
     - [什么是宏任务和微任务](https://www.jianshu.com/p/8df1d01b33dc)
     - [Async wait / promise区别](http://caibaojian.com/asyncawait.html)

@@ -24,3 +24,14 @@
         })
     }
     ```
+
+3. [问题二](https://juejin.im/post/5d2d146bf265da1b9163c5c9)
+    ```javascript
+    var a = 10;
+    function foo() {
+        console.log(a); // ??
+        let a = 20;
+    }
+    foo();
+    ```
+    - 为啥报错？

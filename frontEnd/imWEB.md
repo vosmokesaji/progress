@@ -36,6 +36,9 @@
     - [面向对象](#%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1)
   - [canvas入门](#canvas%e5%85%a5%e9%97%a8)
     - [认识 canvas](#%e8%ae%a4%e8%af%86-canvas)
+    - [文本](#%e6%96%87%e6%9c%ac)
+    - [给图形上色](#%e7%bb%99%e5%9b%be%e5%bd%a2%e4%b8%8a%e8%89%b2)
+    - [修改线宽](#%e4%bf%ae%e6%94%b9%e7%ba%bf%e5%ae%bd)
         
 # 0. 进阶之前
 ## 导师的建议
@@ -765,6 +768,41 @@ console.log(b);
     - 调用指定的 ```canvas``` 元素的 ```getContext``` 方法获取 2d 渲染上下文
     - 获取到 2d 上下文之后就可以进行绘画操作了
     - 所有的画布操作都是在 context 对象上进行的
+
+### 文本
+```javascript
+// 注意： x, y 是左下角的坐标
+// 绘制填充字体
+context.fillText(text, x, y);
+
+// 绘制字体轮廓
+context.strokeText(text, x, y);
+
+// 设置字体
+context.font = "60px 黑体"
+```
+
+### 给图形上色
+```javascript
+// color 要符合 css3 颜色标准
+// fillStyle 和 strokeStyle 只会影响之后的颜色，之前的不会改变
+// 填充色
+context.fillStyle = color;
+
+// 描边颜色
+context.strokeStyle = color;
+
+// eg: 都是红色
+context.fillStyle = "red";
+context.fillStyle = "#f00";
+context.fillStyle = "rgb(255, 0, 0)";
+context.fillStyle = "rgba(255, 0, 0, 1)";
+```
+
+
+
+### 修改线宽
+
 
 
 ```javascript

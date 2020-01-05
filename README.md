@@ -53,6 +53,36 @@
 
 ## 1月
 
+
+### 5日
+
+- 【实用】Mac 动画速度
+    - dock 动画速度
+        ```shell
+        # MAC 自动隐藏 DOCK 之后，干掉出现的延时
+        defaults write com.apple.Dock autohide-delay -int 0 && killall Dock
+        # 若想恢复
+        defaults delete com.apple.Dock autohide-delay && killall Dock
+        # 修改dock出现的速度：
+        defaults write com.apple.dock autohide-time-modifier -float 0.3;killall Dock
+        # 如果是 0 要把 -float 改为 -int
+        ```
+    - Launchpad 动画速度
+        ```shell
+        # 修改展示过程持续时间
+        defaults write com.apple.dock springboard-show-duration -float 0.08
+        # 修改消失过程持续时间
+        defaults write com.apple.dock springboard-hide-duration -float 0.08
+
+        # 若想恢复默认设置
+        defaults delete com.apple.dock springboard-show-duration
+        defaults delete com.apple.dock springboard-hide-duration;killall Dock
+        ```
+    - mission control 的动画时长设置（没有生效，不知道为啥）：
+        ```shell
+        defaults write com.apple.dock expose-animation-duration -float 0.1;killall Dock
+        ```
+
 ### 3日
 - 【知识点】【git】```.gitignore``` 内需要忽略的文件： ```*.idea``` 、 ```*.DS_Store``` 、 ```*.sass-cache```
     - ```.idea```

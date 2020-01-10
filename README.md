@@ -53,6 +53,22 @@
 
 ## 1月
 
+### 10日
+- 【知识】【技巧】Mac 下载 blod 开头的视频资源的方法
+    - 准备工作： 
+        - 安装 Homebrew 
+            ```shell
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            ```
+        - 使用 Homebrew 安装 
+            ```shell
+            brew install ffmpeg
+            ```
+    - 在开发者工具中的 network 标签中获取视频资源的 m3u8 链接，执行如下命令：
+        ```shell
+        ffmpeg -i url ***.mp4
+        ```
+
 
 ### 5日
 

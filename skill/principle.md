@@ -87,3 +87,10 @@ https://uigreat.com/course/30
     - 如果滚动的展示范围有问题，看看是不是边界设置有问题，选中元素，拖拽出现的带控制点的框框即可
 - 调整层级关系，向下：```command + [``` ， 向上： ```command + ]``` ； 置于最底层：```command + shift + [``` ， 置于最顶层： ```command + shift + ]```
 - 长按，使用 Longpress 指令
+
+
+## 5. 触摸动画 Touch
+- 按下事件：在小闪电中 找到 touch Down
+- 可拖拽：在左侧信息栏中，将 vertical 属性改为 Drop ，意思是可以纵向拖拽
+- 释放事件：touch Up 
+- 如果想做一个接一个的效果，可以 Animation 面板中调整动画开始的时间

@@ -63,3 +63,19 @@ https://uigreat.com/course/30
 - 按住 option 拖拽元素可以复制，同时按住 shift 可以控制对齐
 - 调节元素的分布在左侧信息栏的顶部
 - command + G 打组
+
+
+## 3. 标签切换动画 Tap
+- 顶部的 Animate 主要做页面切换的动画
+- 知识点： Sketch 文件怎么导入 Principle？
+    - 首先你做完的 sketch 一定要注意图层命名，图层管理，如果你做的图层很复杂，需要**精简图层**
+    - 开启 Sketch 将你想要导入的 Sketch 文件放在最顶层（如果开启着多个 Sketch 文件的话）
+    - 点击 Principle 上的 import 会出现一个弹窗，选择 Sketch 和 document 信息（注意：这里的倍数不会影响画板大小，但是会影响录制的清晰度 ，所以选个倍率大的比较好），点击 import page 
+    - **Tips**： 如果你想让 Sketch 中的一个组在导入 Principle 后进行一个合并，比如不影响页面交互的状态栏，可以在 sketch 中个图层名称中加上这么个标识： ``` principle flatten```
+- 知识点： 怎么加缓动动画？
+    - 点击页面间切换的的连线（顶部的箭头），下边就会出现 Animate 面板，也可以点击工具栏的 Animate 按钮
+    - 按住 command + 鼠标滚轮， 可以缩放时间轴
+    - 按住空格可以拖拽面板
+    - 点击 default 可以呼出曲线面板，可以更改，或者自定义缓动曲线
+- 知识点：穿透选择
+    - 按住 command 用鼠标左键去点击元素

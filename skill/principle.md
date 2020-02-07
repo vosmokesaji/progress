@@ -79,3 +79,11 @@ https://uigreat.com/course/30
     - 点击 default 可以呼出曲线面板，可以更改，或者自定义缓动曲线
 - 知识点：穿透选择
     - 按住 command 用鼠标左键去点击元素
+
+
+## 4. 3D touch动画 Longpress
+- 上下滚动：
+    - 选中你要滚动的内容，打个组，在左侧信息栏中将 vertical 属性改为 scroll ，就能实现纵向滚动
+    - 如果滚动的展示范围有问题，看看是不是边界设置有问题，选中元素，拖拽出现的带控制点的框框即可
+- 调整层级关系，向下：```command + [``` ， 向上： ```command + ]``` ； 置于最底层：```command + shift + [``` ， 置于最顶层： ```command + shift + ]```
+- 长按，使用 Longpress 指令

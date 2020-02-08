@@ -102,3 +102,9 @@ https://uigreat.com/course/30
 - 鼠标滑出： 小闪电 -> hover outside
 - 选中图层 ```command + D``` 原位复制
 
+
+## 7. 自动加载动画 Auto
+- 加载类的动画通常使用 auto 指令
+- 自动的旋转：给画板添加一个  Auto ，指向自己
+- tips：如果要同时修改动画前后的画板，可以在 Animate 窗口中点击对应的元素，这样就能同时选中不同画板中的相同元素
+

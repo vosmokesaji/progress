@@ -94,3 +94,11 @@ https://uigreat.com/course/30
 - 可拖拽：在左侧信息栏中，将 vertical 属性改为 Drop ，意思是可以纵向拖拽
 - 释放事件：touch Up 
 - 如果想做一个接一个的效果，可以 Animation 面板中调整动画开始的时间
+
+
+## 6. 划入划出动画 Hover
+- 鼠标滑入： 小闪电 -> hover inside 
+- 鼠标按下： 小闪电 -> touch down
+- 鼠标滑出： 小闪电 -> hover outside
+- 选中图层 ```command + D``` 原位复制
+

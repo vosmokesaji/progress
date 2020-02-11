@@ -147,3 +147,10 @@ https://uigreat.com/course/30
     - 选中要纵向滚动的对象，将 信息面板的 ```Vertical``` 设置为 ```Scroll```
 - tips：Sketch 中的剪切蒙版导入到 Principle 中会合成一张位图，你可以利用这点，省掉命名添加 ``` principle flatten``` 的标识，也要注意如果你不想导入到 Principle 被合并就不要在 Sketch 中使用剪切蒙版
 
+
+## 12. 连续交互拖拽
+- 拖拽交互的核心：
+    - 选中可以拖动的元素
+    - 然后将信息面板中的 ```Horizontal``` 设置为 ```Drag```
+- 添加联动动画和上边的类似
+

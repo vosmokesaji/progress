@@ -175,3 +175,33 @@ https://uigreat.com/course/30
         - [Medium 主页](https://medium.com/@johnyvino)
     - [Yaroslav Zubko](https://dribbble.com/Yar_Z) 
 
+
+
+# 孔老湿 Principle 进阶
+<!-- 
+bilibili
+主讲：孔晨
+https://www.bilibili.com/video/av75711633
+https://www.bilibili.com/video/av76098487
+https://www.bilibili.com/video/av76357914
+https://www.bilibili.com/video/av77156967
+https://www.bilibili.com/video/av79231536
+ -->
+
+
+## 1. 一个下拉刷新效果
+- 条理清晰的图层命名有利于后续动画的制作
+- Sketch 导入到 Principle 之后，养成一个好习惯：首先检查一下图层是否完美的导入了进来
+- Principle 中组的概念就是 **蒙版**
+    - 选中图层，打一个组
+    - 信息面板中勾选 ```Clip Sublayers```
+- 导出分享：
+    - ```File 菜单 -> Export Mac App``` 
+    - 导出之后发给使用 mac 的朋友他都可以双击打开
+
+
+## 2. 音量交互细节
+- 滑块本身太小，可以 ```command + G``` 打一个组，然后放大它的热区
+- 将进度条打一个组，信息面板中勾选 ```Clip Sublayers```
+- 细节：音量图标在调整过程中会有宽度变化，注意其位置的居中
+

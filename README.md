@@ -22,9 +22,10 @@
 - [麻理惠的整理秘诀](./skill/TidyingUpwithMarieKondo.md)
 
 #### 软件
-- [After Effects](./skill/driver.md)
+<!-- - [After Effects](./skill/driver.md) -->
 - [Final Cut Pro X](./skill/fcpx.md)
 - [Keynote](./skill/keynote.md)
+- [Principle](./skill/principle.md)
 
 
 ### 读书

@@ -154,3 +154,24 @@ https://uigreat.com/course/30
     - 然后将信息面板中的 ```Horizontal``` 设置为 ```Drag```
 - 添加联动动画和上边的类似
 
+
+## 13. 视频App影片动效案例
+- 下拉顶部元素弹性缩放效果，使用 ```Scroll``` 添加放大的属性
+- 侧边菜单导航的出现使用小闪电的点击交互，指向自己，添加位移效果，以及蒙层的透明度变化
+- 列表项的**依次出现** 使用位移动画，并且时间偏移
+
+
+## 推荐的学习网站
+
+
+- [principletemplates](http://principletemplates.com)
+    - 有源文件可以下载
+    - 来源都是 dribbble
+- [principlerepo](http://principlerepo.com)
+    - 更新比较慢
+    - 初学参考是非常不错的
+- dribbble 设计师推荐
+    - [Johny vion](https://dribbble.com/johnyvino) 他的作品多数都是 principle 实现的
+        - [Medium 主页](https://medium.com/@johnyvino)
+    - [Yaroslav Zubko](https://dribbble.com/Yar_Z) 
+

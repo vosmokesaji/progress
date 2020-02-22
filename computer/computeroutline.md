@@ -963,4 +963,238 @@ https://www.iso.org/standard/50372.html
 - 如果要学习一门新的语言，可以通过关注以上四个部分，来有一个相对全面的认识
 
 
+## C 语言中的数据成分
+
+### 再谈学习进度与安排
+
+### 变量定义的含义
+- 放出一张图，引导学生如何**想象内存**，防止学生对抽象知识的排斥
+- 变量的在内存中的地址指的是：变量使用的内存空间的**第一个字节**的地址
+- 声明变量时内存发生了什么
+- 给变量赋值时内存发生了什么
+
+
+### 整数型的类别
+- 基本型
+    - ```int```
+    - 32bit = 4Byte
+- 长整型
+    - ```short int``` 或者 ```short```
+    - 16bit = 2Byte
+- 短整型
+    - ```long int``` 或者 ```long```
+    - 32bit = 4Byte
+- 【注】C 标准没有具体规定以上各类数据所占内存字节数，只要求long型数据长度不短于int型，short型不长于int型
+
+- 如何知道某种类型的数占多少字节?
+    ```cpp
+    #include <iostream>
+    using namespace std;
+    int main()
+    {
+        cout << "sizeof(short int)=" << sizeof(short int) << endl;
+        cout << "sizeof(int)=" << sizeof(int) << endl;
+        cout << "sizeof(long int)=" << sizeof(long int) << endl;
+        return 0;
+    }
+    ```
+
+    ||有符号|无符号
+    :-|:-|:-
+    基本型|int<br>signed int|unsigned int
+    短整型|short<br>short int<br>signed short<br>signed short int|unsigned short<br>unsigned short int
+    长整型|long<br>long int<br>signed long<br>signed long int|unsigned long<br>unsigned long int
+
+### 整数型的存储
+- signed vs. unsigned
+- unsigned int i = 123;
+    - 在内存中的样子（为便于辨识，每8位添加的了一个空格）
+    - ```00000000 00000000 00000000 01111011```
+- int i = -123;
+    - 在内存中的样子（为便于辨识，每8位添加的了一个空格），左边第一位是符号位，1表示负数，0表示正数
+    - ```11111111 11111111 11111111 10000101```
+- 使用补码的原因：会让计算机的运算效率高很多（详细的内容等你学习 **计算机组成与原理** 这门课时候就知道了）
+
+
+### 整数的输入输出
+- 打印一个数的**十六进制**表示
+    ```cpp
+    #include <iostream>
+    using namespace std;
+    int main()
+    {
+        int a = -123;
+        cout << hex << a << endl; 
+        return 0;
+    }
+    ```
+    - 关键 ```hex``` ， 打印输出控制符，以十六进制表示
+
+- 打印一个数的**八进制**
+    ```cpp
+    #include <iostream>
+    using namespace std;
+    int main()
+    {
+        int a = -123;
+        cout << oct << a << endl; 
+        return 0;
+    }
+    ```
+    - 关键 ```oct``` ， 以八进制表示
+
+- 以不同的方式输出整数
+    ```cpp
+    #include <iostream>
+    using namespace std;
+    int main()
+    {
+        int a = -123;
+        cout << hex << a << endl;
+        cout << oct << a << endl;
+        cout << dec << a << endl; 
+        return 0;
+    }
+    ```
+    - ```dec``` ， 以十进制表示
+
+- 以不同的方式输出整数
+    ```cpp
+    #include <iostream>
+    using namespace std;
+    int main()
+    {
+        int a = -123;
+        cout << hex << a << endl;
+        cout << oct << a << endl;
+        cout << dec << a << endl; 
+        return 0;
+    }
+    ```
+    - ```0x``` 开头， 表示十六进制
+
+
+### 最大与最小整数
+- 42亿
+- 21亿
+
+### 浮点型
+- 浮点型 = 实型
+
+    浮点型|长度|有效位（精度）|范围
+    :-|:-|:-|:-
+    float|32bit|7位|-3.4 \* 10 ^ 38 ~ 3.4 \* 10 ^ 38
+    double|64bit|15位|-1.7 \* 10 ^ 308 ~ 1.7 \* 10 ^ 308
+    long double|64bit|15位|-1.7 \* 10 ^ 308 ~ 1.7 \* 10 ^ 308
+
+- 浮点数的表示
+    - 1位符号位
+    - 8位指数位（含一位符号位）
+    - 23位二进制小数位（默认为1.xxxxx）
+    - log10(2^127) ≈ 38.23  (10的这么多次幂)
+    - log10(2^24) ≈ 7.225  （能表示的精度）
+
+- 使用须知：避免将一个很大的数与一个很小的数直接相加或相减，否则就会“丢失”小的数。
+
+
+<!-- 
+- IEEE Standard for Floating-Point Arithmetic (IEEE 754) 
+- http://grouper.ieee.org/groups/754/
+- ISO/IEC/IEEE 60559:2011 - Information technology - Microprocessor Systems - Floating-Point arithmetic
+- http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=57469 
+-->
+
+### 字符型
+一个字符型占一个字节;
+- 其值可以是任何“可以出现在C/C++语言中的字符”
+- 最多可以表示 2^8 即 256 个字符
+- 例如 ```char a =‘@’;``` ， 对应关系： ```@ <--> 64 <--> 01000000```
+- 这个对应关系的字符集就是 ASCII (American Standard Code for Information Interchange : 美国信息交换标准代码）
+    - 由美国国家标准局制定，经修改被 ISO 接纳为标准
+    - ISO/IEC 646:1991
+- 由于存储类型和整型相同 
+    - 可以与整型数据相互赋值 
+    - 可以和整数一样进行运算
+- 转义字符
+
+> 单引号是字符、双引号是字符串
+
+### 布尔型
+- 用于存储“真”和“假”的变量
+    - 占一个字节（一位就行，为啥要用一个字节，因为字节是计算机能够控制的最小存储单位）
+    - 其值 只能为 1 或 0 
+        - 1 代表 True
+        - 0 代表 False
+- 赋给布尔型变量的值
+    -  可以赋任何值给它，但
+        - 赋 0 存 0，表示 False 
+        - 赋 非零 存1，表示  True
+
+
+### 常数
+- 常量：在程序运行过程中，其值保持不变的量
+    - 字面常量 
+        - -1，0，123，4.6, -1.23;
+    - 符号常量
+        - 用一个标识符代表一个常量的， 称为符号常量
+
+    ```cpp
+    #include <iostream>
+    using namespace std;
+    int main()
+    {
+        const float PI = 3.14159f;
+        float r, area;
+        cin >> r;
+        area = r * r * PI;
+        cout << "Area = " << area;
+        return 0;
+    }
+    ```
+    - 关键 ```const``` 
+    - 使用符号常量的优点：提高编程效率、方便维护、不可修改不会出错
+
+- 整型常量的后缀 
+    ```cpp
+    n = 10000L;     //长整型常量
+    m = -0x88abL;   //长整型十六进制常量
+    k = 10000U;     //无符号整型常量
+    i = 07777LU;    //无符号长整型八进制常量
+    ```
+- 浮点型常量的后缀 
+    ```cpp
+    x = 3.1415F     //单精度浮点型常量
+    y = 3.1415L     //长双精度浮点型常量
+    ```
+- 说明: 
+    - 浮点型常量默认为 double 型; 
+    - U, L, F 均可以小写;
+
+### 变量命名
+- 什么是标识符 
+    - 用来标识符号常量名、变量名、函数名、数组名、类型名、文件名的 **有效字符序列** 称为 **标识符(identifier)**
+    - C++语言规定:标识符只能由**字母**、**数字**和**下划线**三种字 符组成，且**第一个字符必须为字母或下划线**，且**不可与保留字(关键字)相同**
+- 关于变量的命名
+    - 匈牙利命名法：由Microsoft著名开发人员Excel主要设 计者Charles Simonyi在其博士论文中提出
+        1. 以一个或者多个小写字母开头，来指定数据类型
+        2. 其后是一个或者多个第一个字母大写的单词，指出变量的用途 
+        3. 例子：chGrade; nLength; bOnOff; strStudentName;
+    - 驼峰命名法(骆驼式命名法)
+        - 由一个或多个单字连结在一起
+        - 第一个单词以小写字母开始
+        - 第二个单词的首字母大写或每一个单词的首字 母都采用大写字母
+        - myFirstName, myLastName, nextStudentName, intCount, printEmployeePaychecks()
+
+
+#### 学习方式建议：
+- **了解，但不陷入细节，等用到时再细研究它**
+
+
+### 编程作业：数据成分基础练习
+
+
+
+
+
+
 

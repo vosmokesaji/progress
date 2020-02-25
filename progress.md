@@ -87,7 +87,8 @@
             1. STAR 法则写好骨干
             2. 用行业常用的工作术语去做润色
             3. 增加细节，量化结果，多用数字和百分比
-            - 【配图】
+                - 假设小明是学校围棋社的社长，他加入时，围棋社人非常非常少，但是经过两年左右的事件把社团从11人扩大到了200多人，看上去和产品经理无关的经验对吧，我们用这三部整理一下他的故事
+                - <img src="./images/progress/20200225-围棋社示例.png" width="400">
         - 奖项职务
         - 特长介绍
             - 可以罗列出和这项工作相关的技能证书，比如英语证书、计算机证书、你会各种各样的软件等等
@@ -134,7 +135,7 @@
         - 针对你非常非常想去的公司，正式面试之前一定会做一些基础的调研和分析
         - 所谓的公司调研就是在网上找这家公司的相关资料，目的是去了解这家公司更**喜欢什么样类型的员工**
         - 关于如何根据岗位介绍分析出这个岗位需要什么样的能力要求，之前有一期视频专门讲（[简历怎么写才能脱颖而出](https://www.bilibili.com/video/av64316667)）
-        - 配图分析结果示例 
+        - <img src="./images/progress/20200224-分析结果示例.png" width="400">
         - 把这些想清楚之后，我们就得到了一个面试的额标准答案
     4. 面试问答题库以及准备 3.32
         - 在面试官的角度，如何把一个完全陌生的我，和他心中的标准答案联系在一起，当然就是要问问题了
@@ -152,6 +153,7 @@
                 - 合并同类项
                     - 将展示同一类技能的问题总结起来就会得到这样一张表
                     - 到这一步其实就准备4个答案，能覆盖到所有的要点就行了
+                    - <img src="./images/progress/20200224-4步分析.png" width="400">
             2. 业务 、 公司 、 行业的思考类的问题（我觉得程序员了解即可，主要还是技术的东西）
                 - 通过行业研报、商业类的分析、数据的研究报告，了解行业的大环境是什么样的，最好的公司是哪几家、他们是怎么做业务的
                 - 可以搜索你要面试的这家公司最近有什么新闻、发布的新产品、甚至是发布的招聘信息
@@ -984,7 +986,7 @@
         4. 量子技术
         5. 核聚变
     - tips：前三个10年末端投资（2029）
-    - <img src="./images/readme/zhongguohuiying.png" height="200">
+    - <img src="./images/progress/zhongguohuiying.png" height="200">
     - 美国创新能力强的原因：
         1. 美国资本操作能力好，硅谷天使基金很多；
         2. 美国人才聚集里比较好，生活方式、文化、价值观很有魅力；
@@ -1007,7 +1009,7 @@
 ### 15日 
 - 【知识点】打水漂：[来源](https://www.youtube.com/watch?v=fOzR-PO-lQ8)
     - 石头片和水面的夹角 α ，速度和水面的夹角 β ，自旋角速度 ω 
-    - <img src="./images/readme/lyl-dashuipiao.png" height="200">
+    - <img src="./images/progress/lyl-dashuipiao.png" height="200">
     - 一定的速度，保持旋转，再找两个合适的角度，就能打出漂亮的水漂了
 
 ### 10日
@@ -1422,7 +1424,7 @@
         "5次及以上次数提交": "最深绿色" 
     }
     ```
-    ![热力图](images/readme/thermogram.png)
+    - <img src="./images/progress/thermogram.png" width="200">
 - 【经验】做点击反馈，不要太快，起码不要瞬间完成，如果相同位置会变成另一个可点的，容易出问题。学学苹果，苹果任何反馈都有一点点延时，用户感觉不到，但又确实存在，防止用户操作太快。
 
 ### 24日
@@ -1856,8 +1858,7 @@
 1. 圈外lessons1：一个模型，帮你找到真正热爱的工作
     - 冰山模型：
         - 冰山模型是美国著名心理学家麦克利兰提出来的，它全面地描述了一个人的个体素质要素，也就是说，**你跟一个岗位是不是匹配、匹配程度如何、市场薪资值多少，都是这个模型可以解释的，几乎所有大公司都会用它来进行人才招聘和培养。**
-
-    ![冰山模型](./images/readme/iceberg-model.jpg)
+        - <img src="./images/progress/iceberg-model.jpg" width="400">
 
     - 知识容易在后天习得，性格特质动机价值观这些隐形要素很难后天改变
     - 搞明白“我应该选择什么样的工作”，比“我应该如何在别人认为的好工作里面成功”，要重要得多
@@ -1866,9 +1867,6 @@
     > 思考：
     > 1. 在招聘中，如何通过冰山模型的各个要素考察面试者；对应的：面试者在面试中如何通过冰山模型向面试官示自己的优点？
     > 2. 通过冰山模型分析自己
-
-
-## 5月
 
 
 # 2017年
@@ -1945,8 +1943,8 @@ X-UA-Compatible是自从IE8新加的一个设置，对于IE8以下的浏览器�
 - 基本JPEG(Baseline JPEG)和渐进JPEG(Progressive JPEG)
 	- photoshop 生成 jpeg 图片时，将连续打钩即可生成Progressive JPEG。
 
-![Baseline_JPEG](images/readme/Baseline_JPEG.gif)
-![Progressive_JPEG](images/readme/Progressive_JPEG.gif)
+![Baseline_JPEG](./images/progress/Baseline_JPEG.gif)
+![Progressive_JPEG](./images/progress/Progressive_JPEG.gif)
 
 
 - JDK 是啥？
@@ -2028,15 +2026,15 @@ css中的兼容写法不要省略：
 
 - 指令使用中的一个小**坑**
 
-![](images/readme/howtoload_1.png)
+![](./images/progress/howtoload_1.png)
 
-![](images/readme/howtoload_2.png)
+![](./images/progress/howtoload_2.png)
 
 
 - 指令内部的 scope 叫做创建独立的作用域
 - 指令内部的 controller 是给指令暴露出一组 public 方法，给外部调用的
 
-![](images/readme/superman.png)
+![](./images/progress/superman.png)
 
 - AngularJS 里内置了 Jquerylight 即简化版 Jquery ，是和我们所熟悉的 jquery 语法一模一样的 
 
@@ -2046,7 +2044,7 @@ css中的兼容写法不要省略：
 
 - 指令中的 require 表示该指令依赖于哪一个指令（下边的例子表示 strength 这个指令依赖于 superman 指令）
 
-![](images/readme/directive_require.png)
+![](./images/progress/directive_require.png)
 
 - 有 require 之后我们就可以在 link 函数里写第四个参数 即被依赖指令的 controller 写成 “指令名Ctrl” 的形式。 接下来我们就可以通过 指令名Ctrl.fn 来调用被依赖指令暴露出的方法了。
 
@@ -2080,7 +2078,7 @@ AngularJS 指令（Directive）
 	- template 可以写模板
 	- templateUrl 可以引入独立的HTML文件,其中可以写大块的模板
 	- templateCache 可以将模板缓存起来，让多个指令去使用它
-![templateCache](images/readme/templateCache.png)
+![templateCache](./images/progress/templateCache.png)
 
 3. replace 与 transclude
 	- transclude 允许 指令内部嵌套（非常重要，使指令与指令嵌套的基础）
@@ -2694,10 +2692,10 @@ Math.abs(1 / 3 - (1 - 2 / 3)) < 0.0000001; // true
 MarkDown 插入图片的语法：
 
 ```
-![索尼大法好](./images/readme/sonydafagood.jpg)
+![索尼大法好](./images/progress/sonydafagood.jpg)
 ```
 
-![索尼大法好](./images/readme/sonydafagood.jpg)
+![索尼大法好](./images/progress/sonydafagood.jpg)
 
 - AngularJS 中的 MVC 是借助 $scope 实现的。
 - $rootScope 是控制器之间的桥梁。

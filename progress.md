@@ -52,6 +52,15 @@
 
 # 2020年
 
+## 3月
+
+### 3日
+- [npm 换源](https://www.cnblogs.com/cythia/p/10985080.html)
+- [Homebrew 换源 - 1](https://blog.csdn.net/jeikerxiao/article/details/72705629)
+- [Homebrew 换源 - 2](http://blog.csdn.net/jeikerxiao/article/details/72705629)
+- 【想知道】 version 我知道， tag 是啥？
+    - [问题来源](https://yarn.bootcss.com/docs/usage/)
+
 
 ## 2月
 ### 29日

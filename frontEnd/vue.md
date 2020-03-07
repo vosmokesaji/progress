@@ -92,3 +92,19 @@ git clone https://github.com/vuejs/vue.git
         - ```shared``` 公共的帮助代码
     - ```types``` 给 typescript 写的一套类型说明
 
+
+
+## 探寻入口文件
+- 从 package.json 中入手
+    ```
+    "dev": "rollup -w -c scripts/config.js --sourcemap --environment TARGET:web-full-dev",
+    ```
+- 根据这个文件 ：```scripts/config.js``` 中的 这个配置 ： ```web-full-dev``` ，很容易找到 ```entry```
+    ```
+    entry: resolve('web/entry-runtime-with-compiler.js'),
+    ```
+- ```'web/entry-runtime-with-compiler.js'``` 是啥？
+    - 定位到 ```resolve``` 这个方法就知道是怎么来的了
+
+### 入口文件 **src/platforms/web/entry-runtime-with-compiler.js**
+- 扩展了 $mount 方法

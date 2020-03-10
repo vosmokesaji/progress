@@ -1,5 +1,9 @@
 FrontEnd Interview
-<!-- 慕课前端面试课笔记 -->
+<!-- 
+慕课前端面试课笔记
+作者： 双越
+https://coding.imooc.com/learn/list/190.html
+ -->
 
 - [1. ES6 语法](#1-es6-语法)
     - [1.1. 问题](#11-问题)
@@ -1489,7 +1493,7 @@ start at 63h05min
         ];
 
         // 渲染函数
-        function rander(data){
+        function render(data){
             var $container = $("#container");
 
             // 清空现有内容
@@ -1603,7 +1607,7 @@ start at 63h05min
     ])
 
     var container = document.getElementById("container");
-    patch(contatiter, vnode);
+    patch(container, vnode);
 
     // 模拟改变
     var btnChange = document.getElementById("btn-change");
@@ -1686,7 +1690,7 @@ start at 63h05min
 
         var vnode
         // 渲染函数
-        function rander(data){
+        function render(data){
             var newVnode = h("table", {}, data.map(function(item){
                 var tds = [];
                 var i;
@@ -1716,6 +1720,7 @@ start at 63h05min
         btnChange.addEventListener("click", function(){
             data[1].age = 30;
             data[2].adress = "深圳";
+            
             // re-render 再次渲染
             render(data);
         })
@@ -1791,7 +1796,7 @@ start at 63h05min
         }
 
         // 创建真实的 DOM 元素
-        var elem = document.ceeatElement(tag);
+        var elem = document.createElement(tag);
         // 属性
         var attrName;
         for(attrName in attrs){
@@ -1803,8 +1808,8 @@ start at 63h05min
 
         // 子元素
         children.forEach(function(childVnode){
-            // 给 elem 添加子元素
-            elem.appendChild(createElement(childVnode));    // 递归
+            // 递归调用 createElement 创建子元素，然后给 elem 添加子元素
+            elem.appendChild(createElement(childVnode));
         })
 
         // 返回真实的 DOM 元素
@@ -1919,6 +1924,8 @@ start at 63h05min
     - 核心逻辑： ```createElement``` 和 ```updateChildren```
 
 ## 4.4. 总结
+
+
 
 <!-- 
 end at 66h 35min 预计用时 3h 实际用时 3h 30min
@@ -3364,6 +3371,11 @@ end at 81h 41min 预计用时 0.5h 实际用时 0.5h
 
 
 # Web 前端面试指南与高频考题解析
+<!-- 
+掘金小册
+作者： Alex007
+https://juejin.im/book/5a8f9ddcf265da4e9f6fb959
+ -->
 
 ## 面试准备
 - 对于常规问题要做好准备

@@ -142,10 +142,10 @@ git clone https://github.com/vuejs/vue.git
     }
 
     initMixin(Vue)      // 实现了 _init()
-    stateMixin(Vue)     // $data,$props,$set,$delete,$watch
-    eventsMixin(Vue)    // $on,$emit,$once,$off
-    lifecycleMixin(Vue) // _ 
-    renderMixin(Vue)
+    stateMixin(Vue)     // $data,$props,$set,$delete,$watch  等组件状态相关的方法
+    eventsMixin(Vue)    // $on,$emit,$once,$off 等事件相关的方法
+    lifecycleMixin(Vue) // _update, $forceupdate, $destory  等生命周期相关的方法
+    renderMixin(Vue)    // $nextTick, _render 渲染相关的方法
     ```
 
 - ```src/core/instance/init.js``` 初始化函数的实现
@@ -160,5 +160,3 @@ git clone https://github.com/vuejs/vue.git
     initProvide(vm) // 提供数据注入
     callHook(vm, 'created')
     ```
-
-## vue 源码学习整体流程总结

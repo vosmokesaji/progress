@@ -160,3 +160,35 @@ git clone https://github.com/vuejs/vue.git
     initProvide(vm) // 提供数据注入
     callHook(vm, 'created')
     ```
+
+## 数据响应化流程分析
+
+### 数据响应式
+
+- 响应式的入口点 ```src/core/instance/state.js```
+    - 数据初始化
+    - initData() ： 判断重复，调用 observe
+    - observe() ： 返回一个 Observer 对象的实例
+- Observer ```src/core/observer/index.js``` 
+    - 判断数据对象的类型，做相应的处理
+    - ```defineReactive``` ： 给 data 中每一个 key 定义响应化（定义数据的劫持）
+- Dep ```src/core/observer/dep.js```
+    - 维护和管理若干 wacher
+- Watcher ```src/core/observer/watcher.js```
+    - 
+
+
+### 数组响应化原理
+- 看数组的处理要去 Observer ```src/core/observer/index.js``` 找起
+- 数组的响应化处理 ```src/core/observer/array.js```
+    - 数组不能用索引 否则不能响应化
+    - 七君子：  'push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'
+
+
+
+
+
+
+
+
+

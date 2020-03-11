@@ -54,7 +54,7 @@ git clone https://github.com/vuejs/vue.git
     ```shell
     npm i
     ```
-- 安装 rollup
+- 安装 rollup 打包工具
     ```shell
     npm i rollup -g
     ```
@@ -77,11 +77,11 @@ git clone https://github.com/vuejs/vue.git
         - 带 common ， cjs 支持 webpack1 ， browserfiry
         - esm ， 支持 webpack2+
         - umd ， 兼容 cjs 和 amd
-        - runtime ， 仅包含运行时，没有编译器
+        - runtime ， 仅包含运行时，没有编译器 (cmd?)
         - 你看源码应该关注 umd 也就是 vue.js 这个版本
     - ```examples``` 中有一些例子，我们写测试程序也可以在这里边写，去调试
     - ```flow```  都是一些类型说明
-    - ```packages``` 独立于 Vue 核心的模块，比如服务端渲染， weex 等
+    - ```packages``` 独立于 Vue 核心的模块，比如服务端渲染、 weex 等
     - ```scripts``` 打包脚本
     - ```src``` 最重要的 源码目录
         - ```compiler``` 编译器
@@ -105,6 +105,60 @@ git clone https://github.com/vuejs/vue.git
     ```
 - ```'web/entry-runtime-with-compiler.js'``` 是啥？
     - 定位到 ```resolve``` 这个方法就知道是怎么来的了
+- 就能找到入口文件 ```src/platforms/web/entry-runtime-with-compiler.js```
 
-### 入口文件 **src/platforms/web/entry-runtime-with-compiler.js**
-- 扩展了 $mount 方法
+
+## vue 初始化流程分析
+
+### 入口文件 src/platforms/web/entry-runtime-with-compiler.js
+
+- ```lin:17``` 扩展了 $mount 方法， （可以理解为针对 web 平台的个性化扩充）
+- ```line:32``` 处理 template 和 el ， ```line:34``` 没有 render 时才考虑 template 和 el  
+    - 优先级： ```render > template > el``` 
+- ```line:59``` 编译，将 template 字符串转换为 ```render 函数``` 
+- 结论：**不管用 template 还是 el 最终都会变成 render 函数，挂载到 options 中**
+
+### Vue 的构造函数从哪里来的呀？
+- ```import Vue from './runtime/index'``` 找到文件 ```src/platforms/web/runtime/index.js``` 做了什么事？
+    - 实现了 ```__patch__``` 方法 
+    - 定义了 ```$mount``` 方法， 执行挂载 ```mountComponent(this, el, hydrating)```
+- ```import Vue from 'core/index'``` 找到文件 ```src/core/index.js``` 做了什么事？ 
+    - ```initGlobalAPI(Vue)``` 定义全局API ， 追一下就能找到：```src/core/global-api/index.js```
+        ```js
+        Vue.set = set
+        Vue.delete = del
+        Vue.nextTick = nextTick 
+        initUse(Vue)
+        initMixin(Vue)
+        initExtend(Vue)
+        initAssetRegisters(Vue)
+        ```
+        - 等等...
+- ```import Vue from './instance/index'``` 找到文件 ```src/core/instance/index.js``` 中， 构造函数的定义点
+    ```js
+    function Vue (options) {
+        // 初始化
+        this._init(options)
+    }
+
+    initMixin(Vue)      // 实现了 _init()
+    stateMixin(Vue)     // $data,$props,$set,$delete,$watch
+    eventsMixin(Vue)    // $on,$emit,$once,$off
+    lifecycleMixin(Vue) // _ 
+    renderMixin(Vue)
+    ```
+
+- ```src/core/instance/init.js``` 初始化函数的实现
+    ```js
+    vm._self = vm
+    initLifecycle(vm)       // 初始化 $parent,$root,$children,$refs
+    initEvents(vm)          // 处理父组件传递的监听器
+    initRender(vm)          // $slots, $scopedSlots, _c(), $createElement()
+    callHook(vm, 'beforeCreate')
+    initInjections(vm) // 获取注入数据
+    initState(vm)       // 初始化组件中 props、methods、data、computed、watch
+    initProvide(vm) // 提供数据注入
+    callHook(vm, 'created')
+    ```
+
+## vue 源码学习整体流程总结

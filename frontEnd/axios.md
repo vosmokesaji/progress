@@ -512,3 +512,23 @@
     - 测试: 可以使用 json-server 快速搭建模拟的rest api 接口
         - GET 有 params / query 两种参数
 
+
+## 8. 理解XHR
+    使用XMLHttpRequest (XHR)对象可以与服务器交互, 也就是发送ajax请求
+    前端可以获取到数据，而无需让整个的页面刷新。
+    这使得Web页面可以只更新页面的局部，而不影响用户的操作。
+
+## 9. 区别ajax请求与一般HTTP请求
+    ajax请求是一种特别的http请求: 只有通过XHR/fetch发送的是ajax请求, 其它都是一般HTTP请求
+    对服务器端来说, 没有任何区别, 区别在浏览器端
+    浏览器端发请求: 只有XHR或fetch发出的才是ajax请求, 其它所有的都是非ajax请求 
+        ajax 引擎发的请求
+    浏览器端接收到响应
+        一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/跳转页面
+        ajax请求: 浏览器不会对界面进行任何更新操作, 只是调用监视的回调函数并传入响应相关数据
+
+## 10. 使用XHR封装一个发ajax请求的通用函数
+    函数的返回值为promise, 成功的结果为response, 异常的结果为error
+    能处理多种类型的请求: GET/POST/PUT/DELETE
+    函数的参数为一个配置对象: url/method/params/data
+    响应json数据自动解析为了js

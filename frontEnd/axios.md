@@ -532,3 +532,33 @@
     能处理多种类型的请求: GET/POST/PUT/DELETE
     函数的参数为一个配置对象: url/method/params/data
     响应json数据自动解析为了js
+
+
+## 11. axios的特点
+    基于promise的封装XHR的异步ajax请求库
+    浏览器端/node端都可以使用
+    支持**请求／响应拦截器**
+    支持请求取消
+    请求/响应数据转换
+    批量发送多个请求
+
+## 12. axios常用语法
+    axios(config): 通用/最本质的发任意类型请求的方式
+    axios(url[, config]): 可以只指定url发get请求
+    axios.request(config): 等同于axios(config)
+    axios.get(url[, config]): 发get请求
+    axios.delete(url[, config]): 发delete请求
+    axios.post(url[, data, config]): 发post请求
+    axios.put(url[, data, config]): 发put请求
+    
+    axios.defaults.xxx: 请求的默认全局配置
+    axios.interceptors.request.use(): 添加请求拦截器
+    axios.interceptors.response.use(): 添加响应拦截器
+
+    axios.create([config]): 创建一个新的axios(它没有下面的功能)
+    
+    axios.Cancel(): 用于创建取消请求的错误对象
+    axios.CancelToken(): 用于创建取消请求的token对象
+    axios.isCancel(): 是否是一个取消请求的错误
+    axios.all(promises): 用于批量执行多个异步请求
+    axios.spread(): 用来指定接收所有成功数据的回调函数的方法

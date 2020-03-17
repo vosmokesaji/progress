@@ -628,3 +628,18 @@
             内部会让cancelPromise变为成功, 且成功的值为一个Cancel对象
             在cancelPromise的成功回调中中断请求, 并让发请求的proimse失败, 失败的reason为Cacel对象
 
+
+## 补充
+1. 格式优化
+2. 添加 axios 连接 https://github.com/axios/axios
+3. 添加 json-server 连接  https://github.com/typicode/json-server
+4. 源码难点与流程分析 中 提到了 axios 的二次封装
+    - axios.create  方便对不同的后台，复用不同的配置
+5. 多个请求拦截器的执行顺序和她的书写顺序相反
+
+```js
+throw error;
+or
+return Promise.reject(error);
+```
+- axios.create() 的结果  instance 没有 create caCancelTokenncel  等方法 ，怎么取消？

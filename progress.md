@@ -59,6 +59,12 @@
 
 ## 3月
 
+### 18日
+- 【知识点】[shim是什么？](https://www.jianshu.com/p/dd77905ecf32)
+    - Vue响应式原理中说道：Object.defineProperty是Es5中无法shim的特性，那么这里的shim是什么呢？
+    - shim可以将新的API引入到旧的环境中，而且仅靠就环境中已有的手段实现。
+    - 文章中说的意思就是，Object.defineProperty这个特性是无法使用低级浏览器中的方法来实现的，所以Vue不支持IE8以及更低版本的浏览器。
+    - es5-shim可以让一些低级的浏览器支持最新的ecmascript5的一些特性。支持浏览器或node.js，已经测试的功能见 https://github.com/es-shims/es5-shim
 
 
 ### 17日

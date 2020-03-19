@@ -533,6 +533,131 @@
     函数的参数为一个配置对象: url/method/params/data
     响应json数据自动解析为了js
 
+```js
+/*
+使用 XHR 封装发送 ajax 请求的通用函数
+返回值: promise 参数为配置对象
+url: 请求地址
+params: 包含所有 query 请求参数的对
+象 {name: tom, age: 12} ==> name=tom&age=12
+data: 包含所有请求体参数数据的对象
+method: 为请求方式 
+*/
+function axios({
+    url,
+    method = 'GET',
+    params = {},
+    data = {}
+}) {
+    method = method || 'GET'
+    method = method.toUpperCase()
+    // 将params中的参数属性拼接到url上
+    // {name: tom: pwd: 123} ===> queryStr=name=tom&pwd=123 // url + ? + queryStr
+    let queryStr = ''
+    Object.keys(params).forEach(key => {
+        // &pwd=123
+        queryStr += '&' + key + '=' + params[key]
+    })
+    // '&name=tom&pwd=123' 或者 '' if (queryStr) {
+    queryStr = queryStr.substring(1) // 'name=tom&pwd=123'
+    url += '?' + queryStr // /user?name=tom&pwd=123 }
+    return new Promise((resolve, reject) => { // 创建XHR对象
+        const request = new XMLHttpRequest()
+        // 打开连接(初始化请求对象) request.open(method, url, true)
+        // 设置响应数据类型 ==> 自动解析 json 文本为 js 对象/数组, 保存给 response 属性上
+        request.responseType = 'json'
+        // 绑定监视 request 的状态改变的监听
+        request.onreadystatechange = function () { // 如果请求还没有完成, 直接结束
+            if (request.readyState !== 4) {
+                return
+            }
+            const {
+                status,
+                statusText
+            } = request
+            // 如果成功了, 取出数据封装成成功的响应数据对象 response, 调用
+            resolve(response)
+            if (status >= 200 && status < 300) { // 在[200, 300)
+                const response = {
+                    // data: JSON.parse(request.response), data: request.response,
+                    status,
+                    statusText
+                }
+                resolve(response)
+            } else {
+                // 如果失败了, 封装失败相关信息成error对象, 调用reject(error)
+                reject(new Error('request error status is ' + status))
+            }
+        }
+        if (method === 'GET' || method === 'DELETE') {
+            // 发送请求
+            request.send()
+        } else { // POST/PUT
+            // 设置请求头
+            request.setRequestHeader('Content-Type', 'application/json;ch arset=utf-8')
+            // 发送请求
+            request.send(JSON.stringify(data))
+        }
+    })
+}
+
+// 使用测试
+function testGet() {
+    axios({
+        url: 'http://localhost:3000/comments',
+        // url: 'http://localhost:3000/comments2', params: {id: 3},
+    }).then(response => {
+        console.log('get success', response.data, response)
+    }).catch(error => {
+        alert(error.message)
+    })
+}
+
+function testPost() {
+    axios({
+        url: 'http://localhost:3000/comments',
+        // url: 'http://localhost:3000/comments2', method: 'POST',
+        data: {
+            body: 'aaaa',
+            postId: 2
+        }
+    }).then(response => {
+        console.log('post success', response.data, response)
+    }).catch(error => {
+        alert(error.message)
+    })
+}
+
+function testPut() {
+    axios({
+        url: 'http://localhost:3000/comments/3',
+        // url: 'http://localhost:3000/comments/39',
+        method: 'put',
+        data: {
+            body: 'abcdefg',
+            "postId": 2
+        }
+    }).then(response => {
+        console.log('put success', response.data, response)
+    }).catch(error => {
+        alert(error.message)
+    })
+}
+
+function testDelete() {
+    axios({
+        url: 'http://localhost:3000/comments/1',
+        method: 'delete',
+        params: {
+            body: 'some comment'
+        }
+    }).then(response => {
+        console.log('delete success', response.data, response)
+    }).catch(error => {
+        alert(error.message)
+    })
+}
+```
 
 ## 11. axios的特点
     基于promise的封装XHR的异步ajax请求库

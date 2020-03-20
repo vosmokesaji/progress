@@ -59,6 +59,10 @@
 
 ## 3月
 
+### 20日
+- 【知识点】 通过历史来理解[什么是 B/S 架构？](https://blog.csdn.net/gschen_cn/article/details/102794643?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522158476534919724847039340%2522%252C%2522scm%2522%253A%252220140713.130056874..%2522%257D&request_id=158476534919724847039340&biz_id=0&utm_source=distribute.pc_search_result.none-task)
+
+
 ### 18日
 - 【知识点】[shim是什么？](https://www.jianshu.com/p/dd77905ecf32)
     - Vue响应式原理中说道：Object.defineProperty是Es5中无法shim的特性，那么这里的shim是什么呢？

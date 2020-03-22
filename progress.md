@@ -38,7 +38,7 @@
  -->
 
 # TODO
-- [x] [知识：计算机起源 & 历史](computer/computeroutline.md)
+- [x] [知识：计算机起源 & 历史](./computer/computeroutline.md)
 - [x] [技能：前端课程](./frontEnd/interview.md)
 - [ ] 能力：PMP 项目管理课程
 - [x] [技能：许岑的 KeyNote 课程学习](./skill/keynote.md)

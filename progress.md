@@ -59,6 +59,23 @@
 
 ## 3月
 
+
+### 23日
+- 【知识点】[如何使用github中的pull request功能？](https://blog.csdn.net/wangzi11111111/article/details/79861056)
+    - **pull request是社会化编程的象征，通过这个功能，你可以参与到别人开发的项目中，并做出自己的贡献。pull request是自己修改源代码后，请求对方仓库采纳的一种行为** ——《github入门与实践》
+    1. fork 项目到自己的仓库
+    2. clone 自己仓库下的该项目到本地
+        1. 确认分支：通过在终端运行命令： ```git branch -a``` 查看当前所在的分支，通常我们都是在查看分支后再进行代码的修改，这是一个好的习惯
+        2. 创建特性分支：在应用 github 修改代码时，我们常常采用的策略是在主分支下在创建一个特性分支，在该特性分支下进行代码的修改然后通过该分支执行 pull request 操作。通过命令： ```git checkout -b work master``` (其中 work 为你新建的特性分支， master 为你当前坐在的分支)创建新的特性分支并自动切换
+    3. 添加修改
+        1. 修改工程 
+        2. 提交修改：首先使用命令： ```git diff``` 查看修改的内容是否正确，然后使用命令： ```git add readMe.md``` （其中readMe.md为要添加的文件）向仓库中添加文件，在执行命令： ```git commit -m "add readMe.md文件"``` 提交说明（注：提交时要留意该开源项目有没有指定的 message 格式，如果有要与其统一）
+        3. 创建远程分支 要从 github 发送 pull request ， github 端的仓库中必须有一个包含了修改后的代码的分支，所以需要创建一个与刚刚创建的特性分支（修改所在的分支）相对应的远程分支，执行命令： ```git push origin work1``` (其中 origin 为当时 fork 的远程主分支的名称，一般默认为 origin , work1 为本地工作的特性分支)，然后执行： ```git branch -a``` 进行查看是否创建成功
+    4. 发送 ```pull request``` ： 进入到自己的 github 账户下，并切换到创建的特性分支下，然后点击 ```create pull request``` 后，确定没问题，填写相关内容，然后点击 ```send pull request```
+- 【知识点】[GitHub 中 Issue 的使用](https://cloud.tencent.com/developer/article/1560257)
+
+
+
 ### 20日
 - 【知识点】 通过历史来理解[什么是 B/S 架构？](https://blog.csdn.net/gschen_cn/article/details/102794643?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522158476534919724847039340%2522%252C%2522scm%2522%253A%252220140713.130056874..%2522%257D&request_id=158476534919724847039340&biz_id=0&utm_source=distribute.pc_search_result.none-task)
 

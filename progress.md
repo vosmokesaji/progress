@@ -59,6 +59,14 @@
 
 ## 3月
 
+### 24日
+- 【知识点】发现一篇彻底讲透 [JS中的基本数据类型与引用数据类型](https://blog.csdn.net/qq_38148024/article/details/104838224)  的文章，注释详尽，容易理解
+- 【知识点】 [Stack 的三种含义](http://www.ruanyifeng.com/blog/2013/11/stack.html) 在最后一种含义中，了解了不同类型的变量在内存中的存放方式：什么情况使用 **栈内存（stack）** ，什么情况使用 **堆内存（heap）** ：**数据存放的规则是：只要是局部的、占用空间确定的数据，一般都存放在 stack 里面，否则就放在 heap 里面**
+- 【知识点】[容错，高可用和灾备](http://www.ruanyifeng.com/blog/2019/11/fault-tolerance.html)
+    - 容错：发生故障时，如何让系统继续运行
+    - 高可用：系统中断时，如何尽快恢复
+    - 灾备：系统毁灭时，如何抢救数据
+
 
 ### 23日
 - 【知识点】[如何使用github中的pull request功能？](https://blog.csdn.net/wangzi11111111/article/details/79861056)

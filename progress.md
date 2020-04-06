@@ -59,6 +59,12 @@
 
 ## 4月
 
+
+### 6日
+- 【知识点】[如何用网页脚本追踪用户](http://www.ruanyifeng.com/blog/2019/04/user-tracking.html)
+    - 新发现： Beacon API 
+
+
 ### 4日
 - 【发现】[人生逆天技能：如何扭曲主观时空，一辈子活成 N 辈子？](https://www.xiaohui.com/weekly/another-life.htm)
     - **机械黄金时间，是指花在为实现自动运转系统而进行的创造性工作的时间**，而不是为生意打工或者处理日常事务的时间。

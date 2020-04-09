@@ -59,6 +59,22 @@
 
 ## 4月
 
+### 9日
+- 【格言】凯恩斯： the market can stay irrational longer than you can stay solvent
+- 【知识点】```cross-env``` 工具让我们可以传递参数，NODE_ENV ， 使用方法： 安装```npm i cross-env -D``` ， 使用 ```cross-env NODE_ENV=production webpack --config ....```
+
+- [jod](https://www.zhipin.com/job_detail/fb4220e9db2713ba1XF40tm9ElU~.html?ka=search_list_3)
+    - 期望3-5年，如果水平可以，年限可以忽略
+    - 我们在招对技术有热情的小伙伴，如果你是，耐心看完下文
+    - 我们在意的知识点
+    - 精通js，es5特别扎实，es6使用熟练
+    - react和vue精通任意一种，精通react更佳
+    - 对前端框架底层实现原理非常清楚，深入阅读过源码更佳
+    - 有丰富的node项目经验为加分项
+    - css基础扎实
+    - 编程基本功扎实，熟悉常见数据结构与算法
+
+
 ### 7日
 - 【歌词】达拉崩吧
     - 达拉崩吧斑得贝迪卜多比鲁翁

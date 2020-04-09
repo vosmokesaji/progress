@@ -2,9 +2,16 @@
 
 <!-- 
 imooc 
+https://coding.imooc.com/learn/list/316.html
+主讲： Dell
 
 Find /myOwn/README.MD -> helbo -> apsid
  -->
+
+## 1.1. 导学
+- webpack 的优势： tree shaking 、 代码懒加载 、 代码分割  等等
+- 学习 webpack 可以极大拓宽前端开发视野，对前端工程化有更深的理解
+
 
 # 2. 初识 Webpack
 
@@ -36,6 +43,13 @@ Find /myOwn/README.MD -> helbo -> apsid
     }
     module.exports = Header;
     ```
+
+### 2.1.1. 【作业】文档阅读： 
+- [Modules](https://webpack.js.org/concepts/modules/) ，对模块化的基本概念有比较明确的认识
+- [Module Methods](https://webpack.js.org/api/module-methods/)
+- [Module Variables](https://webpack.js.org/api/module-variables/)
+
+
 ## 2.2. webapck 的正确安装方式
 1. 创建 webpack-demo 文件夹并进入
     ```shell
@@ -73,13 +87,13 @@ Find /myOwn/README.MD -> helbo -> apsid
             # 此时再执行 webpack -v 会提示没有这个命令
             webpack -v
             ```
-    2. 项目内安装
+    2. **项目内安装 推荐**
         ``` shell
         # 先进入你要安装 webpack 的项目目录， 我以 webpack-demo 为例
         cd webpack-demo
 
         # 安装 webpack 和 webpack-cli ， 其中 --save-dev 等同于 -D
-        npm install webpack weebpack-cli --save-dev
+        npm install webpack webpack-cli --save-dev
 
         # 此时执行 webpack -v 是打不出东西的
         webpack -v
@@ -115,7 +129,7 @@ Find /myOwn/README.MD -> helbo -> apsid
 
 ## 2.3. webpack 的配置文件
 - webpack 需要你通过这个配置文件告诉他这么打包，打包到哪里
-- 之前的打包操实际上用的是 webpack 的默认配置
+- 之前的打包操实际上用的是 **webpack 的默认配置**
     ```shell
     # 之前的打包操作： 需要传入打包的文件名，webpack 会帮你自动打包到 dist 目录下，并起名为 main.js  
     npx webpack index.js
@@ -167,7 +181,7 @@ Find /myOwn/README.MD -> helbo -> apsid
             |-- bundle
                 |-- bundle.js
             |-- node_modules
-                |-- weebpack
+                |-- webpack
                 |-- webpack-cli
                 |-- ...
             |-- content.js
@@ -186,7 +200,7 @@ Find /myOwn/README.MD -> helbo -> apsid
             ```
             |-- lesson
                 |-- node_modules
-                    |-- weebpack
+                    |-- webpack
                     |-- webpack-cli
                     |-- ...
                 |-- src
@@ -248,7 +262,12 @@ Find /myOwn/README.MD -> helbo -> apsid
         npm run bundle
         ```
 - 这三种方式归根结底都是在命令行使用 ```webpack``` 这个命令
-- 还记得安装的 **webpack-cli** 吗？ 它的 **作用** 就是让我们可以在命令行中使用 ```webpack``` 的命令，
+- 还记得安装的 **webpack-cli** 吗？ 它的 **作用** 就是让我们可以在命令行中使用 ```webpack``` 的命令
+
+
+### 2.3.2. 【作业】文档阅读： 
+    - [Getting Started](https://webpack.js.org/guides/getting-started/)  巩固本节课程讲的内容
+
 
 ## 2.4. 浅析 webpack 打包输出内容
 1. 执行打包命令后，打印的内容分析
@@ -280,6 +299,11 @@ Find /myOwn/README.MD -> helbo -> apsid
 
 
 # 3. webpack 核心概念
+
+- 学习这章之前先问自己几个问题：
+    - webpack 是什么？
+    - 模块是什么？
+    - webpack 配置文件的作用是什么？
 
 ## 3.1. loader 
 - 如果要打包图片，该怎么办
@@ -339,7 +363,7 @@ Find /myOwn/README.MD -> helbo -> apsid
 
 ### 3.1.2. loader 是什么
 - 上边的例子并不是想讲 file-loader 的用法，而是想告诉你 loader 是什么
-- loader 是打包的方案，他知道对于一些文件该怎么打包， webpack 是不知道的，但是 loader 知道
+- loader 是**打包的方案**，他知道对于一些文件该怎么打包， webpack 是不知道的，但是 loader 知道
 
 ### 3.1.3. 语法
 - 上边的例子 引入图片时用的是 CommonJS 的语法(require)，也完全可以用 ES Module 的语法(import)来写
@@ -448,7 +472,7 @@ Find /myOwn/README.MD -> helbo -> apsid
 > 作业： 阅读 url-loader 和 file-loader 的官方文档，读完之后对这两个 loader 的理解就没啥问题了
 
 
-## 使用 loader 打包静态资源（样式篇）
+## 3.3. 使用 loader 打包静态资源（样式篇）
 
 - 现在希望图片大小为 150 * 150 ，需要写样式来修饰这张图片，在 src 目录下新建 index.css ，写入以下内容：
     ```css
@@ -496,7 +520,7 @@ Find /myOwn/README.MD -> helbo -> apsid
     - webpack 看到了 ```test: /\.css$/,``` 就会用 style-loader 和 css-loader 打包 css
     - 打包好了之后生成的 js 里就有了 css 相关的内容
 
-### style-loader 和 css-loader 做了什么？
+### 3.3.1. style-loader 和 css-loader 做了什么？
 - 现在的 css 内容非常简单，我们在 src 目录下新建一个 avatar.css 把 index.css 的内容拷贝到 avatar.css 中， index.css 改成这样
     ```css
     @import "./avatar.css"; 
@@ -505,7 +529,7 @@ Find /myOwn/README.MD -> helbo -> apsid
 - **css-loader** 帮我们分析出 css 之间的关系，解析成一整段的 css 代码
 - **style-loader** 帮我们把这段 css 挂载到页面的 head 中，可以通过检查元素查看 页面的 head 标签中有个 style 标签，他就是 style-loader 帮我们挂载上来的
 
-### Sass / Less / Stylus
+### 3.3.2. Sass / Less / Stylus
 - 先做一些修改：
     - 把 index.css 改名为 index.scss ，清空内容
     - 把 avatar.css 的内容粘贴回 index.scss ， 删除 avatar.css
@@ -587,6 +611,7 @@ Find /myOwn/README.MD -> helbo -> apsid
 - 文档上的 [使用方法](https://webpack.js.org/loaders/postcss-loader/#usage) 中要求我们创建一个 **postcss.config.js** 文件
 - 把官方提供的内容 copy 过来，删掉 parser ，删掉 plugins 中的内容，我们只需要一个插件： autoprefixer
     ```javascript
+    // postcss.config.js
     module.exports = {
         // plugins 可以写对象，也可以写数组 
         plugins: [
@@ -600,7 +625,7 @@ Find /myOwn/README.MD -> helbo -> apsid
 - 至此，我们就配置好了 postcss 的插件，重新进行一次打包，再看效果就能在样式里 看到有 ```-webkit-transform``` 这条 postcss 中的 autoprefixer 插件帮我们添加的属性了
 
 
-### css-loader 常用的配置项
+### 3.3.3. css-loader 常用的配置项
 - 因为要给 css-loader 添加配置项，所以就不能写成字符串了，先改写一下 css-loader 的配置
     ```javascript
     {
@@ -641,7 +666,7 @@ Find /myOwn/README.MD -> helbo -> apsid
     3. 那如果我希望：在 index.scss 中引入的 avatar.scss 也走 postcss-loader 、 sass-loader 、 css-loader 和 style-loader 该怎么办？
     4. 在 css-loader 中配置 ```importLoaders: 2``` 意思是你通过 ```@imoprt``` 引入的这样的 scss 文件 ，也要走前边的而两个 loader 也就是 postcss-loader 、 sass-loader 。这样无论是在 js 中引入的 scss 还是在 scss 中引入的 scss 都会会执行所有的 loader 
 
-### css 打包的模块化
+### 3.3.4. css 打包的模块化
 - 先把 index.scss 中的 avatar.scss 的引用删除掉， avatar.scss 也删掉
 - 复习一下现在的代码：
     ```javascript
@@ -668,14 +693,136 @@ Find /myOwn/README.MD -> helbo -> apsid
     root.append(img);
     ```
 
+- 在 webpack.config.js 中给 css-loader 添加 ```module: true``` 的配置，告诉它模块化打包
+
+### 3.3.5. 如何打包字体文件
+- 示例：
+    - 下载了 iconfont 网站的 demo
+    - 把 svg 、 eot 、 ttf 、 woff 四个文件拷贝到项目中的 font 文件夹中
+    - 用 iconfont.css 文件 中的引入方式将字体文件引入项目（copy 代码 ，改改路径）
+    - 打包发现，不支持字体文件，我们可以使用 file-loader 来解决
+    ```javascript
+    {
+        test: /\.(eot|ttf|svg)$/,
+        use: {
+            loader: "file-loader"
+        }
+    }     
+    ```
+### 3.3.6. 作业
+- [Asset Management](https://webpack.js.org/guides/asset-management/)
+- [postcss-loader](https://webpack.js.org/loaders/postcss-loader/)
+- [css-loader](https://webpack.js.org/loaders/css-loader/)
+- [sass-loader](https://webpack.js.org/loaders/sass-loader/)
+- [style-loader](https://webpack.js.org/loaders/style-loader/)
+
+
+## 3.4. 使用 plugins 让打包更便捷
+- 提出问题：每次打包都要复制一些文件，这样很麻烦，怎么可以不用手动拷贝文件呢？
+    - [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/)
+        - 安装
+        - 使用：引入 、 在 plugins 数组配置中实例化一下
+            ```js
+            // webpack.config.js 文件中写入
+            const HtmlWebpackPlugin = require('html-webpack-plugin')
+            module.expots = {
+                plugins: [
+                    new HtmlWebpackPlugin()
+                ]
+            }
+            ```
+        - 作用说明： HtmlWebpackPlugin 会在打包之后自动生成一个 html 文件 并且把打包生成的 js 文件引入
+        - 可以添加模板配置，以满足你的个性化需求： HtmlWebpackPlugin 会以你指定的模板创建 HTML 文件，并且注入 打包后的 js 文件
+            ```js
+            // webpack.config.js 文件中写入
+            const HtmlWebpackPlugin = require('html-webpack-plugin')
+            module.expots = {
+                plugins: [
+                    new HtmlWebpackPlugin({
+                        template: 'src/index.html'
+                    })
+                ]
+            }
+            ```
+- plugin 可以在 webpack 运行到某个时刻的时候帮你做些事儿，很像生命周期处理函数的作用
+- 新需求： 每次打包都先清除 dist 目录
+    - cleanwebpackplugin 非官方的插件，帮助我们删除 打包文件夹中的内容
+        ```js
+        // webpack.config.js 文件中写入
+        const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+        module.expots = {
+            plugins: [
+                new CleanWebpackPlugin(['dist'])
+            ]
+        }
+        ```
+- 关于插件是在打包前执行还是打包后执行，需要查阅插件的文档
+    - CleanWebpackPlugin 在打包之前运行
+    - HtmlWebpackPlugin 在打包之后运行
+
+## 3.5. Entry 与 Output 基础配置
+- Entry  打包的入口文件
+- Output  打包的输出文件
+
+```js
+// webpack.config.js 文件中写入
+
+// 例子1： entry 可以写成字符串
+module.expots = {
+    entry: 'src/index.js'
+}
+
+
+// 例子2： 没有给 output 配置 filename 的时候，会用 entry 的 key 值作为文件名
+module.expots = {
+    entry: {
+        main: 'src/index.js'        // 输出的文件名叫 main.js
+    }
+}
+// 那如果没用用对象的形式，而是字符串呢？ 会用原来的名字命名吗？ 
+
+
+// 例子3： 想要一个文件打包多次 ， 此时 output 中的 filename 不能写一个名字，会报错。可以使用占位符
+module.expots = {
+    entry: {
+        main: 'src/index.js',
+        dev: 'src/index.js'
+    },
+    output: {
+        filename: '[name].js'   // name 对应 entry 中的 key 名
+    }
+}
+// 输出 main.js 和 dev.js
+// 但这样有个问题，  HtmlWebpackPlugin  会帮我们在生成的 html 中插入两次 js 
+```
+- 新需求： 希望将 静态资源（js） 放到另一个域名，想在生成的 HTML 中对 js 的引用路径前添加 域名地址，怎么办
+    - 解决办法： 在 output 中配置一个 publicPath
+        ```js
+        // webpack.config.js 文件中写入
+        module.expots = {
+            entry: 'src/index.js',
+            output: {
+                publicPath: 'https://s1.cdn.com'
+            }
+        }
+        ```
+### 3.5.1. 作业：看文档
+- 不要求全看懂，过一下，知道有些啥，不理解的东西后边会讲到
+    - [Output](https://webpack.js.org/configuration/output/)
+    - [Entry](https://webpack.js.org/configuration/entry-context/#entry)
+- 重点要看的
+    - [Output Management](https://webpack.js.org/guides/output-management/)
+    - [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/)
+        - [github 上的完整的配置项](https://github.com/jantimon/html-webpack-plugin#options)
 
 
 
-# 4. webpack 进阶
 
-# 5. webpack 实战配置案例
 
-# 6. webpack 低层原理及脚手架工具分析
+
+
+
+# 6. webpack 底层原理及脚手架工具分析
 
 # 7. 知识点
 
@@ -687,7 +834,7 @@ Find /myOwn/README.MD -> helbo -> apsid
 - SorceMap
 - Vue Cli 3.0
 - Shimming
-- WebpackDevServeer
+- WebpackDevServer
 - TreeShaking
 - CodeSplitting
 - Babel

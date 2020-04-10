@@ -816,6 +816,213 @@ module.expots = {
         - [github 上的完整的配置项](https://github.com/jantimon/html-webpack-plugin#options)
 
 
+## 3.6. SourceMap 的配置
+- SourceMap 是一个映射关系，它知道打包后的代码和的源代码之间的映射关系
+```js
+// webpack.config.js 文件中写入
+module.expots = {
+    devtool: 'source-map'
+}
+```
+- 添加 SourceMap 编译之后会生成一个对应的 .map 文件，使用一种叫 [VLQ](https://en.wikipedia.org/wiki/Variable-length_quantity) 的编码表示
+
+- 文档：
+    - [devtool](https://webpack.js.org/configuration/devtool/)
+- 最佳实践：
+    - 开发环境建议使用 ```eval-cheap-module-source-map```
+    - 生产环境（线上）建议使用 ```cheap-module-source-map```
+
+## 3.7. 使用 WebpackDevServer 提升开发效率
+- 之前每次改代码，都需要手动去打包，希望修改了源码就能自动打包，这样就能提高开发效率
+- 解决办法有三种：
+    1. 可以在 package.json 中 scripts 内容做文章：将原有的 'webpack' 改为 'webpack --watch' 
+        - webpack 会帮我们监听打包的文件
+    2. 希望能帮我打开浏览器等，这样第一种就不行了，可以借助 WebpackDevServer 帮我们实现
+        - 安装 WebpackDevServer ：  ```npm i webpack-dev-server -D```
+        - webpack 配置
+            ```js
+            // webpack.config.js 文件中写入
+            module.expots = {
+                devServer: {
+                    contentBase: './dist'       // 启动服务器的根目录
+                },
+            }
+            ```
+        - package.json 配置
+            ```json
+            // package.json 中写入
+            "scripts": {
+                "start": "webpack-dev-server"
+            }
+            ```
+        - WebpackDevServer 不但监听并打包，还会帮我们刷新浏览器
+        - 自动打开浏览器
+            ```js
+            // webpack.config.js 文件中写入
+            module.expots = {
+                devServer: {
+                    contentBase: './dist',       // 启动服务器的根目录
+                    open: true
+                }
+            }
+            ```
+        - [proxy](https://webpack.js.org/configuration/dev-server/#devserverproxy) ，帮助转发请求（Vue , React 中的实际开发会用到）
+    3. 之前 WebpackDevServer 功能不成熟时，开发者选择自己写一个
+        - package.json 配置
+            ```json
+            // package.json 中写入
+            "scripts": {
+                "server": "node server.js"
+            }
+            ```
+        - 安装 express 和 webpack 中间件 ： ```npm i express webpack-dev-middleware -D```
+            - 因为服务器要监听 webpack 文件的变化，所以还需要一个 webpack 中间件
+        - 修改一下 webpack 配置， 目的是打包文件的路径前都加上一个斜杠，确保根目录开始
+            ```js
+            // webpack.config.js 文件中写入
+            module.expots = {
+                output: {
+                    publicPath: '/'
+                }
+            }
+            ```
+        - 编写服务器脚本 server.js
+            ```js
+            const express = require("express");
+            const webpack = require("webpack");
+            const webpackDevMiddleware = require("webpack-dev-middleware");
+            const config = require("./webpack.config.js");
+            const complier = webpack(config);    // 在 node 中直接使用 webpack
+
+            const app = express();
+
+            app.use(webpackDevMiddleware(complier, {
+                publicPath: config.output.publicPath
+            }));
+
+
+            app.listen(3000, ()=>{
+                console.log("server is running");
+            });
+            ```
+
+- 在命令行中怎么使用 webpack [Command Line Interface](https://webpack.js.org/api/cli/)
+- 在 node 中怎么使用 webpack [Node Interface](https://webpack.js.org/api/node/)
+
+### 3.7.1. 看文档作业
+- [Development](https://webpack.js.org/guides/development/)
+
+
+
+## 3.8. Hot Module Replacement 热模块更新
+- 热模块替换，简称 HMR
+- 在使用 WebpackDevServer 时， 比如，你修改了 css ，你希望浏览器中只更新 css ， 而不刷新 html （因为html 可能有些 dom 的增删改，你不希望 dom 丢失），就可以使用 HMR 了
+- 如何使用 HMR
+    - 修改一下 webpack 配置， 开启热更新
+        ```js
+        // webpack.config.js 文件中写入
+        const webpack = require('webpack');
+
+        module.expots = {
+            devServer: {
+                hot: true,
+                hotOnly: true    // 即使 HMR 没有生效，我也不让浏览器自动刷新
+            },
+            plugins: [
+                new webpack.HotModuleReplacementPlugin()
+            ]
+        }
+        ```
+        - tips: 修改了 webpack 配置之后，要重新运行打包命令，否则 配置无法生效
+- HMR 对 js 的更新，还需要再写一些代码
+    - 为啥 css 不用写？  因为 css-loader 帮你写了， vue 也类似，是由 vue-loader 搞定的
+
+### 3.8.1. 作业 看文档
+- [Hot Module Replacement](https://webpack.js.org/guides/hot-module-replacement/)
+- [Hot Module Replacement API](https://webpack.js.org/api/hot-module-replacement/)
+- [Hot Module Replacement 底层实现原理](https://webpack.js.org/concepts/hot-module-replacement/)
+
+
+## 3.9. 使用 Babel 处理 ES6 语法
+- [babel 官网](https://babeljs.io/)
+- [babel 在 webpack 怎么使用](https://www.babeljs.cn/setup) ，点击 webpack 查看，有安装以及配置的方法
+    - ```npm install --save-dev babel-loader @babel/core```
+    - ```npm install @babel/preset-env --save-dev```
+    - ```npm install --save @babel/polyfill```   [相关文档](https://www.babeljs.cn/docs/babel-polyfill) 
+        - 需要在 js 代码中引入 babel/polyfill
+            ```js
+            import '@babel/polyfill';
+
+            // es6 code ...
+            ```
+    - 修改一下 webpack 配置
+        ```js
+        // webpack.config.js 文件中写入
+        module.expots = {
+            module: {
+                rules: [{ 
+                    test: /\.js$/, 
+                    exclude: /node_modules/, 
+                    loader: "babel-loader",
+                    options: {
+                        "presets": [
+                            ["@babel/preset-env", {
+                                useBuiltIns: "usage"       // 用到的方法才打包进来，没用到的忽略，可以减小打包后的大小
+                            }]
+                        ]
+                    },
+                }]
+            }
+        }
+        ```
+- 作用：
+    - babel-loader ： babel 和 webpack 的桥梁
+    - babel/preset-env  ： ES6 - ES5 的语法转换
+    - babel/polyfill  ： 补充 ES6 中新增方法的实现
+- babel/polyfill 有个问题，会污染全局变量，如果你是写一些类库的代码，最好还是不要污染全局。 解决方法 [transform-runtime](https://www.babeljs.cn/docs/babel-plugin-transform-runtime)
+    - 安装 
+        - ```npm install --save-dev @babel/plugin-transform-runtime```
+        - ```npm install --save @babel/runtime```
+    - 配置 plugins
+        ```js
+        // webpack.config.js 文件中写入
+        module.expots = {
+            module: {
+                rules: [{ 
+                    test: /\.js$/, 
+                    exclude: /node_modules/, 
+                    loader: "babel-loader",
+                    options: {
+                        // "presets": [
+                        //     ["@babel/preset-env", {
+                        //         useBuiltIns: "usage"
+                        //     }]
+                        // ],
+                        plugins: [["@babel/plugin-transform-runtime", {
+                            "corejs": 2,
+                            "helpers": true,
+                            "regenerator": true,
+                            "useESModules": false,
+                        }]]
+                    },
+                }]
+            }
+        }
+        ```
+        - corejs 一般写2， 需要安装 ```npm install --save @babel/runtime-corejs2```
+        - 记得删除 index.js 中的 ```import '@babel/polyfill';```
+        - 然后打包即可，这样不会污染全局环境
+- babel 的配置非常多，如何更好的管理这些配置 
+    - 可以将 webpack 配置中 babel-loader 下的 options 拿出来，放到 .babelrc 文件中
+
+
+## 3.10. Webpack 实现对 React 框架代码的打包
+- 示例
+    - 安装 react ```npm i react react-dom --save```
+    - 写一些 react 的代码
+    - 安装 react 的 [preset](https://www.babeljs.cn/docs/babel-preset-react) ```npm install --save-dev @babel/preset-react``` ， 之后在 .babelrc 中配置一下 ，写在 ```@babel/preset-env``` 之后
+    - 注意 .babelrc 中的 preset 执行是有顺序的，从数组的后边往前执行的， 这里的意思是先把 react 转成 js ，再转换成 ES5
+
 
 
 

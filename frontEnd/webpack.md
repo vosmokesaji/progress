@@ -1024,6 +1024,289 @@ module.expots = {
     - 注意 .babelrc 中的 preset 执行是有顺序的，从数组的后边往前执行的， 这里的意思是先把 react 转成 js ，再转换成 ES5
 
 
+# 4. webpack 进阶
+
+## 4.1. Tree Shaking
+- Tree Shaking 摇树，可以理解为把没用的东西都摇晃掉
+- 主要目的就是减小打包后文件大小，用到什么方法就打包什么方法，没用到的就不打包
+- 注意： Tree Shaking 只支持 ES Module 方式的导入，并且是 webpack 4 之后才有的功能
+- development 模式默认是没有 Tree Shaking 的，想添加，怎么做？
+    ```js
+    // webpack.config.js 文件中写入
+    // 开发环境下
+    module.expots = {
+        module: 'development',
+        optimization: {
+            usedExports: true, 
+        }
+    }
+    ```
+    - 在 package.json 中添加一项配置： ```sideEffects: false```
+        - 介绍一下 sideEffects 接收一个数组，包含不想受 Tree Shaking 影响的模块，比如 @babel/polyfill 、 css 文件等没有导出但有用的模块，防止 Tree Shaking 把它们忽略。 值为 false 时，代表所有模块都执行 Tree Shaking
+
+## 4.2. Develoment 和 Production 模式的区分打包
+||Develoment（开发）|Production（生产）|
+|:-|:-|:-|
+|sourcemap|非常全|简洁|
+|压缩|未压缩|被压缩|
+
+- 对于开发环境和线上环境的不同配置，可以创建两个 webpack 配置文件 ，通过 package.json 中不同的脚本使用不同的配置文件进行打包
+    ```json
+    // package.json
+    "scripts": {
+        "dev": "webpack-dev-server --config ./webpack.dev.js",
+        "build": "webpack --config ./webpack.prod.js"
+    }
+    ```
+- 对于多个 webpack 配置文件有一样的配置时，可以把公共的配置拿出来，放到一个文件中，然后使用 webpack-merge 将公用配置和私有配置合并
+    - 安装 webpack-merge ```npm i webpack-merge -D```
+    - 使用 webpack-merge 将配置合并并导出：
+    ```js
+    // webpack.common.js
+    module.exports = {
+        ...
+    }
+
+
+    // webpack.dev.js
+    const merge = require('webpack-merge');
+    const commonConfig = require('./webpack.common.js');
+
+    const devConfig = {
+        ...
+    }
+
+    module.exports = merge(commonConfig, devConfig);
+
+
+    // webpack.prod.js
+    const merge = require('webpack-merge');
+    const commonConfig = require('./webpack.common.js');
+
+    const prodConfig = {
+        ...
+    }
+
+    module.exports = merge(commonConfig, prodConfig);
+    ```
+
+## 4.3. Webpack 和 Code Splitting
+- 解决一个小坑： 当为了方便管理配置文件，而把 webpack 的几个配置文件从项目根目录移动到新建的文件夹（比如 ```./build``` ）下时（注意：移动完了之后需要重新确认打包输出的目录，应该需要前边加个 ```../``` ），会遇到 clean-wabpack-plugin ，无法清除上层同级的 dist 目录的问题，原因是 clean-wabpack-plugin 认为所在的目录即为项目根目录，只能操作该目录一下的文件，上层之外的文件不可操作。怎么解决呢？
+    - **实操时遇到个问题：不是所有的都要加 ../ 绝对路径是要调整的，相对路径不需要调整，相对路劲是相对于执行命令的位置吗？**
+    - github 上搜索 [clean-wabpack-plugin](https://github.com/johnagan/clean-webpack-plugin)，查看他的文档
+    - 可以配置 root 选项
+        ```js
+        // webpack.config.js 文件中写入
+        const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+        module.expots = {
+            plugins: [
+                new CleanWebpackPlugin(['dist'], {              // 因为配置了 root ，这个目录是基于 root 的，所以不需要加 '../'
+                    root: path.resolve(__dirname, "../")        // 配置项目根路径
+                })
+            ]
+        }
+
+- 进入正题： 安装 loadsh  ```npm i lodash --save```
+- 写我们的js
+    ```js
+    // src/index.js 文件的内容
+    import _ from 'lodash';     // 假设这个库 1mb
+
+    console.log(_.join(['a', 'b', 'c'], '***'));
+    // 省略 100000 行代码
+    // 假设业务逻辑 1mb
+
+    // 打包后的 main.js (不压缩的情况) 大概 2mb
+
+    // 两个问题：
+    // 1. 这样的话，用户想要看到页面 得先加载一个 2mb 的js ， 加载时间会很长
+    // 2. 如果我们只更改了一点儿业务逻辑，打包后 是新的 2mb 文件 用户访问的时候还得重新加载这个 2mb 的文件
+    ```
+- 一种解决方式：把依赖的库抽出来，分开打包
+    ```js
+    // src/lodash.js
+    import _ from 'lodash';
+    window._ = _;
+
+
+    // src/index.js
+    console.log(_.join(['a', 'b', 'c'], '***'));
+
+
+    // webpack.config.js
+    module.expots = {
+        entry: {
+            lodash: 'src/lodash.js',
+            main: 'src/index.js',
+        }
+    }
+
+    // 这样打包就会生成两个 js 文件， 在页面中也会引入两个，
+    // 这样更改业务就只会影响业务的 main.js 文件了
+
+    // 这种思想 就是 Code Splitting
+    ```
+- **Code Splitting 本质上和 webpack 是没有任何关系的** ，因为 webpack 有些插件可以帮我们非常方便的实现 Code Splitting 这样的功能，所以现在很多人提到 webpack 就会提到 Code Splitting
+- 在 webpack4 中，有个插件叫  ， 直接和 webpack 做了捆绑，不用单独安装就能用
+- 上边的方法，实际是自己手动做的代码分割，看看插件怎么用
+    ```js
+    // src/index.js 文件的内容 库和业务逻辑写在一起
+    import _ from 'lodash';
+
+    console.log(_.join(['a', 'b', 'c'], '***'));
+
+    // webpack.config.js  
+    // 注意： 要把之前 entry 中加的 lodash 删掉 
+    module.expots = {
+        optimization: {
+            splitChunks: {
+                chunks: 'all'       
+            }
+        }
+    }
+
+    // 之后打包就能发现 webpack 已经自动帮你分割好了 
+    ```
+- 除了同步的引入，还能分析异步的引入，例子
+    ```js
+    // src/index.js
+    function getComponent(){
+        return import('lodash').then(({default: _}) => {    // 异步载入
+            const element = document.createElement('div');
+            element.innerHTML = _.join(['DELL', 'LEE'], '-');
+            return element;
+        })
+    }
+
+    getComponent().then(element => {
+        document.body.appendChild(element);
+    });
+    ```
+    - 打包时可能遇到(**实操 webpack 4.42.1 没遇到**) 动态引入（ dynamicImport ）是个实验特性，不被 webpack 支持时，可以通过安装一个 babel 插件来解决
+        - ```npm i babel-plugin-dynamic-import-webpack```
+        - 在 .babelrc 中配置一下
+        ```json
+        {
+            plugins: ["dynamic-import-webpack"]
+        }
+        ```
+        - 重新打包即可
+    - 打包之后，看看 dist 目录，异步加载的库会被放到一个单独文件中
+
+- tips：同步载入的代码分割 需要同时给 webpack 配置 optimization ， 异步载入的不需要配置 optimization ， webpack 会自动帮你分割
+
+### 4.3.1. 小结
+- Code Splitting 本质上和 webpack 没有关系
+- webpack 中实现代码分割两种方式：
+    1. 同步代码： 只需要在 webpack.config.js 中做 optimization 的配置即可
+    2. 异步代码（ ```import()``` ）： 无需任何配置（不代表配置了无效，详见下一节）， webpack 会自动代码分割，放到新的文件中
+
+
+## 4.4. SplitChunksPlugin 配置参数详解
+- 上节例子中 异步加载的 lodash 被打包成了名为 0.js 的文件，这个0其实是代码分割的一个 id ， 我想给他一个有意义的名字，该怎么做？
+    - 异步加载中有一种语法，魔法注释（ magic comment ）
+        ```js
+        // src/index.js
+        function getComponent(){
+
+            // 魔法注释：意思是 webpack 做代码分割时给他个名字叫 lodash
+            return import(/* webpackChunkName:"lodash" */'lodash').then(({default: _}) => {
+                ...
+            })
+        }
+        ...
+        ```
+        - 打包，发现然并卵
+        - 原因是 dynamic-import-webpack 不是 webpack 官方插件，不支持 magic comment ，我们找一个 babel 官方支持的动态引入插件：
+            - 搜索 babel import dynamic ， 找到官方的 [@babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import/)
+            - 安装并使用它，记得把 package.json 和 .babelrc 中 涉及到 dynamic-import-webpack 的内容删掉
+        - 打包之后，生成的文件叫 ```vendors~lodash.js``` ，想要就叫 ```lodash.js``` 的话，还要改个 optimization 的配置，怎么改呢？ 打开 [webpack 官网 ](https://webpack.js.org/plugins/split-chunks-plugin/#optimizationsplitchunks)
+            ```js
+            // webpack.config.js  
+            module.expots = {
+                optimization: {
+                    splitChunks: {
+                        chunks: 'all',
+                        cacheGroups: {
+                            vendors: false,
+                            default: false
+                        }
+                    }
+                }
+            }
+            ```
+        - **实际上不论你做 同步还是异步代码分割，optimization 都会有效果**
+- 我们来看看 optimization 下 splitChunks 的默认配置都是啥意思
+    ```js
+    // webpack.config.js  
+    module.expots = {
+        optimization: {
+            splitChunks: {
+                chunks: 'async',   // async : 代码分割时 只对异步代码生效 ；initial ： 同步代码； all 同步异步都有 。 chunks 是和 cacheGroups 配合着用的
+                minSize: 30000,   // 最小分割字节，大于这个数才会分割， 30000 也就是大概 30KB
+                minRemainingSize: 0,
+                maxSize: 0,     // 可配可不配，如果配置了 50000 即 50KB， 假设 lodash 100KB ，他会尝试对 大于 50KB 的做2次分割，一般像 lodash 这样的库无法二次分割，也是不能分割的，哈哈哈哈
+                minChunks: 1,   // 当一个模块至少被用了多少次的时候，才会对其分割
+                maxAsyncRequests: 6,    // 最大分割数，保证请求数量不大于这个数，比如你引入了10个库，分割到6个就不会帮你分割后边的了
+                maxInitialRequests: 4,  // 入口文件最大分割数
+                automaticNameDelimiter: '~',   // 生成文件时 组名 和 文件名 之间的连接符 ， 比如 vendors~main.js
+                cacheGroups: {          // 缓存组  
+                    vendors: {
+                        test: /[\\/]node_modules[\\/]/,
+                        priority: -10
+                    },
+                    default: {
+                        minChunks: 2,
+                        priority: -20,          // 优先级
+                        reuseExistingChunk: true    // 如果一个模块被打包过了，我直接引用之前的模块 而不重新打包了
+                    }
+                }
+            }
+        }
+    }
+    ```
+- 阅读文档：[SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/)， 英文文档比较全
+
+
+## 4.5. Lazy Loading 懒加载，Chunk 是什么
+### 4.5.1. 懒加载
+- 异步加载写的代码比同步的要多，为啥要这么做？因为这种方式可以实现懒加载
+    ```js
+    // src/index.js
+    function getComponent(){
+        return import(/* webpackChunkName:"lodash" */'lodash').then(({default: _}) => {    // 异步载入
+            const element = document.createElement('div');
+            element.innerHTML = _.join(['DELL', 'LEE'], '-');
+            return element;
+        })
+    }
+
+    document.addEventListener('click', () => {      // 点击时才加载 lodash
+        getComponent().then(element => {
+            document.body.appendChild(element);
+        });
+    }); 
+    ```
+- 用异步函数优化一下
+    ```js
+    // src/index.js
+    async function getComponent(){
+        const {default: _} = await import(/* webpackChunkName:"lodash" */'lodash');
+        const element = document.createElement('div');
+        element.innerHTML = _.join(['DELL', 'LEE'], '-');
+        return element;
+    }
+
+    document.addEventListener('click', () => {      // 点击时才加载 lodash
+        getComponent().then(element => {
+            document.body.appendChild(element);
+        });
+    }); 
+    ```
+### 4.5.2. Chunk 是什么？
+- 打包生成的多个 js 文件，每个 js 都是一个 chunk
+
+
 
 
 

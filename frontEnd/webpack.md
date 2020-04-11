@@ -1307,6 +1307,319 @@ module.expots = {
 - 打包生成的多个 js 文件，每个 js 都是一个 chunk
 
 
+## 4.6. 打包分析， Preloading,  Prefetching
+
+### 4.6.1. 打包分析
+- 对打包生成的文件进行一定的分析，然后看一下打包是否合理
+- 官方提供了分析工具 [analyse](https://github.com/webpack/analyse)
+    - 使用： 非常简单，打包时指向一个描述文件即可
+    - ```webpack --profile --json > stats.json``` ， 对应的要在package.json 中修改你的打包命令：比如
+        ```json
+        // package.json
+        "scripts": {
+            "dev-build": "webpack --profile --json > stats.json --config ./webpack.dev.js"
+        }
+        ```
+        - 意思是把整个大包过程的描述放到 stats.json 文件中，文件格式是 json 格式
+        - 打包生成的文件看着是挺头大的，可以通过 [这个地址](http://webpack.github.com/analyse) 导入生成的json 文件做一个分析
+- 还有一些其他工具可以参考 [Bundle Analysis](https://webpack.js.org/guides/code-splitting/#bundle-analysis)
+    - 老师用的比较多的是[Webpack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) ， 需要安装
+
+
+
+### 4.6.2. Preloading / Prefetching
+[Prefetching/Preloading modules](https://webpack.js.org/guides/code-splitting/#prefetchingpreloading-modules)
+- webpack 真正希望我们写代码的方式是什么？
+    - 写一段代码
+        ```js
+        // src/index.js
+        document.addEventListener('click', () => {      // 点击时才加载 lodash
+            const element = document.createElement('div');
+            element.innerHTML = 'DELL LEE';
+            document.body.appendChild(element);
+        }); 
+        ```
+        - 打包，打开页面，打开控制台，```command+shift+P``` 输入 coverage ， 选择 ```Show Coverage``` 刷新页面，就能看到 js 的利用率，没有100% 说明这个 js 利用率有压榨空间，因为你的点击处理函数  在没有点击的时候内部代码其实是没有用的，这就造成了利用率变低。
+    - 我们来改改这段代码
+        ```js
+        // src/index.js
+        document.addEventListener('click', () => {      // 点击时才加载 lodash
+            import('./click.js').then(({default: fn}) => {
+                fn();
+            });
+        });
+
+        // src/click.js
+        function handleClick(){
+            const element = document.createElement('div');
+            element.innerHTML = 'DELL LEE';
+            document.body.appendChild(element);
+        }
+        export default handleClick;
+        ```
+- **写前端代码的时候，缓存什么的不是你要重点考虑的，你要重点考虑的是代码的利用率**
+- webpack 认为你多写异步的代码，才能让你的网站性能真正提升
+    - 这也是为啥 webpack 代码分割 splitChunks 下的 chunks 参数默认值为 async （异步）
+
+- 如果很多功能都要交互的时候再加载，会不会很慢呀。确实会有这个问题，这时候 ```Preloading / Prefetching``` 就派上用场了
+- 空闲时间偷偷下载非核心代码，怎么做呢？通过 magic comment
+    ```js
+    // src/index.js
+    document.addEventListener('click', () => {
+        // Prefetching
+        import(/* webpackPrefetch: true */ './click.js').then(({default: fn}) => {
+            fn();
+        });
+    });
+
+    document.addEventListener('click', () => {
+        // Preloading
+        import(/* webpackPreload: true */ './click.js').then(({default: fn}) => {
+            fn();
+        });
+    });
+    ```
+- 区别：
+    - Prefetching 会在空闲时间加载
+    - Preloading 会和核心代码一起加载
+- tips：Preloading / Prefetching 在某些浏览器上会有兼容问题，使用时需要留意一下
+
+
+## 4.7. CSS 文件的代码分割
+- 铺垫知识：webpack 配置中的 ```chunkFilename``` ，他管的是 间接引入的模块的名字 ； ```filename``` 管的是入口文件的名字
+    ```js
+    module.exports = {
+        output: {
+            filename: '[name].js',
+            chunkFilename: '[name].chunk.js'
+        }
+    }
+    ```
+    - 打包出来两个文件
+        - 入口： ```dist/main.js```
+        - 引入模块： ```venders~main.chunk.js```
+- [MiniCssExtractPlugin](https://webpack.js.org/plugins/mini-css-extract-plugin/) 帮助我们分割 css 文件
+    - 在 index.js 中引入一个 css 文件
+    - 运行打包实验一下，此时并没有使用任何插件
+    - 发现打包结果还是哪两个文件，webpack 会把 css 打包到 js 中，这就是常说的 ```css in js```
+    - 如果我希望打包的时候如果遇到了css 文件 就打包到 dist 下的css 文件中，而不是 js 文件中，就要借助 MiniCssExtractPlugin 了（他有个缺陷 就是目前不支持热更新 HMR，这样开发的时候就很麻烦了，我们可以在打包线上环境文件时使用它）
+- 怎么用：
+    - 安装： ```npm install --save-dev mini-css-extract-plugin```
+    - 在打包线上环境的配置文件中使用这个插件
+        ```js
+        // webpack.prod.js
+        const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+        module.exports = {
+            plugins: [
+                new MiniCssExtractPlugin()
+            ],
+            module: {
+                rules: [
+                    {
+                        test: /\.css$/i,
+                        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                    },
+                ],
+            },
+        }
+
+        // 注意 ： 要把 common 中的 css 和 scss 的 loder 配置剪切出来，放在 dev 和 prod 中，然后将 prod 的 style-loader 换成 上边的插件 ，这样才能让他俩各走各的
+        ```
+    - 如果你打包了，发现并没有 css 文件出现在 dist 文件夹中，可能有以下原因
+        - tree shaking 把你的 css 忽略掉了，可以通过配置 package.json 中的 sideEffects 解决这个问题
+        ```json
+        "sideEffects": [
+            "*.css"
+        ]
+        ```
+        - 把 dev 配置文件中的 usedExports: true 放到 common 配置文件中去，放到 splitChunks  上边
+    - 还可以给 MiniCssExtractPlugin 添加文件名等配置
+        ```js
+        // webpack.prod.js
+        const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+        module.exports = {
+            plugins: [
+                new MiniCssExtractPlugin({
+                    filename: '[name].css',
+                    chunkFilename: '[name].chunk.css'
+                })
+            ]
+        }
+        ```
+        - 被页面直接引用的会走 ```filename``` ； 被页面间接引用的会走 ```chunkFilename``` 
+    - 想要对代码压缩怎么做：[这里](https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production) 有说明，使用 [optimize-css-assets-webpack-plugin](https://github.com/NMFR/optimize-css-assets-webpack-plugin)
+        - 安装 ```npm install --save-dev optimize-css-assets-webpack-plugin```
+        ```js
+        // webpack.prod.js  引用和使用
+        const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+        module.exports = {
+            optimization: {
+                minimizer: [
+                    new OptimizeCSSAssetsPlugin({})
+                ]
+            }
+        };
+        ```
+    - 想把多个页面用到的 css 都打包到一个 css 文件中？
+    - [Extracting all CSS in a single file](https://webpack.js.org/plugins/mini-css-extract-plugin/#extracting-all-css-in-a-single-file)
+        ```js
+        // webpack.prod.js  引用和使用
+        const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+        module.exports = {
+            optimization: {
+                splitChunks: {
+                    cacheGroups: {       // 通过 缓存组 把所有的 css 都放在一起打包
+                        styles: {
+                        name: 'styles',     // 放到 style 文件中
+                        test: /\.css$/,     // 所有的 .css 文件
+                        chunks: 'all',
+                        enforce: true,      // 忽略掉 minSize maxSize 等一些默认参数 ，只要是 css 就放进来
+                        },
+                    },
+                },
+            }
+        };
+        ```
+    - 根据入口不同，把 css 放到不同的文件中 [Extracting CSS based on entry](https://webpack.js.org/plugins/mini-css-extract-plugin/#extracting-all-css-in-a-single-file)
+
+
+## 4.8. Webpack 与浏览器缓存( Caching )
+- 为了解决用户浏览器缓存不刷新的问题
+    - 指的是实际开发中更新了代码但是文件名不变，导致浏览器缓存不刷新的问题（我的疑问，这不是可以通过 etag 搞定吗？）
+    - 解决方式： 通过给文件名添加占位符 ```[contenthash]``` 来解决
+    ```js
+    // webpack.prod.js
+    module.exports = {
+        output: {
+            filename: '[name].[contenthash].js',
+            chunkFilename: '[name].[contenthash].js'
+        }
+    }
+    ```
+    - ```[contenthash]``` 是根据文件内容计算的哈希值，只要文件内容不变， 它就不会变 （我自己在多人开发中遇到过：源代码没变，不同开发打包确是不同的 hash ，用的不是 contenthash ？ 还是说因为依赖包可能存在差异？ 这块待研究）
+- tips: 对老一点版本的 webpack4 的用户来说可能即使没有内容更改，两次打包的 hash 还是不同，这样的话需要多做一个配置：
+    ```js
+    // webpack.common.js
+    module.exports = {
+        optimization: {
+            runtimeChunk: {         // 需要加这么一个配置，新版本这么配也是可以的，会多个 runtime 文件
+                name: 'runtime'
+            }
+        }
+    }
+    ```
+    - 原因就在于： 包和包之间的关系代码 ```manifest``` 发生了变化，manifest 在每个包的代码中都有，添加 runtime 之后呢， manifest 就被抽离出来，放在了 runtime 中
+
+## 4.9. Shimming 的作用
+- 第三方库依赖其他第三方库的全局变量的请情况，比如 jquery.ui 依赖 全局的 $ ，但是 webpack 打包的文件变量是隔离的，我们不可能改node_module 中的 jquery.ui 的代码，我们又想用， 怎么整？
+- 垫片 Shimming 上场
+    ```js
+    // webpack.common.js
+    const webpack = require('webpack');
+
+    module.exports = {
+        plugins: [
+            new webpack.ProvidePlugin({
+                $: 'jquery'                 // 发现你用 $ 符号，我就会帮你在模块中自动引入 jquery 
+            })
+        ]
+    }
+
+    // 可以将 ProvidePlugin 理解成一个垫片，通过它解决这样的问题
+    ```
+- 还有别的花样
+    ```js
+    // webpack.common.js
+    const webpack = require('webpack');
+
+    module.exports = {
+        plugins: [
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                _: 'lodash',                // 遇到下划线引入 lodash
+                _join: ['lodash', 'join']   // 也可以自己定义 遇到 _join 就引入 lodash 下的 join 方法 ，注意要用数组表示
+            })
+        ]
+    }
+    ```
+- 模块中的 ```this``` 指向的都是该模块，也就是 ```module.exports``` 不会指向 window 如果你想让 每个模块的 this 都指向 window ， 可以借助一个插件 ```imports-loader``` 覆写 ```this```
+    - 安装： ```npm i imports-loader -D```
+    - 配置 webpack
+        ```js
+        // webpack.common.js
+        module.exports = {
+            module: {
+                rules: [
+                    {
+                        test: /\.js$/,
+                        exclude: /node_modules/,
+                        use: [
+                            {
+                                loader: 'babel-loader'
+                            },
+                            {
+                                loader: 'imports-loader?this=>window'       // 将模块的this 指向了 window
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+        ```
+
+### 作业 文档阅读
+- [Guides](https://webpack.js.org/guides/) 这些内容基本都讲过了
+
+
+## 环境变量的使用方法
+- 将 webpack-merge 放到 webpack.common.js 中去做合并， 判断 production 还是 development 也在 webpack.common.js 中去判断，使用一个名为 env 的变量，这个变量从哪来？一会儿再说
+    ```js
+    // webpack.common.js
+    const merge = require('webpack-merge');
+    const prodConfig = require('./webpack.prod.js');
+    const devConfig = require('./webpack.dev.js');
+
+    const commonConfig = {
+        ...
+    }
+
+    module.exports = (env) => {
+        if(env && env.production){
+            return merge(commonConfig, prodConfig);
+        }else{
+            return merge(commonConfig, devConfig);
+        }
+    }
+
+    // webpack.dev.js
+    module.exports = {
+        ...
+    }
+
+    // webpack.prod.js
+    module.exports = {
+        ...
+    }
+    ```
+    ```json
+    // package.json
+    "scripts": {
+        "dev": "webpack-dev-server --config ./config/webpack.common.js",
+        "dev-build": "webpack --config ./config/webpack.common.js",
+        "build": "webpack --env.production --config ./config/webpack.common.js"
+    }
+
+    // 通过全局变量向 webpack 配置文件传递一个属性 production 默认值为 true
+    ```
+    - 运行 ```npm run build```
+
+
+
+
 
 
 

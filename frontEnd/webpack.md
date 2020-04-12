@@ -1618,6 +1618,182 @@ module.expots = {
     - 运行 ```npm run build```
 
 
+# 5. webpack 实战配置案例
+
+## Library 的打包
+- 提出问题：之前讲解的都是 业务代码怎么打包，如果我们要开发一个库，一个组件库或者一个函数库的时候，怎么打包呢？
+- 准备工作
+    - 新建库 ```mkdir webpack-learn-library && cd webpack-learn-library```
+    - 初始化： ```npm init -y``` ，会将这个文件夹初始化问一个 node 模块
+    - 修改 package.json ： 删除 scripts 中的内容，author 改成自己，协议可以写 MIT ，完全开源的协议
+    - 创建 src 目录， 在其中新建 math.js  string.js 
+        ```js
+        // math.js
+        export function add(a, b){
+            return a + b;
+        }
+        
+        export function minus(a, b){
+            return a - b;
+        }
+        
+        export function multply(a, b){
+            return a * b;
+        }
+        
+        export function division(a, b){
+            return a / b;
+        }
+
+
+        // string.js
+        export function join(a, b){
+            return a + ' ' + b;
+        }
+
+        // index.js
+        import * as math from './math'
+        import * as string from './string'
+
+        exoprt default { math, string }
+        ```
+    - npm i webpack wepack-cli -D
+    - package.json scripts 添加 build: webapck
+        ```json
+        "scripts": {
+            "build": "webpack"
+        }
+        ```
+    - 添加 webpack.config.js
+        ```js
+        // webpack.config.js
+        const path = require('path');
+
+        module.exports = {
+            mode: 'production',
+            entry: './erc/index.js',
+            output: {
+                path: path.resolve(__dirname, 'dist'),
+                filename: 'library.js'
+            }
+
+        }
+        ```
+    - 运行 npm run build 打包，生成的文件会放在 dist 下
+- 别人怎么用我们这个库？
+    ```js
+    // esmodule
+    import library from 'library';
+
+    // commonjs
+    const library = require('library');
+
+    // AMD
+    require(['library'], function(){
+
+    })
+    ```
+    ```html
+    <script src="library"></script>
+    ```
+    - 外部引入我们的库可能会有很多种方法，我们想让库支持这样的引用，需要做些配置
+    ```js
+    // webpack.config.js
+    const path = require('path');
+
+    module.exports = {
+        mode: 'production',
+        entry: './erc/index.js',
+        output: {
+            path: path.resolve(__dirname, 'dist'),
+            filename: 'library.js',
+            libraryTarget: 'umd',            // 这个配置项 支持 js 的各种导入方式
+            library: 'root'          // 意思是有个变量 root 指向这个库
+        }
+
+    }
+    ```
+    - 假如你依赖了第三方的库，比如 lodash 如果用户引入你的库，也引入lodash，这时候用户打包就会打包两份 lodash ，我们可以通过配置 ```externals``` 解决这个问题
+        ```js
+        // webpack.config.js
+        module.exports = {
+            externals: [
+                "lodash"
+            ]
+        }
+        ```
+        - 文档 [Externals](https://webpack.js.org/configuration/externals/)
+- 怎么让别人方便的使用呢？
+    - 修改 package.json 的入口文件
+    ```json
+    {
+        "main": "./dist/build.js"
+    }
+    ```
+    - [npm 官网](https://www.npmjs.com/) 注册个账号
+    - 命令行执行 ```npm adduser``` 会让你输入账号密码
+    - 命令行： ```npm publish``` 
+    - npm 不允许库重名，这个要注意
+
+## PWA 的打包配置
+- 这次使用原来的那个项目，删掉一些没用的依赖
+- 本地服务的一个东西，```npm i http-server -D``` ，给 package.json 添加一个命令
+    ```json
+    {
+        "scripts": {
+            "start": "http-server dist"     // dist 目录开启一个 http-server
+        }
+    }
+    ```
+    - 运行 npm start 就可以开启一个服务器，访问页面了，如果 停掉服务器，页面就无法访问了
+    - PWA 技术是让你在服务器停掉的情况下，也能访问页面
+    - ```npm i workbox-webpack-plugin -D``` google 提供的 插件
+        ```js
+        // webpack.prod.js
+        const WorkboxPlugin = require('workbox-webpack-plugin')
+
+        module.exports = {
+            plugin: [
+                new WorkboxPlugin.GenerateSW({
+                    clientsClaim: true,
+                    skipWaiting: true
+                })
+            ]
+        }
+        ```
+    - ```npm run build``` 打包会多出两个文件 precache-manifest.js 和 service-worker.js
+    - 生成了这两个文件还不够，还要写一些业务代码
+    ```js
+    // src/index.js
+    if('serviceWorker' in navigator){       // 如果支持 
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('servive-worker registed');
+                })
+                .catch(error => {
+                    console.log('servive-worker register error');
+                });
+        })
+    }
+    ```
+    - 打包 npm run build 
+    - 启动服务 npm start
+    - 访问服务器
+    - 终止服务
+    - 刷新页面 内容还在
+
+## TypeScript 的打包配置
+- 准备工作
+    - 新建库 ```mkdir webpack-learn-ts && cd webpack-learn-ts```
+    - 初始化： ```npm init -y``` ，会将这个文件夹初始化问一个 node 模块
+    - 安装 webpack ```npm i webpack wepack-cli -D```
+    - 创建 src 目录， 在其中新建 index.tsx
+    - [typescript 官网](https://www.typescriptlang.org/)
+
+
+
+
 
 
 

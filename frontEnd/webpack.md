@@ -1571,11 +1571,11 @@ module.expots = {
         }
         ```
 
-### 作业 文档阅读
+### 4.9.1. 作业 文档阅读
 - [Guides](https://webpack.js.org/guides/) 这些内容基本都讲过了
 
 
-## 环境变量的使用方法
+## 4.10. 环境变量的使用方法
 - 将 webpack-merge 放到 webpack.common.js 中去做合并， 判断 production 还是 development 也在 webpack.common.js 中去判断，使用一个名为 env 的变量，这个变量从哪来？一会儿再说
     ```js
     // webpack.common.js
@@ -1620,7 +1620,7 @@ module.expots = {
 
 # 5. webpack 实战配置案例
 
-## Library 的打包
+## 5.1. Library 的打包
 - 提出问题：之前讲解的都是 业务代码怎么打包，如果我们要开发一个库，一个组件库或者一个函数库的时候，怎么打包呢？
 - 准备工作
     - 新建库 ```mkdir webpack-learn-library && cd webpack-learn-library```
@@ -1735,7 +1735,7 @@ module.expots = {
     - 命令行： ```npm publish``` 
     - npm 不允许库重名，这个要注意
 
-## PWA 的打包配置
+## 5.2. PWA 的打包配置
 - 这次使用原来的那个项目，删掉一些没用的依赖
 - 本地服务的一个东西，```npm i http-server -D``` ，给 package.json 添加一个命令
     ```json
@@ -1783,7 +1783,7 @@ module.expots = {
     - 终止服务
     - 刷新页面 内容还在
 
-## TypeScript 的打包配置
+## 5.3. TypeScript 的打包配置
 - 准备工作
     - 新建库 ```mkdir webpack-learn-ts && cd webpack-learn-ts```
     - 初始化： ```npm init -y``` ，会将这个文件夹初始化问一个 node 模块

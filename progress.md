@@ -59,6 +59,18 @@
 
 ## 4月
 
+### 14日
+- 【解决问题】【git】背景：辛苦写的代码，手贱执行了 ```git reset –hard xxxxxx``` 命令，没提交的代码全部丢失，我*，
+    - 查了半天终于找到了解决方法，前提是你的代码被 ```git add``` 过，而且只能恢复被 add 的那部分
+    - 如果你的修改没有 ```git add``` 过，那就完犊子了，灰飞烟灭，重写吧
+    - 如果万幸你 add 过，在仓库目录下执行 ```git fsck --lost-found``` 
+    - 然后到目录 ```.git/lost-found/other``` 恢复的文件就被放在这里，只不过文件名是 hash 需要你一个一个去看
+    - 最后：慎用  git reset –hard xxxxxx 命令，多 add  多 commit
+- 【知识】【Flexbox】[Flex 完整指南](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- 【收藏】【网站】[CSS 学习网站 CSS-Tricks（国外）](https://css-tricks.com/)
+- 【文章】[剖析CSS-Tricks，为我所用](https://blog.csdn.net/taobaojishu/article/details/99830544) 还讲到了技术的发展
+
+
 ### 9日
 - 【格言】凯恩斯： the market can stay irrational longer than you can stay solvent
 - 【知识点】```cross-env``` 工具让我们可以传递参数，NODE_ENV ， 使用方法： 安装```npm i cross-env -D``` ， 使用 ```cross-env NODE_ENV=production webpack --config ....```

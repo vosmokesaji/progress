@@ -59,6 +59,18 @@
 
 ## 4月
 
+### 15日
+- 【记录】第五届css大会
+    - 大漠
+        - [如何通过CSS自定义属性给CSS属性切换提供开关](https://www.w3cplus.com/css/dry-switching-with-css-variables-the-difference-of-one-declaration.html)
+        - [Grid](https://w3.org/TR/css3-grid-layout/)
+        - Jen Simmons 在 YouTube 有专门讲 layout 的专栏
+            - [使用 css grid 的误区](https://hacks.mozilla.org/2018/07/9-biggest-mistakes-with-css-grid/)
+        - 【想知道】 em 常用吗？ 为啥大漠演讲一直用 em 这个单位，使用场景是什么？
+        - - css 禅意花园 
+
+
+
 ### 14日
 - 【解决问题】【git】背景：辛苦写的代码，手贱执行了 ```git reset –hard xxxxxx``` 命令，没提交的代码全部丢失，我*，
     - 查了半天终于找到了解决方法，前提是你的代码被 ```git add``` 过，而且只能恢复被 add 的那部分
@@ -68,7 +80,7 @@
     - 最后：慎用  git reset –hard xxxxxx 命令，多 add  多 commit
 - 【知识】【Flexbox】[Flex 完整指南](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - 【收藏】【网站】[CSS 学习网站 CSS-Tricks（国外）](https://css-tricks.com/)
-- 【文章】[剖析CSS-Tricks，为我所用](https://blog.csdn.net/taobaojishu/article/details/99830544) 还讲到了技术的发展
+- 【文章】[剖析CSS-Tricks，为我所用](https://yq.aliyun.com/articles/697278?spm=5176.10695662.1996646101.searchclickresult.5b181ba6vT4AxL) 大漠的文章，牛逼就完事儿了
 
 
 ### 9日

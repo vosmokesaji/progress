@@ -105,6 +105,12 @@
         - filter
         - every
         - some
+- 【ES6】为啥要优先用 ```const``` ?
+
+
+
+
+
 
 ## 熟能生巧
 

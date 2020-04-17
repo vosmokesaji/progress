@@ -208,13 +208,13 @@
         promises: 包含n个promise的数组
         说明: 返回一个新的promise, 第一个完成的promise的结果状态就是最终的结果状态
 2. 几个重要问题
-    - 如何改变promise的状态?
-    - 一个promise指定多个成功/失败回调函数, 都会调用吗?
-    - promise.then()返回的新promise的结果状态由什么决定?
-    - 改变promise状态和指定回调函数谁先谁后?
-    - promise如何串连多个操作任务?
-    - promise异常传(穿)透?
-    - 中断promise链
+    1. 如何改变promise的状态?
+    2. 一个promise指定多个成功/失败回调函数, 都会调用吗?
+    3. promise.then()返回的新promise的结果状态由什么决定?
+    4. 改变promise状态和指定回调函数谁先谁后?
+    5. promise如何串连多个操作任务?
+    6. promise异常传(穿)透?
+    7. 中断promise链
 
 ## 3. 自定义Promise
 1. 定义整体结构

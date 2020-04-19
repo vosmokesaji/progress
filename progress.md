@@ -59,6 +59,11 @@
 
 ## 4月
 
+
+### 19日 
+- 【知识点】【js】构造函数上的方法有时也叫工具方法
+
+
 ### 17日
 - 【知识点】[求你了，别再问我的TCP三次握手和四次挥手](https://juejin.im/post/5e965a93e51d4546ba66326d?utm_source=gold_browser_extension) 讲透
 

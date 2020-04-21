@@ -59,6 +59,9 @@
 
 ## 4月
 
+### 21日 
+- 【知识点】code pen 中输入 lorem 按 tab 就可以生成随机的段落文字
+
 ### 20日
 - 【知识点】【apple动画】 iPhone SE A13 动画是用 AE 制作动画导出 JSON 文件，在通过 Lottie 这个 JS 库将动画加载到网页中的。
     - [EaseInCubic](https://easings.net/) 缓动曲线查询

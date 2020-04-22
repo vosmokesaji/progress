@@ -59,6 +59,19 @@
 
 ## 4月
 
+### 22日
+- 【学习】js 异步编程
+    - [Generator详解 - 简书](https://www.jianshu.com/p/83da0901166f)
+    - [Generator 函数的含义与用法 - 阮一峰](http://www.ruanyifeng.com/blog/2015/04/generator.html)
+        - 什么是异步？
+        - 回调函数的概念
+        - Promise
+        - 协程
+        - Generator 函数的概念
+        - Generator 函数的数据交换和错误处理
+        - Generator 函数的用法
+- 【阅读】[PingCAP 的 5 年远程办公实践](https://www.infoq.cn/article/3zMtchlVWg7EfIfg9jjo)
+
 ### 21日 
 - 【知识点】code pen 中输入 lorem 按 tab 就可以生成随机的段落文字
 

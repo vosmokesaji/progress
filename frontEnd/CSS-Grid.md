@@ -23,9 +23,9 @@
 
 ## Grid 容器中放置元素
 - 默认按照 grid 分割的格子排列
-- 可以通过 grid-row 和 grid-column 配合设置元素在 grid 容器中的位置
-- grid-row 和 grid-column 有一个简写的方法 grid-area
-- 想少记几个坐标？可以试试延伸写法：关键字 span
+- 可以通过 ```grid-row``` 和 ```grid-column``` 配合设置元素在 grid 容器中的位置
+- ```grid-row``` 和 ```grid-column``` 有一个简写的方法 ```grid-area```
+- 想少记几个坐标？可以试试延伸写法：关键字 ```span```
     ```css
     .cell-1{
         background-color: blue;
@@ -77,7 +77,7 @@
 ## Grid Lines
 - 在这个 5 * 5 的方格中，水平和垂直方向各有六条线，将这25格分割出来 
 - **分割 grid 容器的线称作 grid line** ，预设是由 1 开始的数值， 这些 grid line 是可以命名的
-- 我们将水平方向的线 称为 Y1 ~ Y6 ， 垂直方向的线称为 X1 ~ X6 
+- 我们将水平方向的线 称为 ```Y1 ~ Y6``` ， 垂直方向的线称为 ```X1 ~ X6``` 
 - 命名方式：在分割空间之间插入 grid line 的名称即可。如下：
     ```css
     #grid-container{
@@ -134,7 +134,7 @@
         grid-area: footer;
     }
     ```
-- 现在的方格是紧贴在一起的，如果想增加一点空间，可以在 grid 容器中使用 row-gap 和 column-gap 属性设定间距值
+- 现在的方格是紧贴在一起的，如果想增加一点空间，可以在 grid 容器中使用 ```row-gap``` 和 ```column-gap``` 属性设定间距值
     ```css
     #grid-container{
         display:grid;
@@ -154,7 +154,7 @@
     ```
 
 ## fr & repeat()
-- fr 是专门用于 Grid 的 “比例” 单位， 1fr 即占一份的意思
+- ```fr``` 是专门用于 Grid 的 “比例” 单位， ```1fr``` 即占一份的意思
     ```css
     #grid-container{
         display:grid;
@@ -164,7 +164,7 @@
         grid-template-columns: 3fr 1fr 1fr 1fr 1fr;  /* 第一列占 3/7 的空间 ，其他的占 1/7 的空间 */ 
     }
     ```
-- 不停的写 1fr 会很累吧，repeat() 函数用来设置重复的值，第一个参数是重复的次数，第二个参数是重复的值，上边的代码可以改为
+- 不停的写 ```1fr``` 会很累吧，```repeat()``` 函数用来设置重复的值，第一个参数是重复的次数，第二个参数是重复的值，上边的代码可以改为
     ```css
     #grid-container{
         display:grid;
@@ -174,7 +174,7 @@
         grid-template-columns: 3fr repeat(4, 1fr);  /* 第一列占 3/7 的空间 ，其他的占 1/7 的空间 */ 
     }
     ```
-- 注意： repeat() 并不适用 grid-template-areas 属性，还是要自己一个个的写啦
+- 注意： ```repeat()``` 并不适用 ```grid-template-areas``` 属性，还是要自己一个个的写啦
 
 
 ## 总结

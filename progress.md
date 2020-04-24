@@ -63,6 +63,12 @@
 ### 23日
 - [google Font](https://pub.dev)
 - 【概念】自律：放下眼前短暂的欢愉，交换长期的自我尊重的纪律。
+- 【知识】Promise/A+规范测试
+    ```shell
+    npm i -g promises-aplus-tests
+    promises-aplus-tests Promise.js
+    ```
+
  
 ### 22日
 - 【学习】[TED演讲：别不信，你只需20个小时，就能学会任何事情！](https://www.bilibili.com/video/BV144411b7Uk)

@@ -63,7 +63,7 @@
 ### 23日
 - [google Font](https://pub.dev)
 - 【概念】自律：放下眼前短暂的欢愉，交换长期的自我尊重的纪律。
-
+ 
 ### 22日
 - 【学习】[TED演讲：别不信，你只需20个小时，就能学会任何事情！](https://www.bilibili.com/video/BV144411b7Uk)
     1. 将你想学的技能分解：
@@ -87,6 +87,11 @@
         - Generator 函数的概念
         - Generator 函数的数据交换和错误处理
         - Generator 函数的用法
+    - [Thunk 函数的含义和用法](http://www.ruanyifeng.com/blog/2015/05/thunk.html)
+        - 求值策略：传值调用，传名调用
+        - Thunk 函数的含义，“传名调用” 的一种实现策略，用来替换某个表达式
+        - JavaScript 语言的 Thunk 函数：在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成单参数的版本，且只接受回调函数作为参数。
+
 - 【阅读】[PingCAP 的 5 年远程办公实践](https://www.infoq.cn/article/3zMtchlVWg7EfIfg9jjo)
 
 ### 21日 

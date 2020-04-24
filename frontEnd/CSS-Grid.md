@@ -1,4 +1,10 @@
 # Grid 
+<!-- 
+讲解 Steven Lei
+bilibili 频道  https://space.bilibili.com/451368848
+视频：  https://www.bilibili.com/video/BV1XE41177oN
+我的练习：  https://codepen.io/vosmokesanji/pen/zYvoxWJ
+ -->
 
 ## 对比 Flexbox
 - Flexbox 是一维（ 1-Dimension ）的排版方式

@@ -106,7 +106,12 @@
         - every
         - some
 - 【ES6】为啥要优先用 ```const``` ?
-
+- 【js】聊聊继承。
+    - 从document 的继承方式说一说
+    - 在控制台 ```console.log(window)``` ，然后展开
+    - ```document``` <- ```HTMLDocument``` <- ```Document``` <- ```Node``` <- ```EventTarget``` <- ```Object```
+    - ```document.documentElement``` <- ```HTMLHtmlElement``` <- ```HTMLElement``` <- ```Element``` <- ```Node``` <- ```EventTarget``` <- ```Object```
+    - ```window``` <- ```Window``` <- ```Window``` <- ```WindowProperties``` <- ```EventTarget``` <- ```Object```
 
 
 

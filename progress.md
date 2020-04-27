@@ -60,6 +60,11 @@
 ## 4月
 
 
+
+### 27日
+- 【阅读】[我的《javascript框架设计》终于出版](https://www.cnblogs.com/rubylouvre/p/3658441.html)
+
+
 ### 24日
 - 【工具网站】配色参考网站 [adobe color](https://color.adobe.com/zh/explore)
 

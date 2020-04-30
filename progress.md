@@ -60,6 +60,10 @@
 ## 4月
 
 
+### 30日
+
+- 【工具网站】[keywordtool](https://keywordtool.io/) [YouTube 小船推荐](https://www.youtube.com/watch?v=wqGet4bkjs0&t=0805)
+
 
 ### 29日
 - 【技巧】 mac 如何在命令行中访问外置移动硬盘？

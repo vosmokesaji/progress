@@ -59,6 +59,33 @@
 # 2020年
 ## 5月
 
+### 5日
+- 【mac】【使用技巧】推出磁盘总是显示占用？我也遇到过好多次，可以通过下边的方法解决：
+    - 打开命令行工具
+        ```shell
+        # 使用命令行终端 先 df -lh查看当前盘
+        ➜  ~ df -lh
+        Filesystem     Size   Used  Avail Capacity iused               ifree %iused  Mounted on
+        /dev/disk1s1  466Gi  310Gi  154Gi    67% 2022114 9223372036852753693    0%   /
+        /dev/disk1s4  466Gi  1.0Gi  154Gi     1%       1 9223372036854775806    0%   /private/var/vm
+        /dev/disk4    1.8Ti  1.4Ti  457Gi    76%  289650          4294677629    0%   /Volumes/TM Backup
+        /dev/disk2s1  116Gi   71Gi   45Gi    62%  581252              370044   61%   /Volumes/Untitled
+
+        # 如上想要推出 /dev/disk2s1 ， 使用 sudo -i ，切换到root用户，尝试推出/dev/disk2s5,输入： diskutil unmount /dev/disk2s1
+        ➜  ~ sudo -i
+        Password:
+        XXXdeMacBook-Pro:~ root# diskutil unmount /dev/disk2s1
+        Volume (null) on disk2s1 failed to unmount: dissented by PID 751 (/System/Library/Frameworks/Quartz.framework/Versions/A/Frameworks/QuickLookUI.framework/Versions/A/XPCServices/QuickLookUIService.xpc/Contents/MacOS/QuickLookUIService)
+        # 是被进程号为 751 的进程占用了，去活动监视器把 pid=751 的进程结束掉就可以在访达中推出了
+
+        # 想退回普通账户时可以执行 exit 或 logout  
+        linzhiqingdeMacBook-Pro:~ root# exit
+        logout
+        ➜  ~
+        ```
+    - tips: [su、sudo、sudo su、sudo -i的用法和区别](https://blog.csdn.net/baidu_38172402/article/details/88677290)
+
+
 
 
 ### 3日

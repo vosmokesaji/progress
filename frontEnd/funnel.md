@@ -112,6 +112,9 @@
     - ```document``` <- ```HTMLDocument``` <- ```Document``` <- ```Node``` <- ```EventTarget``` <- ```Object```
     - ```document.documentElement``` <- ```HTMLHtmlElement``` <- ```HTMLElement``` <- ```Element``` <- ```Node``` <- ```EventTarget``` <- ```Object```
     - ```window``` <- ```Window``` <- ```Window``` <- ```WindowProperties``` <- ```EventTarget``` <- ```Object```
+- 【js】[标签的用法](https://wangdoc.com/javascript/basic/grammar.html#%E6%A0%87%E7%AD%BE%EF%BC%88label%EF%BC%89) JavaScript 语言允许，语句的前面有标签（label），相当于定位符，用于跳转到程序的任意位置
+- 【js】typeof null返回object
+    - null 的类型是 object，这是由于历史原因造成的。1995年的 JavaScript 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑 null ，只把它当作object的一种特殊值。后来null独立出来，作为一种单独的数据类型，为了兼容以前的代码，typeof null 返回 object 就没法改变了。
 
 
 

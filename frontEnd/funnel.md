@@ -117,6 +117,78 @@
     - null 的类型是 object，这是由于历史原因造成的。1995年的 JavaScript 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑 null ，只把它当作object的一种特殊值。后来null独立出来，作为一种单独的数据类型，为了兼容以前的代码，typeof null 返回 object 就没法改变了。
 
 
+- 【js】【基础知识】[数值](https://wangdoc.com/javascript/types/number.html)
+    - **精度**最多只能到53个二进制位，这意味着，绝对值小于2的53次方的整数，即-253到253，都可以精确表示。
+    - 64位浮点数的指数部分的值最大为2047，分出一半表示负数，则 JavaScript 能够表示的数值范围为21024到2-1023（开区间），超出这个**范围**的数无法表示
+        - 如果一个数大于等于2的1024次方，那么就会发生“**正向溢出**”，即 JavaScript 无法表示这么大的数，这时就会返回Infinity
+        - 如果一个数小于等于2的-1075次方（指数部分最小值-1023，再加上小数部分的52位），那么就会发生为“**负向溢出**”，即 JavaScript 无法表示这么小的数，这时会直接返回0
+    - 以下两种情况，JavaScript 会**自动**将数值转为**科学计数法**表示，其他情况都采用字面形式直接表示
+        - 小数点前的数字多于21位
+        - 小数点后的零多于5个
+    - **特殊数值**
+        - 正零和负零
+            - 几乎所有场合，正零和负零都会被当作正常的 ```0```
+                ```js
+                -0 === +0 // true
+                0 === -0 // true
+                0 === +0 // true
+
+                +0 // 0
+                -0 // 0
+                (-0).toString() // '0'
+                (+0).toString() // '0'
+                ```
+            - 唯一有区别的场合是， ```+0``` 或 ```-0``` 当作分母，返回的值是不相等的，之所以出现这样结果，是因为除以正零得到 ```+Infinity``` ，除以负零得到 ```-Infinity``` ，这两者是不相等的
+                ```js
+                (1 / +0) === (1 / -0) // false
+                ```
+    - 对于那些会自动转为科学计数法的数字， ```parseInt``` 会将科学计数法的表示方法视为字符串，因此导致一些奇怪的结果
+        ```js
+        parseInt(1000000000000000000000.5) // 1
+        // 等同于
+        parseInt('1e+21') // 1
+
+        parseInt(0.0000008) // 8
+        // 等同于
+        parseInt('8e-7') // 8
+        ```
+    - ```isNaN()``` 只对数值有效，如果传入其他值，会被先转成数值
+        ```js
+        isNaN('Hello') // true
+        // 相当于
+        isNaN(Number('Hello')) // true
+        
+        // 出于同样的原因，对于对象和数组，isNaN也返回true
+
+        isNaN({}) // true
+        // 等同于
+        isNaN(Number({})) // true
+
+        isNaN(['xzy']) // true
+        // 等同于
+        isNaN(Number(['xzy'])) // true
+
+        // 但是，对于空数组和只有一个数值成员的数组， isNaN 返回 false
+        isNaN([]) // false
+        isNaN([123]) // false
+        isNaN(['123']) // false
+        // 上面代码之所以返回false，原因是这些数组能被Number函数转成数值
+
+        // 判断NaN更可靠的方法是，利用NaN为唯一不等于自身的值的这个特点，进行判断
+        function myIsNaN(value) {
+            return value !== value;
+        }
+        ```
+    - ```isFinite``` 方法返回一个布尔值，表示某个值是否为正常的数值
+        ```js
+        isFinite(Infinity) // false
+        isFinite(-Infinity) // false
+        isFinite(NaN) // false
+        isFinite(undefined) // false
+        isFinite(null) // true
+        isFinite(-1) // true
+        ```
+
 
 
 

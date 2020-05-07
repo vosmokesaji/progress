@@ -355,6 +355,32 @@
             ```
         - 自动转换的规则是这样的：预期什么类型的值，就调用该类型的转换函数。比如，某个位置预期为字符串，就调用String函数进行转换。如果该位置即可以是字符串，也可能是数值，那么默认转为数值。由于自动转换具有不确定性，而且不易除错，建议在预期为布尔值、数值、字符串的地方，全部使用Boolean、Number和String函数进行显式转换。
 
+- 【js】【基础知识】[错误处理机制](https://wangdoc.com/javascript/features/error.html)
+    - 内置错误类型
+    - 自定义错误类型
+    - 抛出错误： ```throw``` 语句的作用是手动**中断程序执行**，抛出一个错误
+        - 实际上，throw可以抛出任何类型的值。也就是说，它的参数可以是任何值
+        - 对于 JavaScript 引擎来说，遇到 throw 语句，程序就**中止**了。引擎会接收到throw抛出的信息，可能是一个错误实例，也可能是其他类型的值
+    - ```try...catch``` 结构 ： 一旦发生错误，程序就中止执行了。JavaScript 提供了 ```try...catch``` 结构，允许对错误进行处理，选择是否往下执行
+    - ```finally``` 代码块： ```try...catch``` 结构允许在最后添加一个finally代码块，表示不管是否出现错误，都必需在最后运行的语句
+
+- [Object 对象](https://wangdoc.com/javascript/stdlib/object.html)
+    - toString() 的应用：判断数据类型 
+        - 由于实例对象可能会自定义 toString 方法，覆盖掉 Object.prototype.toString 方法，所以为了得到类型字符串，最好直接使用 Object.prototype.toString 方法。通过函数的 call 方法，可以在任意值上调用这个方法，帮助我们判断这个值的类型。
+        ```js
+        Object.prototype.toString.call(value)
+
+        // Object.prototype.toString可以看出一个值到底是什么类型
+        Object.prototype.toString.call(2) // "[object Number]"
+        Object.prototype.toString.call('') // "[object String]"
+        Object.prototype.toString.call(true) // "[object Boolean]"
+        Object.prototype.toString.call(undefined) // "[object Undefined]"
+        Object.prototype.toString.call(null) // "[object Null]"
+        Object.prototype.toString.call(Math) // "[object Math]"
+        Object.prototype.toString.call({}) // "[object Object]"
+        Object.prototype.toString.call([]) // "[object Array]"
+        ```
+
 
 ## 熟能生巧
 

@@ -320,6 +320,40 @@
             var args = Array.prototype.slice.call(arguments);
             ```
 
+- 【js】【基础知识】[数据类型的转换](https://wangdoc.com/javascript/features/conversion.html)
+    - 强制转换 主要指使用 ```Number()``` 、 ```String()``` 和 ```Boolean()``` 三个函数，手动将各种类型的值，分别转换成数字、字符串或者布尔值
+        - Number() 背后的转换规则比较复杂。
+            1. 第一步，调用对象自身的valueOf方法。如果返回原始类型的值，则直接对该值使用Number函数，不再进行后续步骤。
+            2. 第二步，如果valueOf方法返回的还是对象，则改为调用对象自身的toString方法。如果toString方法返回原始类型的值，则对该值使用Number函数，不再进行后续步骤。
+            3. 第三步，如果toString方法返回的是对象，就报错
+            - valueOf 和 toString 方法，都是可以自定义的
+        - String() 方法背后的转换规则，与Number方法基本相同，只是互换了valueOf方法和toString方法的执行顺序
+            1. 先调用对象自身的toString方法。如果返回原始类型的值，则对该值使用String函数，不再进行以下步骤。
+            2. 如果toString方法返回的是对象，再调用原对象的valueOf方法。如果valueOf方法返回原始类型的值，则对该值使用String函数，不再进行以下步骤。
+            3. 如果valueOf方法返回的是对象，就报错
+        - Boolean() 的转换规则相对简单：除了以下五个值的转换结果为false，其他的值全部为true
+            1. undefined
+            2. null
+            3. 0（包含-0和+0）
+            4. NaN
+            5. ''（空字符串）
+    - 自动转换：遇到以下三种情况时，JavaScript 会自动转换数据类型，即转换是自动完成的，用户不可见
+        1. 第一种情况，不同类型的数据互相运算。
+            ```js
+            123 + 'abc' // "123abc"
+            ```
+        2. 第二种情况，对非布尔值类型的数据求布尔值。
+            ```js
+            if ('abc') {
+                console.log('hello')
+            }  // "hello"
+            ```
+        3. 第三种情况，对非数值类型的值使用一元运算符（即 + 和 - ）。
+            ```js
+            + {foo: 'bar'} // NaN
+            - [1, 2, 3] // NaN
+            ```
+        - 自动转换的规则是这样的：预期什么类型的值，就调用该类型的转换函数。比如，某个位置预期为字符串，就调用String函数进行转换。如果该位置即可以是字符串，也可能是数值，那么默认转为数值。由于自动转换具有不确定性，而且不易除错，建议在预期为布尔值、数值、字符串的地方，全部使用Boolean、Number和String函数进行显式转换。
 
 
 ## 熟能生巧

@@ -215,6 +215,41 @@
         b64Encode('你好') // "JUU0JUJEJUEwJUU1JUE1JUJE"
         b64Decode('JUU0JUJEJUEwJUU1JUE1JUJE') // "你好"
         ```
+- 【js】【基础知识】[对象](https://wangdoc.com/javascript/types/object.html)
+    - 键名
+        - 如果键名是数值，会被自动转为字符串
+        - 如果键名不符合标识名的条件（比如第一个字符为数字，或者含有空格或运算符），且也不是数字，则必须加上引号，否则会报错
+        ```js
+        // 这就有意思了
+        var obj = {};
+        obj[0.4] = 1;
+        console.log(obj[2/5]);        // 1
+        ```
+    - 对象的引用 # 
+        - 如果不同的变量名指向同一个对象，那么它们都是这个对象的引用，也就是说指向同一个内存地址。修改其中一个变量，会影响到其他所有变量
+    - 属性的删除：delete 命令
+        ```js
+        // delete命令用于删除对象的属性，删除成功后返回true。
+        var obj = { p: 1 };
+        Object.keys(obj) // ["p"]
+
+        delete obj.p // true
+        obj.p // undefined
+        Object.keys(obj) // []
+
+        // 注意，删除一个不存在的属性， delete 不报错，而且返回 true 因此，不能根据delete命令的结果，认定某个属性是存在的
+        var obj = {};
+        delete obj.p // true
+
+        // 只有一种情况，delete命令会返回false，那就是该属性存在，且不得删除
+        var obj = Object.defineProperty({}, 'p', {
+            value: 123,
+            configurable: false
+        });
+
+        obj.p // 123
+        delete obj.p // false
+        ```
 
 
 

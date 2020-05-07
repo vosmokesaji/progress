@@ -189,6 +189,32 @@
         isFinite(-1) // true
         ```
 
+- 【js】【基础知识】[字符串](https://wangdoc.com/javascript/types/string.html)
+    - 字符集： JavaScript 使用 Unicode 字符集。 JavaScript 引擎内部，所有字符都用 Unicode 表示
+    - 对于码点在 ```U+10000``` 到 ```U+10FFFF``` 之间的字符，JavaScript 总是认为它们是两个字符（length属性为2）。所以处理的时候，必须把这一点考虑在内，也就是说，JavaScript 返回的字符串长度可能是不正确的
+    - JavaScript 原生提供两个 Base64 相关的方法
+        - btoa()：任意值转为 Base64 编码
+        - atob()：Base64 编码转为原来的值
+        ```js
+        var string = 'Hello World!';
+        btoa(string) // "SGVsbG8gV29ybGQh"
+        atob('SGVsbG8gV29ybGQh') // "Hello World!"
+
+        // 注意，这两个方法不适合非 ASCII 码的字符，会报错。
+        btoa('你好') // 报错
+        
+        // 要将非 ASCII 码字符转为 Base64 编码，必须中间插入一个转码环节，再使用这两个方法。
+        function b64Encode(str) {
+        return btoa(encodeURIComponent(str));
+        }
+
+        function b64Decode(str) {
+        return decodeURIComponent(atob(str));
+        }
+
+        b64Encode('你好') // "JUU0JUJEJUEwJUU1JUE1JUJE"
+        b64Decode('JUU0JUJEJUEwJUU1JUE1JUJE') // "你好"
+        ```
 
 
 

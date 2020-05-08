@@ -381,6 +381,169 @@
         Object.prototype.toString.call([]) // "[object Array]"
         ```
 
+- [异步操作](https://wangdoc.com/javascript/async/general.html)
+    - **串行执行**：我们可以编写一个流程控制函数，让它来控制异步任务，一个任务完成以后，再执行另一个。这就叫串行执行。
+
+        ```js
+        var items = [ 1, 2, 3, 4, 5, 6 ];
+        var results = [];
+
+        function async(arg, callback) {
+            console.log('参数为 ' + arg +' , 1秒后返回结果');
+            setTimeout(function () { callback(arg * 2); }, 1000);
+        }
+
+        function final(value) {
+            console.log('完成: ', value);
+        }
+
+        function series(item) {
+            if(item) {
+                async( item, function(result) {
+                    results.push(result);
+                    return series(items.shift());
+                });
+            } else {
+                return final(results[results.length - 1]);
+            }
+        }
+
+        series(items.shift());
+        ```
+        - 上面代码中，函数series就是串行函数，它会依次执行异步任务，所有任务都完成后，才会执行final函数。items数组保存每一个异步任务的参数，results数组保存每一个异步任务的运行结果。
+        - 注意，上面的写法需要六秒，才能完成整个脚本。
+
+    - **并行执行**：流程控制函数也可以是并行执行，即所有异步任务同时执行，等到全部完成以后，才执行final函数。
+
+
+        ```js
+        var items = [ 1, 2, 3, 4, 5, 6 ];
+        var results = [];
+
+        function async(arg, callback) {
+            console.log('参数为 ' + arg +' , 1秒后返回结果');
+            setTimeout(function () { callback(arg * 2); }, 1000);
+        }
+
+        function final(value) {
+            console.log('完成: ', value);
+        }
+
+        items.forEach(function(item) {
+            async(item, function(result){
+                results.push(result);
+                if(results.length === items.length) {
+                    final(results[results.length - 1]);
+                }
+            })
+        });
+        ```
+        - 上面代码中，forEach方法会同时发起六个异步任务，等到它们全部完成以后，才会执行final函数。
+        - 相比而言，上面的写法只要一秒，就能完成整个脚本。这就是说，并行执行的效率较高，比起串行执行一次只能执行一个任务，较为节约时间。但是问题在于如果并行的任务较多，很容易耗尽系统资源，拖慢运行速度。因此有了第三种流程控制方式。
+    - **并行与串行的结合**：就是设置一个门槛，每次最多只能并行执行n个异步任务，这样就避免了过分占用系统资源。
+        ```js
+        var items = [ 1, 2, 3, 4, 5, 6 ];
+        var results = [];
+        var running = 0;
+        var limit = 2;
+
+        function async(arg, callback) {
+            console.log('参数为 ' + arg +' , 1秒后返回结果');
+            setTimeout(function () { callback(arg * 2); }, 1000);
+        }
+
+        function final(value) {
+            console.log('完成: ', value);
+        }
+
+        function launcher() {
+            while(running < limit && items.length > 0) {
+                var item = items.shift();
+                async(item, function(result) {
+                    results.push(result);
+                    running--;
+                    if(items.length > 0) {
+                        launcher();
+                    } else if(running == 0) {
+                        final(results);
+                    }
+                });
+                running++;
+            }
+        }
+
+        launcher();
+        ```
+        - 上面代码中，最多只能同时运行两个异步任务。变量running记录当前正在运行的任务数，只要低于门槛值，就再启动一个新的任务，如果等于0，就表示所有任务都执行完了，这时就执行final函数。
+        - 这段代码需要三秒完成整个脚本，处在串行执行和并行执行之间。通过调节limit变量，达到效率和资源的最佳平衡。
+    - 定时器
+        - setTimeout
+            - 第三个参数以及之后的参数，会被用于回调函数的参数
+                ```js
+                setTimeout(function (a,b) {
+                    console.log(a + b);
+                }, 1000, 1, 1);
+                ```
+            - 还有一个需要注意的地方，如果回调函数是对象的方法，那么setTimeout使得方法内部的this关键字指向全局环境，而不是定义时所在的那个对象
+                ```js
+                var x = 1;
+                var obj = {
+                    x: 2,
+                    y: function () {
+                        console.log(this.x);
+                    }
+                };
+
+                setTimeout(obj.y, 1000) // 1
+
+                // 为了防止出现这个问题，一种解决方法是将obj.y放入一个函数
+                setTimeout(function () {
+                    obj.y();
+                }, 1000);
+                // 2
+
+                // 另一种解决方法是，使用bind方法，将obj.y这个方法绑定在obj上面
+                setTimeout(obj.y.bind(obj), 1000);
+                // 2
+                ```
+        - 
+        - [防抖和节流](https://www.jianshu.com/p/c8b86b09daf0)
+            - 防抖（debounce）所谓防抖，就是指触发事件后在 **n 秒内函数只能执行一次**，如果在 n 秒内又触发了事件，则会重新计算函数执行时间
+            ```js
+            function debounce(func, wait) {
+                let timeout;
+                return function () {
+                    let context = this;
+                    let args = arguments;
+
+                    if (timeout) clearTimeout(timeout);
+                    
+                    timeout = setTimeout(() => {
+                        func.apply(context, args)
+                    }, wait);
+                }
+            }
+
+            content.onmousemove = debounce(count,1000);
+            ```
+            - 节流（throttle）所谓节流，就是指连续触发事件但是在 n 秒中只执行一次函数
+            ```js
+            function throttle(func, wait) {
+                let previous = 0;
+                return function() {
+                    let now = Date.now();
+                    let context = this;
+                    let args = arguments;
+                    if (now - previous > wait) {
+                        func.apply(context, args);
+                        previous = now;
+                    }
+                }
+            }
+            content.onmousemove = throttle(count,1000);
+            ```
+
+
 
 ## 熟能生巧
 

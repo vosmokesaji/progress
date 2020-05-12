@@ -60,6 +60,12 @@
 ## 5月
 
 
+### 12日
+- 【快捷键】【vscode】偶然发现的 快速*分割 + 移动*正在编辑的文件在编辑器中的位置
+    - ```ctrl + command + ←``` （分割 + 移动）
+    - ```ctrl + command + →``` （恢复）
+
+
 ### 9日
 - 【软件】[高性能的屏幕录像工具：Screenflick for Mac](https://blog.csdn.net/yjh66666/article/details/96735483?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1)
 

@@ -32,3 +32,6 @@
 [社会心理学](https://book.douban.com/subject/1476651/) | 9.0
 [经济学的思维方式](https://book.douban.com/subject/10510736/) | 8.9
 [癌症·真相](https://book.douban.com/subject/26592648/) | 8.9
+[非暴力沟通](https://book.douban.com/subject/3533221/) | 8.4
+[小狗钱钱](https://book.douban.com/subject/26061406/) | 9.1
+[穷爸爸富爸爸](https://book.douban.com/subject/3291111/) | 8.5

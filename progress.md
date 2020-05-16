@@ -59,6 +59,12 @@
 # 2020年
 ## 5月
 
+### 16日
+- [未来已来，2020年Web前端开发的六大趋势](https://kuaibao.qq.com/s/20200310A0JJW200?refer=spider)
+- 【教程】【ES6】 [Understanding ES6](https://oshotokill.gitbooks.io/understandinges6-simplified-chinese/content/) ( 牛客网 [JS 专题](https://www.nowcoder.com/stack/1) 发现的 )
+
+
+
 
 ### 12日
 - 【快捷键】【vscode】偶然发现的 快速*分割 + 移动*正在编辑的文件在编辑器中的位置

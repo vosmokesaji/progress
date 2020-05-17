@@ -59,6 +59,16 @@
 # 2020年
 ## 5月
 
+
+
+### 17日
+- 【js】 [defer和async的区别](https://segmentfault.com/q/1010000000640869)
+- 【前端性能优化】[雅虎前端优化的35条军规](https://www.cnblogs.com/xianyulaodi/p/5755079.html)
+- 【vue】[Vue 项目性能优化 — 实践指南（网上最全 / 详细）](https://www.jianshu.com/p/41d161310949)
+
+
+
+
 ### 16日
 - [未来已来，2020年Web前端开发的六大趋势](https://kuaibao.qq.com/s/20200310A0JJW200?refer=spider)
 - 【教程】【ES6】 [Understanding ES6](https://oshotokill.gitbooks.io/understandinges6-simplified-chinese/content/) ( 牛客网 [JS 专题](https://www.nowcoder.com/stack/1) 发现的 )

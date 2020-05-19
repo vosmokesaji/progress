@@ -560,6 +560,14 @@
     - JavaScript 引擎怎么知道异步任务有没有结果，能不能进入主线程呢？答案就是引擎在不停地检查，一遍又一遍，只要同步任务执行完了，引擎就会去检查那些挂起来的异步任务，是不是可以进入主线程了。**这种循环检查的机制，就叫做事件循环（Event Loop）**
 
 
+- 【性能】[dns 预解析](https://blog.csdn.net/qq_35432904/article/details/83988726)什么原理
+
+
+- 【js】 ```Object.prototype.toString.apply```
+
+
+
+
 
 
 

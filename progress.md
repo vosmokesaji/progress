@@ -60,6 +60,16 @@
 ## 5月
 
 
+
+
+
+
+
+### 25日  
+-  [这个百度面经](https://www.nowcoder.com/discuss/401584?type=2&order=0&pos=15&page=1&channel=1000&source_id=discuss_tag)还不错
+- [Coding Interview University 一套完整的学习手册帮助自己准备 Google 的面试](https://github.com/jwasham/coding-interview-university/blob/master/translations/README-cn.md)
+
+
 ### 20日 
 - 抽卡 复习方式
 

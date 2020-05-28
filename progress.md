@@ -61,6 +61,11 @@
 
 
 
+### 28日
+- 【发现】【前端】[前端性能监控：window.performance](https://www.cnblogs.com/libin-1/p/6501951.html)
+- 【发现】【前端】[前端性能优化之Performance神器](https://segmentfault.com/a/1190000009845281)
+
+
 
 ### 27日
 - 【知识】【计算机】[内存溢出和内存泄漏的区别](https://blog.csdn.net/buutterfly/java/article/details/6617375)

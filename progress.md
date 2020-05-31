@@ -57,8 +57,11 @@
 
 
 # 2020年
+
 ## 5月
 
+### 31日
+- 【刷题】【leetcode】【github】 [fucking-algorithm](https://github.com/labuladong/fucking-algorithm)
 
 
 ### 28日
@@ -181,7 +184,7 @@
         /dev/disk4    1.8Ti  1.4Ti  457Gi    76%  289650          4294677629    0%   /Volumes/TM Backup
         /dev/disk2s1  116Gi   71Gi   45Gi    62%  581252              370044   61%   /Volumes/Untitled
 
-        # 如上想要推出 /dev/disk2s1 ， 使用 sudo -i ，切换到root用户，尝试推出/dev/disk2s5,输入： diskutil unmount /dev/disk2s1
+        # 如上想要推出 /dev/disk2s1 ， 使用 sudo -i ，切换到root用户，尝试推出/dev/disk2s1,输入： diskutil unmount /dev/disk2s1
         ➜  ~ sudo -i
         Password:
         XXXdeMacBook-Pro:~ root# diskutil unmount /dev/disk2s1

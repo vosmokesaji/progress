@@ -58,6 +58,16 @@
 
 # 2020年
 
+## 6月
+
+### 1日
+- 【前端】【vue】【vue-cli】 
+    - [Vue CLI 3搭建vue+vuex最全分析 - 脚本之家](https://www.jb51.net/article/148100.htm)
+    - [一份超级详细的Vue-cli3.0使用教程 - 脚本之家](https://www.jb51.net/article/150901.htm)
+    - [vue-cli3.0-beta vue脚手架3.0的使用 - 简书](https://www.jianshu.com/p/fbcad30031c2)
+
+
+
 ## 5月
 
 ### 31日

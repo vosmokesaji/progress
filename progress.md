@@ -60,6 +60,15 @@
 
 ## 6月
 
+
+### 3日
+- 【vue】[详解Vue SPA项目优化小记](https://www.jb51.net/article/143071.htm)
+- 【leetcode】[跳槽从LeetCode开始-之乎专栏](https://zhuanlan.zhihu.com/p/101318593)
+- [[面试]HR最常用的20个面试问题及答案](https://blog.csdn.net/hailongwang2412/article/details/68083995)
+- [史上最强HR面试问题汇总，拿走不谢~](https://zhuanlan.zhihu.com/p/49752483)
+- [HR面试的十大经典问题](https://zhuanlan.zhihu.com/p/27564382)
+
+
 ### 1日
 - 【前端】【vue】【vue-cli】 
     - [Vue CLI 3搭建vue+vuex最全分析 - 脚本之家](https://www.jb51.net/article/148100.htm)

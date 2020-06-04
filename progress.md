@@ -61,6 +61,15 @@
 ## 6月
 
 
+### 4日
+- 【coder】【小技巧】ide 中 输入 lorem 按 tab 可以帮我们生成一段随机文本，或者 lorem300 按 tab 会生成一段 300 个单词的文本。
+- [前端动画必知必会：React 和 Vue 都在用的 FLIP 思想实现小姐姐流畅移动。](https://juejin.im/post/5ed72e6f6fb9a04801705e39?utm_source=gold_browser_extension)
+- 【软件】vscode ```shift + alt + F``` 款速格式化空格
+- 【知识点】【硬件】SD 卡上的 ```lock``` 是写保护。
+    - 如果打到 lock 上，就只能读取，不能往卡里写东西。
+    - 一般用来保护数据不被误删，和防止感染病毒。
+
+
 ### 3日
 - 【vue】[详解Vue SPA项目优化小记](https://www.jb51.net/article/143071.htm)
 - 【leetcode】[跳槽从LeetCode开始-之乎专栏](https://zhuanlan.zhihu.com/p/101318593)

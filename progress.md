@@ -58,7 +58,13 @@
 
 # 2020年
 
-## 6月
+
+### 7日 
+- 【想知道】 mkdocs 是啥
+- 【前端】[为什么很多web项目还是使用 px，而不是 rem？ - 猫5号的回答 - 知乎](https://www.zhihu.com/question/313971223/answer/628236155)
+- 【格言】有时治愈，常常帮助，总是安慰 -- 医生 特鲁多 墓志铭
+
+
 
 ### 5日
 - 【前端】工程化思考
@@ -106,9 +112,9 @@
 
 ### 27日
 - 【知识】【计算机】[内存溢出和内存泄漏的区别](https://blog.csdn.net/buutterfly/java/article/details/6617375)
-    - 内存溢出 out of memory，是指程序在申请内存时，没有足够的内存空间供其使用，出现out of memory；比如申请了一个integer,但给它存了long才能存下的数，那就是内存溢出。
+    - 内存溢出 out of memory，是指程序在申请内存时，没有足够的内存空间供其使用，出现out of memory；比如申请了一个integer , 但给它存了 long 才能存下的数，那就是内存溢出。
     - 内存泄露 memory leak，是指程序在申请内存后，无法释放已申请的内存空间，一次内存泄露危害可以忽略，但内存泄露堆积后果很严重，无论多少内存,迟早会被占光。
-    - memory leak会最终会导致out of memory！
+    - memory leak 会最终会导致out of memory！
 
 
 
@@ -247,8 +253,7 @@
 - 数组的方法 lastIndexOf()，该函数返回**相同元素中最后一个元素的索引**，如果没找到相同元素，则返回 -1
 - 数组的方法  join 不传参 默认逗号分隔
 - vue 重写了数组的哪些方法？
-    - shift unshift pop push   splice    
-- 
+    - shift unshift pop push splice reverce sort
 
 
 

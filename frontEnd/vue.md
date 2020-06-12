@@ -198,3 +198,6 @@ git clone https://github.com/vuejs/vue.git
 # vue 知识查漏补缺 看文档
 - watch
 - computed 计算属性
+- v-once
+- v-pre
+- v-cloak

@@ -73,6 +73,29 @@
 # 2020年
 
 
+## 6月
+
+### 30日
+- [小技巧：使用命令行打开vscode 以及其他工具](https://blog.csdn.net/h774140913/java/article/details/84650273)
+    - vscode
+        - 手动打开vscode
+        - command + shift + p 打开命令面板（或者点击菜单栏 查看>命令面板）
+        - 输入shell（选择"install code command in PATH"）
+        - 打开终端 进入需要用IDE打开的文件夹 输入"code ."
+    - sublime
+        - 打开终端
+        - 输入命令行 ```ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin```
+
+- 【TODO】整理 chrome 书签
+    - 前端主站 ： 腾讯、京东、百度、阿里、奇舞团、58、字节、美团、google、FB ...
+    - 产品：
+    - 设计
+    - 运营
+    - 游戏
+    - ...
+
+
+
 ### 29日
 - [[转]三种编程命名规则：驼峰命名法，帕斯卡命名法，匈牙利命名法](https://blog.csdn.net/czh500/article/details/81459785)
 - [深入研究-webkit-overflow-scrolling:touch及ios滚动](https://www.cnblogs.com/xiahj/p/8036419.html)

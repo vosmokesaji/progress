@@ -74,6 +74,15 @@
 
 ## 7月
 
+
+
+### 2日
+- [Mac下Vim配置语法高亮](https://www.cnblogs.com/liunlls/p/mac_vim_config.html)
+
+
+
+
+
 ### 1日
 - [7个超高质量免费PPT模板网站，收藏不后悔](https://baijiahao.baidu.com/s?id=1655083193384206063&wfr=spider&for=pc)
 

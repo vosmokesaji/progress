@@ -2275,9 +2275,9 @@
             > 语法 ```Promise.prototype.catch( onRejected )```
 
             ```javascript
-            var promise = new Promise(function(resolve, reject)){
-                // some code
-            }
+            var promise = new Promise(function(resolve, reject){
+                // some code 
+            })
 
             promise.then(function(data) {
                 console.log('success');

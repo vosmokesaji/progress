@@ -78,7 +78,47 @@
 ### 3日
 - 【发现】 Mac ```Ctrl + F11``` or ```Ctrl + F12``` 可以加减音量
 - [Git全局配置和单个仓库的用户名邮箱配置](https://blog.csdn.net/dcj3sjt126com/article/details/84739380)
-
+- git 更改已经提交的记录中的 用户名和 邮箱
+    
+    ```shell script
+    # 克隆
+    git clone --bare https://github.com/user/repo.git
+  
+    # 进入目录
+    cd repo.git
+    
+    # 执行这一段
+    # OLD_EMAIL 换成你要被替换的邮箱
+    # CORRECT_NAME 换成你要替换成的邮箱
+    # CORRECT_EMAIL 换成你要替换成的名字
+    git filter-branch --env-filter '
+       
+    OLD_EMAIL="xxxx@old.com"
+    CORRECT_NAME="username"
+    CORRECT_EMAIL="yyyy@new.com"
+    
+    if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+    then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+    fi
+    if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+    then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+    fi
+    ' --tag-name-filter cat -- --branches --tags
+       
+    # 推送
+    git push --force --tags origin 'refs/heads/*'
+    
+    # 删除这个临时库
+    cd ../
+    rm -rf repo.git
+    ```
+  
+  
+  
 
 
 ### 2日

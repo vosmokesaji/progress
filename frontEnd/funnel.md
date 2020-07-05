@@ -576,7 +576,7 @@
     - 嵌套的，伪类的
 
 
-
+- 【js】Array.prototype.some
 
 
 

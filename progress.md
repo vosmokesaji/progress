@@ -75,6 +75,12 @@
 ## 7月
 
 
+### 6日
+- 程序中的时区问题，如何同步全球访问者的时间？
+- getHour  getUTCHour
+
+
+
 ### 3日
 - 【发现】 Mac ```Ctrl + F11``` or ```Ctrl + F12``` 可以加减音量
 - [Git全局配置和单个仓库的用户名邮箱配置](https://blog.csdn.net/dcj3sjt126com/article/details/84739380)

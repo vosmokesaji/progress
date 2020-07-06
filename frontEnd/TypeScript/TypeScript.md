@@ -2177,37 +2177,3 @@ pull-request 需要符合它们的规范，并且通过测试，才能被合并�
 # 工程
 
 
-
-
-# TS 教程
-## 教程1
-- https://www.bilibili.com/video/BV1yt411e7xV?from=search&seid=15506619508871821799
-
-- 自动编译
-    ```shell
-    # 项目目录下，生成配置文件 tsconfig.json
-    tsc --init
-    ```
-    - 修改配置 ```"outDir": "./js",  ```
-    - vscode 菜单 ： terminal -> run task 选择 typescript 文件夹，选择 tsc 监视
-
-
-## 教程2
-- [1.2W字 | 了不起的 TypeScript 入门教程](https://juejin.im/post/5edd8ad8f265da76fc45362c)
-
-
-
-
-
-
-
-# 实操遇到的问题：
-- ```function getInfo3(name: string, age: number = 20): string {``` 写成了 ```age?: number = 20``` ，多了一个问号：默认参数不需要加问号，可选参数才要加
-- ```function sum2(...res: number[]): number {```  忘记写 ```[]```
-
-- unknow 类型是啥
-
-
-
-
-

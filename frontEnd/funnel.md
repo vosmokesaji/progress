@@ -579,7 +579,7 @@
 - 【js】Array.prototype.some
 
 
-
+- 【js】Object.assign
 
 
 

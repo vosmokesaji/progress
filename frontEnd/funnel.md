@@ -581,9 +581,23 @@
 
 - 【js】Object.assign
 
-
-
-
+- 【html】【css】[h5 input调起数字键盘](https://blog.csdn.net/D_claus/java/article/details/83892712)
+    - ios:
+        - ```type="number"``` 调起的数字键盘不是九宫格
+        - iOS中，只有 ```[0-9]\*``` 才可以调起九宫格数字键盘，```\d``` 无效
+    - android:
+        - ```type="number"``` 以及下面两种都能调起九宫数字键盘
+        - ```<input type="number" pattern="\d">```
+        - ```<input type="number" pattern="[0-9]*">```
+    - ```number``` 出现的小尾巴可以如下取消：
+        ```css
+        input[type=number]::-webkit-inner-spin-button,  
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                appearance: none; 
+                margin: 0; 
+            }
+        ```
 
 
 

@@ -75,6 +75,9 @@
 ## 7月
 
 
+### 14日
+- vscode 快捷键 `command + option + ←` or `command + option + →` 快速切换打开的文件
+
 ### 13日
 - 【node】 [nodemon](https://www.npmjs.com/package/nodemon) ： 在 `node` 项目的软件开发中，经常需要边写边调试，因此 `node` 服务需要频繁手动重启，特别浪费时间。 `nodemon` 软件会自动监测文件的变化，当有变化时重新启动服务。
 - 【js】[JS函数前面加!、+、-、~符号以及;是什么意思、按位取反](https://blog.csdn.net/hot_cool/article/details/77567166)

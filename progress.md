@@ -75,6 +75,13 @@
 
 ## 7月
 
+### 16日
+- [5分钟教你使用console.log发布公司的招聘信息](https://blog.csdn.net/liuyan19891230/article/details/106654400)
+    - patorjk.com
+        - [Text to ASCII Art Generator (TAAG)](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
+            - ANSI shadow
+    - [挖掘大厂写给程序员的"暗语"](https://www.jianshu.com/p/c69778e515b3)
+
 
 ### 14日
 - vscode 快捷键 `command + option + ←` or `command + option + →` 快速切换打开的文件

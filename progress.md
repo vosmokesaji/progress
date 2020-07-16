@@ -75,11 +75,19 @@
 
 ## 7月
 
+
 ### 16日
 - [5分钟教你使用console.log发布公司的招聘信息](https://blog.csdn.net/liuyan19891230/article/details/106654400)
     - patorjk.com
         - [Text to ASCII Art Generator (TAAG)](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
+            - 3D Diagonal
+            - Alpha
             - ANSI shadow
+            - Flower Power
+            - Bloody
+            - Block
+            - Broadway
+            - Caligraphy
     - [挖掘大厂写给程序员的"暗语"](https://www.jianshu.com/p/c69778e515b3)
 
 

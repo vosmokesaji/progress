@@ -76,6 +76,15 @@
 ## 7月
 
 
+### 17日
+- vscode 分割屏幕快捷键
+    - 横向分割 `command + shift + D`
+    - 纵向分割 `command + D`
+    - 在分割的窗格间切换 `command + [` 、`command + ]`
+- 【TODO】MAKE HEAD IMAGE （no use ,cause igit can't change）
+
+
+
 ### 16日
 - [5分钟教你使用console.log发布公司的招聘信息](https://blog.csdn.net/liuyan19891230/article/details/106654400)
     - patorjk.com

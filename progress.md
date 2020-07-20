@@ -76,6 +76,15 @@
 ## 7月
 
 
+### 20日
+- [关于线条字](https://segmentfault.com/q/1010000014542664)
+    - 找到的东西大概可以满足了, 如果想要找相关的内容可以 google "ascii art generator"
+    - [Online Ascii Art Creator](https://www.ascii-art-generator.org)
+    - mac/linux 可以用 figlet
+    - [相关问题](https://serverfault.com/questions/93407/what-command-prints-a-string-as-big-ascii-text-art-in-bash/93408#93408)
+
+
+
 ### 17日
 - vscode 分割屏幕快捷键
     - 横向分割 `command + shift + D`

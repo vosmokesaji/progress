@@ -75,13 +75,20 @@
 
 ## 7月
 
+
+### 22日
+- vscode `command + ctrl + ←` or `command + ctrl + →` 可以将标签在分屏窗口中移动
+
+
+
+
 ### 21日
 - 科学跳绳锻炼
 - 科学的 400 米训练
 - 【思考】一个会日语的主播，直播吃鸡，各种逗日本人，放在以前谁能想到会一门语言还能用在这里
 - [壁纸软件](https://sspai.com/post/41665)
     - Irvue
-    - Mac推荐Wallcat, Appstore直接下载
+    - Mac推荐 Wallcat, Appstore 直接下载
     - Mac 推荐 [Pap.er](http://paper.meiyuan.in/)【需科学上网】
 
 

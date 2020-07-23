@@ -75,6 +75,15 @@
 
 ## 7月
 
+### 23日
+- [google noto fonts](https://www.google.com/get/noto/#serif-hant)
+    - 衬线体和无衬线体
+        - sans serif 无衬线
+        - serif 衬线
+    - CJK ： 中日韩
+
+
+
 
 ### 22日
 - vscode `command + ctrl + ←` or `command + ctrl + →` 可以将标签在分屏窗口中移动

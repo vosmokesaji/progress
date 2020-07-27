@@ -73,7 +73,31 @@
 
 # 2020年
 
+
+
 ## 7月
+
+### 27日
+- 【英语单词】 `session`
+    - [n] 一场;一节;一段时间;(法庭的)开庭，开庭期;(议会等的)会议，会期;学年
+- 【英语单词】 `appears`
+    - [v] 显得;看来;似乎;出现;呈现;显现;起源;首次使用
+- debugger 排错程序 
+
+
+
+- 看了 [taro 的文档](https://taro-docs.jd.com/taro/docs/README/index.html#%E4%B8%BA-taro-%E8%B4%A1%E7%8C%AE%E4%BB%A3%E7%A0%81)发现，开源社区的贡献是有一套成熟的流程的
+    - RFC 文档 （是什么）
+    - Taro 的 [RFC 机制](https://github.com/NervJS/taro-rfcs)
+- webstrom 
+    - `ctrl + shift + 数字` 添加书签
+    - [使用webstorm调试node程序](https://www.cnblogs.com/jinguangguo/p/4809886.html)（好文）
+- Design
+    - [UI Design Dos and Don’ts - Apple Developer](https://developer.apple.com/design/tips/#clarity)
+    - [Marketing Resources and Identity Guidelines - App Store - Apple Developer](https://developer.apple.com/app-store/marketing/guidelines/)
+    - [设计规范官网汇总：iOS、Material…（持续更新）](https://zhuanlan.zhihu.com/p/31026090)
+    - [Apple Design Resources](https://developer.apple.com/design/resources//?ref=heydesigner)
+
 
 ### 23日
 - [google noto fonts](https://www.google.com/get/noto/#serif-hant)

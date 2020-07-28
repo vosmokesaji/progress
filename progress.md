@@ -77,14 +77,41 @@
 
 ## 7月
 
+
+### 28日
+- [ ] 【想知道】程序中的时间，如何保证全世界在同一时间开启活动
+- linux中管道符 `|` 的作用
+    - 命令格式：`命令A|命令B`，即命令1的正确输出作为命令B的操作对象
+- git 的 提交哈希 和 树哈希 的区别 [问题来源](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
+    - `git log --pretty=format:"%H %h %T %t"`
+- `git log`
+    - `--since=<date>` or `--after=<date>` 起始时间
+    - `--until=<date>` or `--before=<date>` 截止时间
+    - 这个 `<date>` 支持的格式很多，比如
+        - `2020-07-23-18:42:53`
+        - `2020-07-23 18:42:53`
+        - `2020-07-23 18:42`
+        - `2020-07-23 6:42 pm`
+        - `2020-07-23 19:00` （注意：`2020-07-23 19` 不行） 
+        - `2020-07-23` （被省略的时分秒，默认为 `0`）
+        - `Jul 23 18:43:53 2020`
+        - `Thu Jul 23 18:43:53 2020`
+        - `Thu Jul 23 18:42:52 2020 +0800`
+
+- [随机生成文字的网页](http://whatthecommit.com/index.txt`")
+    - 皮一下 ```git commit -m"`curl -s http://whatthecommit.com/index.txt`"```
+- [commit message 生成工具](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)
+- [ishare - Git Commit Message](https://ishare.58corp.com/articleDetail?id=11461)
+- [ ] node 中的 `__dirname` 是什么路径？ 执行的是 `A.js` ， `A.js` 引用了 `./lib/B.js` ，  `./lib/B.js` 中的 `__dirname`  是 `A.js` 还是 `B.js` 的位置？
+- [mac 自动重启](https://discussionschinese.apple.com/thread/250328884) tony 的看日志方法
+
+
 ### 27日
 - 【英语单词】 `session`
     - [n] 一场;一节;一段时间;(法庭的)开庭，开庭期;(议会等的)会议，会期;学年
 - 【英语单词】 `appears`
     - [v] 显得;看来;似乎;出现;呈现;显现;起源;首次使用
-- debugger 排错程序 
-
-
+- 【英语单词】`debugger` 排错程序 
 
 - 看了 [taro 的文档](https://taro-docs.jd.com/taro/docs/README/index.html#%E4%B8%BA-taro-%E8%B4%A1%E7%8C%AE%E4%BB%A3%E7%A0%81)发现，开源社区的贡献是有一套成熟的流程的
     - RFC 文档 （是什么）

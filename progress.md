@@ -77,6 +77,34 @@
 
 ## 7月
 
+### 31日
+- 查找命令的位置 `where`
+    ```bash
+    where git
+    /usr/bin/git
+    ```
+- 我的 Mac 自带的 git
+    ```shell
+    git --version
+    git version 2.24.3 (Apple Git-128)
+    ```
+- [优雅的卸载Mac默认的Xcode附带的git](https://www.w3cschool.cn/cuhkj/cuhkj-1k5l265q.html) 思路是更改 环境变量的指向
+
+- date 格式标准 [发现来源](https://git-scm.com/docs/git-log#Documentation/git-log.txt-emadem)
+    - %cD : committer date, RFC2822 style
+        - `Fri, 3 Jul 2020 10:57:24 +0800`
+    - %cr : committer date, relative
+        - `4 weeks ago`
+    - %ct : committer date, UNIX timestamp
+        - `1593745044`
+    - %ci : committer date, ISO 8601-like format
+        - `2020-07-03 10:57:24 +0800`
+    - %cI : committer date, strict ISO 8601 format
+        - `2020-07-03T10:57:24+08:00`
+    - %cs : committer date, short format (YYYY-MM-DD)
+
+
+
 
 ### 28日
 - [ ] 【想知道】程序中的时间，如何保证全世界在同一时间开启活动

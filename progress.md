@@ -73,12 +73,36 @@
 
 # 2020年
 
+- 年PLAN
+    - [ ] 前端技能提升
+    - [ ] 
+
+
 ## 8月
+
+- 月PLAN
+    - [ ] 【学习】 RN
+        - [ ] react
+        - [ ] react Native
+    - [ ] 【学习】 Flutetr
+    - [ ] 【学习】 NodeJs
+    - [ ] 【学习】 TS
+    - [ ] 【刷题】 Leetcode 20 道
+
+
+
+
+
+
+
+
+### 5日
+- [(Code-Robust ) 利用 VSCode、JSDoc、d.ts 让你的代码更健壮](https://blog.csdn.net/Tmraz/article/details/107620192)
+
+
 
 ### 4日
 - [从零构建一个TS-Node项目](https://blog.csdn.net/qq_38355456/article/details/103931750)
-
-
 
 
 

@@ -74,8 +74,22 @@
 # 2020年
 
 - 年PLAN
-    - [ ] 前端技能提升
-    - [ ] 
+    - [ ] 前端
+        - [ ] RN
+        - [ ] Flutter
+        - [ ] NodeJS
+        - [ ] TS
+        - [ ] ES6
+        - [ ] 
+    - [ ] 语言
+        - [ ] Python
+    - [ ] 算法数据结构
+        - [ ] leetcode 80 题
+            - [---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------] 
+    - [ ] 软技能
+        - [ ] 软件设计思想 （可以参考 GitHub）
+        - [ ] 怎么做分享，怎么样把一个事情讲清楚，讲的有趣
+
 
 
 ## 8月
@@ -95,6 +109,17 @@
 
 
 
+### 6日
+- [阿里大佬浅谈大型项目前端架构设计](https://www.cnblogs.com/web-vue/articles/11383707.html)
+    - 范围很广，但没有特别具体的落地方案，可以开拓思路
+- 【思考】编程的终极目标是什么
+    - 项目目录结构命名的由来
+        - https://www.cnblogs.com/Eva-J/p/5168345.html
+        - https://zhuanlan.zhihu.com/p/89693668
+        - https://wenku.baidu.com/view/ef72e1640b4e767f5acfceb7.html
+        - https://blog.csdn.net/like_jack/article/details/64127823
+        - https://segmentfault.com/q/1010000021691054
+        - https://segmentfault.com/q/1010000000308565
 
 ### 5日
 - [(Code-Robust ) 利用 VSCode、JSDoc、d.ts 让你的代码更健壮](https://blog.csdn.net/Tmraz/article/details/107620192)

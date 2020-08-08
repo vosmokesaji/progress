@@ -104,6 +104,13 @@
     - [ ] 【刷题】 Leetcode 20 道
 
 
+### 8日
+- [设计模式 之 命令模式](https://www.cnblogs.com/zhigu/p/11847569.html)
+- [详解](http://c.biancheng.net/view/1380.html)
+- [Java设计模式：23种设计模式全面解析（超级详细）](http://c.biancheng.net/design_pattern/)
+
+
+
 
 ### 7日
 - [CSS如何实现弹簧动画效果](https://www.w3cplus.com/animation/spring-animation-in-css.html) 牛批

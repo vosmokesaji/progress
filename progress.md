@@ -104,6 +104,11 @@
     - [ ] 【刷题】 Leetcode 20 道
 
 
+
+### 10日
+- 【快捷键】`command + option + u`  chrome 查看源代码
+
+
 ### 8日
 - [设计模式 之 命令模式](https://www.cnblogs.com/zhigu/p/11847569.html)
 - [详解](http://c.biancheng.net/view/1380.html)

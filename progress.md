@@ -104,6 +104,140 @@
     - [ ] 【刷题】 Leetcode 20 道
 
 
+### 13日
+- 什么是 套接字？ 
+    - 来源： [mysql npm](https://www.npmjs.com/package/mysql#connection-options) - `socketPath`
+- mysql 入门
+    ```shell
+    ➜  ~ mysql -h localhost -u root -p
+
+    # 展示 MySQL 数据库下的 数据库们
+    # show databases;
+    mysql> show databases
+        -> 
+        -> ;
+    # 这是因为我没有加分号
+
+    # 创建一个数据库
+    # create database 数据库名;
+    mysql> create database students_info;
+
+    # 重新查看，确认数据库的创建是否成功
+    mysql> show databases;
+
+    # 选择要操作的数据库 
+    mysql> use students_info;
+
+    # 在数据库中创建数据库表
+    mysql> create table network3
+        -> (
+        -> id char(10) not null primary key,
+        -> name char(16) not null,
+        -> sex char(6) not null,
+        -> age int not null,
+        -> address char(36) not null
+        -> );
+
+    # 检查数据表：它是用来查询数据库表的详细信息的（只包括表头，并不包含内容）
+    # describe 数据库表名;
+    mysql> describe network3;
+
+    # ==========================================================================
+
+    # 向数据表中添加数据
+    # insert into 数据库表名 values(value值1,value值2,.......);
+    # insert into 数据库表名 (列名1,列名2,...） values(value值1,value值2,...);
+    mysql> insert into network3 values("3114006441","xpleaf","male",35,"QingYuan");
+    mysql> insert into network3 values("3114006442","Pei","male",41,"PuNing");
+    mysql> insert into network3 values("3114006443","Jim","male",38,"JiangMen");
+    mysql> insert into network3 values("3114006440","Xuan","male",36,"ShanWei");
+    mysql> insert into network3 values("3114006440","Ting","female",30,"ChaoShan");
+    mysql> insert into network3 values("3114006336","Ting","female",30,"ChaoShan");
+
+    # ==========================================================================
+
+    # 查询数据库表中的数据
+    # select 列名称 from 数据库表名 [查询条件];
+    mysql> select * from network3;
+    mysql> select id,name from network3;
+    mysql> select * from network3 where name='xpleaf';
+    mysql> select * from network3 where sex="male";
+    mysql> select * from network3 where sex="female";
+    mysql> select * from network3 where sex="male" and address="QingYuan";
+    mysql> select * from network3 where age < 40 and age > 31;
+    mysql> select * from network3 where name like "%leaf";
+    mysql> select * from network3 where name like "%i";
+    mysql> select * from network3 where name like "%i%";
+    mysql> select * from network3 where name like "i";
+    mysql> select * from network3 where name like "i%";
+    mysql> select * from network3 where name like "%i%";
+    mysql> select * from network3;
+
+    # ==========================================================================
+
+    # 修改数据库表中的数据
+    # update 数据库列名 set 列够=新value where 更新条件;
+    mysql> update network3 set address="YuanTan" where name="xpleaf";
+    mysql> select * from network3;
+
+    mysql> update network3 set name="Hui" where id="3114006336";
+    mysql> select * from network3;
+
+    # 这是我写错的
+    mysql> update network3 set age=age+=1;
+    mysql> select * from network3;
+
+    mysql> update network3 set age=age+1;
+    mysql> select * from network3;
+
+    mysql> delete from network3 where name="Pei";
+    mysql> select * from network3;
+
+    # ==========================================================================
+
+    # 修改数据库表的【结构】
+    # alter table 数据库表名 change 列名称 新数据类型 [其它];
+
+    # 先 看一下数据表的详细信息
+    mysql> describe network3;
+
+    #修改列
+    mysql> alter table network3 change address addr char(30) not null;
+    mysql> alter table network3 change name name char(20) not null;
+    mysql> alter table network3 change sex Sex char(10) not null;
+    mysql> describe network3;
+
+    # 删除列
+    mysql> alter table network3 drop addr;
+    mysql> describe network3;
+    # 看完表结构，再看一下标的数据是不是也被删掉了
+    mysql> select * from network3;
+
+    # 重命名数据库表
+    mysql> alter table network3 rename New_network3;
+    mysql> show tables;
+
+    # 删除数据库表
+    mysql> drop table New_network3;
+    mysql> show tables
+
+    # ==========================================================================
+    
+    # 删除数据库
+    # 先看一下所有的数据库
+    mysql> show databases;
+
+    # 删除，我写错了
+    mysql> drop students_info;
+
+    # 正确的删除
+    mysql> drop database students_info;
+    mysql> show databases;
+
+    # 退出 mysql
+    mysql> quit    
+    ```
+
 
 ### 11日
 - 【想法】每天写一些他就能帮我自动总结的工具

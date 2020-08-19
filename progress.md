@@ -104,6 +104,14 @@
     - [ ] 【刷题】 Leetcode 20 道
 
 
+
+
+### 19日
+- [不错的博客 梯 - 如何使用React，TypeScript，NodeJS和MongoDB构建Todo应用](https://www.freecodecamp.org/news/how-to-build-a-todo-app-with-react-typescript-nodejs-and-mongodb/)
+- 【工具】【markdown】【协作】[CodiMD - Markdown 协作笔记](https://demo.codimd.org/#) 
+
+
+
 ### 13日
 - 什么是 套接字？ 
     - 来源： [mysql npm](https://www.npmjs.com/package/mysql#connection-options) - `socketPath`

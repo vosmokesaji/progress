@@ -159,6 +159,11 @@
 <!-- 评价不足《分布式系统架构：技术栈详解与快速进阶》62 -->
 
 
+### 23日
+- [洋爷的站酷主页](https://www.zcool.com.cn/u/525334#tab_anchor)
+- [现代 javascript 教程](https://zh.javascript.info/)
+
+
 ### 22日
 - [网线的分类，网线分类标准图解](https://www.dgzj.com/baike/87793.html)
 

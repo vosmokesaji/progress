@@ -159,6 +159,13 @@
 <!-- 评价不足《分布式系统架构：技术栈详解与快速进阶》62 -->
 
 
+
+### 24日
+- [vue2.0移动端触摸反馈指令](https://segmentfault.com/a/1190000008634493)
+- [如何让 H5 体验接近 APP：（一）触摸反馈](https://segmentfault.com/a/1190000006864910)
+
+
+
 ### 23日
 - [洋爷的站酷主页](https://www.zcool.com.cn/u/525334#tab_anchor)
 - [现代 javascript 教程](https://zh.javascript.info/)

@@ -160,6 +160,11 @@
 
 
 
+### 25日
+- [OCR 光学字符识别](https://baike.baidu.com/item/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/4162921?fromtitle=OCR&fromid=25995&fr=aladdin) 只能识别打印体，手写体是不行的
+- 【[答疑解惑】为什么你的 Charles 会抓包失败？](https://juejin.im/post/6875474994336366606?utm_source=gold_browser_extension)
+
+
 ### 24日
 - [vue2.0移动端触摸反馈指令](https://segmentfault.com/a/1190000008634493)
 - [如何让 H5 体验接近 APP：（一）触摸反馈](https://segmentfault.com/a/1190000006864910)

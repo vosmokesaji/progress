@@ -144,6 +144,15 @@
 
 ## 9月
 
+
+
+### 28日
+
+- [从 13K 的前端开源项目我学到了啥？](https://juejin.im/post/6876943860988772360?utm_source=gold_browser_extension)
+- [字节研发设施下的 Git 工作流](https://juejin.im/post/6875874533228838925?utm_source=gold_browser_extension)
+
+
+
 ### 27日
 
 

@@ -146,6 +146,12 @@
 
 
 
+### 29日
+- [visibilitychange](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/visibilitychange_event) - 浏览器标签页被隐藏或显示的时候会触发 `visibilitychange` 事件
+- [position](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)，主要看 sticky 粘性定位
+
+
+
 ### 28日
 
 - [从 13K 的前端开源项目我学到了啥？](https://juejin.im/post/6876943860988772360?utm_source=gold_browser_extension)

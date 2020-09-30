@@ -146,6 +146,14 @@
 
 
 
+
+### 30日
+- 待看 https://3g.163.com/v/video/VWMOJ3QBE.html
+- [encodeURI](https://www.sojson.com/encodeurl.html)  转码工具
+- 话说编码到底是个啥？
+- [ARGB 和 RGB 的区别](https://blog.csdn.net/wei_chong_chong/article/details/50831493)
+
+
 ### 29日
 - [visibilitychange](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/visibilitychange_event) - 浏览器标签页被隐藏或显示的时候会触发 `visibilitychange` 事件
 - [position](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)，主要看 sticky 粘性定位

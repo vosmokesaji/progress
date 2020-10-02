@@ -141,6 +141,12 @@
 
 
 
+### 3日
+- [适合婚礼上用的背景音乐有哪些推荐？](https://www.zhihu.com/question/19578707)
+- [婚礼上用什么音乐比较好？](https://www.zhihu.com/question/20992094)
+
+
+
 
 ### 2日
 - [4:3 常见分辨率](https://zhidao.baidu.com/question/1738305006606921907.html)，做婚礼视频用

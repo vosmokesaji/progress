@@ -141,7 +141,7 @@
 
 
 ### 9日
-- 一元白嫖 [重学操作系统](https://kaiwu.lagou.com/course/courseInfo.htm?courseId=478#/content)
+- 【学习】一元白嫖 [重学操作系统](https://kaiwu.lagou.com/course/courseInfo.htm?courseId=478#/content)
 
 
 

@@ -132,6 +132,9 @@
 ### 16日
 - iphone 12 支持北斗导航了，北斗导航是啥？很牛逼吗？
 - 【前端】[typescript / webpack报错“can only be default-imported using the 'esModuleInterop' flag](https://www.cnblogs.com/xym4869/p/13294798.html)
+- 牛人
+    - 左耳朵耗子
+    - 开课吧创始人
 
 
 

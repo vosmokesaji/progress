@@ -201,3 +201,187 @@ git clone https://github.com/vuejs/vue.git
 - v-once
 - v-pre
 - v-cloak
+
+
+# vue 周边
+
+## vue-property-decorator 
+- [文档](https://www.npmjs.com/package/vue-property-decorator)
+- 依赖 [ vue-class-component](https://github.com/vuejs/vue-class-component)
+
+## VueClassComponent 笔记
+<!-- 23ri -->
+### VueClassComponent ： 用 class 的方式书写 vue 组件
+
+- `@component` 修饰器 使您的类成为 Vue 组件:
+```vue
+<template>
+  <div>
+    <button v-on:click="decrement">-</button>
+    {{ count }}
+    <button v-on:click="increment">+</button>
+  </div>
+</template>
+
+<script>
+import Vue from 'vue'
+import Component from 'vue-class-component'
+
+// Define the component in class-style
+@Component
+export default class Counter extends Vue {
+  // Class properties will be component data
+  count = 0
+
+  // Methods will be component methods
+  increment() {
+    this.count++
+  }
+
+  decrement() {
+    this.count--
+  }
+}
+</script>
+```
+1. vue 组件的初始数据可以声明为类属性
+
+    ```vue
+    <template>
+        <div>{{ message }}</div>
+    </template>
+
+    <script>
+        import Vue from 'vue'
+        import Component from 'vue-class-component'
+
+        @Component
+        export default class HelloWorld extends Vue {
+            // Declared as component data
+            message = 'Hello World!'
+        }
+    </script>
+    ```
+    - 注意，如果初始值为 `undefined` ，类属性将不会是响应式的
+        ```js
+        import Vue from 'vue'
+        import Component from 'vue-class-component'
+
+        @Component
+        export default class HelloWorld extends Vue {
+            // `message` will not be reactive value
+            message = undefined
+        }
+        ```
+    - 可以使用 `null` 或者 `data` 钩子函数来代替
+
+        ```js
+        import Vue from 'vue'
+        import Component from 'vue-class-component'
+
+        @Component
+        export default class HelloWorld extends Vue {
+            // `message` will be reactive with `null` value
+            message = null
+
+            // See Hooks section for details about `data` hook inside class.
+            data() {
+                return {
+                // `hello` will be reactive as it is declared via `data` hook.
+                hello: undefined
+                }
+            }
+        }
+        ```
+    
+2. 组件 `methods` 方法可以直接声明为类原型方法
+
+```vue
+<template>
+  <button v-on:click="hello">Click</button>
+</template>
+
+<script>
+import Vue from 'vue'
+import Component from 'vue-class-component'
+
+@Component
+export default class HelloWorld extends Vue {
+  // Declared as component method
+  hello() {
+    console.log('Hello World!')
+  }
+}
+</script>
+```
+3. 计算属性 `computed` 可以声明为类属性 `getter/setter`
+
+```vue
+<template>
+  <input v-model="name">
+</template>
+
+<script>
+import Vue from 'vue'
+import Component from 'vue-class-component'
+
+@Component
+export default class HelloWorld extends Vue {
+  firstName = 'John'
+  lastName = 'Doe'
+
+  // Declared as computed property getter
+  get name() {
+    return this.firstName + ' ' + this.lastName
+  }
+
+  // Declared as computed property setter
+  set name(value) {
+    const splitted = value.split(' ')
+    this.firstName = splitted[0]
+    this.lastName = splitted[1] || ''
+  }
+}
+</script>
+```
+
+4. `Data` 、 `render` 和所有 Vue `生命周期钩子` 也可以直接声明为类原型方法，但不能在实例本身上调用它们。*在声明自定义方法时，应该避免使用这些保留名*。
+```js
+import Vue from 'vue'
+import Component from 'vue-class-component'
+
+@Component
+export default class HelloWorld extends Vue {
+  // Declare mounted lifecycle hook
+  mounted() {
+    console.log('mounted')
+  }
+
+  // Declare render function
+  render() {
+    return <div>Hello World!</div>
+  }
+}
+```
+5. 对于所有其他选项，将它们传递给 修饰器 函数
+```vue
+<template>
+  <OtherComponent />
+</template>
+
+<script>
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import OtherComponent from './OtherComponent.vue'
+
+@Component({
+  // Specify `components` option.
+  // See Vue.js docs for all available options:
+  // https://vuejs.org/v2/api/#Options-Data
+  components: {
+    OtherComponent
+  }
+})
+export default class HelloWorld extends Vue {}
+</script>
+```

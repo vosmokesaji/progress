@@ -385,3 +385,7 @@ import OtherComponent from './OtherComponent.vue'
 export default class HelloWorld extends Vue {}
 </script>
 ```
+
+- [注意事项](https://class-component.vuejs.org/guide/caveats.html#this-value-in-property-initializer)
+    - 方法不要使用 箭头函数
+    - 不要使用 constructor ，而是使用 created 等生命周期函数去初始化

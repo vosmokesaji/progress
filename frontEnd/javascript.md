@@ -68,6 +68,54 @@
 
 
 
-<!-- # ES6 -->
 
+# ES6
+
+## Set
+- 也叫集合，不会包含重复元素，可以用来去重
+- Set 认为 NaN 与 NaN 完全相等，所以添加两次 NaN，最终只会有一个
+- 属性
+    - `Set.prototype.constructor`
+    - `Set.prototype.size`
+- 操作方法
+    - `Set.prototype.add(value)` ： 添加某个值，返回 Set 结构本身。
+    - `Set.prototype.delete(value)` ： 删除某个值，返回一个布尔值，表示删除是否成功。
+    - `Set.prototype.has(value)` ： 返回一个布尔值，表示该值是否为Set的成员。
+    - `Set.prototype.clear()` ： 清除所有成员，没有返回值。
+- 判断是否包含一个键，set 比对象更准确
+    ```js
+    // 对象的写法
+    const properties = {
+        'width': 1,
+        'height': 1
+    };
+
+    if (properties[someName]) {
+    // do something
+    }
+    // 如果键对应的值是 false 判断会出现错误 （这个问题面试中考过，没答上来）
+
+    // Set的写法（不会有上边的问题）
+    const properties = new Set();
+
+    properties.add('width');
+    properties.add('height');
+
+    if (properties.has(someName)) {
+        // do something
+    }
+    ```
+- `Array.from` 方法可以将 Set 结构转为数组
+    ```js
+    const items = new Set([1, 2, 3, 4, 5]);
+    const array = Array.from(items);
+    ```
+- 遍历方法
+    - `Set.prototype.keys()` ：返回键名的遍历器
+    - `Set.prototype.values()` ：返回键值的遍历器
+    - `Set.prototype.entries()` ：返回键值对的遍历器
+    - `Set.prototype.forEach()` ：使用回调函数遍历每个成员
+- 需要特别指出的是，Set的遍历顺序就是插入顺序。这个特性有时非常有用，比如使用 Set 保存一个回调函数列表，调用时就能保证按照添加顺序调用
+
+- weakSet 的应用没太看懂，回头多看几遍
 

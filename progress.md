@@ -104,7 +104,17 @@
 ### 2日
 - [Typescript的interface、class和abstract class](https://www.cnblogs.com/imgss/p/13173091.html)
 - [【翻译】在TypeScript中，Extends和Implements一个抽象类有什么不同](https://blog.csdn.net/weixin_30466039/article/details/94860917)
-
+- 【问题】 windows 平台打包提交的代码用的是 CRLF， MAC 却是 LF ，导致每次两个平台开发的时候，都会有很多更新，但其实是换行符的差别导致的
+    - CR：Carriage Return，对应ASCII中转义字符\r，表示回车
+    - LF：Linefeed，对应ASCII中转义字符\n，表示换行
+    - CRLF：Carriage Return & Linefeed，\r\n，表示回车并换行
+    - 众所周知，Windows操作系统采用两个字符来进行换行，即CRLF；Unix/Linux/Mac OS X操作系统采用单个字符LF来进行换行。[源自：CRLF、CR、LF详解](https://www.jianshu.com/p/b03ad01acd69)
+    - 相关问题的解决： [eslint报错Expected linebreaks to be 'LF' but found 'CRLF'的解决方案](http://www.jsphp.net/webpack/show-26-352-1.html)
+    - 建议 windows 系统设置
+        ```shell
+        #提交时转换为LF，检出时转换为CRLF
+        git config --global core.autocrlf true
+        ```
 
 
 

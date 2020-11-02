@@ -116,6 +116,8 @@
         git config --global core.autocrlf true
         ```
 
+- [Vue.js 源码学习九 —— 过渡效果 transition 学习](https://www.jianshu.com/p/f283b39aa212)
+
 
 
 

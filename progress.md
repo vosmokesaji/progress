@@ -99,6 +99,15 @@
         - [ ] 怎么做分享，怎么样把一个事情讲清楚，讲的有趣
 
 
+## 11月
+
+### 2日
+- [Typescript的interface、class和abstract class](https://www.cnblogs.com/imgss/p/13173091.html)
+- [【翻译】在TypeScript中，Extends和Implements一个抽象类有什么不同](https://blog.csdn.net/weixin_30466039/article/details/94860917)
+
+
+
+
 
 ## 10月
 

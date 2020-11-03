@@ -125,6 +125,7 @@
 
 ### 29日
 
+- [UML小白入门基础教程](https://www.cnblogs.com/yuxiuyan/p/7522029.html)
 - UML 入门
     - 用例图：
         - **角色** 是人状的图标

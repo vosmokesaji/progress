@@ -15,6 +15,30 @@
 
 - [指令的 . 修饰符](https://cn.vuejs.org/v2/guide/syntax.html#%E4%BF%AE%E9%A5%B0%E7%AC%A6)
 
+
+### 计算属性和侦听器
+- **计算属性是基于它们的响应式依赖进行缓存的**。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 message 还没有发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。
+- 计算属性 `computed` 可以使用 `setter`
+    ```js
+    computed: {
+        fullName: {
+            // getter
+            get: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            // setter
+            set: function (newValue) {
+                var names = newValue.split(' ')
+                this.firstName = names[0]
+                this.lastName = names[names.length - 1]
+            }
+        }
+    }
+    ```
+- 侦听器 `watch` 
+    - 当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。
+
+
 ### class 和 style 绑定
 
 ### 列表渲染

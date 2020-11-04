@@ -103,6 +103,15 @@
 
 ## 11月
 
+
+### 4日
+- 小米手机安装 charles 证书
+    - 自带浏览器 访问 chls.pro/ssl 下载下来的是 crt 后缀名的证书文件（一安装就闪退）
+    - UC浏览器下载下来的是 pem 后缀的证书文件，可以正常安装
+
+
+
+
 ### 2日
 - [Typescript的interface、class和abstract class](https://www.cnblogs.com/imgss/p/13173091.html)
 - [【翻译】在TypeScript中，Extends和Implements一个抽象类有什么不同](https://blog.csdn.net/weixin_30466039/article/details/94860917)

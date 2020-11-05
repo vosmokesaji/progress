@@ -42,10 +42,12 @@
 ### class 和 style 绑定
 
 - class
-    - 对象语法： key 作为类名， value 为 true 时，应用这个类名； value 为 false 时，不应用这个类名。
-        - 可以使用**计算属性**（很强大）
+    - 对象语法： `key` 作为类名， `value` 为 `true` 时，应用这个类名； `value` 为 `false` 时，不应用这个类名。
+        - 可以使用**计算属性**（很强大） [link](https://cn.vuejs.org/v2/guide/class-and-style.html)
     - 数组语法： 数组项作为类名
-
+    - 在组件上使用 class 时，会应用到组件的根元素上
+- style 绑定
+    - 
 
 
 ### 列表渲染

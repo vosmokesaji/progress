@@ -104,6 +104,10 @@
 ## 11月
 
 
+### 12日
+- [Mac 之系统中各个文件夹详细介绍](https://blog.csdn.net/yxys01/article/details/73161962)
+
+
 ### 4日
 - 小米手机安装 charles 证书
     - 自带浏览器 访问 chls.pro/ssl 下载下来的是 crt 后缀名的证书文件（一安装就闪退）

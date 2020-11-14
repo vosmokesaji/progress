@@ -104,6 +104,15 @@
 ## 11月
 
 
+### 14日
+- git 修改上一次提交的的，但未 push 的 commit message 的方法
+    - 在项目目录下输入命令 `git commit --amend` ，回车
+    - 会进入 vim 编辑器可以编辑上一次的 commit message 
+    - 编辑完成后保存并退出
+    - 执行 `git log` 会发现已经被修改
+
+
+
 ### 12日
 - [Mac 之系统中各个文件夹详细介绍](https://blog.csdn.net/yxys01/article/details/73161962)
 

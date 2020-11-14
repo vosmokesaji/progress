@@ -111,6 +111,9 @@
     - 编辑完成后保存并退出
     - 执行 `git log` 会发现已经被修改
 
+- 【想知道】【前端】pm2 是什么？ [官网](https://pm2.keymetrics.io/)
+- 【想知道】node fork模式 cluster模式
+
 
 
 ### 12日

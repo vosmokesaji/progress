@@ -103,6 +103,13 @@
 
 ## 11月
 
+### 18日
+- [MAC上如何导出已安装的chrome插件CRX文件？](https://huajiakeji.com/utilities/2018-04/1379.html)
+    - 需要在插件界面打开开发者模式
+    - 
+- 如何知道 chrome 插件安装在哪里
+    - chrome 地址栏输入 `chrome://version/` 回车
+    - 打开的页面里 `个人资料路径` 下的 `Extensions` 文件夹就是了
 
 ### 14日
 - git 修改上一次提交的的，但未 push 的 commit message 的方法

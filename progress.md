@@ -107,8 +107,30 @@
 
 ### 23日
 - mac 的通知只会在主屏屏幕上展示，如果想更改主屏幕，需要在 显示器 -- 排列 中拖动小白条的位置，小白条所在的就是主屏幕
+    - [百度经验](https://jingyan.baidu.com/article/9989c7463e803ef648ecfed5.html)
     - <img src="./images/progress/mac设置主屏幕.png" alt="" width="800">
-
+- 【想知道】 label 标签导致点击 `.itemTitle` 区域时 click 触发了两次 ，label 换成 div 就好了， why ？？？
+    ```html
+    <div class="inputItem" @click="handleClick">
+        <label class="dataItem">
+            <div class="dataBox">
+                <div class="itemTitle" :class="{'validate-error': validateError}">
+                    <span>{{title}}</span>
+                    <i class="error-icon"></i>
+                </div>
+                <input
+                        :type="type"
+                        class="item-input"
+                        :placeholder="placeholder"
+                        :readonly="readonly"
+                        :maxlength="maxLength"
+                        v-model="value"
+                >
+            </div>
+            <span class="item-goto" v-if="hasGoToIcon"></span>
+        </label>
+    </div>
+    ```
 
 
 

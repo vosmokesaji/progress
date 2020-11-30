@@ -103,6 +103,15 @@
 
 ## 11月
 
+### 30日
+- TS 提示 `Cannot find module './app.vue' or its corresponding type declarations.`  找不到模块 `./app.vue` 或其对应的类型声明。
+    - 在 `src` 目录下新建文件 `shims-vue.d.ts` ,在文件中输入代码
+    ```ts
+    declare module '*.vue' {
+        import Vue from 'vue'
+        export default Vue
+    }
+    ```
 
 
 ### 23日

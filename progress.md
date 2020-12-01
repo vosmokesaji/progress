@@ -101,6 +101,20 @@
         - [ ] 怎么做分享，怎么样把一个事情讲清楚，讲的有趣
 
 
+## 12月
+
+### 1日
+
+- [5款好用的头像生成器推荐](https://www.v1tx.com/post/best-avatar-generator/)
+    - https://getavataaars.com/
+    - https://personas.draftbit.com/
+    - https://avatarmaker.com/
+    - https://ai-art.tokyo/en/
+    - https://myoctocat.com/
+- [摸头动图生成器]](https://benisland.neocities.org/petpet/)
+
+
+
 ## 11月
 
 ### 30日

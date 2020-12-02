@@ -103,6 +103,16 @@
 
 ## 12月
 
+### 2日
+
+- [大杀器Bodymovin和Lottie：把AE动画转换成HTML5/Android/iOS原生动画](https://www.cnblogs.com/zamhown/p/6688369.html)
+- [AE动画转 js ](https://blog.csdn.net/qq_29268061/article/details/85229323)
+- [25 个超棒的 HTML5 & JavaScript 游戏引擎开发库](https://www.runoob.com/w3cnote/25-best-game-engine-libraries-for-developers.html)
+
+
+
+
+
 ### 1日
 
 - [5款好用的头像生成器推荐](https://www.v1tx.com/post/best-avatar-generator/)

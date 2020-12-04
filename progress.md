@@ -103,6 +103,14 @@
 
 ## 12月
 
+### 3日
+- [Bodymovin 安装的方法](https://www.jianshu.com/p/fb82eb80bdd7)
+    - bodymovie [插件下载地址](https://github.com/bigxixi/bodymovin_cn)：这里有所有的版本，选一个下载就好
+    - 推荐使用 [zxp安装器](https://aescripts.com/learn/zxp-installer/)（bodymovin需要这个安装器才能安装）：
+    - 直接将zxp文件拖拽进安装器，或者按快捷键cmd + o然后，选择zxp文件进行安装。如果之前安装过bodymovin，会覆盖掉原来的版本。
+
+
+
 ### 2日
 
 - [大杀器Bodymovin和Lottie：把AE动画转换成HTML5/Android/iOS原生动画](https://www.cnblogs.com/zamhown/p/6688369.html)

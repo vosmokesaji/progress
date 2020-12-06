@@ -103,6 +103,20 @@
 
 ## 12月
 
+### 6日
+- [从微交互到lottie动画 - 站酷](https://www.zcool.com.cn/article/ZMTA3MDU3Mg==.html)
+- [前端复杂带交互动画的lottie-web方案实现 - 知乎文章](https://zhuanlan.zhihu.com/p/234703627)
+    - 有代码实现逻辑，值得参考
+- [这样做动画交互，一点都不费力！ - 知乎文章](https://zhuanlan.zhihu.com/p/54426735)
+    - 讲了有关 JSON 文件中各个属性的具体含义
+- [Airbnb开源炫酷动画库Lottie（译）－看看Airbnb的工程师怎么说 - 简书](https://www.jianshu.com/p/d887c96684be)
+- [Lottie在手，动画我有：ios/Android/Web三端复杂帧动画解决方案 - 知乎](https://zhuanlan.zhihu.com/p/82799350)
+- [生产环境中的动效落地之插件-lottie - 简书](https://www.jianshu.com/p/ad45c660fded)
+- [现在你可以把 Lottie 动画导回 AE 了](https://zhuanlan.zhihu.com/p/104751997)
+- [比阿里犸良还强大！Lottie动效设计完全指南 - 优设](https://www.uisdc.com/lottie-dynamic-design-guide-3)
+- [做好直接用！动效神器 Lottie 基础入门教学](https://www.uisdc.com/lottie)
+
+
 ### 3日
 - [Bodymovin 安装的方法](https://www.jianshu.com/p/fb82eb80bdd7)
     - bodymovie [插件下载地址](https://github.com/bigxixi/bodymovin_cn)：这里有所有的版本，选一个下载就好

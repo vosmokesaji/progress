@@ -103,6 +103,15 @@
 
 ## 12月
 
+### 9日
+- JS 自定义事件，HOW ?
+- [Lottie到底怎么用 - 知乎](https://zhuanlan.zhihu.com/p/36115993)
+    - 提到了 lottie 配合 Framer 制作可交互原型
+- [那些年被Lottie坑过的地方 - 知乎](https://zhuanlan.zhihu.com/p/59794085)
+- [想用 Lottie 做动画？先收下这份常见错误和解决方法总结 - 优设](https://www.uisdc.com/lottie-common-errors-and-solutions)
+
+
+
 ### 6日
 - [从微交互到lottie动画 - 站酷](https://www.zcool.com.cn/article/ZMTA3MDU3Mg==.html)
 - [前端复杂带交互动画的lottie-web方案实现 - 知乎文章](https://zhuanlan.zhihu.com/p/234703627)

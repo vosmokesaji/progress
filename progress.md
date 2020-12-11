@@ -109,6 +109,14 @@
 - [再谈CSS动画 - 说点不知道的（一）贝塞尔曲线](https://www.cnblogs.com/libinfs/p/7743469.html)
 - [使用CSS3中的Calc计算器时需要注意的事情](https://www.webhek.com/post/calc-usage.html)
     - 我遇到不生效的原因是计算加减的时候没有在加减号两边添加空格
+- 程序员必去的7个海外网站
+    1. [Devto](https://dev.to/)
+    2. [StackOverflow](https://stackoverflow.com/)
+    3. [Medium](https://medium.com/) 墙？
+    4. [GitHub](https://github.com/)
+    5. [SimpleProgrammer](https://simpleprogrammer.com/)
+    6. [Sitepoint](https://www.sitepoint.com/)  前端电子书籍网站
+    7. [YouTube](http://www.youtobe.com)
 
 
 ### 9日

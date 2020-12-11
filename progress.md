@@ -973,8 +973,8 @@
     
     # 执行这一段
     # OLD_EMAIL 换成你要被替换的邮箱
-    # CORRECT_NAME 换成你要替换成的邮箱
-    # CORRECT_EMAIL 换成你要替换成的名字
+    # CORRECT_NAME 换成你要替换成的名字
+    # CORRECT_EMAIL 换成你要替换成的邮箱
     git filter-branch --env-filter '
        
     OLD_EMAIL="xxxx@old.com"

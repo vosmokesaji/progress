@@ -1008,3 +1008,25 @@ http://www.zcool.com.cn/article/ZMzkyOTQ0.html
 
 7、https://ant.design/index-cn
 大家在看规范的时候不要机械的去套，每个规范给出的时候后面基本都会有一小段解释来说
+
+
+
+
+
+
+## isux 设计推荐
+
+### 20200214
+
+【ISUX设计推荐 12月14日】西班牙平面设计师Anxo Vizcaíno
+
+西班牙平面设计师，擅长运用负空间构图营造神秘、浩大磅礴的场景。推荐欣赏。
+
+关键词：3D，平面，设计师
+
+
+地址：
+https://anxovizcaino.com/work
+
+往期文章地址：
+https://docs.qq.com/sheet/DRG5MbGhVZXZ1QlR2?opendocxfrom=admin&tab=BB08J2&coord=C16A0A0

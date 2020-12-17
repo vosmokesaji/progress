@@ -103,6 +103,16 @@
 
 ## 12月
 
+
+### 17日
+- 【TODO】【想知道】表情包制作
+    - 有没有统一的工具？
+    - 有没有统一的参考？
+    - 想法
+        - 颜文字表情包？（版权？是否必要？）
+
+
+
 ### 15日
 - 字体下载： [红动中国](https://www.redocn.com/)
 
@@ -122,7 +132,7 @@
 
 
 ### 9日
-- JS 自定义事件，HOW ?
+- 【想知道】JS 自定义事件，HOW ?
 - [Lottie到底怎么用 - 知乎](https://zhuanlan.zhihu.com/p/36115993)
     - 提到了 lottie 配合 Framer 制作可交互原型
 - [那些年被Lottie坑过的地方 - 知乎](https://zhuanlan.zhihu.com/p/59794085)
@@ -584,7 +594,7 @@
 
 
 ### 13日
-- 什么是 套接字？ 
+- 【想知道】什么是 套接字？ 
     - 来源： [mysql npm](https://www.npmjs.com/package/mysql#connection-options) - `socketPath`
 - mysql 入门
     ```shell

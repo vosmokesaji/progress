@@ -89,6 +89,20 @@
 
 ## 1月
 
+
+### 15日
+- [iPhone自带click点击效果用css去除](https://blog.csdn.net/lyh_951128/article/details/48318067)
+
+### 8日
+- 前后端分离的问题：
+    - 页面初始化  接口出错 怎么处理
+
+- 需求中的
+    - 极值问题
+    - 异常处理，需要在确定技术方案之后 确定可能出异常的点，
+
+
+
 ### 7日
 - appium app 测试？
 
@@ -700,7 +714,7 @@
     # ==========================================================================
 
     # 修改数据库表中的数据
-    # update 数据库列名 set 列够=新value where 更新条件;
+    # update 数据库表名 set 列名（字段名）=新value where 更新条件;
     mysql> update network3 set address="YuanTan" where name="xpleaf";
     mysql> select * from network3;
 

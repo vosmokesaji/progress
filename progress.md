@@ -89,6 +89,21 @@
 
 ## 2月
 
+### 19日
+- 检查 npm 包更新信息
+    ```
+    sudo npm install -g npm-check-updates
+    ncu
+    ncu --filter @ftoy/core
+    npm i 
+    ncu -u
+    ncu -u --filter @ftoy/core
+    npm i 
+    ncu -u --filter @ftoy/config
+    ```
+
+
+
 
 ### 18日
 - brew 安装包时遇到 `Error: Permission denied @ apply2files`

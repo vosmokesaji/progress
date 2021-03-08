@@ -87,5 +87,44 @@ https://www.bilibili.com/video/BV1wy4y1D7JT
     6. 标签必须闭合
     7. 标签首字母
         1. 小写开头，会转为 html 同名元素，入html 中无该标签同名元素
-        2. 大写开头，react 就去渲染对应的组件，如果组件没有定义，就报错
+        2. **大写开头**，react 就去渲染对应的组件，如果组件没有定义，就报错
 
+
+
+
+
+## state
+- react 组件的数据都放在状态对象 state 中
+- 通过 this.state.xxx 访问
+### 操作state
+- react 不允许直接改变 state 的值，直接改变值不会刷新视图
+- 要使用 setState({key: value})
+- setState 是使用合并覆盖的方式修改原 state 的
+- react 中事件 用小驼峰  比如 onClick
+
+### this 指向问题
+- 例子：
+    ```jsx
+    class Weather extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {isHot: true}
+
+            // 关键点
+            // 因为 onClick 处调用时只是保存了 changeWeather 这个函数的引用，其中的this 因为严格模式（class 会在方法内部开启严格模式，禁止 this 指向 window），this 的值是 undefined，所以要在  constructor 中将 changeWeather 的this 绑定到实例上
+            // constructor 中的this 必然指向实例对象
+            this.changeWeather = this.changeWeather.bind(this)
+        }
+
+        render(){
+            const {isHot} = this.state;
+            return <h1 onClick={this.changeWeather}>今天天气很{isHot ? "炎热" : "凉爽"}</h1>   
+        }
+
+        changeWeather(){
+            const {isHot} = this.state;
+            this.setState({isHot: !isHot})
+        }
+    }
+    ```
+- 

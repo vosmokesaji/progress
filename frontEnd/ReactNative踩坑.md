@@ -1,0 +1,6 @@
+- 使用 safearea 组件控制安全区域
+- 元素的 box-sizing 默认borderbox， 
+    - 能不能改？
+- overflow 默认 hidden
+- flexDirection 默认 clounm
+- 

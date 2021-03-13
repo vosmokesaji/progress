@@ -10,6 +10,7 @@
 - [webpack 笔记](./frontEnd/webpack.md)
 - [mac 工作环境安装记录](frontEnd/mac%20环境安装记录.md)
 - [慕课-前端面试](frontEnd/interview.md)
+- [面经](Job/experience.md)
 
 #### 其他
 - [使用 HEXO 搭建静态资源网站](./skill/hexo.md)

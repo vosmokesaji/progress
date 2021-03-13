@@ -1,7 +1,7 @@
 # React Native 代码片段
 
 ## rn 滚动动画
-```jsx
+```
 constructor(props:propsFace) {
     super(props);
 

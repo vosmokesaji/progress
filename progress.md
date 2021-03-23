@@ -89,6 +89,12 @@
 
 ## 3月
 
+### 22日
+- 远程控制 mac 的方法
+- 远程控制 windows 的方法
+
+
+
 ### 20日
 - [js 中的 callee 和 caller](https://www.html.cn/archives/1706/)
 - [caller（谁调我）、callee（我是谁）](https://segmentfault.com/a/1190000007488363)

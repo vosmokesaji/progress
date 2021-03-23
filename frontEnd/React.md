@@ -127,4 +127,174 @@ https://www.bilibili.com/video/BV1wy4y1D7JT
         }
     }
     ```
-- 
+
+
+
+
+
+
+<!-- 32 课 -->
+## react 中的事件处理
+- 为了更好的兼容性，react 做了一次二次封装
+- react 中的事件时以事件委托方式处理的
+- 通过 event.target 得到发生时间的 Dom 元素对象
+    - 事件触发的元素正好是你要操作的元素，可以省略 ref， 用 event.target
+
+
+
+
+
+<!-- 33 课 -->
+## 非受控组件
+- 组件中所有输入类的 dom（input select checkbox 等） 的值是 **现用现取** 的，就是非受控组件
+
+
+
+
+
+<!-- 34 课 -->
+## 受控组件
+- 组件中所有输入类的 dom（input select checkbox 等） 随着你的输入能实**时将值维护到状态（state）中**的，等需要**用的时候从状态中取出来**，就是受控组件
+
+- 建议写受控组件，因为受控组件能省略掉 ref
+- *疑问？？？ 受控是指受什么控制？*
+
+
+
+<!-- 35 课 -->
+## 高阶函数 函数柯里化
+- 之前都是往状态里边存东西，重复度有点儿高
+    ```jsx
+    saveUsername = (event) => {
+        this.setState({username: this.target.value});
+    }
+    savePassword = (event) => {
+        this.setState({password: this.target.value});
+    }
+
+    render(){
+        return(
+            用户名： <input onChanghe={this.saveUsername} type="text" name="username" />
+            密码： <input onChanghe={this.savePassword} type="password" name="password" />
+        )
+    }
+    //...
+    ```
+
+- 换种写法：
+    ```jsx
+    // 改方法为 saveFormData 用来保存表单数据
+    
+    saveFormData = (dataType) => {
+
+        // 事件处理实际调用的是这个返回的函数
+        return (event) => {
+            this.setState({
+                // 这的 dataType 想要当做变量读取，就需要加 方括号
+                [dataType]: event.target.value
+            })
+        }
+    }
+    render(){
+        return(
+            // this.saveFormData("username") 返回一个函数，给到 onChange
+            用户名： <input onChanghe={this.saveFormData("username")} type="text" name="username" />
+            密码： <input onChanghe={this.saveFormData("password")} type="password" name="password" />
+        )
+    }
+    ```
+- 以上的 `saveFormData` 就是一个高级函数
+    - 那，什么是**高阶函数**： 如果一个函数符合下边两个规范中的任何一个，那该函数就是高阶函数
+        1. 若A函数，接收的参数是一个函数
+        2. 若A函数，的返回值是一个函数
+    - 常见的高阶函数有哪些？
+        - Promise
+            - 传入执行器函数
+        - setTimeout
+        - setInterval
+        - arr.map  等数组上的一些方法
+    - **函数柯里化**：通过函数调用继续返回函数的方式，实现多次接收参数与最后统一处理的函数编码形式。
+
+- `tips` 如果你的大段注释折叠不起来，就这么写， 用 `//#region` 和 `//#endregion`
+    ```js
+    //#region
+        /*
+          balabala....
+        */
+    //#endregion
+    ```
+- 演示函数柯里化
+    ```js
+    function sum(a,b,c){
+        return a+b+c;
+    }
+    sum(1,2,3)    // 6
+    ```    
+    - 柯里化写法
+    ```js
+    function sum(a){
+        return (b) => {
+            return (c) => {
+                return a + b + c;
+            }
+        }
+    }
+    sum(1)(2)(3)    // 6
+    ``` 
+
+<!-- 36 课 -->
+## 不用柯里化的写法
+
+    ```jsx
+    saveFormData = (dataType, value) => {
+            this.setState({
+                [dataType]: value
+            })
+        }
+    }
+    render(){
+        return(
+            // 传一个函数，内部调用 saveFormData
+            用户名： <input onChanghe={(event)=>{this.saveFormData("username", event.target.value)}} type="text" name="username" />
+        )
+    }
+    ```
+
+
+
+
+<!-- 37 课 -->
+## 引出生命周期
+- 生命周期
+    - 组件从创建到更新到销毁
+    - 挂载 mount
+    - 卸载 unmount
+
+- 卸载方式 `React.unmountComponentAtNode(document.getElementById("test"))` 
+- 组件挂载完毕
+    ```js
+    componentDidMount(){
+        //....
+    }
+    ```
+- 组件将要卸载
+    ```js
+    componentWillUnmount(){
+        //....
+    }
+    ```
+
+
+
+<!-- XX 课 -->
+
+
+
+
+
+<!-- XX 课 -->
+
+
+
+
+

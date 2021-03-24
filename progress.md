@@ -88,6 +88,13 @@
 # 2021年
 
 ## 3月
+
+### 23日
+- mac appstore 搜 Apple Configurator 2  安装 ipa 到 iphone
+- 什么是听不进去，我什么时候会听不进去别人的话，会不会因此犯错
+
+
+
 ### 21日
 - [彩虹客服处理状态](http://kf.sdo.com/selfsv/mylist)
 

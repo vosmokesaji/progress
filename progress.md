@@ -87,6 +87,24 @@
 
 # 2021年
 
+## 4月
+
+
+### 22日
+- 典籍中国
+- 太行山大峡谷
+- 衣上中国
+
+
+
+### 12日
+- 【RN】 input 框点击空白处，键盘不能收起的解决方案
+    - 将可点击的区域放到一个  ScrollView 中，设置这个属性 `keyboardShouldPersistTaps`
+    - https://www.react-native.cn/docs/scrollview#keyboardshouldpersisttaps
+
+
+
+
 ## 3月
 
 ### 23日

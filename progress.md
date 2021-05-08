@@ -145,15 +145,24 @@
 
 ### 19日
 - 检查 npm 包更新信息
-    ```
+    ```shell
+    # 安装 ncu
     sudo npm install -g npm-check-updates
+
+    # 在项目根目录执行以下命令，检察有更新的包，只会列出有更新的包，不会更新 package.json
     ncu
+
+    # 制定要检查的包
     ncu --filter @ftoy/core
-    npm i 
+
+    # 加上 -u 参数会更新 package.json
     ncu -u
+
+    # 更新 package.json 中制定的包的版本
     ncu -u --filter @ftoy/core
+
+    # 更新完后执行该命令安装最新包
     npm i 
-    ncu -u --filter @ftoy/config
     ```
 
 

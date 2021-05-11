@@ -87,6 +87,16 @@
 
 # 2021年
 
+## 5月
+### 10日
+- webstrom 文件类型标记错误，怎么都恢复不了，解决办法
+    - 在 webstrom 左侧的文件树种找到该文件，右键，会看到一个 `Mark as xxx` 的选项
+    - 这个 `xxx` 就是当前被标记的类型，比如 我遇到的是 `Mark as auto-detect file type by content`
+    - 打开 webstrom 的设置 `Editor` -> `File Types` 找到 `xxx` ，对我来说就是 `auto-detect file type by content`
+    - 在右侧，就会看到你的文件在这个列表中，将他删除，即可恢复正常的文件类型标记
+
+
+
 ## 4月
 
 

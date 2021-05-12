@@ -88,6 +88,18 @@
 # 2021年
 
 ## 5月
+
+
+### 11日
+- M1 mac 安装 cocoapods 遇到的问题，
+    - 解决： [[error report] pod install /w m1 macbook](https://github.com/CocoaPods/CocoaPods/issues/10518)
+    - 其他参考： 
+    - [Probem with Apple M1](https://github.com/CocoaPods/CocoaPods/issues/10598)
+    - [missing compatible arch in ...](https://github.com/CocoaPods/CocoaPods/issues/10541)
+
+
+
+
 ### 10日
 - webstrom 文件类型标记错误，怎么都恢复不了，解决办法
     - 在 webstrom 左侧的文件树种找到该文件，右键，会看到一个 `Mark as xxx` 的选项

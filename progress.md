@@ -90,6 +90,20 @@
 ## 5月
 
 
+
+### 12日
+- 模块化标准：需要系统的复习一下，一下分别是啥？ 标准？实现？还有 有啥关系？
+    - seajs
+    - commonjs
+    - requirejs
+    - esmodule
+    - umd
+    - iife
+    - amd
+    - cmd
+    - 
+
+
 ### 11日
 - M1 mac 安装 cocoapods 遇到的问题，
     - 解决： [[error report] pod install /w m1 macbook](https://github.com/CocoaPods/CocoaPods/issues/10518)

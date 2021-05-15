@@ -89,6 +89,11 @@
 
 ## 5月
 
+### 15日
+- [怕买到二手卡？教你识别正版与仿制的 Switch 游戏盒子](https://www.gcores.com/articles/111747)
+- [验switch翻新机真假的方法](https://www.xiaohongshu.com/discovery/item/5e7b400a0000000001008403)
+- [科普向，三步教你分辨真假ns游戏盒。花一手的钱买一手的好游戏！](http://club.gamersky.com/activity/371831?club=2)
+
 
 ### 14日
 - 什么是 **不卑不亢**

@@ -90,6 +90,16 @@
 ## 5月
 
 
+### 26日
+- [58集团RPC框架SCF的设计与实践](https://www.sohu.com/a/279117664_355140)
+- [埋点用例管理_API管理平台之SCF服务测试篇](https://blog.csdn.net/weixin_39672011/article/details/110138076)
+
+- [mac 上看电视](https://jingyan.baidu.com/article/0f5fb099eb4c286d8334ea83.html)
+    - [iptv](https://github.com/iptv-org/iptv?utm_source=gold_browser_extension)
+
+- [剖析 lottie-web 动画实现原理](https://zhuanlan.zhihu.com/p/342477231)
+
+
 ### 25日
 - [icon 动画示例网站](https://useanimations.com/index.html)
 

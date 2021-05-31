@@ -90,6 +90,12 @@
 ## 5月
 
 
+### 31日
+- [Github 开源项目贡献指南：如何给开源项目做贡献 （上）](https://cloud.tencent.com/developer/article/1004992)
+- [Github 开源项目贡献指南：如何给开源项目做贡献 （下）](https://cloud.tencent.com/developer/article/1004993)
+
+
+
 ### 28日
 - [用CSS开启硬件加速来提高网站性能](https://blog.csdn.net/qq_41805715/article/details/89357352)
 - [开启 CSS 硬件加速，提高网站性能](https://zhuanlan.zhihu.com/p/58222612)

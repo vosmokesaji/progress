@@ -87,6 +87,17 @@
 
 # 2021年
 
+
+
+## 6月
+### 3日
+- 【想法】做一个生成壁纸的网站 or app
+    - 不过这种功能注定小众   又不挣钱
+    - 完蛋玩意儿
+
+
+
+
 ## 5月
 
 
@@ -94,6 +105,8 @@
 - [Github 开源项目贡献指南：如何给开源项目做贡献 （上）](https://cloud.tencent.com/developer/article/1004992)
 - [Github 开源项目贡献指南：如何给开源项目做贡献 （下）](https://cloud.tencent.com/developer/article/1004993)
 
+- [mobx 官网](https://mobx.js.org/README.html)
+    - 【TFRP 函数式反应型编程】 是啥？
 
 
 ### 28日

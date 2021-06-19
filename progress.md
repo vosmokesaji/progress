@@ -87,7 +87,181 @@
 
 # 2021年
 
+
+## 6月
+
+### 10日
+- 【想法】用 keynote 做视频
+    - 结合编程，自动化的绘图？
+
+
+### 9日
+- 【意识流】保温杯外壁流下来水，拿起来发现圆弧形的水印
+    - 小心翼翼的将杯子放回原处，转杯子，让水印变成一个圆
+    - 同样的操作又做了3次
+    - 得到了一个奥迪
+- 非常无聊的时候做什么？
+
+
+
+
+### 7日
+- 【想知道】陀螺仪原理
+    - Just Dance 是如何判分的？
+
+
+
+
+### 4日
+- [2021年笔记本扩展坞（拓展坞）终极选购攻略，适用于Mac、iPad、联想小新等设备的接口拓展指南（618特别更新）](https://zhuanlan.zhihu.com/p/299741303)
+    - 详细讲了多种接口 和 多种传输协议
+
+### 3日
+- 【想法】做一个生成壁纸的网站 or app
+    - 不过这种功能注定小众   又不挣钱
+    - 完蛋玩意儿
+
+
+
+
+## 5月
+
+
+### 31日
+- [Github 开源项目贡献指南：如何给开源项目做贡献 （上）](https://cloud.tencent.com/developer/article/1004992)
+- [Github 开源项目贡献指南：如何给开源项目做贡献 （下）](https://cloud.tencent.com/developer/article/1004993)
+
+- [mobx 官网](https://mobx.js.org/README.html)
+    - 【TFRP 函数式反应型编程】 是啥？
+
+
+### 28日
+- [用CSS开启硬件加速来提高网站性能](https://blog.csdn.net/qq_41805715/article/details/89357352)
+- [开启 CSS 硬件加速，提高网站性能](https://zhuanlan.zhihu.com/p/58222612)
+
+
+
+
+### 26日
+- [58集团RPC框架SCF的设计与实践](https://www.sohu.com/a/279117664_355140)
+- [埋点用例管理_API管理平台之SCF服务测试篇](https://blog.csdn.net/weixin_39672011/article/details/110138076)
+
+- [mac 上看电视](https://jingyan.baidu.com/article/0f5fb099eb4c286d8334ea83.html)
+    - [iptv](https://github.com/iptv-org/iptv?utm_source=gold_browser_extension)
+
+- [剖析 lottie-web 动画实现原理](https://zhuanlan.zhihu.com/p/342477231)
+
+
+### 25日
+- [icon 动画示例网站](https://useanimations.com/index.html)
+
+
+### 20日
+- 【搞清楚】
+    - **集群**具体是啥？
+    - 中间件
+        - [中间件是什么？如何解释比较通俗易懂？ - 阿里巴巴淘系技术的回答 - 知乎 ](https://www.zhihu.com/question/19730582/answer/1663627873)
+        - [深入浅出nodejs中间件原理](https://zhuanlan.zhihu.com/p/274325699)
+    - 前端工程化
+      - [谁能介绍下web前端工程化？](https://www.zhihu.com/question/24558375/answer/1902779037)
+
+
+### 18日
+- 公司 LOGO 色值
+    - red `#fe2928`
+    - orange `#ff8c13`
+    - green `#51c315`
+    - blue `#0091d7`
+
+
+
+### 15日
+- [怕买到二手卡？教你识别正版与仿制的 Switch 游戏盒子](https://www.gcores.com/articles/111747)
+- [验switch翻新机真假的方法](https://www.xiaohongshu.com/discovery/item/5e7b400a0000000001008403)
+- [科普向，三步教你分辨真假ns游戏盒。花一手的钱买一手的好游戏！](http://club.gamersky.com/activity/371831?club=2)
+
+
+### 14日
+- 什么是 **不卑不亢**
+- 为什么在工作了之后回顾当时的毕业论文，觉得要写好也不难？
+    - 原因1： 导师应该给学生正确的引导，写论文的目的究竟是什么？
+        - 不是为了毕业
+        - 而是为了研究一件事儿，一件你感兴趣的事儿，然后产出论点，收集数据、推导、论证
+        - 选题很丰富完全不用担心，只是需要你去发现
+        - 大一开始就经常提论文到底是干啥
+        - 如果这样做的话，不至于很多学生到要毕业了 ，甚至毕业之后，都没明白，毕业论文到底是正在做什么
+    - 原因2： 工作之后全部都是实践
+        - 实践才能碰到问题
+        - 反复的实践才能形成深入理解
+        - 所以实践非常重要
+        - 要进行实践，要多多实践
+
+### 13日
+- [nginx could not build the server_names_hash 解决方法](https://www.cnblogs.com/xiaoleiel/p/8308537.html)
+    - 在配置文件的http{}段增加一行配置 
+    - `server_names_hash_bucket_size 64; `
+    - 如果64还不够，那么就按32的倍数往上加。
+
+
+
+### 12日
+- 模块化标准：需要系统的复习一下，一下分别是啥？ 标准？实现？还有 有啥关系？
+    - seajs
+    - commonjs
+    - requirejs
+    - esmodule
+    - umd
+    - iife
+    - amd
+    - cmd
+
+
+
+### 11日
+- M1 mac 安装 cocoapods 遇到的问题，
+    - 解决： [[error report] pod install /w m1 macbook](https://github.com/CocoaPods/CocoaPods/issues/10518)
+    - 其他参考： 
+    - [Probem with Apple M1](https://github.com/CocoaPods/CocoaPods/issues/10598)
+    - [missing compatible arch in ...](https://github.com/CocoaPods/CocoaPods/issues/10541)
+
+
+
+
+### 10日
+- webstrom 文件类型标记错误，怎么都恢复不了，解决办法
+    - 在 webstrom 左侧的文件树种找到该文件，右键，会看到一个 `Mark as xxx` 的选项
+    - 这个 `xxx` 就是当前被标记的类型，比如 我遇到的是 `Mark as auto-detect file type by content`
+    - 打开 webstrom 的设置 `Editor` -> `File Types` 找到 `xxx` ，对我来说就是 `auto-detect file type by content`
+    - 在右侧，就会看到你的文件在这个列表中，将他删除，即可恢复正常的文件类型标记
+
+
+
+## 4月
+
+
+### 22日
+- 典籍中国
+- 太行山大峡谷
+- 衣上中国
+
+
+
+### 12日
+- 【RN】 input 框点击空白处，键盘不能收起的解决方案
+    - 将可点击的区域放到一个  ScrollView 中，设置这个属性 `keyboardShouldPersistTaps`
+    - https://www.react-native.cn/docs/scrollview#keyboardshouldpersisttaps
+
+
+
+
 ## 3月
+
+### 23日
+- mac appstore 搜 Apple Configurator 2  安装 ipa 到 iphone
+- 什么是听不进去，我什么时候会听不进去别人的话，会不会因此犯错
+
+
+
 ### 21日
 - [彩虹客服处理状态](http://kf.sdo.com/selfsv/mylist)
 
@@ -120,15 +294,24 @@
 
 ### 19日
 - 检查 npm 包更新信息
-    ```
+    ```shell
+    # 安装 ncu
     sudo npm install -g npm-check-updates
+
+    # 在项目根目录执行以下命令，检察有更新的包，只会列出有更新的包，不会更新 package.json
     ncu
+
+    # 制定要检查的包
     ncu --filter @ftoy/core
-    npm i 
+
+    # 加上 -u 参数会更新 package.json
     ncu -u
+
+    # 更新 package.json 中制定的包的版本
     ncu -u --filter @ftoy/core
+
+    # 更新完后执行该命令安装最新包
     npm i 
-    ncu -u --filter @ftoy/config
     ```
 
 

@@ -238,6 +238,16 @@ git clone https://github.com/vuejs/vue.git
 
 # vue 周边
 
+## 在 Vue2 中使用 ts 
+- [ts：vue2项目中使用typescript](https://blog.csdn.net/weixin_43972437/article/details/106431093) ， 需要 3 样东西
+    - vue-class-component 可以把组件写成 class 的模式，自定义装饰器，路由钩子
+    - vue-property-decorator 提供这些装饰器
+    - vuex-class 提供 class 组件的 vuex 的支持
+- [vue-property-decorator用法](https://www.jianshu.com/p/d8ed3aa76e9b)
+    - 有说 data 该怎么写
+        - 官方文档： [初始数据可声明为类的属性](https://class-component.vuejs.org/guide/class-component.html#data)
+        - 如果初始值未定义（undefined），类属性将不会被反应，这意味着不会检测到属性的更改
+        - 为了避免这种情况，你可以使用空值或者数据钩子来代替    
 ## vue-property-decorator 
 - [文档](https://www.npmjs.com/package/vue-property-decorator)
 - 依赖 [ vue-class-component](https://github.com/vuejs/vue-class-component)

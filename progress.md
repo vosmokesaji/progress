@@ -90,6 +90,22 @@
 
 ## 6月
 
+
+
+### 30日
+- 局部配置自己项目的 git config
+```shell
+git config user.name "FreyaLin"
+git config user.email "690610702@qq.com"
+```
+
+
+
+### 29日
+- [电影剪辑那些相同台词的片段视频，都是up主们怎么找到的呢？](https://zhuanlan.zhihu.com/p/164869009)
+- [剪辑技巧：通过需要的台词，搜索适合的影视片段](https://mp.weixin.qq.com/s/GY_em9XeCu7-lSI8DBQatg)
+
+
 ### 10日
 - 【想法】用 keynote 做视频
     - 结合编程，自动化的绘图？

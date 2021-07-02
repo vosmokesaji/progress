@@ -87,9 +87,32 @@
 
 # 2021年
 
+## 7月
+
+### 2日
+- node 中间件
+    - https://blog.csdn.net/KlausLily/article/details/109506490
+    - https://zhuanlan.zhihu.com/p/189745517
+- [CSS特性](https://juejin.cn/post/6978647140910727176?utm_source=gold_browser_extension)
+
+
+### 1日
+- 【思考】互联网产品的引导 大家都会跳过，有没有办法能让用户真的去看引导的内容？
+- 【U享会】孙国恩的分享：
+    - touch designer 做啥
+        - 互动屏幕装置
+        - 机械臂互动摄影
+        - 奥迪 a8l 发布会
+        - 室外屏幕
+        - 多面空间投影
+        - 球幕投影
+        - 展会装置投影
+        - 建筑投影
+        - 虚拟现实投影
+    - tensorFlow 机器学习
+
 
 ## 6月
-
 
 
 ### 30日
